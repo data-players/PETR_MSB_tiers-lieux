@@ -1,1 +1,2 @@
-# PETR_MSB_tiers-lieux
+# PETR MSB
+PETR MSB tiers-lieux (Macon Sud Bourgogne)
