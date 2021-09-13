@@ -1,8 +1,8 @@
 version: '3.5'
 services:
   fuseki:
-    image: stain/jena-fuseki:3.10.0
-    container_name: fuseki_petrmsb
+    image: semapps/jena-fuseki-webacl
+    container_name: fuseki
     volumes:
       - ./data/fuseki:/fuseki
       - ./data/staging:/staging
@@ -15,14 +15,14 @@ services:
 
   middleware:
     build: middleware
-    container_name: middleware_petrmsb
+    container_name: middleware
     depends_on:
       - fuseki
     volumes:
       - ./middleware/:/app
       - ./data/fuseki/backups:/app/fuseki-backups # Needed to backup fuseki datasets
     environment:
-      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki_petrmsb:3030/
+      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki:3030/
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
@@ -36,7 +36,7 @@ services:
 
   frontend:
     build: frontend
-    container_name: frontend_petrmsb
+    container_name: frontend
     volumes:
       - ./frontend:/app
     environment:
