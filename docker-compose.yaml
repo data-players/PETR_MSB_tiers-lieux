@@ -28,6 +28,8 @@ services:
       - SEMAPPS_JENA_PASSWORD=admin
       - SEMAPPS_HOME_URL=http://localhost:3000/
       - SEMAPPS_BACKUP_FUSEKI_DATASETS_PATH=/app/fuseki-backups
+      - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
+      - SEMAPPS_OIDC_CLIENT_ID=semapps
     ports:
       - "3000:3000"
     expose:

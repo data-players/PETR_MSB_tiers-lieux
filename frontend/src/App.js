@@ -3,7 +3,6 @@ import { Admin, Resource } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import { LoginPage, LogoutButton, UserMenu } from '@semapps/auth-provider';
 import { Layout, AppBar, theme } from '@semapps/archipelago-layout';
-import { createBrowserHistory as createHistory } from 'history';
 
 import authProvider from './config/authProvider';
 import i18nProvider from './config/i18nProvider';

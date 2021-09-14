@@ -23,6 +23,7 @@
     "@semapps/sparql-endpoint": "0.3.13",
     "@semapps/triplestore": "0.3.13",
     "@semapps/webacl": "0.3.13",
+    "@semapps/webid": "^0.3.13",
     "dotenv-flow": "^3.2.0",
     "handlebars": "^4.7.7",
     "ioredis": "^4.17.3",
