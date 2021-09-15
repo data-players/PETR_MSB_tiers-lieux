@@ -12,7 +12,7 @@ export default {
         edit: OrganizationEdit,
         icon: HomeIcon,
         options: {
-          label: 'Organization'
+          label: 'Organisations'
         },
     },
     dataModel: {
