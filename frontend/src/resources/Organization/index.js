@@ -16,9 +16,9 @@ export default {
         },
     },
     dataModel: {
-        types: ['semapps:Organization'],
+        types: ['pair:Organization'],
         containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organizations',
-        slugField: 'semapps:title'
+        slugField: 'pair:label',
       },
       translations: {
         fr: {
