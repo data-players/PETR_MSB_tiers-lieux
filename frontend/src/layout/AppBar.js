@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
   },
   linkBox: {
     [theme.breakpoints.down('md')]: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
     },
   },
   linkBoxSelected: {
     [theme.breakpoints.down('md')]: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
     },
     borderBottom: 'black 2px solid'
   },

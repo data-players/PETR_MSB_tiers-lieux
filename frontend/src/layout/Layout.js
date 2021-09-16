@@ -17,12 +17,16 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   
   const menuItems = [
     { link: '/About', name: 'Qui sommes-nous ?', admin: false },
-    { link: '/Organization', name: 'Admin', admin: true },
+    { link: '/Map', name: 'Carte des tiers lieux', admin: false },
+    { link: '/Organization', name: 'Rechercher un service', admin: true },
+    { link: '/Search', name: 'Admin', admin: false },
   ];
   
   const noAdminLinks = [
     { link: '/' },
     { link: '/About' },
+    { link: '/Map' },
+    { link: '/Search' },
   ];
   
   const currentPage = useLocation().pathname;

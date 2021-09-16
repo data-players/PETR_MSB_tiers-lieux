@@ -18,7 +18,7 @@ export default {
   dataModel: {
     types: ['foaf:Person'],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'persons',
-    // dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+    dereference: ['pair:hasLocation/pair:hasPostalAddress'],
     slugField: ['pair:label']
   },
   translations: {

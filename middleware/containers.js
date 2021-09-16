@@ -7,6 +7,10 @@ module.exports = [
     acceptedTypes: ['pair:Person']
   },
   {
+    path: '/places',
+    acceptedTypes: ['pair:Place']
+  },
+  {
     path: '/organizations',
     acceptedTypes: ['pair:Organization']
   },

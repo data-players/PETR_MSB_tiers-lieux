@@ -8,9 +8,9 @@ import Goals from './Goals/Goals';
 import CoursesTypes from './CoursesTypes';
 import CourseSubHeader from "../../resources/Activity/Course/CourseSubHeader";
 */
-const HomePage = () => (
+const MapPage = () => (
   <>
-
+    <div>test MapPage</div>
     {/*
     <Welcome />
     <FeaturedList
@@ -38,4 +38,4 @@ const HomePage = () => (
   </>
 );
 
-export default HomePage;
+export default MapPage;
