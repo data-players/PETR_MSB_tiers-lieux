@@ -17,14 +17,18 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   
   const menuItems = [
     { link: '/About', name: 'Qui sommes-nous ?', admin: false },
-    { link: '/Event', name: 'Evènements', admin: false },
-    { link: '/Course', name: 'Parcours', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
   ];
   
+  const noAdminLinks = [
+    { link: '/' },
+    { link: '/About' },
+  ];
+  
   const currentPage = useLocation().pathname;
-  const isAdminPage = menuItems.find(e => e.link === currentPage) === undefined
-                   || menuItems.find(e => e.link === currentPage && e.admin === true) !== undefined;
+  const isAdminPage = noAdminLinks.find(e => e.link === currentPage) === undefined;
+                   
+  console.log('isAdminPage:', isAdminPage);
     
   // const xs = useMediaQuery(theme.breakpoints.down('xs'));
   const [sidebarOpen, setSidebarOpen] = useState(false);
