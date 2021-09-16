@@ -43,8 +43,6 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false }) => {
     setOpenSubMenus(state => ({ ...defaultValues, ...state }));
   }, [categories, resources, currentResourceName, openAll]);
   
-  console.log('treemenu');
-
   return (
     <Box mt={2}>
       {categories.map(category => (

@@ -66,7 +66,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppBar = ({ menuItems, setSidebarOpen, title }) => {
+const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
+
+  menuItems = menuItems.filter(e => e.admin === false || isConnected);
+
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   const location = useLocation();
