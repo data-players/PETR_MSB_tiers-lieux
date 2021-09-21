@@ -11,11 +11,6 @@ import TypeIcon from '../../svg/TypeIcon';
 
 const PlaceDetails = (props) => (
   <IconsList {...props}>
-    <ReferenceArrayField source="cdlt:hasCourseType" reference="Type" icon={<CourseIcon />}>
-      <SeparatedListField link={linkToFilteredList('Place', 'cdlt:hasCourseType')} separator=" / ">
-        <TextField source="pair:label" />
-      </SeparatedListField>
-    </ReferenceArrayField>
     <ReferenceArrayField source="pair:hasType" reference="Type" icon={<TypeIcon />}>
       <SeparatedListField link={linkToFilteredList('Place', 'pair:hasType')} separator=" / ">
         <TextField source="pair:label" />

@@ -1,71 +1,72 @@
 import React from 'react';
-import { ReferenceArrayInput, ReferenceInput } from '@semapps/semantic-data-provider';
-import { AutocompleteArrayInput, SelectInput } from 'react-admin';
+import { ReferenceArrayInput } from '@semapps/semantic-data-provider';
+import { AutocompleteArrayInput } from 'react-admin';
 
-export const PersonsInput = (props) => (
-  <ReferenceArrayInput reference="Person" {...props}>
-    <AutocompleteArrayInput optionText="pair:label" fullWidth />
+export const OrganizationsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Organization" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const EventsInput = (props) => (
-  <ReferenceArrayInput reference="Event" {...props}>
-    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={(value) => value.length > 1} fullWidth />
+export const ActorsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Actor" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const PlacesInput = (props) => (
-  <ReferenceArrayInput reference="Place" {...props}>
-    <AutocompleteArrayInput optionText="pair:label" fullWidth />
+export const ResourcesInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Resource" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const SkillsInput = (props) => (
-  <ReferenceArrayInput reference="Skill" {...props}>
-    <AutocompleteArrayInput optionText="pair:label" fullWidth />
+export const ActivitiesInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Activity" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const ThemesInput = (props) => (
-  <ReferenceArrayInput reference="Theme" {...props}>
-    <AutocompleteArrayInput optionText="pair:label" fullWidth />
+export const DocumentsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Document" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const StatusInput = (props) => (
-  <ReferenceInput reference="Status" {...props}>
-    <SelectInput optionText="pair:label" />
-  </ReferenceInput>
-);
-
-export const TypesInput = (props) => (
-  <ReferenceArrayInput reference="Type" {...props}>
-    <AutocompleteArrayInput optionText="pair:label" fullWidth />
+export const EventsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Event" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const TypeInput = (props) => (
-  <ReferenceArrayInput reference="Type" {...props}>
-    <SelectInput optionText="pair:label" />
+export const TasksInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Task" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const PlaceInput = (props) => (
-  <ReferenceInput reference="Place" {...props}>
-    <SelectInput optionText="pair:label" />
-  </ReferenceInput>
-);
-
-export const CoursesInput = (props) => (
-  <ReferenceArrayInput reference="Course" {...props}>
-    <AutocompleteArrayInput optionText="pair:label" fullWidth />
+export const SkillsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Skill" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
-export const CourseInput = (props) => (
-  <ReferenceArrayInput reference="Course" {...props}>
-    <SelectInput optionText="pair:label" />
+export const ThemesInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Theme" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+  </ReferenceArrayInput>
+);
+
+export const UsersInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Person" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+  </ReferenceArrayInput>
+);
+
+export const AgentsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Agent" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
 export { default as PairLocationInput } from './PairLocationInput';
+export { default as PairResourceCreate } from './PairResourceCreate';

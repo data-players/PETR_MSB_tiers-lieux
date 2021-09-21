@@ -117,7 +117,6 @@ const ItemsGrid = ({ similarRecord }) => {
     return ids
       .filter(id => id !== similarRecord.id )
       .sort(sortBySimilarity(data, similarRecord, 'pair:hasType'))
-      .sort(sortBySimilarity(data, similarRecord, 'cdlt:hasCourseType'))
       .sort(sortBySimilarity(data, similarRecord, 'pair:hasLocation'))
       .slice(0, 4);
   }, [ids, data, similarRecord]);

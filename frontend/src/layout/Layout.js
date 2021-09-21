@@ -13,13 +13,13 @@ const Layout = ({ logout, theme, children, title, menu }) => {
     
   const token = localStorage.getItem('token');
   const payload = token && jwtDecode(token);
-  const isConnected = payload && payload.webId != '';
+  const isConnected = payload && payload.webId !== '';
   
   const menuItems = [
     { link: '/About', name: 'Qui sommes-nous ?', admin: false },
     { link: '/Map', name: 'Carte des tiers lieux', admin: false },
-    { link: '/Organization', name: 'Rechercher un service', admin: true },
-    { link: '/Search', name: 'Admin', admin: false },
+    { link: '/Search', name: 'Rechercher un service', admin: false },
+    { link: '/Organization', name: 'Admin', admin: true },
   ];
   
   const noAdminLinks = [

@@ -26,6 +26,7 @@ export default {
           name: 'Organisation |||| Les organisations',
           fields: {
             'pair:label': 'Titre',
+            'pair:hasType': 'Type',
             'pair:description': 'Contenu',
             'pair:hasLocation':'Emplacement',
           }
