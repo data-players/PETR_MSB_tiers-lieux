@@ -7,9 +7,11 @@ export default {
       label: 'Concepts'
     }
   },
+  /*
   dataModel: {
-    types: ['pair:Type']
+    types: ['pair:Theme']
   },
+  */
   translations: {
     fr: {
       name: 'Concept |||| Concepts'

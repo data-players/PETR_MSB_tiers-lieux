@@ -12,7 +12,8 @@ module.exports = [
   },
   {
     path: '/organizations',
-    acceptedTypes: ['pair:Organization']
+    acceptedTypes: ['pair:Organization'],
+    dereference: ['pair:hasLocation/pair:hasPostalAddress'],
   },
   {
     path: '/documents',
@@ -38,5 +39,8 @@ module.exports = [
       'pair:SubjectType',
       'pair:TaskType'
     ]
+  },
+  {
+    path: '/files'
   }
 ];

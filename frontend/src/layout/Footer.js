@@ -48,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
   },
   background: {
+    borderTop: '1px solid lightgrey',
+    marginTop: theme.spacing(8), 
     backgroundColor: theme.palette.secondary.contrastText,
     color: theme.palette.secondary.main,
   },

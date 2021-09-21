@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 import React, { useState } from 'react';
 import { Notification } from 'react-admin';
 import { useLocation } from 'react-router-dom';
-import { Box, /* useMediaQuery, */ ThemeProvider } from '@material-ui/core';
+import { Box, Grid, ThemeProvider } from '@material-ui/core';
 import AppBar from './AppBar';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
@@ -32,21 +32,33 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   const currentPage = useLocation().pathname;
   const isAdminPage = noAdminLinks.find(e => e.link === currentPage) === undefined;
                    
-  console.log('isAdminPage:', isAdminPage);
-    
   // const xs = useMediaQuery(theme.breakpoints.down('xs'));
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <ThemeProvider theme={theme}>
-      <ScrollToTop />
-      <SideMenu menuItems={menuItems} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+    
+      {/* <ScrollToTop /> */}
+      {/* <SideMenu menuItems={menuItems} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+      
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
       {
         isConnected && isAdminPage
-          ? <TreeMenu />
-          : <div></div>
+          ? 
+            <Grid container>
+              <Grid item xs={3}>
+                <TreeMenu />
+              </Grid>
+              <Grid item xs={9}>
+                <Box>{children}</Box>
+              </Grid>
+            </Grid>
+          : 
+            <Grid container>
+              <Grid item xs={12}>
+                <Box>{children}</Box>
+              </Grid>
+            </Grid>
       }
-      <Box>{children}</Box>
       <Footer title={title} />
       {/* Required for react-admin optimistic update */}
       <Notification />

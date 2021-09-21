@@ -35,7 +35,6 @@ services:
     expose:
       - "3000"
     command: bash -c "npm rebuild && npm install && npm run dev"
-    # command: bash -c "npm run dev"
 
   frontend:
     build: frontend
@@ -53,4 +52,3 @@ services:
     expose:
       - "5000"
     command: bash -c "npm rebuild --silent && npm install --silent && npm start"
-    # command: bash -c "npm start"

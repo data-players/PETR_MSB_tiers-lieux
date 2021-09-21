@@ -1,41 +1,74 @@
 import React from 'react';
-/*
-import NextEvents from '../../commons/lists/EventsList/NextEvents.js';
-import Welcome from './Welcome/Welcome';
-import FeaturedList from '../../commons/lists/FeaturedList/FeaturedList';
-import PlaceSubHeader from '../../resources/Place/PlaceSubHeader';
-import Goals from './Goals/Goals';
-import CoursesTypes from './CoursesTypes';
-import CourseSubHeader from "../../resources/Activity/Course/CourseSubHeader";
-*/
-const MapPage = () => (
-  <>
-    <div>test MapPage</div>
-    {/*
-    <Welcome />
-    <FeaturedList
-      resource="Place"
-      basePath="/Place"
-      title="Les lieux"
-      subtitle="A visiter"
-      headComment="Partez à la découvertes de lieux inspirants et allez à la rencontre de personnes qui ont choisis d’être acteurs de la transition."
-      linkText="Voir tous les lieux"
-      CardSubHeaderComponent={PlaceSubHeader}
-    />
-    <Goals />
-    <FeaturedList
-      resource="Course"
-      basePath="/Course"
-      title="Les parcours"
-      subtitle="Thématiques & géographiques"
-      headComment="Tu rêves de partir sur les routes pour découvrir des savoirs faire ou même apprendre un métier sur le terrain? Découvre nos parcours."
-      linkText="Voir tous les parcours"
-      CardSubHeaderComponent={CourseSubHeader}
-    />
-    <CoursesTypes />
-    <NextEvents />
-    */}
-  </>
-);
+
+import { Box, useMediaQuery } from '@material-ui/core';
+import MapIcon from '@material-ui/icons/Map';
+import ListIcon from '@material-ui/icons/List';
+
+import { ListBase, ShowButton } from 'react-admin';
+
+import { MapList } from '@semapps/geo-components';
+
+import Filter from '../commons/Filter';
+import CardsList from '../commons/lists/CardsList';
+import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
+
+import PlaceCard from '../resources/Place/PlaceCard';
+
+const MapPage = (props) => {
+  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
+  
+  return (
+    <>
+      <ListBase 
+        resource="Place"
+        basePath="/Map" 
+        perPage={1000} 
+        {...props}
+      >
+        <MultiViewsFilterList
+          filters={[
+            <Filter
+              reference="Type"
+              source="pair:hasType"
+              filter={{ a: 'pair:OrganizationType' }}
+              label="Type"
+            />,
+          ]}
+          views={{
+            map: {
+              label: 'Vue carte',
+              icon: MapIcon,
+              list: (
+                <MapList
+                  height={xs ? 'calc(100vh - 146px)' : 'calc(100vh - 196px)'}
+                  latitude={(record) => record?.['pair:hasPostalAddress']?.['pair:latitude']}
+                  longitude={(record) => record?.['pair:hasPostalAddress']?.['pair:longitude']}
+                  scrollWheelZoom
+                  popupContent={({ record, basePath }) => (
+                    <>
+                      <PlaceCard record={record} variant="compact" />
+                      <br />
+                      <ShowButton record={record} basePath={basePath} variant="contained" />
+                    </>
+                  )}
+                />
+              ),
+            },
+            list: {
+              label: 'Vue liste',
+              icon: ListIcon,
+              list: (
+                <Box p={{ xs: 2, sm: 3 }}>
+                  <CardsList CardComponent={PlaceCard} />
+                </Box>
+              ),
+            },
+          }}
+        />
+      </ListBase>
+    </>
+  );
+};
+
 
 export default MapPage;

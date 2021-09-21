@@ -1,8 +1,13 @@
 import React from 'react';
+
+import { Avatar } from '@material-ui/core';
+import ListIcon from '@material-ui/icons/List';
+import HomeIcon from '@material-ui/icons/Home';
+
 import { SimpleList ,MultiViewsList} from '@semapps/archipelago-layout';
 import { MapList } from '@semapps/geo-components';
 import MapIcon from '@material-ui/icons/Map';
-import ListIcon from '@material-ui/icons/List';
+
 // import SectorFilterSidebar from './../../components/SectorFilterSidebar';
 
 const OrganizationList = props => {
@@ -19,7 +24,9 @@ const OrganizationList = props => {
             primaryText={record => record['pair:label']}
             secondaryText={record => record['pair:comment']}
             leftAvatar={record => (
-              <img src={record['image'] || process.env.PUBLIC_URL + '/logo192.png'} width="100%" alt="SemApps" />
+              <Avatar src={record['image']} width="100%">
+                <HomeIcon />
+              </Avatar>
             )}
             linkType="show"
           />

@@ -16,7 +16,6 @@ export default {
   },
   dataModel: {
     types: [
-      'pair:Type',
       'pair:OrganizationType',
     ],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'types',
