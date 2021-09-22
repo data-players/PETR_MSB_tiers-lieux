@@ -29,11 +29,12 @@ export default {
             'pair:hasType': 'Type',
             'pair:description': 'Contenu',
             'pair:depictedBy': 'Photos',
-            'pair:logo':'Logo',
-            'pair:webPage':'Site internet',
+            'petr:logo':'Logo',
             'pair:hasLocation':'Emplacement',
             'pair:e-mail':'E-mail',
             'pair:phone':'Téléphone',
+            'pair:webPage':'Site internet',
+            'petr:socialMedias':'Réseaux sociaux',
           }
         }
       }
