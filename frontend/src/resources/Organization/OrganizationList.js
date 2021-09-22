@@ -22,9 +22,9 @@ const OrganizationList = props => {
         list: (
           <SimpleList
             primaryText={record => record['pair:label']}
-            secondaryText={record => record['pair:comment']}
+            secondaryText={record => record['pair:description']}
             leftAvatar={record => (
-              <Avatar src={record['image']} width="100%">
+              <Avatar src={record['petr:logo']} width="100%">
                 <HomeIcon />
               </Avatar>
             )}
