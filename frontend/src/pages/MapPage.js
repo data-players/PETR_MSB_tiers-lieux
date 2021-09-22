@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Box, useMediaQuery } from '@material-ui/core';
-import MapIcon from '@material-ui/icons/Map';
+import { Avatar, Box, useMediaQuery } from '@material-ui/core';
+import HomeIcon from '@material-ui/icons/Home';
 import ListIcon from '@material-ui/icons/List';
+import MapIcon from '@material-ui/icons/Map';
 
-import { ListBase, ShowButton } from 'react-admin';
+import { List, ListBase, ShowButton, SimpleList, TextField } from 'react-admin';
 
 import { MapList } from '@semapps/geo-components';
 
@@ -12,16 +13,14 @@ import Filter from '../commons/Filter';
 import CardsList from '../commons/lists/CardsList';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 
-import PlaceCard from '../resources/Place/PlaceCard';
-
 const MapPage = (props) => {
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   
   return (
     <>
       <ListBase 
-        resource="Place"
-        basePath="/Map" 
+        basePath="/Organization" 
+        resource="Organization"
         perPage={1000} 
         {...props}
       >
@@ -40,15 +39,15 @@ const MapPage = (props) => {
               icon: MapIcon,
               list: (
                 <MapList
-                  height={xs ? 'calc(100vh - 146px)' : 'calc(100vh - 196px)'}
-                  latitude={(record) => record?.['pair:hasPostalAddress']?.['pair:latitude']}
-                  longitude={(record) => record?.['pair:hasPostalAddress']?.['pair:longitude']}
-                  scrollWheelZoom
+                  latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+                  longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+                  label={record => record['pair:label']}
+                  description={record => record['pair:description']}
                   popupContent={({ record, basePath }) => (
                     <>
-                      <PlaceCard record={record} variant="compact" />
+                      <TextField record={record} source="pair:label" variant="body2" color="secondary" />
                       <br />
-                      <ShowButton record={record} basePath={basePath} variant="contained" />
+                      <ShowButton record={record} basePath={basePath} />
                     </>
                   )}
                 />
@@ -58,9 +57,16 @@ const MapPage = (props) => {
               label: 'Vue liste',
               icon: ListIcon,
               list: (
-                <Box p={{ xs: 2, sm: 3 }}>
-                  <CardsList CardComponent={PlaceCard} />
-                </Box>
+                <SimpleList
+                  primaryText={record => record['pair:label']}
+                  secondaryText={record => record['pair:comment']}
+                  leftAvatar={record => (
+                    <Avatar src={record['image']} width="100%">
+                      <HomeIcon />
+                    </Avatar>
+                  )}
+                  linkType="show"
+                />
               ),
             },
           }}

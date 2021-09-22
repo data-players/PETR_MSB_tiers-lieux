@@ -1,53 +1,40 @@
 
 import React from 'react';
+import { List, ShowButton, TextField } from 'react-admin';
 
-import { SimpleList ,MultiViewsList} from '@semapps/archipelago-layout';
 import { MapList } from '@semapps/geo-components';
-import MapIcon from '@material-ui/icons/Map';
-import ListIcon from '@material-ui/icons/List';
-
-import { List, ListBase, ShowButton } from 'react-admin';
-import { Box, useMediaQuery } from '@material-ui/core';
-
-import FullWidthBox from '../../commons/FullWidthBox';
-import LargeContainer from '../../commons/LargeContainer';
-import Button from '../../commons/Button';
-import FeaturedList from '../../commons/lists/FeaturedList/FeaturedList';
 
 import Welcome from './Welcome/Welcome';
 
-import PlaceCard from '../../resources/Place/PlaceCard';
-
-const actions = [<Button to="/Place/create">Ajouter</Button>];
-
 const HomePage = (props) => {
-  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
+//  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
 //  const { identity } = useCheckAuthenticated();
   
   return (
     <>
       <Welcome />
       <List 
-        resource="Place"
-        basePath="/Place"
-        pagination={false}
-        perPage={1000} 
+        basePath='/Organization'
+        resource='Organization'
         actions={null}
+        pagination={false}
+        perPage={1000}
         {...props}
       >
         <MapList
-          height={xs ? 'calc(100vh - 146px)' : 'calc(100vh - 196px)'}
-          latitude={(record) => record?.['pair:hasPostalAddress']?.['pair:latitude']}
-          longitude={(record) => record?.['pair:hasPostalAddress']?.['pair:longitude']}
+          latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+          longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+          label={record => record['pair:label']}
+          description={record => record['pair:comment']}
           popupContent={({ record, basePath }) => (
             <>
-              <PlaceCard record={record} variant="compact" />
+              <TextField record={record} source="pair:label" variant="body2" color="secondary" />
               <br />
-              <ShowButton record={record} basePath={basePath} variant="contained" />
+              <ShowButton record={record} basePath={basePath} />
             </>
           )}
         />
-        </List>
+      </List>
     </>
   );
 };
