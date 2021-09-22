@@ -50,8 +50,6 @@ const OrganizationList = props => {
     }}
     {...props}
   />
-
 };
-
 
 export default OrganizationList;

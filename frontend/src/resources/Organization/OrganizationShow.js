@@ -66,7 +66,7 @@ const OrganizationShow = ({...props}) => {
         <MainList>
           <MarkdownField source="pair:label" />
           <MarkdownField source="pair:description" />
-          <ReferenceField reference="Type" source="pair:hasType">
+          <ReferenceField source="pair:hasType" reference="Type">
             <TextField source="pair:label" />
           </ReferenceField>
           <MapField
@@ -77,6 +77,7 @@ const OrganizationShow = ({...props}) => {
           />
           <MarkdownField source="pair:e-mail" />
           <MarkdownField source="pair:phone" />
+          <ImageField source="pair:logo" />
           <MultipleImagesField source="pair:depictedBy" max={10} />
           <MarkdownField source="pair:webPage" />
         </MainList>

@@ -29,11 +29,8 @@ export default {
             'pair:hasType': 'Type',
             'pair:description': 'Contenu',
             'pair:depictedBy': 'Photos',
+            'pair:logo':'Logo',
             'pair:webPage':'Site internet',
-            /*
-            image: 'Logo',
-            image: 'Photo',
-            */
             'pair:hasLocation':'Emplacement',
             'pair:e-mail':'E-mail',
             'pair:phone':'Téléphone',
