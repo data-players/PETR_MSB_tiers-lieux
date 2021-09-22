@@ -20,11 +20,11 @@ export const OrganizationEdit = props => (
       </ReferenceInput>
       <MarkdownInput multiline source="pair:description" fullWidth />
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
-      <ImageInput source="image" accept="image/*">
+      <ImageInput source="pair:depictedBy" accept="image/*" multiple>
         <ImageField source="src" />
       </ImageInput>
-      <TextInput source="pair:homePage" fullWidth />
       {/*}
+      <TextInput source="pair:homePage" fullWidth />
       <ImageInput source="image" label="Logo" accept="image/*">
         <ImageField source="src"/>
       </ImageInput>

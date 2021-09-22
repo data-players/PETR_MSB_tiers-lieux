@@ -138,7 +138,7 @@ const HeaderShow = ({ type, linkToListText, details, actionButton }) => {
           <TextField source="pair:label" variant="body2" className={classes.placeLink} />
         </Breadcrumbs>
         <Box className={classes.images}>
-          <MultipleImagesField source="pair:isDepictedBy" max={2} />
+          <MultipleImagesField source="pair:depictedBy" max={2} />
         </Box>
         <Box position="relative">
           {!xs && hasEdit && !!permissions && permissions.some(p => ['acl:Append', 'acl:Write'].includes(p['acl:mode'])) &&

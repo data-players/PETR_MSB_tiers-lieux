@@ -28,8 +28,7 @@ export default {
             'pair:label': 'Titre',
             'pair:hasType': 'Type',
             'pair:description': 'Contenu',
-            image: 'Logo',
-            image2: 'Photo',
+            'pair:depictedBy': 'Photos',
             'pair:webPage':'Site internet',
             /*
             image: 'Logo',
