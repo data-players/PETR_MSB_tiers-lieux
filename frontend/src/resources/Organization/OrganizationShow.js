@@ -34,24 +34,24 @@ const MultipleImagesField = ({ source, max = 2 }) => {
   const classes = useStyles();
   const record = useRecordContext();
   if( !record ) return null;
+  let imagesArray = [];
   if( Array.isArray(record[source]) ) {
-    return(
-      <>
-        <h6>{source}</h6>
-        <Grid container spacing={2}>
-          {record[source].slice(0,max).map((url, i) => (
-            <Grid item xs={6} key={i} className={classes.images}>
-              <img src={url} alt={record['pair:label']}/>
-            </Grid>
-          ))}
-        </Grid>
-      </>
-    )
+    imagesArray = record[source];
   } else {
-    return(
-      <img src={record[source]} alt={record['pair:label']} />
-    )
+    imagesArray.push(record[source]);
   }
+  return(
+    <>
+      <h6>{source}</h6>
+      <Grid container spacing={2}>
+        {imagesArray.slice(0,max).map((url, i) => (
+          <Grid item xs={6} key={i} className={classes.images}>
+            <img src={url} alt={record['pair:label']}/>
+          </Grid>
+        ))}
+      </Grid>
+    </>
+  )
 };
 
 const UrlArrayField = ({ record, source }) => {
