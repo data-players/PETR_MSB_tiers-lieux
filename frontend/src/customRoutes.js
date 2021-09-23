@@ -5,12 +5,10 @@ import HomePage from './pages/HomePage/HomePage';
 import AboutPage from './pages/AboutPage';
 import MapPage from './pages/MapPage';
 import SearchPage from './pages/SearchPage';
-import PlacePage from './pages/PlacePage';
 
 export default [
   <Route exact path="/" component={HomePage} />,
   <Route exact path="/About" component={AboutPage} />,
   <Route exact path="/Map" component={MapPage} />,
   <Route exact path="/Search" component={SearchPage} />,
-  <Route exact path="/Test" component={PlacePage} />,
 ];

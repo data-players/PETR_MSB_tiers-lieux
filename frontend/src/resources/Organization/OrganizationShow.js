@@ -1,121 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Box, Grid, makeStyles } from '@material-ui/core';
-import { ImageField, ReferenceField, TextField, UrlField, useRecordContext, useShowContext } from 'react-admin';
-
-import { Hero, MainList, SeparatedListField, Show } from "@semapps/archipelago-layout";
-import { MapField } from '@semapps/geo-components';
-import { MarkdownField } from '@semapps/markdown-components';
-
-import OrganizationTitle from "./OrganizationTitle";
-
-const useStyles = makeStyles((theme) => ({
-  images: {
-    marginBottom: 15,
-    '& img': {
-      width: '100%',
-      display: 'block',
-      borderRadius: 8,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      objectFit: 'cover',
-      margin: '5px 0 10px 0',
-      height: '100%',
-      maxHeight: '15rem',
-      [theme.breakpoints.down('xs')]: {
-        maxHeight: '8rem',
-      }
-    },
-  },
-}));
-
-const MultipleImagesField = ({ source, max = 2 }) => {
-  const classes = useStyles();
-  const record = useRecordContext();
-  if( !record ) return null;
-  let imagesArray = [];
-  if( Array.isArray(record[source]) ) {
-    imagesArray = record[source];
-  } else {
-    imagesArray.push(record[source]);
-  }
-  return(
-    <>
-      <h6>{source}</h6>
-      <Grid container spacing={2}>
-        {imagesArray.slice(0,max).map((url, i) => (
-          <Grid item xs={6} key={i} className={classes.images}>
-            <img src={url} alt={record['pair:label']}/>
-          </Grid>
-        ))}
-      </Grid>
-    </>
-  )
-};
-
-const UrlArrayField = ({ record, source }) => {
-  let links = typeof record[source] === 'string' ? [record[source]] : record[source];
-  let index = 0;
-  for (let link of links) {
-    if (link.startsWith('https://')) {
-      links[index] = link.split('https://')[1];
-    }
-    index++;
-  }
-
-  return record
-    ? links.map(item => (
-        <div>
-          <a href={'https://' + item} target="_blank">
-            {item}
-          </a>
-        </div>
-      ))
-    : null;
-};
-UrlArrayField.defaultProps = { addLabel: true };
-
+import OrganizationShowInAdmin from "./OrganizationShowInAdmin";
+import OrganizationShowInWebSite from "./OrganizationShowInWebSite";
 
 const OrganizationShow = ({...props}) => {
   
   const state = useSelector(state => state);
   const isAdminOpen = state.customState.isAdminOpen;
   
-  const { basePath, hasEdit, record } = useShowContext();
-
   return (
-    <Show title={<OrganizationTitle />} {...props}>
-      <Grid item xs={12} sm={9}>
-        {
-          isAdminOpen 
-            ?
-              <div>AdminOpen</div>
-            :
-              <div>AdminClosed</div>
-        }
-        <MainList>
-          <MarkdownField source="pair:label" />
-          <MarkdownField source="pair:description" />
-          <ReferenceField source="pair:hasType" reference="Type">
-            <TextField source="pair:label" />
-          </ReferenceField>
-          <MapField
-            source="pair:hasLocation"
-            address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-            latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-            longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-          />
-          <MarkdownField source="pair:e-mail" />
-          <MarkdownField source="pair:phone" />
-          <ImageField source="petr:logo" />
-          <MultipleImagesField source="pair:depictedBy" max={10} />
-          <UrlField source="pair:webPage" />
-          <UrlArrayField source="petr:socialMedias" />
-        </MainList>
-      </Grid>
-    </Show>
+    isAdminOpen 
+      ?
+      <OrganizationShowInAdmin {...props} />
+      :
+      <OrganizationShowInWebSite {...props}/>
   );
 };
 
