@@ -1,16 +1,24 @@
 import jwtDecode from 'jwt-decode';
-import React, { useState } from 'react';
-import { Notification } from 'react-admin';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { Notification } from 'react-admin';
+
 import { Box, Grid, ThemeProvider } from '@material-ui/core';
+
 import AppBar from './AppBar';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import SideMenu from './SideMenu';
 import TreeMenu from './DefaultLayout/TreeMenu/TreeMenu';
 
+import { 
+  ENTER_ADMIN,
+  LEAVE_ADMIN
+} from '../customActions';
+
 const Layout = ({ logout, theme, children, title, menu }) => {
-    
+  
   const token = localStorage.getItem('token');
   const payload = token && jwtDecode(token);
   const isConnected = payload && payload.webId !== '';
@@ -21,19 +29,40 @@ const Layout = ({ logout, theme, children, title, menu }) => {
     { link: '/Search', name: 'Rechercher un service', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
   ];
+
+  const state = useSelector(state => state);
+  const resources = Object.keys(state.admin.resources);
+  const isAdminOpen = state.customState.isAdminOpen;
+  const dispatch = useDispatch();
+  const currentPathname = useLocation().pathname;
   
-  const noAdminLinks = [
-    { link: '/' },
-    { link: '/About' },
-    { link: '/Map' },
-    { link: '/Search' },
-  ];
+  let isAdminPage = false;
+  resources.forEach( resource => {
+    if (currentPathname.startsWith('/' + resource)) {
+      isAdminPage = true
+    }
+  });
   
-  const currentPage = useLocation().pathname;
-  const isAdminPage = noAdminLinks.find(e => e.link === currentPage) === undefined;
-                   
+  let isShowPage = currentPathname.endsWith('/show');
+  
+  useEffect(() => {
+    if ( resources.length !== 0) {
+      if ( isAdminOpen && ! isAdminPage ) {
+        console.log('===' + LEAVE_ADMIN);
+        dispatch({ type: LEAVE_ADMIN })      
+      }
+      if ( ! isAdminOpen && isAdminPage && ! isShowPage ) {
+        console.log('===' + ENTER_ADMIN);
+        dispatch({ type: ENTER_ADMIN })      
+      }
+    }
+  }, [state]);
+  
+  console.log('customState', state.customState);
+
   // const xs = useMediaQuery(theme.breakpoints.down('xs'));
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  
   return (
     <ThemeProvider theme={theme}>
     
@@ -42,7 +71,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
       
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
       {
-        isConnected && isAdminPage
+        isConnected && state.customState.isAdminOpen
           ? 
             <Grid container>
               <Grid item xs={3}>

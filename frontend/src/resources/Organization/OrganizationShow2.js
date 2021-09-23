@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import { Box, Grid, makeStyles } from '@material-ui/core';
 import { ImageField, ReferenceField, TextField, UrlField, useRecordContext, useShowContext } from 'react-admin';
@@ -11,6 +10,10 @@ import { MarkdownField } from '@semapps/markdown-components';
 import OrganizationTitle from "./OrganizationTitle";
 
 const useStyles = makeStyles((theme) => ({
+  show: {
+    background: 'grey',
+    margin: '50px',
+  },
   images: {
     marginBottom: 15,
     '& img': {
@@ -78,25 +81,16 @@ const UrlArrayField = ({ record, source }) => {
 UrlArrayField.defaultProps = { addLabel: true };
 
 
-const OrganizationShow = ({...props}) => {
-  
-  const state = useSelector(state => state);
-  const isAdminOpen = state.customState.isAdminOpen;
+const OrganizationShow2 = ({...props}) => {
   
   const { basePath, hasEdit, record } = useShowContext();
+  const classes = useStyles();
 
   return (
-    <Show title={<OrganizationTitle />} {...props}>
+    <Show title={<OrganizationTitle />} {...props} className={classes.show} >
       <Grid item xs={12} sm={9}>
-        {
-          isAdminOpen 
-            ?
-              <div>AdminOpen</div>
-            :
-              <div>AdminClosed</div>
-        }
         <MainList>
-          <MarkdownField source="pair:label" />
+          <MarkdownField source="pair:label"/>
           <MarkdownField source="pair:description" />
           <ReferenceField source="pair:hasType" reference="Type">
             <TextField source="pair:label" />
@@ -119,4 +113,4 @@ const OrganizationShow = ({...props}) => {
   );
 };
 
-export default OrganizationShow;
+export default OrganizationShow2;
