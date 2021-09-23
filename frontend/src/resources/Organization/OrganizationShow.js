@@ -11,10 +11,8 @@ const OrganizationShow = ({...props}) => {
   
   return (
     isAdminOpen 
-      ?
-      <OrganizationShowInAdmin {...props} />
-      :
-      <OrganizationShowInWebSite {...props}/>
+      ? <OrganizationShowInAdmin {...props} />
+      : <OrganizationShowInWebSite {...props}/>
   );
 };
 

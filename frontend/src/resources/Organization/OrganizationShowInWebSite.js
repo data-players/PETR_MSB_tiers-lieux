@@ -1,16 +1,64 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { Box, Grid, makeStyles } from '@material-ui/core';
-import { ImageField, ReferenceField, TextField, UrlField, useRecordContext, useShowContext } from 'react-admin';
+import { Box, Grid, Typography, makeStyles } from '@material-ui/core';
+import { ImageField, Show, ReferenceField, TextField, UrlField, useRecordContext, useShowContext } from 'react-admin';
 
-import { Hero, MainList, SeparatedListField, Show } from "@semapps/archipelago-layout";
+import { MainList } from "@semapps/archipelago-layout";
 import { MapField } from '@semapps/geo-components';
-import { MarkdownField } from '@semapps/markdown-components';
 
-import OrganizationTitle from "./OrganizationTitle";
+import FullWidthBox from '../../commons/FullWidthBox';
 
 const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+    boxSizing: 'border-box',
+    '& *' : {
+      boxSizing: 'border-box'
+    }
+  },
+  innerContainer: {
+    flexWrap: 'wrap',
+    padding: theme.spacing(2),
+    '& > *': {
+      width: '100%',
+      textAlign: 'center'
+    },
+  },
+  title: {
+    display: 'block',
+    padding: theme.spacing(2),
+    border: '1px solid lightgrey',
+  },
+  subtitle: {
+    display: 'block',
+    padding: theme.spacing(1),
+    border: '1px solid lightgrey',
+  },
+  description: {
+    display: 'block',
+    padding: theme.spacing(2),
+  },
+  identityContainer: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    '& img': {
+      margin: 0,
+      marginRight: theme.spacing(1),
+      width: '64px',
+    },
+  },
+  contactContainer: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+  addressContainer: {
+    '& > *': {
+      width: '100%',
+      textAlign: 'left'
+    }
+  },
+  map: {
+    marginBottom: theme.spacing(2)
+  },
   images: {
     marginBottom: 15,
     '& img': {
@@ -42,16 +90,13 @@ const MultipleImagesField = ({ source, max = 2 }) => {
     imagesArray.push(record[source]);
   }
   return(
-    <>
-      <h6>{source}</h6>
-      <Grid container spacing={2}>
-        {imagesArray.slice(0,max).map((url, i) => (
-          <Grid item xs={6} key={i} className={classes.images}>
-            <img src={url} alt={record['pair:label']}/>
-          </Grid>
-        ))}
-      </Grid>
-    </>
+    <Grid container spacing={2}>
+      {imagesArray.slice(0,max).map((url, i) => (
+        <Grid item xs={6} key={i} className={classes.images}>
+          <img src={url} alt={record['pair:label']}/>
+        </Grid>
+      ))}
+    </Grid>
   )
 };
 
@@ -80,34 +125,69 @@ UrlArrayField.defaultProps = { addLabel: true };
 
 const OrganizationShowInWebSite = ({...props}) => {
   
-  const state = useSelector(state => state);
-  const isAdminOpen = state.customState.isAdminOpen;
-  
   const { basePath, hasEdit, record } = useShowContext();
-
+  const classes = useStyles();
+  
+  console.log('props', props);
+  console.log('record', record);
+  
   return (
-    <Show title={<OrganizationTitle />} {...props}>
-      <Grid item xs={12} sm={9}>
-        <div>InWebSite</div>
-        <MainList>
-          <MarkdownField source="pair:label" />
-          <MarkdownField source="pair:description" />
-          <ReferenceField source="pair:hasType" reference="Type">
-            <TextField source="pair:label" />
-          </ReferenceField>
-          <MapField
-            source="pair:hasLocation"
-            address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-            latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-            longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-          />
-          <MarkdownField source="pair:e-mail" />
-          <MarkdownField source="pair:phone" />
-          <ImageField source="petr:logo" />
-          <MultipleImagesField source="pair:depictedBy" max={10} />
-          <UrlField source="pair:webPage" />
-          <UrlArrayField source="petr:socialMedias" />
-        </MainList>
+    <Show
+      actions={null}
+      {...props}
+    >
+      <Grid container spacing={2} className={classes.mainContainer}>
+        <Grid item xs={12} md={3}>
+          <FullWidthBox className={classes.innerContainer}>
+            <MainList>
+              <MapField
+                source="pair:hasLocation"
+                address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+                latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+                longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+                address={null}
+                addLabel={false}
+                className={classes.map}
+              />
+            </MainList>
+            <Typography component="div" className={classes.subtitle}>
+              Equipement
+            </Typography>
+          </FullWidthBox>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <FullWidthBox className={classes.innerContainer}>
+            <Typography component="h2" className={classes.title}>
+              <span>InWebSite : </span>
+              <TextField source="pair:label" />
+            </Typography>
+            <Typography component="div" className={classes.description}>
+              <TextField source="pair:description" />
+            </Typography>
+            <MultipleImagesField source="pair:depictedBy" max={2} />
+          </FullWidthBox>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <FullWidthBox className={classes.innerContainer}>
+            <Typography component="h3" className={classes.subtitle}>
+              <span>Informations pratiques</span>
+            </Typography>
+            <FullWidthBox className={classes.identityContainer}>
+              <ImageField source="petr:logo" />
+              <FullWidthBox className={classes.addressContainer}>
+                <Typography component="p" variant="body3">
+                  Todo : Adresse
+                </Typography>
+              </FullWidthBox>
+            </FullWidthBox>
+            <Typography component="h3" className={classes.subtitle}>
+              <span>Contact</span>
+            </Typography>
+            <FullWidthBox className={classes.contactContainer}>
+              <UrlField source="pair:webPage" />
+              </FullWidthBox>
+          </FullWidthBox>
+        </Grid>
       </Grid>
     </Show>
   );

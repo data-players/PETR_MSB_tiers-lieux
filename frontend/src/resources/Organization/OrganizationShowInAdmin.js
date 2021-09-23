@@ -84,7 +84,10 @@ const OrganizationShowInAdmin = ({...props}) => {
   const isAdminOpen = state.customState.isAdminOpen;
   
   const { basePath, hasEdit, record } = useShowContext();
-
+  
+  console.log('props', props);
+  console.log('record', record);
+  
   return (
     <Show title={<OrganizationTitle />} {...props}>
       <Grid item xs={12} sm={9}>
