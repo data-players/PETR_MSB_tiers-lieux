@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { SimpleForm, TextInput } from "ra-ui-materialui";
-import { ArrayInput, ImageInput, NumberInput, SelectInput, SimpleFormIterator, required } from 'react-admin';
+import { TextInput } from "ra-ui-materialui";
+import { NumberInput, SelectInput, required } from 'react-admin';
 
-import { MapField } from '@semapps/geo-components';
-import { ImageField, ReferenceInput } from '@semapps/semantic-data-provider';
+import { ReferenceInput } from '@semapps/semantic-data-provider';
 
-import PairLocationInput from '../../../components/PairLocationInput';
 import MarkdownInput from '../../../markdown/MarkdownInput'
 import EquipmentTitle from './EquipmentTitle';
 

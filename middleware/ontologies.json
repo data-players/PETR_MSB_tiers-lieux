@@ -56,6 +56,7 @@
   },
   {
     "prefix": "petr",
-    "url": "http://petr.org"
+    "owl": "",
+    "url": "http://petr.org#"
   }
 ]

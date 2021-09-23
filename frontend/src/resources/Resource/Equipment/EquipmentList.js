@@ -1,11 +1,15 @@
 import React from 'react';
-import { List, TextField } from 'react-admin';
+import { List } from 'react-admin';
+
+import PanToolIcon from '@material-ui/icons/PanTool';
+
+import { SimpleList } from '@semapps/archipelago-layout';
 
 const EquipmentList = props => {
   return (
-    <List {...props}>
-      <TextField source="pair:label" />
-    </List>
+  <List {...props}>
+    <SimpleList primaryText={record => record['pair:label']} leftAvatar={() => <PanToolIcon />} linkType="show" />
+  </List>
   );
 };
 
