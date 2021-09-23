@@ -4,12 +4,12 @@ export default {
   config: {
     icon: LanguageIcon,
     options: {
-      label: 'Concepts'
+      label: 'Ressources'
     }
   },
   translations: {
     fr: {
-      name: 'Concept |||| Concepts'
+      name: 'Ressource |||| Ressources'
     }
   }
 };

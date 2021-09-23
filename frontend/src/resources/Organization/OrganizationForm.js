@@ -16,7 +16,6 @@ export const OrganizationForm = props => (
     <ReferenceInput 
       source="pair:hasType" 
       reference="Type" 
-      filter={{ a: 'pair:OrganizationType' }} 
       validate={[required()]}
     >
       <SelectInput optionText="pair:label" />

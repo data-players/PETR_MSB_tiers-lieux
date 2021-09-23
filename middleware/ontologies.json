@@ -53,5 +53,9 @@
     "prefix": "semapps",
     "owl": "",
     "url": "http://semapps.org/ns/core#"
+  },
+  {
+    "prefix": "petr",
+    "url": "http://petr.org"
   }
 ]
