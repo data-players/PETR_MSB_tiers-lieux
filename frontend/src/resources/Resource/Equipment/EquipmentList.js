@@ -1,15 +1,18 @@
 import React from 'react';
-import { List } from 'react-admin';
+import { useSelector } from 'react-redux';
 
-import PanToolIcon from '@material-ui/icons/PanTool';
+import EquipmentListInAdmin from "./EquipmentListInAdmin";
+import EquipmentListInWebSite from "./EquipmentListInWebSite";
 
-import { SimpleList } from '@semapps/archipelago-layout';
-
-const EquipmentList = props => {
+const EquipmentList = ({...props}) => {
+  
+  const state = useSelector(state => state);
+  const isAdminContext = state.customState.isAdminContext;
+  
   return (
-  <List {...props}>
-    <SimpleList primaryText={record => record['pair:label']} leftAvatar={() => <PanToolIcon />} linkType="show" />
-  </List>
+    isAdminContext 
+      ? <EquipmentListInAdmin {...props} />
+      : <EquipmentListInWebSite {...props}/>
   );
 };
 

@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Notification } from 'react-admin';
@@ -11,11 +11,6 @@ import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import SideMenu from './SideMenu';
 import TreeMenu from './DefaultLayout/TreeMenu/TreeMenu';
-
-import { 
-  ENTER_ADMIN,
-  LEAVE_ADMIN
-} from '../customActions';
 
 const Layout = ({ logout, theme, children, title, menu }) => {
   
@@ -31,36 +26,8 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   ];
 
   const state = useSelector(state => state);
-  const resources = Object.keys(state.admin.resources);
-  const isAdminOpen = state.customState.isAdminOpen;
-  const dispatch = useDispatch();
-  const currentPathname = useLocation().pathname;
-  
-  let isAdminPage = false;
-  resources.forEach( resource => {
-    if (currentPathname.startsWith('/' + resource)) {
-      isAdminPage = true
-    }
-  });
-  
-  let isShowPage = currentPathname.endsWith('/show');
-  
-  useEffect(() => {
-    if ( resources.length !== 0) {
-      if ( isAdminOpen && ! isAdminPage ) {
-        console.log('===' + LEAVE_ADMIN);
-        dispatch({ type: LEAVE_ADMIN })      
-      }
-      if ( ! isAdminOpen && isAdminPage && ! isShowPage ) {
-        console.log('===' + ENTER_ADMIN);
-        dispatch({ type: ENTER_ADMIN })      
-      }
-    }
-  }, [state]);
-  
   console.log('customState', state.customState);
 
-  // const xs = useMediaQuery(theme.breakpoints.down('xs'));
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
   return (
@@ -71,7 +38,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
       
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
       {
-        isConnected && state.customState.isAdminOpen
+        isConnected && state.customState.isAdminContext
           ? 
             <Grid container>
               <Grid item xs={3}>

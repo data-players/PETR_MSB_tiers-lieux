@@ -7,10 +7,10 @@ import EquipmentShowInWebSite from "./EquipmentShowInWebSite";
 const EquipmentShow = ({...props}) => {
   
   const state = useSelector(state => state);
-  const isAdminOpen = state.customState.isAdminOpen;
+  const isAdminContext = state.customState.isAdminContext;
   
   return (
-    isAdminOpen 
+    isAdminContext 
       ? <EquipmentShowInAdmin {...props} />
       : <EquipmentShowInWebSite {...props}/>
   );

@@ -1,8 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { Grid, makeStyles } from '@material-ui/core';
-import { ReferenceField, TextField, useRecordContext, useShowContext } from 'react-admin';
+import { Grid } from '@material-ui/core';
+import { ReferenceField, TextField, useRecordContext } from 'react-admin';
 
 import { MainList, Show } from "@semapps/archipelago-layout";
 import { MarkdownField } from '@semapps/markdown-components';
@@ -10,9 +9,6 @@ import { MarkdownField } from '@semapps/markdown-components';
 import EquipmentTitle from "./EquipmentTitle";
 
 const EquipmentShowInAdmin = ({...props}) => {
-  
-  const { basePath, hasEdit, record } = useShowContext();
-  
   return (
     <Show title={<EquipmentTitle />} {...props}>
       <Grid item xs={12} sm={9}>

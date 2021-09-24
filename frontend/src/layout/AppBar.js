@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Box, makeStyles, Typography, AppBar as MuiAppBar, useMediaQuery, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { LogoutButton } from '@semapps/auth-provider';
@@ -7,6 +8,10 @@ import LogoTitle from './LogoTitle';
 import FullWidthBox from '../commons/FullWidthBox';
 import LargeContainer from '../commons/LargeContainer';
 import UserMenu from './UserMenu';
+import { 
+  ENABLE_ADMIN_CONTEXT,
+  DISABLE_ADMIN_CONTEXT
+} from '../customActions';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -73,6 +78,18 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   const location = useLocation();
+  const dispatch = useDispatch();
+  
+  const contextPositioning = ( (dispatch, menuItem) => {
+    if (menuItem.admin) {
+      console.log('===' + ENABLE_ADMIN_CONTEXT);
+      dispatch({ type: ENABLE_ADMIN_CONTEXT })
+    } else {
+      console.log('===' + DISABLE_ADMIN_CONTEXT);
+      dispatch({ type: DISABLE_ADMIN_CONTEXT })      
+    }
+  });
+
   return (
     <MuiAppBar position="sticky" className={classes.appBar}>
       <FullWidthBox>
@@ -104,7 +121,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
                     m={2}
                     key={menuItem.link}
                   >
-                    <Link to={menuItem.link} className={classes.menuLink}>
+                    <Link to={menuItem.link} className={classes.menuLink} onClick={() => { contextPositioning(dispatch, menuItem) }}>
                       <Typography variant="subtitle2" className={classes.menuText}>
                         {menuItem.name}
                       </Typography>

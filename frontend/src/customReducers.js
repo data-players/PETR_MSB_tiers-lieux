@@ -1,23 +1,35 @@
 import { 
-  ENTER_ADMIN,
-  LEAVE_ADMIN
+  ENABLE_ADMIN_CONTEXT,
+  DISABLE_ADMIN_CONTEXT,
+  SHOW_ORGANIZATION_DETAIL
 } from './customActions';
   
 const initialState = {
-  isAdminOpen: false
+  isAdminContext: false,
+  organization : {
+    id: null,
+  }
 }
 
 export default (previousState = initialState, { type, payload }) => {
-  if (type === ENTER_ADMIN) {
+  if (type === ENABLE_ADMIN_CONTEXT) {
       return {
-        ... previousState,
-        isAdminOpen: true
+        ...previousState,
+        isAdminContext: true,
+        organization : null
       }
   }
-  if (type === LEAVE_ADMIN) {
+  if (type === DISABLE_ADMIN_CONTEXT) {
     return {
-      ... previousState,
-      isAdminOpen: false
+      ...previousState,
+      isAdminContext: false,
+      organization : null
+    }
+  }
+  if (type === SHOW_ORGANIZATION_DETAIL) {
+    return {
+      ...previousState,
+      organization : payload
     }
   }
   return previousState;

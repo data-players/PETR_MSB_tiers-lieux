@@ -7,10 +7,10 @@ import OrganizationShowInWebSite from "./OrganizationShowInWebSite";
 const OrganizationShow = ({...props}) => {
   
   const state = useSelector(state => state);
-  const isAdminOpen = state.customState.isAdminOpen;
+  const isAdminContext = state.customState.isAdminContext;
   
   return (
-    isAdminOpen 
+    isAdminContext
       ? <OrganizationShowInAdmin {...props} />
       : <OrganizationShowInWebSite {...props}/>
   );
