@@ -32,6 +32,12 @@ const MapPage = (props) => {
               filter={{ a: 'pair:OrganizationType' }}
               label="Type d'organisation"
             />,
+            <Filter
+              reference="LegalStatus"
+              source="petr:hasLegalStatus"
+              filter={{ a: 'petr:legalStatus' }}
+              label="Nature juridique"
+            />,
           ]}
           views={{
             map: {

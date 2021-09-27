@@ -18,6 +18,10 @@
 
     "id": "@id",
     "type": "@type",
+    
+    "petr:hasLegalStatus": {
+      "@type": "@id"
+    },
 
     "image": {
       "@id": "as:image",
