@@ -28,6 +28,10 @@ module.exports = [
     acceptedTypes: ['pair:OrganizationType']
   },
   {
+    path: '/legal-status',
+    acceptedTypes: ['petr:LegalStatus']
+  },
+  {
     path: '/files'
   }
 ];

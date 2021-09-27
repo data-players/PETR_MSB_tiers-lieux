@@ -20,6 +20,13 @@ export const OrganizationForm = props => (
     >
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
+    <ReferenceInput 
+      source="petr:hasLegalStatus" 
+      reference="LegalStatus" 
+      validate={[required()]}
+    >
+      <SelectInput optionText="pair:label" />
+    </ReferenceInput>
     <MarkdownInput source="pair:description" multiline fullWidth />
     <PairLocationInput source="pair:hasLocation" fullWidth />
     <ImageInput source="petr:logo" accept="image/*">

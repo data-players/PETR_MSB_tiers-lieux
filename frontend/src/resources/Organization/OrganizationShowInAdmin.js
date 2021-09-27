@@ -22,6 +22,9 @@ const OrganizationShowInAdmin = ({...props}) => {
           <ReferenceField source="pair:hasType" reference="OrganizationType">
             <TextField source="pair:label" />
           </ReferenceField>
+          <ReferenceField source="petr:hasLegalStatus" reference="LegalStatus">
+            <TextField source="pair:label" />
+          </ReferenceField>
           <MapField
             source="pair:hasLocation"
             address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}

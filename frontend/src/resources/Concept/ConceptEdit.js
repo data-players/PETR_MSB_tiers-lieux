@@ -4,7 +4,7 @@ import { EditWithPermissions } from '@semapps/auth-provider';
 import ConceptTitle from './ConceptTitle';
 
 export const ConceptEdit = props => (
-  <EditWithPermissions title={<ConceptEditTitle />} {...props}>
+  <EditWithPermissions title={<ConceptTitle />} {...props}>
     <SimpleForm>
       <TextInput source="pair:label" fullWidth />
     </SimpleForm>

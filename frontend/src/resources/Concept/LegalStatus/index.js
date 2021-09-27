@@ -10,20 +10,20 @@ export default {
     edit: ConceptEdit,
     icon: StyleIcon,
     options: {
-      label: 'Types d\'organisation',
+      label: 'Nature juridique',
       parent: 'Concept'
     }
   },
   dataModel: {
     types: [
-      'pair:OrganizationType',
+      'petr:legalStatus',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organization-types',
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'legal-status',
     slugField: 'pair:label'
   },
   translations: {
     fr: {
-      name: 'Type d\'organisation |||| Types d\'organisation',
+      name: 'Nature juridique |||| Natures juridiques',
       fields: {
         '@type': 'Classe',
         'pair:label': 'Nom'
