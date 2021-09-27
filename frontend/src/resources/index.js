@@ -7,4 +7,4 @@ export { default as Equipment } from "./Resource/Equipment";
 
 // Concepts
 export { default as Concept } from './Concept/Concept';
-export { default as Type } from './Concept/Type';
+export { default as OrganizationType } from './Concept/OrganizationType';

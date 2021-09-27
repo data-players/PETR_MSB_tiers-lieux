@@ -19,7 +19,7 @@ const OrganizationShowInAdmin = ({...props}) => {
         <MainList>
           <MarkdownField source="pair:label" />
           <MarkdownField source="pair:description" />
-          <ReferenceField source="pair:hasType" reference="Type">
+          <ReferenceField source="pair:hasType" reference="OrganizationType">
             <TextField source="pair:label" />
           </ReferenceField>
           <MapField

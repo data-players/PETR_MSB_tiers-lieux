@@ -1,7 +1,7 @@
 import React from 'react';
 
-const TypeTitle = ({ record }) => {
+const ConceptTitle = ({ record }) => {
   return <span>{record ? record['pair:label'] : ''}</span>;
 };
 
-export default TypeTitle;
+export default ConceptTitle;

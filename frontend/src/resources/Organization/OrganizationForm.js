@@ -15,7 +15,7 @@ export const OrganizationForm = props => (
     <TextInput source="pair:label" fullWidth validate={[required()]} />
     <ReferenceInput 
       source="pair:hasType" 
-      reference="Type" 
+      reference="OrganizationType" 
       validate={[required()]}
     >
       <SelectInput optionText="pair:label" />

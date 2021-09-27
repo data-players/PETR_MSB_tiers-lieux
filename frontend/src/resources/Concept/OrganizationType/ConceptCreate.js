@@ -2,7 +2,7 @@ import React from 'react';
 import { SimpleForm, TextInput, SelectArrayInput } from 'react-admin';
 import { Create } from '@semapps/archipelago-layout';
 
-const TypeCreate = props => (
+const ConceptCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="pair:label" fullWidth />
@@ -16,4 +16,4 @@ const TypeCreate = props => (
   </Create>
 );
 
-export default TypeCreate;
+export default ConceptCreate;
