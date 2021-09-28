@@ -25,6 +25,9 @@
     "petr:hasAudience": {
       "@type": "@id"
     },
+    "petr:hasNetwork": {
+      "@type": "@id"
+    },
     
     "image": {
       "@id": "as:image",

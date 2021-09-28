@@ -42,6 +42,13 @@ export const OrganizationForm = props => (
         <TextInput />
       </SimpleFormIterator>
     </ArrayInput>
+    <ArrayInput source="petr:hasNetwork">
+      <SimpleFormIterator>
+        <ReferenceInput reference="Network">
+        <SelectInput optionText="pair:label" />
+      </ReferenceInput>
+      </SimpleFormIterator>
+    </ArrayInput>
     <ReferenceInput 
       source="petr:hasAudience"
       reference="Audience" 

@@ -10,7 +10,7 @@ export default {
     edit: ConceptEdit,
     icon: StyleIcon,
     options: {
-      label: 'Types d\'organisation',
+      label: 'Type d\'organisation',
       parent: 'Concept'
     }
   },

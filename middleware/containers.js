@@ -24,16 +24,20 @@ module.exports = [
     acceptedTypes: 'pair:Document'
   },
   {
-    path: '/organization-types',
-    acceptedTypes: ['pair:OrganizationType']
+    path: '/audience',
+    acceptedTypes: ['petr:Audience']
   },
   {
     path: '/legal-status',
     acceptedTypes: ['petr:LegalStatus']
   },
   {
-    path: '/audience',
-    acceptedTypes: ['petr:Audience']
+    path: '/networks',
+    acceptedTypes: ['pair:OrganizationType']
+  },
+  {
+    path: '/organization-types',
+    acceptedTypes: ['pair:OrganizationType']
   },
   {
     path: '/files'

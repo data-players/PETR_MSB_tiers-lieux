@@ -16,7 +16,7 @@ export default {
   },
   dataModel: {
     types: [
-      'petr:legalStatus',
+      'petr:LegalStatus',
     ],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'legal-status',
     slugField: 'pair:label'
