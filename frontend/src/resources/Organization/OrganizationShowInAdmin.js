@@ -10,6 +10,7 @@ import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 
 import MultipleImagesField from '../../components/MultipleImagesField'
 import UrlArrayField from '../../components/UrlArrayField'
+import VideoArrayField from '../../components/VideoArrayField';
 import Title from "../_Components/Title";
 
 const OrganizationShowInAdmin = ({...props}) => {
@@ -36,6 +37,7 @@ const OrganizationShowInAdmin = ({...props}) => {
           <MarkdownField source="pair:phone" />
           <ImageField source="petr:logo" />
           <MultipleImagesField source="pair:depictedBy" max={10} />
+          <VideoArrayField source="petr:videos" />
           <UrlField source="pair:webPage" />
           <UrlArrayField source="petr:socialMedias" />
           <ReferenceField source="petr:hasAudience" reference="Audience">

@@ -27,6 +27,11 @@ export const OrganizationForm = props => (
     <ImageInput source="pair:depictedBy" accept="image/*" multiple>
       <ImageField source="src" />
     </ImageInput>
+    <ArrayInput source="petr:videos">
+      <SimpleFormIterator>
+        <TextInput label="Video url"/>
+      </SimpleFormIterator>
+    </ArrayInput>
     <ReferenceInput 
       source="petr:hasLegalStatus" 
       reference="LegalStatus" 
