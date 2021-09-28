@@ -32,6 +32,10 @@ module.exports = [
     acceptedTypes: ['petr:LegalStatus']
   },
   {
+    path: '/audience',
+    acceptedTypes: ['petr:Audience']
+  },
+  {
     path: '/files'
   }
 ];

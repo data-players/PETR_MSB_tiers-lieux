@@ -9,11 +9,11 @@ import { MarkdownField } from '@semapps/markdown-components';
 
 import MultipleImagesField from '../../components/MultipleImagesField'
 import UrlArrayField from '../../components/UrlArrayField'
-import OrganizationTitle from "./OrganizationTitle";
+import Title from "../_Components/Title";
 
 const OrganizationShowInAdmin = ({...props}) => {
   return (
-    <Show title={<OrganizationTitle />} {...props}>
+    <Show title={<Title />} {...props}>
       <Grid item xs={12} sm={9}>
         <div>InAdmin</div>
         <MainList>
@@ -23,6 +23,9 @@ const OrganizationShowInAdmin = ({...props}) => {
             <TextField source="pair:label" />
           </ReferenceField>
           <ReferenceField source="petr:hasLegalStatus" reference="LegalStatus">
+            <TextField source="pair:label" />
+          </ReferenceField>
+          <ReferenceField source="petr:hasAudience" reference="Audience">
             <TextField source="pair:label" />
           </ReferenceField>
           <MapField

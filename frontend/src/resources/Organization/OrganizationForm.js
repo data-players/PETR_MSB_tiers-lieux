@@ -8,7 +8,6 @@ import { ImageField, ReferenceInput } from '@semapps/semantic-data-provider';
 
 import PairLocationInput from '../../components/PairLocationInput';
 import MarkdownInput from '../../markdown/MarkdownInput'
-import OrganizationTitle from './OrganizationTitle';
 
 export const OrganizationForm = props => (
   <>
@@ -16,13 +15,6 @@ export const OrganizationForm = props => (
     <ReferenceInput 
       source="pair:hasType" 
       reference="OrganizationType" 
-      validate={[required()]}
-    >
-      <SelectInput optionText="pair:label" />
-    </ReferenceInput>
-    <ReferenceInput 
-      source="petr:hasLegalStatus" 
-      reference="LegalStatus" 
       validate={[required()]}
     >
       <SelectInput optionText="pair:label" />
@@ -35,6 +27,13 @@ export const OrganizationForm = props => (
     <ImageInput source="pair:depictedBy" accept="image/*" multiple>
       <ImageField source="src" />
     </ImageInput>
+    <ReferenceInput 
+      source="petr:hasLegalStatus" 
+      reference="LegalStatus" 
+      validate={[required()]}
+    >
+      <SelectInput optionText="pair:label" />
+    </ReferenceInput>
     <TextInput source="pair:e-mail" type="email" fullWidth/>
     <TextInput source="pair:phone" fullWidth />
     <TextInput source="pair:webPage" fullWidth />
@@ -43,6 +42,12 @@ export const OrganizationForm = props => (
         <TextInput />
       </SimpleFormIterator>
     </ArrayInput>
+    <ReferenceInput 
+      source="petr:hasAudience"
+      reference="Audience" 
+    >
+      <SelectInput optionText="pair:label" />
+    </ReferenceInput>
   </>
 )
 

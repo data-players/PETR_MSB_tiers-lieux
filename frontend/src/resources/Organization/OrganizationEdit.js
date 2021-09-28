@@ -2,10 +2,10 @@ import React from 'react';
 import { SimpleForm } from "ra-ui-materialui";
 import { Edit } from "@semapps/archipelago-layout";
 import OrganizationForm from './OrganizationForm';
-import OrganizationTitle from './OrganizationTitle';
+import Title from '../_Components/Title';
 
 export const OrganizationEdit = props => (
-  <Edit title={<OrganizationTitle />} {...props} >
+  <Edit title={<Title />} {...props} >
     <SimpleForm>
       <OrganizationForm />
     </SimpleForm>

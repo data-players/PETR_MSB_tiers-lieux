@@ -38,6 +38,12 @@ const MapPage = (props) => {
               filter={{ a: 'petr:legalStatus' }}
               label="Nature juridique"
             />,
+            <Filter
+              reference="Audience"
+              source="petr:hasAudience"
+              filter={{ a: 'petr:audience' }}
+              label="Public ciblé"
+            />,
           ]}
           views={{
             map: {

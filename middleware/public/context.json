@@ -22,7 +22,10 @@
     "petr:hasLegalStatus": {
       "@type": "@id"
     },
-
+    "petr:hasAudience": {
+      "@type": "@id"
+    },
+    
     "image": {
       "@id": "as:image",
       "@type": "@id"
