@@ -10,20 +10,20 @@ export default {
     edit: ConceptEdit,
     icon: StyleIcon,
     options: {
-      label: 'Public ciblé',
+      label: 'Label',
       parent: 'Concept'
     }
   },
   dataModel: {
     types: [
-      'petr:Audience',
+      'petr:Label',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'audiences',
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'labels',
     slugField: 'pair:label'
   },
   translations: {
     fr: {
-      name: 'Public ciblé |||| Publics ciblés',
+      name: 'Label |||| Labels',
       fields: {
         '@type': 'Classe',
         'pair:label': 'Nom'

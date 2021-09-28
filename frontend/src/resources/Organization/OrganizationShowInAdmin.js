@@ -41,6 +41,11 @@ const OrganizationShowInAdmin = ({...props}) => {
           <ReferenceField source="petr:hasAudience" reference="Audience">
             <TextField source="pair:label" />
           </ReferenceField>
+          <ReferenceArrayField reference="Label" source="petr:hasLabel">
+            <SeparatedListField linkType={false}>
+              <TextField source="pair:label" />
+            </SeparatedListField>
+          </ReferenceArrayField>
           <ReferenceArrayField reference="Network" source="petr:hasNetwork">
             <SeparatedListField linkType={false}>
               <TextField source="pair:label" />

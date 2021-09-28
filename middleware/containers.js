@@ -24,8 +24,12 @@ module.exports = [
     acceptedTypes: 'pair:Document'
   },
   {
-    path: '/audience',
+    path: '/audiences',
     acceptedTypes: ['petr:Audience']
+  },
+  {
+    path: '/labels',
+    acceptedTypes: ['petr:Label']
   },
   {
     path: '/legal-status',

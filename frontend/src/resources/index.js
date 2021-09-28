@@ -8,6 +8,7 @@ export { default as Equipment } from "./Resource/Equipment";
 // Concepts
 export { default as Concept } from './Concept/Concept';
 export { default as Audience } from './Concept/Audience';
+export { default as Label } from './Concept/Label';
 export { default as Network } from './Concept/Network';
 export { default as OrganizationType } from './Concept/OrganizationType';
 export { default as LegalStatus } from './Concept/LegalStatus';

@@ -39,10 +39,16 @@ const MapPage = (props) => {
               label="Nature juridique"
             />,
             <Filter
+              reference="Label"
+              source="petr:hasLabel"
+              filter={{ a: 'petr:Label' }}
+              label="Label"
+            />,
+            <Filter
               reference="Network"
               source="petr:hasNetwork"
               filter={{ a: 'petr:Network' }}
-              label="Réseaux"
+              label="Réseau"
             />,
             <Filter
               reference="Audience"

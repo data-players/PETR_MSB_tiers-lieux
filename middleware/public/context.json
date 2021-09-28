@@ -19,10 +19,13 @@
     "id": "@id",
     "type": "@type",
     
-    "petr:hasLegalStatus": {
+    "petr:hasAudience": {
       "@type": "@id"
     },
-    "petr:hasAudience": {
+    "petr:hasLabel": {
+      "@type": "@id"
+    },
+    "petr:hasLegalStatus": {
       "@type": "@id"
     },
     "petr:hasNetwork": {
