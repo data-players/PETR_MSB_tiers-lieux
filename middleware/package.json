@@ -10,7 +10,9 @@
   "scripts": {
     "dev": "moleculer-runner --repl --hot services",
     "start": "moleculer-runner --instances=max services",
-    "link-all": "npm link @semapps/activitypub && npm link @semapps/ldp && npm link @semapps/webhooks"
+    "prestart" : "npm run jwt",
+    "predev" : "npm run jwt",
+    "jwt": "./initialize.sh"
   },
   "dependencies": {
     "@semapps/auth": "^0.3.11",
