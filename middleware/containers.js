@@ -44,6 +44,10 @@ module.exports = [
     acceptedTypes: ['pair:OrganizationType']
   },
   {
+    path: '/sectors',
+    acceptedTypes: ['petr:Sector']
+  },
+  {
     path: '/files'
   }
 ];

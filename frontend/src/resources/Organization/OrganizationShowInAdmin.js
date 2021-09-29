@@ -30,6 +30,9 @@ const OrganizationShowInAdmin = ({...props}) => {
             latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
             longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
           />
+          <ReferenceField source="petr:hasSector" reference="Sector" link={false}>
+            <TextField source="pair:label" />
+          </ReferenceField>
           <ReferenceField source="petr:hasLegalStatus" reference="LegalStatus">
             <TextField source="pair:label" />
           </ReferenceField>

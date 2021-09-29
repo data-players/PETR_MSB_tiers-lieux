@@ -32,6 +32,7 @@ export default {
             'petr:logo': 'Logo',
             'petr:videos': 'Vidéos',
             'pair:hasLocation': 'Emplacement',
+            'pair:hasSector': 'Secteur géographique',
             'pair:e-mail': 'E-mail',
             'pair:phone': 'Téléphone',
             'pair:webPage': 'Site internet',

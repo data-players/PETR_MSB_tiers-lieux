@@ -31,6 +31,9 @@
     "petr:hasNetwork": {
       "@type": "@id"
     },
+    "petr:hasSector": {
+      "@type": "@id"
+    },
     
     "image": {
       "@id": "as:image",
