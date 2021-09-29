@@ -4,7 +4,7 @@ import { SimpleForm, TextInput } from "ra-ui-materialui";
 import { ArrayInput, ImageInput, SelectInput, SimpleFormIterator, required } from 'react-admin';
 
 import { MapField } from '@semapps/geo-components';
-import { ImageField, ReferenceInput } from '@semapps/semantic-data-provider';
+import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
 
 import PairLocationInput from '../../components/PairLocationInput';
 import MarkdownInput from '../../markdown/MarkdownInput'
@@ -67,6 +67,9 @@ export const OrganizationForm = props => (
     >
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
+    <ReificationArrayInput source="petr:equipmentOffers" reificationClass="pair:Resource">
+      <TextInput source="pair:Label" fullWidth />
+    </ReificationArrayInput>
   </>
 )
 

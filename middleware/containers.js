@@ -6,15 +6,18 @@ module.exports = [
     path: '/persons',
     acceptedTypes: ['pair:Person']
   },
+  /*
   {
     path: '/places',
     acceptedTypes: ['pair:Place']
   },
+  */
   {
     path: '/organizations',
     acceptedTypes: ['pair:Organization'],
     dereference: ['pair:hasLocation/pair:hasPostalAddress'],
   },
+  /*
   {
     path: '/equipments',
     acceptedTypes: ['petr:Equipment']
@@ -23,6 +26,7 @@ module.exports = [
     path: '/documents',
     acceptedTypes: 'pair:Document'
   },
+  */
   {
     path: '/audiences',
     acceptedTypes: ['petr:Audience']
@@ -44,10 +48,16 @@ module.exports = [
     acceptedTypes: ['pair:OrganizationType']
   },
   {
+    path: '/resources',
+    acceptedTypes: ['pair:Resource']
+  },
+  {
     path: '/sectors',
     acceptedTypes: ['petr:Sector']
   },
+  /*
   {
     path: '/files'
   }
+  */
 ];

@@ -34,7 +34,13 @@
     "petr:hasSector": {
       "@type": "@id"
     },
-    
+    "petr:equipmentOffers": {
+      "@type": "@id"
+    },
+    "petr:equipmentOfferedBy": {
+      "@type": "@id"
+    },
+
     "image": {
       "@id": "as:image",
       "@type": "@id"
