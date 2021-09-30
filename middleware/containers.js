@@ -19,10 +19,6 @@ module.exports = [
   },
   /*
   {
-    path: '/equipments',
-    acceptedTypes: ['petr:Equipment']
-  },
-  {
     path: '/documents',
     acceptedTypes: 'pair:Document'
   },
@@ -30,6 +26,22 @@ module.exports = [
   {
     path: '/audiences',
     acceptedTypes: ['petr:Audience']
+  },
+  {
+    path: '/equipments',
+    acceptedTypes: ['petr:Equipment']
+  },
+  {
+    path: '/equipment-access-modalities',
+    acceptedTypes: ['petr:EquipmentAccessModality']
+  },
+  {
+    path: '/equipment-rates',
+    acceptedTypes: ['petr:EquipmentRate']
+  },
+  {
+    path: '/equipment-types',
+    acceptedTypes: ['petr:EquipmentType']
   },
   {
     path: '/labels',
@@ -46,10 +58,6 @@ module.exports = [
   {
     path: '/organization-types',
     acceptedTypes: ['pair:OrganizationType']
-  },
-  {
-    path: '/resources',
-    acceptedTypes: ['pair:Resource']
   },
   {
     path: '/sectors',
