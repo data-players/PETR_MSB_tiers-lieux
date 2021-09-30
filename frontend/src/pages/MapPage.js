@@ -56,6 +56,12 @@ const MapPage = (props) => {
               filter={{ a: 'petr:Audience' }}
               label="Public ciblé"
             />,
+            <Filter
+              reference="EquipmentType"
+              source="petr:hasEquipmentType"
+              filter={{ a: 'petr:EquipmentType' }}
+              label="Equipement"
+            />,
           ]}
           views={{
             map: {
