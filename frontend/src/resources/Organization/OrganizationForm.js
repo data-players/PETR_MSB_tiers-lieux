@@ -24,7 +24,7 @@ export const OrganizationForm = props => (
     <ImageInput source="petr:logo" accept="image/*">
       <ImageField source="src" />
     </ImageInput>
-    <ImageInput source="pair:depictedBy" accept="image/*" multiple>{/**Simon : Je pense qu'il y a un mauvais usage**/}
+    <ImageInput source="petr:images" accept="image/*" multiple>
       <ImageField source="src" />
     </ImageInput>
     <ArrayInput source="petr:videos">
@@ -47,7 +47,7 @@ export const OrganizationForm = props => (
         <TextInput />
       </SimpleFormIterator>
     </ArrayInput>
-    <ArrayInput source="petr:hasLabel">{/**Simon : Je ne comprends pas le concept besoin de clarifier le concept de label**/}
+    <ArrayInput source="petr:hasLabel">
       <SimpleFormIterator>
         <ReferenceInput reference="Label">
         <SelectInput optionText="pair:label" />
@@ -64,7 +64,7 @@ export const OrganizationForm = props => (
     <ReferenceInput
       source="petr:hasAudience"
       reference="Audience"
-    >{/**Simon : Je ne comprends pas le concept besoin de clarifier le concept d'audiance**/}
+    >
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
     <ReificationArrayInput source="petr:equipmentOffers" reificationClass="pair:Resource">
