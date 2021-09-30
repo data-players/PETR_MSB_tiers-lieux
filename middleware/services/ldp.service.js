@@ -14,19 +14,20 @@ module.exports = {
         path: '/organizations',
         acceptedTypes: ['pair:Organization'],
         dereference: ['pair:hasLocation/pair:hasPostalAddress', 'petr:equipmentOffers'],
-        disassembly: [{ path: 'petr:equipmentOffers', container:  process.env.SEMAPPS_HOME_URL + 'resources' }]
+        disassembly: [{ path: 'petr:equipmentOffers', container:  process.env.SEMAPPS_HOME_URL + 'equipments' }]
       },
       {
-        path: '/resources',
-        acceptedTypes: ['pair:Resource'],
+        path: '/equipments',
+        acceptedTypes: ['pair:Equipment'],
         dereference: ['petr:equipmentOfferedBy'],
         disassembly: [{ path: 'petr:equipmentOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'organizations' }]
       },
       '/',
       '/organizations',
-      '/resources',
+      '/equipments',
       '/persons', 
       '/audiences',
+      '/equipment-types',
       '/labels',
       '/legal-status',
       '/networks',

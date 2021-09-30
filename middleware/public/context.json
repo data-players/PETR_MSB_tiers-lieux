@@ -22,6 +22,9 @@
     "petr:hasAudience": {
       "@type": "@id"
     },
+    "petr:hasEquipmentType": {
+      "@type": "@id"
+    },
     "petr:hasLabel": {
       "@type": "@id"
     },

@@ -32,6 +32,14 @@ module.exports = [
     acceptedTypes: ['petr:Audience']
   },
   {
+    path: '/equipment',
+    acceptedTypes: ['petr:equipment']
+  },
+  {
+    path: '/equipment-types',
+    acceptedTypes: ['petr:EquipmentType']
+  },
+  {
     path: '/labels',
     acceptedTypes: ['petr:Label']
   },
@@ -46,10 +54,6 @@ module.exports = [
   {
     path: '/organization-types',
     acceptedTypes: ['pair:OrganizationType']
-  },
-  {
-    path: '/resources',
-    acceptedTypes: ['pair:Resource']
   },
   {
     path: '/sectors',
