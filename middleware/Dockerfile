@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN npm install pm2 -g
 
-RUN apk add --update --no-cache autoconf libtool automake alpine-sdk
+RUN apk add --update --no-cache autoconf libtool automake alpine-sdk openssh-keygen
 
 RUN apk add --update --no-cache git bash yarn nano npm
 

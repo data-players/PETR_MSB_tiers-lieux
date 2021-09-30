@@ -14,9 +14,32 @@
     "foaf": "http://xmlns.com/foaf/0.1/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "semapps": "http://semapps.org/ns/core#",
+    "petr": "http://petr.org#",
 
     "id": "@id",
     "type": "@type",
+    
+    "petr:hasAudience": {
+      "@type": "@id"
+    },
+    "petr:hasLabel": {
+      "@type": "@id"
+    },
+    "petr:hasLegalStatus": {
+      "@type": "@id"
+    },
+    "petr:hasNetwork": {
+      "@type": "@id"
+    },
+    "petr:hasSector": {
+      "@type": "@id"
+    },
+    "petr:equipmentOffers": {
+      "@type": "@id"
+    },
+    "petr:equipmentOfferedBy": {
+      "@type": "@id"
+    },
 
     "image": {
       "@id": "as:image",

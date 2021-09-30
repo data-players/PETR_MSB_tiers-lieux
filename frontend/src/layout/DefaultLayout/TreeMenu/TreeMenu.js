@@ -42,7 +42,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false }) => {
     }, {});
     setOpenSubMenus(state => ({ ...defaultValues, ...state }));
   }, [categories, resources, currentResourceName, openAll]);
-
+  
   return (
     <Box mt={2}>
       {categories.map(category => (

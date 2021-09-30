@@ -12,20 +12,33 @@ export default {
         edit: OrganizationEdit,
         icon: HomeIcon,
         options: {
-          label: 'Organization'
+          label: 'Organisations'
         },
     },
     dataModel: {
-        types: ['semapps:Organization'],
+        types: ['pair:Organization'],
         containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organizations',
-        slugField: 'semapps:title'
+        dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+        slugField: 'pair:label',
+        forceArray: ['petr:equipmentOffers', 'petr:equipmentOfferedBy']
       },
       translations: {
         fr: {
           name: 'Organisation |||| Les organisations',
           fields: {
             'pair:label': 'Titre',
+            'pair:hasType': 'Type',
             'pair:description': 'Contenu',
+            'pair:depictedBy': 'Photos',
+            'petr:logo': 'Logo',
+            'petr:videos': 'Vidéos',
+            'pair:hasLocation': 'Emplacement',
+            'pair:hasSector': 'Secteur géographique',
+            'pair:e-mail': 'E-mail',
+            'pair:phone': 'Téléphone',
+            'pair:webPage': 'Site internet',
+            'petr:socialMedias': 'Réseaux sociaux',
+            'pair:offers': 'Ressources de l\'organisation',
           }
         }
       }

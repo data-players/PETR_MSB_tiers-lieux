@@ -1,11 +1,12 @@
 import React from 'react';
-import { SimpleForm, TextInput } from 'react-admin';
-import { Create } from '@semapps/archipelago-layout';
+import { SimpleForm } from "ra-ui-materialui";
+import { Create } from "@semapps/archipelago-layout";
+import OrganizationForm from './OrganizationForm';
 
 const OrganizationCreate = props => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput source="pair:label" fullWidth />
+      <OrganizationForm />
     </SimpleForm>
   </Create>
 );

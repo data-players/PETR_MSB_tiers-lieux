@@ -1,12 +1,19 @@
 import React from 'react';
-import { Show } from "@semapps/archipelago-layout";
-import OrganizationTitle from "./OrganizationTitle";
-import MarkdownField from "../../markdown/MarkdownField";
+import { useSelector } from 'react-redux';
 
-const OrganizationShow = props => (
-    <Show title={<OrganizationTitle />} {...props}>
-        <MarkdownField source="pair:description"/>
-    </Show>
-);
+import OrganizationShowInAdmin from "./OrganizationShowInAdmin";
+import OrganizationShowInWebSite from "./OrganizationShowInWebSite";
+
+const OrganizationShow = ({...props}) => {
+  
+  const state = useSelector(state => state);
+  const isAdminContext = state.customState.isAdminContext;
+  
+  return (
+    isAdminContext
+      ? <OrganizationShowInAdmin {...props} />
+      : <OrganizationShowInWebSite {...props}/>
+  );
+};
 
 export default OrganizationShow;

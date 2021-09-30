@@ -1,16 +1,15 @@
 import React from 'react';
+import { SimpleForm } from "ra-ui-materialui";
 import { Edit } from "@semapps/archipelago-layout";
-import { SimpleForm, TextInput } from "ra-ui-materialui";
-import OrganizationTitle from './OrganizationTitle';
-import MarkdownInput from '../../markdown/MarkdownInput'
+import OrganizationForm from './OrganizationForm';
+import Title from '../_Components/Title';
 
 export const OrganizationEdit = props => (
-    <Edit title={<OrganizationTitle />} {...props} >
-        <SimpleForm redirect="show" >
-            <TextInput source="pair:label" fullWidth />
-            <MarkdownInput multiline source="pair:description" fullWidth />
-        </SimpleForm>
-    </Edit>
-)
+  <Edit title={<Title />} {...props} >
+    <SimpleForm>
+      <OrganizationForm />
+    </SimpleForm>
+  </Edit>
+);
 
 export default OrganizationEdit;

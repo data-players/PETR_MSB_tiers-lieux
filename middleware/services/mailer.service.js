@@ -47,15 +47,15 @@ module.exports = {
         }
       });
     },
-    getApiRoutes() {
-      return [
-        {
-          bodyParsers: { json: true },
-          aliases: {
-            [`POST _mailer/contact-user`]: 'mailer.contactUser',
-          }
-        }
-      ];
-    }
+    // getApiRoutes() {
+    //   return [
+    //     {
+    //       bodyParsers: { json: true },
+    //       aliases: {
+    //         [`POST _mailer/contact-user`]: 'mailer.contactUser',
+    //       }
+    //     }
+    //   ];
+    // }
   }
 };
