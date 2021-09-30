@@ -1,8 +1,9 @@
 export { default as Organization } from "./Organization";
 export { default as Person } from "./Person";
 
-// Resources
+// Ressources
 export { default as Equipment } from "./Equipment";
+export { default as Space } from "./Space";
 
 // Concepts
 export { default as Concept } from './Concept';

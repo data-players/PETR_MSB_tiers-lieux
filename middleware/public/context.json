@@ -43,10 +43,22 @@
     "petr:hasSector": {
       "@type": "@id"
     },
+    "petr:hasSpaceRate": {
+      "@type": "@id"
+    },
+    "petr:hasSpaceType": {
+      "@type": "@id"
+    },
     "petr:equipmentOffers": {
       "@type": "@id"
     },
     "petr:equipmentOfferedBy": {
+      "@type": "@id"
+    },
+    "petr:spaceOffers": {
+      "@type": "@id"
+    },
+    "petr:spaceOfferedBy": {
       "@type": "@id"
     },
 

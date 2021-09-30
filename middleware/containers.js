@@ -63,6 +63,11 @@ module.exports = [
     path: '/sectors',
     acceptedTypes: ['petr:Sector']
   },
+  {
+    path: '/spaces',
+    acceptedTypes: ['petr:Space']
+  },
+
   /*
   {
     path: '/files'

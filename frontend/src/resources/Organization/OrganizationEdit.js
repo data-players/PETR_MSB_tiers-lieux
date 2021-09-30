@@ -82,12 +82,12 @@ export const OrganizationEdit = props => {
           >
             <SelectInput optionText="pair:label" />
           </ReferenceInput>
-          {/* EQUIPMENTS*/}
         </FormTab>
+        {/* EQUIPMENTS*/}
         <FormTab label="Equipements">
           <ReificationArrayInput 
             source="petr:equipmentOffers" 
-            reificationClass="pair:Equipment" 
+            reificationClass="petr:Equipment" 
             class={classes.equipmentFormContainer}
           >
             <ReferenceInput 
@@ -99,7 +99,7 @@ export const OrganizationEdit = props => {
             </ReferenceInput>
             <TextInput source="pair:description" fullWidth />
             <TextInput source="petr:model" fullWidth />
-            <NumberInput source="petr:amount" defaultValue={1} fullWidth validate={[required()]}/>
+            <NumberInput source="petr:amount" defaultValue={1} fullWidth validate={[required()]} />
             <ReferenceInput 
               source="petr:hasEquipmentRate"
               reference="EquipmentRate"
@@ -115,6 +115,18 @@ export const OrganizationEdit = props => {
             >
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
+          </ReificationArrayInput>
+        </FormTab>
+        {/* SPACES */}
+        <FormTab label="Espaces">
+          <ReificationArrayInput 
+            source="petr:spaceOffers" 
+            reificationClass="petr:Space" 
+            class={classes.equipmentFormContainer}
+          >
+            <TextInput source="pair:label" fullWidth validate={[required()]} />
+            <TextInput source="pair:description" fullWidth />
+            <NumberInput source="petr:capacity" defaultValue={1} fullWidth validate={[required()]} />
           </ReificationArrayInput>
         </FormTab>
       </TabbedForm>
