@@ -19,10 +19,6 @@ module.exports = [
   },
   /*
   {
-    path: '/equipments',
-    acceptedTypes: ['petr:Equipment']
-  },
-  {
     path: '/documents',
     acceptedTypes: 'pair:Document'
   },
@@ -32,8 +28,16 @@ module.exports = [
     acceptedTypes: ['petr:Audience']
   },
   {
-    path: '/equipment',
-    acceptedTypes: ['petr:equipment']
+    path: '/equipments',
+    acceptedTypes: ['petr:Equipment']
+  },
+  {
+    path: '/equipment-access-modalities',
+    acceptedTypes: ['petr:EquipmentAccessModality']
+  },
+  {
+    path: '/equipment-rates',
+    acceptedTypes: ['petr:EquipmentRate']
   },
   {
     path: '/equipment-types',

@@ -80,7 +80,6 @@ export const OrganizationForm = props => {
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
       {/* EQUIPMENTS*/}
-      
       <div>Equipements :</div>
       <ReificationArrayInput 
         source="petr:equipmentOffers" 
@@ -96,10 +95,22 @@ export const OrganizationForm = props => {
         </ReferenceInput>
         <TextInput source="pair:description" fullWidth />
         <TextInput source="petr:model" fullWidth />
-        <NumberInput source="petr:amount" defaultValue={1} fullWidth />
-        <TextInput source="petr:rate" fullWidth />
-        <TextInput source="petr:availablity" fullWidth />
-        <TextInput source="petr:accessModality" fullWidth />
+        <NumberInput source="petr:amount" defaultValue={1} fullWidth validate={[required()]}/>
+        <ReferenceInput 
+          source="petr:hasEquipmentRate"
+          reference="EquipmentRate"
+          validate={[required()]}
+        >
+          <SelectInput optionText="pair:label" />
+        </ReferenceInput>
+        <TextInput source="petr:availablity" fullWidth />{/* TODO */}
+        <ReferenceInput 
+          source="petr:hasEquipmentAccessModality"
+          reference="EquipmentAccessModality"
+          validate={[required()]}
+        >
+          <SelectInput optionText="pair:label" />
+        </ReferenceInput>
       </ReificationArrayInput>
       
     </>

@@ -27,6 +27,8 @@ module.exports = {
       '/equipments',
       '/persons', 
       '/audiences',
+      '/equipment-access-modalities',
+      '/equipment-rates',
       '/equipment-types',
       '/labels',
       '/legal-status',
