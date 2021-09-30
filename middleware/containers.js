@@ -67,6 +67,15 @@ module.exports = [
     path: '/spaces',
     acceptedTypes: ['petr:Space']
   },
+  {
+    path: '/space-rates',
+    acceptedTypes: ['petr:SpaceRate']
+  },
+  {
+    path: '/space-types',
+    acceptedTypes: ['petr:SpaceType']
+  },
+
 
   /*
   {

@@ -17,4 +17,7 @@ export { default as EquipmentConcept } from './Concept/Equipment';
 export { default as EquipmentAccessModality } from './Concept/Equipment/EquipmentAccessModality';
 export { default as EquipmentRate } from './Concept/Equipment/EquipmentRate';
 export { default as EquipmentType } from './Concept/Equipment/EquipmentType';
+export { default as SpaceConcept } from './Concept/Space';
+export { default as SpaceRate } from './Concept/Space/SpaceRate';
+export { default as SpaceType } from './Concept/Space/SpaceType';
 
