@@ -72,14 +72,14 @@ export const OrganizationEdit = props => {
               <TextInput />
             </SimpleFormIterator>
           </ArrayInput>
-          <ArrayInput source="petr:hasLabel">
+          <ArrayInput source="petr:hasLabels">
             <SimpleFormIterator>
               <ReferenceInput reference="Label">
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
             </SimpleFormIterator>
           </ArrayInput>
-          <ArrayInput source="petr:hasNetwork">
+          <ArrayInput source="petr:hasNetworks">
             <SimpleFormIterator>
               <ReferenceInput reference="Network">
               <SelectInput optionText="pair:label" />
@@ -111,16 +111,16 @@ export const OrganizationEdit = props => {
             <TextInput source="petr:model" fullWidth />
             <NumberInput source="petr:amount" defaultValue={1} fullWidth validate={[required()]} />
             <ReferenceInput 
-              source="petr:hasEquipmentRate"
-              reference="EquipmentRate"
+              source="petr:hasRate"
+              reference="Rate"
               validate={[required()]}
             >
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
             <TextInput source="petr:availablity" fullWidth />{/* TODO */}
             <ReferenceInput 
-              source="petr:hasEquipmentAccessModality"
-              reference="EquipmentAccessModality"
+              source="petr:hasAccessModality"
+              reference="AccessModality"
               validate={[required()]}
             >
               <SelectInput optionText="pair:label" />
@@ -137,8 +137,8 @@ export const OrganizationEdit = props => {
             <TextInput source="pair:label" fullWidth validate={[required()]} />
             <TextInput source="pair:description" fullWidth />
             <ReferenceInput 
-              source="petr:hasSpaceRate"
-              reference="SpaceRate"
+              source="petr:hasRate"
+              reference="Rate"
               validate={[required()]}
             >
               <SelectInput optionText="pair:label" />

@@ -24,20 +24,16 @@ module.exports = [
   },
   */
   {
+    path: '/access-modalities',
+    acceptedTypes: ['petr:AccessModality']
+  },
+  {
     path: '/audiences',
     acceptedTypes: ['petr:Audience']
   },
   {
     path: '/equipments',
     acceptedTypes: ['petr:Equipment']
-  },
-  {
-    path: '/equipment-access-modalities',
-    acceptedTypes: ['petr:EquipmentAccessModality']
-  },
-  {
-    path: '/equipment-rates',
-    acceptedTypes: ['petr:EquipmentRate']
   },
   {
     path: '/equipment-types',
@@ -60,16 +56,16 @@ module.exports = [
     acceptedTypes: ['pair:OrganizationType']
   },
   {
+    path: '/rates',
+    acceptedTypes: ['petr:Rate']
+  },
+  {
     path: '/sectors',
     acceptedTypes: ['petr:Sector']
   },
   {
     path: '/spaces',
     acceptedTypes: ['petr:Space']
-  },
-  {
-    path: '/space-rates',
-    acceptedTypes: ['petr:SpaceRate']
   },
   {
     path: '/space-types',

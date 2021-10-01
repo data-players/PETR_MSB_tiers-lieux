@@ -18,14 +18,11 @@
 
     "id": "@id",
     "type": "@type",
-    
+
+    "petr:hasAccessModality": {
+      "@type": "@id"
+    },
     "petr:hasAudience": {
-      "@type": "@id"
-    },
-    "petr:hasEquipmentAccessModality": {
-      "@type": "@id"
-    },
-    "petr:hasEquipmentRate": {
       "@type": "@id"
     },
     "petr:hasEquipmentType": {
@@ -34,19 +31,19 @@
     "petr:hasEquipments": {
       "@type": "@id"
     },
-    "petr:hasLabel": {
+    "petr:hasLabels": {
       "@type": "@id"
     },
     "petr:hasLegalStatus": {
       "@type": "@id"
     },
-    "petr:hasNetwork": {
+    "petr:hasNetworks": {
+      "@type": "@id"
+    },
+    "petr:hasRate": {
       "@type": "@id"
     },
     "petr:hasSector": {
-      "@type": "@id"
-    },
-    "petr:hasSpaceRate": {
       "@type": "@id"
     },
     "petr:hasSpaceType": {

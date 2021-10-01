@@ -1,6 +1,6 @@
-import ConceptCreate from '../../ConceptCreate';
-import ConceptEdit from '../../ConceptEdit';
-import ConceptList from '../../ConceptList';
+import ConceptCreate from '../ConceptCreate';
+import ConceptEdit from '../ConceptEdit';
+import ConceptList from '../ConceptList';
 import StyleIcon from '@material-ui/icons/Style';
 
 export default {
@@ -11,14 +11,14 @@ export default {
     icon: StyleIcon,
     options: {
       label: 'Modalité d\'accès',
-      parent: 'EquipmentConcept'
+      parent: 'Concept'
     }
   },
   dataModel: {
     types: [
-      'petr:EquipmentAccessModality',
+      'petr:AccessModality',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'equipment-access-modalities',
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'access-modalities',
     slugField: 'pair:label'
   },
   translations: {

@@ -1,6 +1,6 @@
-import ConceptCreate from '../../ConceptCreate';
-import ConceptEdit from '../../ConceptEdit';
-import ConceptList from '../../ConceptList';
+import ConceptCreate from '../ConceptCreate';
+import ConceptEdit from '../ConceptEdit';
+import ConceptList from '../ConceptList';
 import StyleIcon from '@material-ui/icons/Style';
 
 export default {
@@ -11,14 +11,14 @@ export default {
     icon: StyleIcon,
     options: {
       label: 'Tarif',
-      parent: 'SpaceConcept'
+      parent: 'Concept'
     }
   },
   dataModel: {
     types: [
-      'petr:SpaceRate',
+      'petr:Rate',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'space-rates',
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'rates',
     slugField: 'pair:label'
   },
   translations: {

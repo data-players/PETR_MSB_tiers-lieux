@@ -1,6 +1,6 @@
-import ConceptCreate from '../../ConceptCreate';
-import ConceptEdit from '../../ConceptEdit';
-import ConceptList from '../../ConceptList';
+import ConceptCreate from '../ConceptCreate';
+import ConceptEdit from '../ConceptEdit';
+import ConceptList from '../ConceptList';
 import StyleIcon from '@material-ui/icons/Style';
 
 export default {
@@ -11,7 +11,7 @@ export default {
     icon: StyleIcon,
     options: {
       label: 'Type d\'équipement',
-      parent: 'EquipmentConcept'
+      parent: 'Concept'
     }
   },
   dataModel: {

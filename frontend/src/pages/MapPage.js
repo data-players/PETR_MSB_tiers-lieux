@@ -40,13 +40,13 @@ const MapPage = (props) => {
             />,
             <Filter
               reference="Label"
-              source="petr:hasLabel"
+              source="petr:hasLabels"
               filter={{ a: 'petr:Label' }}
               label="Label"
             />,
             <Filter
               reference="Network"
-              source="petr:hasNetwork"
+              source="petr:hasNetworks"
               filter={{ a: 'petr:Network' }}
               label="Réseau"
             />,

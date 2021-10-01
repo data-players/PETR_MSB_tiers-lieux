@@ -1,6 +1,6 @@
-import ConceptCreate from '../../ConceptCreate';
-import ConceptEdit from '../../ConceptEdit';
-import ConceptList from '../../ConceptList';
+import ConceptCreate from '../ConceptCreate';
+import ConceptEdit from '../ConceptEdit';
+import ConceptList from '../ConceptList';
 import StyleIcon from '@material-ui/icons/Style';
 
 export default {
@@ -10,20 +10,20 @@ export default {
     edit: ConceptEdit,
     icon: StyleIcon,
     options: {
-      label: 'Tarif',
-      parent: 'EquipmentConcept'
+      label: 'Type d\'espace',
+      parent: 'Concept'
     }
   },
   dataModel: {
     types: [
-      'petr:EquipmentRate',
+      'petr:SpaceType',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'equipment-rates',
+    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'space-types',
     slugField: 'pair:label'
   },
   translations: {
     fr: {
-      name: 'Tarif |||| Tarifs',
+      name: 'Type d\'espace |||| Types d\'espace',
       fields: {
         '@type': 'Classe',
         'pair:label': 'Nom'
