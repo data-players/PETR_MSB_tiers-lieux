@@ -3,14 +3,16 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { TextInput } from "ra-ui-materialui";
 import { 
-  ArrayInput, 
+  ArrayInput,
+  BooleanField,
   FormTab, 
   ImageInput, 
   NumberInput, 
   SelectInput, 
   SimpleFormIterator, 
   TabbedForm, 
-  required 
+  required,
+  useRecordContext 
 } from 'react-admin';
 
 import { Edit } from "@semapps/archipelago-layout";
@@ -23,7 +25,7 @@ import PairLocationInput from '../../components/PairLocationInput';
 import Title from '../_Components/Title';
 
 const useStyles = makeStyles((theme) => ({
-  equipmentFormContainer: {
+  resourceFormContainer: {
     '& section' : {
       flexDirection: 'column',
     }
@@ -98,7 +100,7 @@ export const OrganizationEdit = props => {
           <ReificationArrayInput 
             source="petr:equipmentOffers" 
             reificationClass="petr:Equipment" 
-            class={classes.equipmentFormContainer}
+            class={classes.resourceFormContainer}
           >
             <ReferenceInput 
               source="petr:hasEquipmentType"
@@ -107,7 +109,7 @@ export const OrganizationEdit = props => {
             >
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
-            <TextInput source="pair:description" fullWidth />
+            <MarkdownInput source="pair:description" multiline fullWidth />
             <TextInput source="petr:model" fullWidth />
             <NumberInput source="petr:amount" defaultValue={1} fullWidth validate={[required()]} />
             <ReferenceInput 
@@ -132,10 +134,10 @@ export const OrganizationEdit = props => {
           <ReificationArrayInput 
             source="petr:spaceOffers" 
             reificationClass="petr:Space" 
-            class={classes.equipmentFormContainer}
+            class={classes.resourceFormContainer}
           >
             <TextInput source="pair:label" fullWidth validate={[required()]} />
-            <TextInput source="pair:description" fullWidth />
+            <MarkdownInput source="pair:description" multiline fullWidth />
             <ReferenceInput 
               source="petr:hasRate"
               reference="Rate"
@@ -152,6 +154,39 @@ export const OrganizationEdit = props => {
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
             <EquipmentsInput source="petr:hasEquipments" />
+          </ReificationArrayInput>
+        </FormTab>
+        {/* SERVICES */}
+        <FormTab label="Services">
+          <ReificationArrayInput 
+            source="petr:serviceOffers" 
+            reificationClass="petr:Service" 
+            class={classes.resourceFormContainer}
+          >
+            <TextInput source="pair:label" fullWidth validate={[required()]} />
+            <ReferenceInput 
+              source="petr:hasRate"
+              reference="Rate"
+              validate={[required()]}
+            >
+              <SelectInput optionText="pair:label" />
+            </ReferenceInput>
+            <ArrayInput source="petr:hasLabels">
+              <SimpleFormIterator>
+                <ReferenceInput reference="Label">
+                <SelectInput optionText="pair:label" />
+              </ReferenceInput>
+              </SimpleFormIterator>
+            </ArrayInput>
+            <ReferenceInput 
+              source="petr:hasAudience"
+              reference="Audience" 
+            >
+              <SelectInput optionText="pair:label" />
+            </ReferenceInput>
+            {/* TODO */}
+            <BooleanField source="petr:itinerant" defaultValue={false} />
+            <MarkdownInput source="petr:itinerantDetails" multiline fullWidth />
           </ReificationArrayInput>
         </FormTab>
       </TabbedForm>

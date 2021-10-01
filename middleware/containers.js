@@ -64,6 +64,10 @@ module.exports = [
     acceptedTypes: ['petr:Sector']
   },
   {
+    path: '/services',
+    acceptedTypes: ['petr:Service']
+  },
+  {
     path: '/spaces',
     acceptedTypes: ['petr:Space']
   },

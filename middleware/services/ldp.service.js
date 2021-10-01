@@ -16,7 +16,8 @@ module.exports = {
         dereference: [
           'pair:hasLocation/pair:hasPostalAddress', 
           'petr:equipmentOffers',
-          'petr:spaceOffers'
+          'petr:serviceOffers',
+          'petr:spaceOffers',
         ],
         disassembly: [{ 
             path: 'petr:equipmentOffers', 
@@ -24,6 +25,9 @@ module.exports = {
           },{ 
             path: 'petr:spaceOffers', 
             container:  process.env.SEMAPPS_HOME_URL + 'spaces' 
+          },{ 
+            path: 'petr:serviceOffers', 
+            container:  process.env.SEMAPPS_HOME_URL + 'services' 
           },
         ]
       },
@@ -32,6 +36,12 @@ module.exports = {
         acceptedTypes: ['petr:Equipment'],
         dereference: ['petr:equipmentOfferedBy'],
         disassembly: [{ path: 'petr:equipmentOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'organizations' }]
+      },
+      {
+        path: '/services',
+        acceptedTypes: ['petr:Service'],
+        dereference: ['petr:serviceOfferedBy'],
+        disassembly: [{ path: 'petr:serviceOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'services' }]
       },
       {
         path: '/spaces',
@@ -52,6 +62,7 @@ module.exports = {
       '/persons', 
       '/rates',
       '/sectors',
+      '/services',
       '/spaces',
       '/space-types',
     ],

@@ -1,12 +1,12 @@
 export { default as Organization } from "./Organization";
 export { default as Person } from "./Person";
 
-// Ressources
+// Resources
 export { default as Equipment } from "./Equipment";
+export { default as Service } from "./Service";
 export { default as Space } from "./Space";
 
 // Concepts
-
 export { default as Concept } from './Concept';
 export { default as OrganizationType } from './Concept/OrganizationType';
 export { default as LegalStatus } from './Concept/LegalStatus';

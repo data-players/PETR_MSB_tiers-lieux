@@ -55,6 +55,12 @@
     "petr:equipmentOfferedBy": {
       "@type": "@id"
     },
+    "petr:serviceOffers": {
+      "@type": "@id"
+    },
+    "petr:serviceOfferedBy": {
+      "@type": "@id"
+    },
     "petr:spaceOffers": {
       "@type": "@id"
     },

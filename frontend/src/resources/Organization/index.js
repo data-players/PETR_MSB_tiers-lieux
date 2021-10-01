@@ -23,6 +23,8 @@ export default {
         forceArray: [
           'petr:equipmentOffers',
           'petr:equipmentOfferedBy',
+          'petr:serviceOffers',
+          'petr:serviceOfferedBy',
           'petr:spaceOffers',
           'petr:spaceOfferedBy'
         ]
@@ -43,7 +45,6 @@ export default {
             'pair:phone': 'Téléphone',
             'pair:webPage': 'Site internet',
             'petr:socialMedias': 'Réseaux sociaux',
-            'pair:offers': 'Ressources de l\'organisation',
           }
         }
       }
