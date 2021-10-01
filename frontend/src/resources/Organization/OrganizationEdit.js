@@ -2,13 +2,23 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core';
 import { TextInput } from "ra-ui-materialui";
-import { ArrayInput, FormTab, ImageInput, NumberInput, SelectInput, SimpleFormIterator, TabbedForm, required } from 'react-admin';
+import { 
+  ArrayInput, 
+  FormTab, 
+  ImageInput, 
+  NumberInput, 
+  SelectInput, 
+  SimpleFormIterator, 
+  TabbedForm, 
+  required 
+} from 'react-admin';
 
 import { Edit } from "@semapps/archipelago-layout";
 import { MapField } from '@semapps/geo-components';
 import { MarkdownInput } from '@semapps/markdown-components'
 import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
 
+import { EquipmentsInput } from '../../pair';
 import PairLocationInput from '../../components/PairLocationInput';
 import Title from '../_Components/Title';
 
@@ -141,6 +151,7 @@ export const OrganizationEdit = props => {
             >
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
+            <EquipmentsInput source="petr:hasEquipments" />
           </ReificationArrayInput>
         </FormTab>
       </TabbedForm>

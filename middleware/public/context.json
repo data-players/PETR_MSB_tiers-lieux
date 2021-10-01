@@ -31,6 +31,9 @@
     "petr:hasEquipmentType": {
       "@type": "@id"
     },
+    "petr:hasEquipments": {
+      "@type": "@id"
+    },
     "petr:hasLabel": {
       "@type": "@id"
     },
