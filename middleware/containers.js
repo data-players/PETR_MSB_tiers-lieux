@@ -1,3 +1,17 @@
+const writePermissionsToCreator = creatorUri => ({
+  anon : {
+    read: true
+  },
+  anyUser: {
+    read: true
+  },
+  user: {
+    uri: creatorUri,
+    read: true,
+    write: true
+  }
+});
+
 module.exports = [
     {
       path: '/',
@@ -16,6 +30,7 @@ module.exports = [
     path: '/organizations',
     acceptedTypes: ['pair:Organization'],
     dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   /*
   {
@@ -49,7 +64,8 @@ module.exports = [
   },
   {
     path: '/resources',
-    acceptedTypes: ['pair:Resource']
+    acceptedTypes: ['pair:Resource'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/sectors',

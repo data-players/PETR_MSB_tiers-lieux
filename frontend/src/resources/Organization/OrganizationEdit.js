@@ -1,15 +1,15 @@
 import React from 'react';
 import { SimpleForm } from "ra-ui-materialui";
-import { Edit } from "@semapps/archipelago-layout";
+import { EditWithPermissions } from '@semapps/auth-provider';
 import OrganizationForm from './OrganizationForm';
 import Title from '../_Components/Title';
 
 export const OrganizationEdit = props => (
-  <Edit title={<Title />} {...props} >
+  <EditWithPermissions title={<Title />} {...props} >
     <SimpleForm>
       <OrganizationForm />
     </SimpleForm>
-  </Edit>
+  </EditWithPermissions>
 );
 
 export default OrganizationEdit;
