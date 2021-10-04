@@ -15,7 +15,10 @@ module.exports = [
   {
     path: '/organizations',
     acceptedTypes: ['pair:Organization'],
-    dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+    dereference: [
+      'pair:hasLocation/pair:hasPostalAddress',
+      'petr:openingTimesDay1'
+    ]
   },
   /*
   {
