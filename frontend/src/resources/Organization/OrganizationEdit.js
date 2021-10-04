@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import { TextInput } from "ra-ui-materialui";
 import { 
   ArrayInput,
-  BooleanField,
+  BooleanInput,
   FormTab, 
   ImageInput, 
   NumberInput, 
@@ -185,7 +185,7 @@ export const OrganizationEdit = props => {
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
             {/* TODO */}
-            <BooleanField source="petr:itinerant" defaultValue={false} />
+            <BooleanInput source="petr:itinerant" defaultValue={false} />
             <MarkdownInput source="petr:itinerantDetails" multiline fullWidth />
           </ReificationArrayInput>
         </FormTab>
