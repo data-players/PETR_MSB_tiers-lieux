@@ -14,11 +14,11 @@
     "foaf": "http://xmlns.com/foaf/0.1/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "semapps": "http://semapps.org/ns/core#",
-    "petr": "http://petr.org#",
+    "petr": "https://data.petr-msb.data-players.com/ontology#",
 
     "id": "@id",
     "type": "@type",
-    
+
     "petr:hasAudience": {
       "@type": "@id"
     },

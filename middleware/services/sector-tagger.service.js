@@ -10,7 +10,7 @@ module.exports = {
   dependencies: ['ldp'],
   methods: {
     async tag(resourceUri, zipCode, oldData) {
-      
+
       const sectorUri = await this.getSectorUriFromZip(zipCode);
 
       if ( oldData['petr:hasSector'] !== sectorUri ) {
@@ -50,7 +50,7 @@ module.exports = {
           await this.broker.call('ldp.resource.post', {
             resource: {
               '@context': {
-                '@vocab': 'http://petr.org#'
+                '@vocab': 'https://data.petr-msb.data-players.com/ontology#'
               },
               '@type': 'Sector',
               'pair:label': sectorName
@@ -67,7 +67,7 @@ module.exports = {
   },
   events: {
     async 'ldp.resource.created'(ctx) {
-      
+
       const { resourceUri, newData } = ctx.params;
 
       switch(getContainerFromUri(resourceUri)){
@@ -77,7 +77,7 @@ module.exports = {
       }
     },
     async 'ldp.resource.updated'(ctx) {
-      
+
       const { resourceUri, newData } = ctx.params;
 
       switch(getContainerFromUri(resourceUri)){
