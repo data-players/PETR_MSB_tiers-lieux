@@ -12,9 +12,9 @@ import MarkdownInput from '../../markdown/MarkdownInput'
 export const OrganizationForm = props => (
   <>
     <TextInput source="pair:label" fullWidth validate={[required()]} />
-    <ReferenceInput 
-      source="pair:hasType" 
-      reference="OrganizationType" 
+    <ReferenceInput
+      source="pair:hasType"
+      reference="OrganizationType"
       validate={[required()]}
     >
       <SelectInput optionText="pair:label" />
@@ -24,7 +24,7 @@ export const OrganizationForm = props => (
     <ImageInput source="petr:logo" accept="image/*">
       <ImageField source="src" />
     </ImageInput>
-    <ImageInput source="pair:depictedBy" accept="image/*" multiple>
+    <ImageInput source="petr:images" accept="image/*" multiple>
       <ImageField source="src" />
     </ImageInput>
     <ArrayInput source="petr:videos">
@@ -32,9 +32,9 @@ export const OrganizationForm = props => (
         <TextInput label="Video url"/>
       </SimpleFormIterator>
     </ArrayInput>
-    <ReferenceInput 
-      source="petr:hasLegalStatus" 
-      reference="LegalStatus" 
+    <ReferenceInput
+      source="petr:hasLegalStatus"
+      reference="LegalStatus"
       validate={[required()]}
     >
       <SelectInput optionText="pair:label" />
@@ -61,9 +61,9 @@ export const OrganizationForm = props => (
       </ReferenceInput>
       </SimpleFormIterator>
     </ArrayInput>
-    <ReferenceInput 
+    <ReferenceInput
       source="petr:hasAudience"
-      reference="Audience" 
+      reference="Audience"
     >
       <SelectInput optionText="pair:label" />
     </ReferenceInput>

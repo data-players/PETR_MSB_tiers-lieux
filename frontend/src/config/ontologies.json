@@ -51,7 +51,7 @@
   },
   {
     "prefix": "petr",
-    "owl": "",
-    "url": "http://petr.org#"
+    "owl": "https://data.petr-msb.data-players.com/ontology",
+    "url": "https://data.petr-msb.data-players.com/ontology#"
   }
 ]
