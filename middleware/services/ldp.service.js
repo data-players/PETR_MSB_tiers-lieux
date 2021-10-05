@@ -13,25 +13,58 @@ module.exports = {
       {
         path: '/organizations',
         acceptedTypes: ['pair:Organization'],
-        dereference: ['pair:hasLocation/pair:hasPostalAddress', 'petr:equipmentOffers'],
-        disassembly: [{ path: 'petr:equipmentOffers', container:  process.env.SEMAPPS_HOME_URL + 'resources' }]
+        dereference: [
+          'pair:hasLocation/pair:hasPostalAddress', 
+          'petr:equipmentOffers',
+          'petr:serviceOffers',
+          'petr:spaceOffers',
+        ],
+        disassembly: [{ 
+            path: 'petr:equipmentOffers', 
+            container:  process.env.SEMAPPS_HOME_URL + 'equipments' 
+          },{ 
+            path: 'petr:spaceOffers', 
+            container:  process.env.SEMAPPS_HOME_URL + 'spaces' 
+          },{ 
+            path: 'petr:serviceOffers', 
+            container:  process.env.SEMAPPS_HOME_URL + 'services' 
+          },
+        ]
       },
       {
-        path: '/resources',
-        acceptedTypes: ['pair:Resource'],
+        path: '/equipments',
+        acceptedTypes: ['petr:Equipment'],
         dereference: ['petr:equipmentOfferedBy'],
         disassembly: [{ path: 'petr:equipmentOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'organizations' }]
       },
+      {
+        path: '/services',
+        acceptedTypes: ['petr:Service'],
+        dereference: ['petr:serviceOfferedBy'],
+        disassembly: [{ path: 'petr:serviceOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'services' }]
+      },
+      {
+        path: '/spaces',
+        acceptedTypes: ['petr:Space'],
+        dereference: ['petr:spaceOfferedBy'],
+        disassembly: [{ path: 'petr:spaceOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'spaces' }]
+      },
       '/',
-      '/organizations',
-      '/resources',
-      '/persons', 
       '/audiences',
+      '/access-modalities',
+      '/equipments',
+      '/equipment-types',
       '/labels',
       '/legal-status',
       '/networks',
+      '/organizations',
       '/organization-types',
+      '/persons', 
+      '/rates',
       '/sectors',
+      '/services',
+      '/spaces',
+      '/space-types',
     ],
     defaultContainerOptions: {
       jsonContext: urlJoin(CONFIG.HOME_URL, 'context.json'),
