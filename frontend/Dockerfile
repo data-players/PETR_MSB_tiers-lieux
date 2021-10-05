@@ -9,4 +9,6 @@ RUN apk add --update --no-cache git bash yarn nano
 
 RUN apk add --update --no-cache autoconf libtool automake alpine-sdk
 
+COPY . /app
+
 RUN yarn install
