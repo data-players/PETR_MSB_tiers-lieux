@@ -19,9 +19,12 @@
     "id": "@id",
     "type": "@type",
 
+<<<<<<< HEAD
     "petr:hasAccessModality": {
       "@type": "@id"
     },
+=======
+>>>>>>> main
     "petr:hasAudience": {
       "@type": "@id"
     },
