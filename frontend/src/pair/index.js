@@ -68,5 +68,11 @@ export const AgentsInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
+export const EquipmentsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Equipment" source={source}>
+    <AutocompleteArrayInput optionText="petr:hasEquipmentType" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+  </ReferenceArrayInput>
+);
+
 export { default as PairLocationInput } from './PairLocationInput';
 export { default as PairResourceCreate } from './PairResourceCreate';
