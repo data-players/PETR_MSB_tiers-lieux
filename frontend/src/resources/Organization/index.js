@@ -20,7 +20,13 @@ export default {
         containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organizations',
         dereference: [
           'pair:hasLocation/pair:hasPostalAddress',
-          'petr:openingTimesDay1'
+          'petr:openingTimesDay1',
+          'petr:openingTimesDay2',
+          'petr:openingTimesDay3',
+          'petr:openingTimesDay4',
+          'petr:openingTimesDay5',
+          'petr:openingTimesDay6',
+          'petr:openingTimesDay7',
         ],
         slugField: 'pair:label',
         forceArray: ['petr:equipmentOffers', 'petr:equipmentOfferedBy']

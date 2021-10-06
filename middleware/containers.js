@@ -1,35 +1,34 @@
 module.exports = [
-    {
-      path: '/',
-    },
+  {
+    path: '/',
+  },
   {
     path: '/persons',
     acceptedTypes: ['pair:Person']
   },
-  /*
-  {
-    path: '/places',
-    acceptedTypes: ['pair:Place']
-  },
-  */
   {
     path: '/organizations',
     acceptedTypes: ['pair:Organization'],
     dereference: [
       'pair:hasLocation/pair:hasPostalAddress',
-      'petr:openingTimesDay1'
-    ]
+      'petr:equipmentOffers',
+      'petr:openingTimesDay1',
+      'petr:openingTimesDay2/petr:startingTime','petr:openingTimesDay2/petr:source="petr:endingTime" ',
+      'petr:openingTimesDay3',
+      'petr:openingTimesDay4',
+      'petr:openingTimesDay5',
+      'petr:openingTimesDay6',
+      'petr:openingTimesDay7',
+    ],
+    disassembly: [{ path: 'petr:equipmentOffers', container:  process.env.SEMAPPS_HOME_URL + 'resources' }]
   },
-  /*
   {
-    path: '/equipments',
-    acceptedTypes: ['petr:Equipment']
+    path: '/resources',
+    acceptedTypes: ['pair:Resource'],
+    dereference: ['petr:equipmentOfferedBy'],
+    disassembly: [{ path: 'petr:equipmentOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'organizations' }]
   },
-  {
-    path: '/documents',
-    acceptedTypes: 'pair:Document'
-  },
-  */
+//// CONCEPTS ////
   {
     path: '/audiences',
     acceptedTypes: ['petr:Audience']
@@ -51,16 +50,7 @@ module.exports = [
     acceptedTypes: ['pair:OrganizationType']
   },
   {
-    path: '/resources',
-    acceptedTypes: ['pair:Resource']
-  },
-  {
     path: '/sectors',
     acceptedTypes: ['petr:Sector']
   },
-  /*
-  {
-    path: '/files'
-  }
-  */
 ];
