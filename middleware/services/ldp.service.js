@@ -39,14 +39,12 @@ module.exports = {
       {
         path: '/services',
         acceptedTypes: ['petr:Service'],
-        dereference: ['petr:serviceOfferedBy'],
-        disassembly: [{ path: 'petr:serviceOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'services' }]
+        dereference: ['petr:serviceOfferedBy']
       },
       {
         path: '/spaces',
         acceptedTypes: ['petr:Space'],
-        dereference: ['petr:spaceOfferedBy'],
-        disassembly: [{ path: 'petr:spaceOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'spaces' }]
+        dereference: ['petr:spaceOfferedBy']
       },
       '/',
       '/audiences',

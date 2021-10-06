@@ -19,10 +19,12 @@ import { Edit } from "@semapps/archipelago-layout";
 import { MapField } from '@semapps/geo-components';
 import { MarkdownInput } from '@semapps/markdown-components'
 import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
+import { EditWithPermissions } from '@semapps/auth-provider';
 
 import { EquipmentsInput } from '../../pair';
 import PairLocationInput from '../../components/PairLocationInput';
 import Title from '../_Components/Title';
+
 
 const useStyles = makeStyles((theme) => ({
   resourceFormContainer: {
@@ -35,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export const OrganizationEdit = props => {
   const classes = useStyles();
   return (
-    <Edit title={<Title />} {...props} >
+    <EditWithPermissions title={<Title />} {...props} >
       <TabbedForm>
         <FormTab label="Principal">
           <TextInput source="pair:label" fullWidth validate={[required()]} />
@@ -190,7 +192,7 @@ export const OrganizationEdit = props => {
           </ReificationArrayInput>
         </FormTab>
       </TabbedForm>
-    </Edit>
+    </EditWithPermissions>
   );
 }
 
