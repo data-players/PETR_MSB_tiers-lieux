@@ -5,7 +5,7 @@
       "signature": "0a02690b85b00c1cb7e25a16cec50e11"
     },
     "@semapps/inference": {
-      "signature": "b1fa29fece77c7668f7b3fed16afbcba"
+      "signature": "97b4892beba6e391f8e3a70f07f9d18e"
     },
     "@semapps/auth": {
       "signature": "d44c71eead71b970dfc8c2835b4a8f63"
@@ -14,7 +14,7 @@
       "signature": "8ce40e7a74fb1c61a53dc71ad3ac587f"
     },
     "@semapps/ldp": {
-      "signature": "f85055cb903c59b4fd2299843b74b074"
+      "signature": "5dafccf49bd1f6ad76d6d83a5bc69890"
     },
     "@semapps/middlewares": {
       "signature": "6f19a5233c3d505d3f03a3b82a87c83c"
