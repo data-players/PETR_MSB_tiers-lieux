@@ -34,10 +34,6 @@ module.exports = [
   },
   /*
   {
-    path: '/equipments',
-    acceptedTypes: ['petr:Equipment']
-  },
-  {
     path: '/documents',
     acceptedTypes: 'pair:Document'
   },
@@ -49,6 +45,10 @@ module.exports = [
   {
     path: '/audiences',
     acceptedTypes: ['petr:Audience']
+  },
+  {
+    path: '/equipments',
+    acceptedTypes: ['petr:Equipment']
   },
   {
     path: '/equipment-types',
@@ -71,9 +71,14 @@ module.exports = [
     acceptedTypes: ['pair:OrganizationType']
   },
   {
+<<<<<<< HEAD
     path: '/resources',
     acceptedTypes: ['pair:Resource'],
     newResourcesPermissions: writePermissionsToCreator
+=======
+    path: '/rates',
+    acceptedTypes: ['petr:Rate']
+>>>>>>> main
   },
   {
     path: '/sectors',

@@ -7,7 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import LogoTitle from './LogoTitle';
 import FullWidthBox from '../commons/FullWidthBox';
 import LargeContainer from '../commons/LargeContainer';
-import UserMenu from './UserMenu';
+import { UserMenu } from '@semapps/auth-provider';
 import { 
   ENABLE_ADMIN_CONTEXT,
   DISABLE_ADMIN_CONTEXT
