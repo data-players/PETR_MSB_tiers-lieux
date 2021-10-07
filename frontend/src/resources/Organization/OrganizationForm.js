@@ -62,38 +62,38 @@ export const OrganizationForm = props => {
       </ArrayInput>
       <ArrayInput source="petr:openingTimesDay2">
         <SimpleFormIterator className={classes.OpeningTimesForm}>
-        <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm' }} />
-          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm' }} />
+          <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm', ampm: false }} />
+          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm', ampm: false }} />
         </SimpleFormIterator>
       </ArrayInput>
       <ArrayInput source="petr:openingTimesDay3">
         <SimpleFormIterator className={classes.OpeningTimesForm}>
-        <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm' }} />
-          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm' }} />
+          <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm', ampm: false }} />
+          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm', ampm: false }} />
         </SimpleFormIterator>
       </ArrayInput>
       <ArrayInput source="petr:openingTimesDay4">
         <SimpleFormIterator className={classes.OpeningTimesForm}>
-        <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm' }} />
-          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm' }} />
+          <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm', ampm: false }} />
+          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm', ampm: false }} />
         </SimpleFormIterator>
       </ArrayInput>
       <ArrayInput source="petr:openingTimesDay5">
         <SimpleFormIterator className={classes.OpeningTimesForm}>
-        <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm' }} />
-          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm' }} />
+          <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm', ampm: false }} />
+          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm', ampm: false }} />
         </SimpleFormIterator>
       </ArrayInput>
       <ArrayInput source="petr:openingTimesDay6">
         <SimpleFormIterator className={classes.OpeningTimesForm}>
-        <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm' }} />
-          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm' }} />
+          <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm', ampm: false }} />
+          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm', ampm: false }} />
         </SimpleFormIterator>
       </ArrayInput>
       <ArrayInput source="petr:openingTimesDay7">
         <SimpleFormIterator className={classes.OpeningTimesForm}>
-        <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm' }} />
-          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm' }} />
+          <TimeInput label="Heure de début" source="petr:startingTime" options={{ format: 'HH:mm', ampm: false }} />
+          <TimeInput label="Heure de fin" source="petr:endingTime" options={{ format: 'HH:mm', ampm: false }} />
         </SimpleFormIterator>
       </ArrayInput>
       <TextInput source="pair:e-mail" type="email" fullWidth/>

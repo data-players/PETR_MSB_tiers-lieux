@@ -13,7 +13,7 @@ module.exports = [
       'pair:hasLocation/pair:hasPostalAddress',
       'petr:equipmentOffers',
       'petr:openingTimesDay1',
-      'petr:openingTimesDay2/petr:startingTime','petr:openingTimesDay2/petr:source="petr:endingTime" ',
+      'petr:openingTimesDay2',
       'petr:openingTimesDay3',
       'petr:openingTimesDay4',
       'petr:openingTimesDay5',
