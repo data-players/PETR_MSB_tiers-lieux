@@ -63,6 +63,10 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
       }
     },
   },
+  equipmentContainer: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
 }));
 
 export default OrganizationShowUseStyles;
