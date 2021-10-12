@@ -1,54 +1,32 @@
-import {default as React,useState,useCallback,useMemo} from 'react';
+import { default as React } from 'react';
 
 import { TextInput } from "ra-ui-materialui";
-import { Dialog, DialogTitle, DialogContent, DialogActions, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import {
   ArrayInput,
   BooleanInput,
   FormTab,
   ImageInput,
-  NumberInput,
   SelectInput,
   SimpleFormIterator,
   TabbedForm,
   required,
-  useRecordContext,
-  ListContextProvider,
-  useEditContext,
-  useList,
   Datagrid,
   TextField,
-  EditButton,
   useEditController,
-  Button,
-  SimpleForm,
-  SaveButton,
-  useUpdate,
-  useCreate,
-  SaveContextProvider,
-  CreateContextProvider,
-  EditContextProvider,
-  FormWithRedirect,
-  useRefresh,
   ReferenceInput,
   ReferenceManyField,
   DeleteButton
 } from 'react-admin';
-import {IconEvent, ContentCreate} from '@material-ui/icons/Event';
 
 import { Edit } from "@semapps/archipelago-layout";
-import { MapField } from '@semapps/geo-components';
 import { MarkdownInput } from '@semapps/markdown-components'
 import { ImageField, ReificationArrayInput } from '@semapps/semantic-data-provider';
 
-import { EquipmentsInput } from '../../pair';
 import PairLocationInput from '../../components/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
-
 
 
 export const OrganizationEdit = props => {

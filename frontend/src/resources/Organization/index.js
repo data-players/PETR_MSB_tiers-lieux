@@ -22,8 +22,12 @@ export default {
         slugField: 'pair:label',
         forceArray: [
           'petr:equipmentOffers',
+          'petr:hasLabels',
+          'petr:hasNetworks',
           'petr:serviceOffers',
+          'petr:socialMedias',
           'petr:spaceOffers',
+          'petr:videos',
         ]
       },
       translations: {
