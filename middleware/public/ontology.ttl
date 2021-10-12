@@ -26,7 +26,7 @@
 :equipmentOfferedBy rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offeredBy> ;
                     owl:inverseOf :equipmentOffers ;
-                    rdfs:domain <http://virtual-assembly.org/ontologies/pair#Resource> ;
+                    rdfs:domain :Equipment ;
                     rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
@@ -34,7 +34,7 @@
 :equipmentOffers rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offers> ;
                  rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
-                 rdfs:range <http://virtual-assembly.org/ontologies/pair#Resource> .
+                 rdfs:range :Equipment .
 
 
 ###  https://data.petr-msb.data-players.com/ontology#hasAudience
@@ -70,9 +70,9 @@
 
 ###  https://data.petr-msb.data-players.com/ontology#labelOf
 :labelOf rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
-        rdfs:domain :Label ;
-        rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
+         rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
+         rdfs:domain :Label ;
+         rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
 ###  https://data.petr-msb.data-players.com/ontology#networkOf
@@ -80,6 +80,21 @@
            rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
            rdfs:domain :Network ;
            rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
+
+
+###  https://data.petr-msb.data-players.com/ontology#serviceOfferedBy
+:serviceOfferedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offeredBy> ;
+                  owl:inverseOf :serviceOffers ;
+                  rdfs:domain :Service ;
+                  rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
+
+
+###  https://data.petr-msb.data-players.com/ontology#serviceOffers
+:serviceOffers rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offers> ;
+               rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
+               rdfs:range :Service .
 
 
 ###  https://data.petr-msb.data-players.com/ontology#spaceOfferedBy
@@ -145,6 +160,11 @@
           rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Concept> .
 
 
+###  https://data.petr-msb.data-players.com/ontology#Equipment
+:Equipment rdf:type owl:Class ;
+           rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Resource> .
+
+
 ###  https://data.petr-msb.data-players.com/ontology#Label
 :Label rdf:type owl:Class ;
        rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Concept> .
@@ -158,6 +178,11 @@
 ###  https://data.petr-msb.data-players.com/ontology#Network
 :Network rdf:type owl:Class ;
          rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Ecosystem> .
+
+
+###  https://data.petr-msb.data-players.com/ontology#Service
+:Service rdf:type owl:Class ;
+         rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Resource> .
 
 
 ###  https://data.petr-msb.data-players.com/ontology#Space
@@ -177,6 +202,18 @@
                 <http://virtual-assembly.org/ontologies/pair#Type>
                 <http://virtual-assembly.org/ontologies/pair/Grade>
                 :Label
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://virtual-assembly.org/ontologies/pair#AtomBasedResource>
+                <http://virtual-assembly.org/ontologies/pair#BitBasedResource>
+                <http://virtual-assembly.org/ontologies/pair#ConceptBasedResource>
+                <http://virtual-assembly.org/ontologies/pair#HumanBasedResource>
+                <http://virtual-assembly.org/ontologies/pair#MoneyBasedResource>
+                :Equipment
+                :Service
               )
 ] .
 

@@ -4,12 +4,22 @@ import {
   NumberInput,
   SelectInput,
   required,
-  ReferenceInput
+  ReferenceInput,
+  ReferenceArrayInput,
+  SelectArrayInput
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 
 export const SpaceInputs = props => (
     <>
+      <ReferenceInput
+        source="petr:spaceOfferedBy"
+        reference="Organization"
+        disabled
+        fullWidth
+      >
+        <SelectInput optionText="pair:label" />
+      </ReferenceInput>
       <TextInput source="pair:label" fullWidth validate={[required()]} />
       <MarkdownInput source="pair:description" multiline fullWidth />
       <ReferenceInput
@@ -24,9 +34,13 @@ export const SpaceInputs = props => (
         source="petr:hasSpaceType"
         reference="SpaceType"
         validate={[required()]}
+        fullWidth
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
+      <ReferenceArrayInput source="pair:locationOf" reference="Equipment" fullWidth disabled>
+        <SelectArrayInput optionText="pair:label" />
+      </ReferenceArrayInput>
     </>
 )
 
