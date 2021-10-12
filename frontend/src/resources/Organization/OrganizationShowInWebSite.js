@@ -39,6 +39,10 @@ const EquipmentShow = () => {
       <ReferenceField source="petr:hasRate" reference="Rate" link={false}>
         <TextField source="pair:label" />
       </ReferenceField>
+      <TextField source="petr:availablity" />
+      <ReferenceField source="petr:hasAccessModality" reference="AccessModality" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
     </SimpleShowLayout>
   )
 }
