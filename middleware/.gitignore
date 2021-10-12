@@ -4,3 +4,6 @@
 /jwt/*.key.pub
 /uploads
 node_modules
+
+.yalc
+yalc.lock
