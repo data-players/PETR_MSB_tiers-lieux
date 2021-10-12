@@ -15,7 +15,7 @@ const OrganizationShowInWebSite = ({...props}) => {
   const classes = useStyles();
   
   return (
-    <Show actions={null} {...props}>
+    <Show {...props}>
       <Grid container spacing={2}>
         <OrganizationShowLoader />
         <Grid item xs={12} md={3}>
