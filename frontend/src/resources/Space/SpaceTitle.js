@@ -1,7 +1,7 @@
 import React from 'react';
 
-const EquipmentTitle = ({ record }) => {
+const SpaceTitle = ({ record }) => {
     return <span>{record ? record['pair:label'] : ''}</span>;
 };
 
-export default EquipmentTitle
+export default SpaceTitle

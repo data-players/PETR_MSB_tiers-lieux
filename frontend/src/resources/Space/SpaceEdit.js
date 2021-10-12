@@ -1,7 +1,7 @@
 import React from 'react';
 import { Edit } from "@semapps/archipelago-layout";
-import EquipmentTitle from './EquipmentTitle';
-import EquipmentInputs from './EquipmentInputs';
+import SpaceTitle from './SpaceTitle';
+import SpaceInputs from './SpaceInputs';
 import {
   SimpleForm,
 } from 'react-admin';
@@ -9,17 +9,17 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
 
-export const EquipmentEdit = props =>{
+export const SpaceEdit = props =>{
   const location = useLocation();
   const query=queryString.parse(location.search);
 
   return (
-    <Edit title={<EquipmentTitle />} {...props} >
+    <Edit title={<SpaceTitle />} {...props} >
       <SimpleForm redirect={query.redirectUri}>
-        <EquipmentInputs/>
+        <SpaceInputs/>
       </SimpleForm>
     </Edit>
   )
 };
 
-export default EquipmentEdit;
+export default SpaceEdit;

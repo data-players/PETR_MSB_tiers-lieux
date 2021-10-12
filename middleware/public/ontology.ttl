@@ -47,7 +47,7 @@
 ###  https://data.petr-msb.data-players.com/ontology#hasLabel
 :hasLabel rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
-          owl:inverseOf :labels ;
+          owl:inverseOf :labelOf ;
           rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
           rdfs:range :Label .
 
@@ -68,8 +68,8 @@
             rdfs:range :Network .
 
 
-###  https://data.petr-msb.data-players.com/ontology#labels
-:labels rdf:type owl:ObjectProperty ;
+###  https://data.petr-msb.data-players.com/ontology#labelOf
+:labelOf rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
         rdfs:domain :Label ;
         rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
@@ -80,6 +80,21 @@
            rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
            rdfs:domain :Network ;
            rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
+
+
+###  https://data.petr-msb.data-players.com/ontology#spaceOfferedBy
+:spaceOfferedBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offeredBy> ;
+                owl:inverseOf :spaceOffers ;
+                rdfs:domain :Space ;
+                rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
+
+
+###  https://data.petr-msb.data-players.com/ontology#spaceOffers
+:spaceOffers rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offers> ;
+             rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
+             rdfs:range :Space .
 
 
 ###  https://data.petr-msb.data-players.com/ontology#statusOf
@@ -143,6 +158,12 @@
 ###  https://data.petr-msb.data-players.com/ontology#Network
 :Network rdf:type owl:Class ;
          rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Ecosystem> .
+
+
+###  https://data.petr-msb.data-players.com/ontology#Space
+:Space rdf:type owl:Class ;
+       rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Place> ;
+       rdfs:comment "a place into a building" .
 
 
 #################################################################

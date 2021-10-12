@@ -1,10 +1,8 @@
 import EquipmentEdit from './EquipmentEdit';
-import EquipmentShow from './EquipmentShow';
 import EquipmentCreate from './EquipmentCreate';
 
 export default {
   config: {
-    show: EquipmentShow,
     edit: EquipmentEdit,
     create: EquipmentCreate,
     options: {

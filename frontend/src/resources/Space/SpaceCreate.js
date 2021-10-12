@@ -3,22 +3,22 @@ import { Create } from "@semapps/archipelago-layout";
 import {
   SimpleForm,
 } from 'react-admin';
-import EquipmentInputs from './EquipmentInputs';
-import EquipmentTitle from './EquipmentTitle';
+import SpaceInputs from './SpaceInputs';
+import SpaceTitle from './SpaceTitle';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
 
-export const EquipmentCreate = props =>{
+export const SpaceCreate = props =>{
   const location = useLocation();
   const query=queryString.parse(location.search);
   return (
-    <Create title={<EquipmentTitle />} {...props} >
+    <Create title={<SpaceTitle />} {...props} >
       <SimpleForm redirect={query.redirectUri}>
-        <EquipmentInputs/>
+        <SpaceInputs/>
       </SimpleForm>
     </Create>
   )
 };
 
-export default EquipmentCreate;
+export default SpaceCreate;
