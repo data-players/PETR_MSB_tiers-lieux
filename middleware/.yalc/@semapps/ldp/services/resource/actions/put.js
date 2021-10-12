@@ -39,7 +39,6 @@ module.exports = {
       disassembly: { type: 'array', optional: true }
     },
     async handler(ctx) {
-      console.log('-------------------------------------');
       let { resource, contentType } = ctx.params;
       let { webId } = ctx.params;
       webId = webId || ctx.meta.webId || 'anon';
@@ -51,7 +50,6 @@ module.exports = {
         ...ctx.params
       };
 
-      console.log('-------------------------------------',disassembly, jsonContext );
       // Save the current data, to be able to send it through the event
       // If the resource does not exist, it will throw a 404 error
       let oldData = await ctx.call('ldp.resource.get', {

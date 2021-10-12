@@ -22,11 +22,8 @@ export default {
         slugField: 'pair:label',
         forceArray: [
           'petr:equipmentOffers',
-          'petr:equipmentOfferedBy',
           'petr:serviceOffers',
-          'petr:serviceOfferedBy',
           'petr:spaceOffers',
-          'petr:spaceOfferedBy'
         ]
       },
       translations: {

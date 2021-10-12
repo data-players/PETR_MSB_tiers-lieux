@@ -135,11 +135,8 @@ module.exports = {
         newDisassemblyValue.some(t2 => (t1.id || t1['@id']) === (t2.id || t2['@id']))
       );
 
-
-
       if (resourcesToAdd) {
         for (let resource of resourcesToAdd) {
-          console.log('------------------------------------- ADD',disassemblyConfig,resource['@id'] || resource['id'] , resource);
           delete resource.id;
 
           const newResourceUri = await ctx.call('ldp.resource.post', {
@@ -155,7 +152,7 @@ module.exports = {
         }
       }
 
-      if (method === 'PUT' || (method === 'PATCH' && newData[disassemblyConfig.path]!=undefined)) {
+      if (method === 'PUT') {
         if (resourcesToRemove) {
           for (let resource of resourcesToRemove) {
             await ctx.call('ldp.resource.delete', {
@@ -167,22 +164,9 @@ module.exports = {
         }
 
         if (resourcesToKeep) {
-          for (let resource of resourcesToKeep) {
-            console.log('------------------------------------- UPDATE',resource['@id'] || resource['id'] , resource);
-            await ctx.call('ldp.resource.put', {
-              resourceUri: resource['@id'] || resource['id'] || resource,
-              resource: {
-                '@context': newData['@context'],
-                ...resource
-              },
-              contentType: MIME_TYPES.JSON,
-              webId: 'system'
-            });
-            uriRemoved.push({ '@id': resource['@id'] || resource['id'] || resource, '@type': '@id' });
-          }
           uriKept = resourcesToKeep.map(r => ({ '@id': r['@id'] || r.id || r, '@type': '@id' }));
         }
-      } else if (method === 'PATCH' && newData[disassemblyConfig.path]==undefined) {
+      } else if (method === 'PATCH') {
         uriKept = oldDisassemblyValue.map(r => ({ '@id': r['@id'] || r.id || r, '@type': '@id' }));
       } else {
         throw new Error('Unknown method ' + method);

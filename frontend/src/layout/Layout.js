@@ -13,11 +13,11 @@ import SideMenu from './SideMenu';
 import TreeMenu from './DefaultLayout/TreeMenu/TreeMenu';
 
 const Layout = ({ logout, theme, children, title, menu }) => {
-  
+
   const token = localStorage.getItem('token');
   const payload = token && jwtDecode(token);
   const isConnected = payload && payload.webId !== '';
-  
+
   const menuItems = [
     { link: '/About', name: 'Qui sommes-nous ?', admin: false },
     { link: '/Map', name: 'Carte des tiers lieux', admin: false },
@@ -26,20 +26,20 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   ];
 
   const state = useSelector(state => state);
-  console.log('customState', state.customState);
+  // console.log('customState', state.customState);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  
+
   return (
     <ThemeProvider theme={theme}>
-    
+
       {/* <ScrollToTop /> */}
       {/* <SideMenu menuItems={menuItems} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-      
+
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
       {
         isConnected && state.customState.isAdminContext
-          ? 
+          ?
             <Grid container>
               <Grid item xs={3}>
                 <TreeMenu />
@@ -48,7 +48,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
                 <Box>{children}</Box>
               </Grid>
             </Grid>
-          : 
+          :
             <Grid container>
               <Grid item xs={12}>
                 <Box>{children}</Box>

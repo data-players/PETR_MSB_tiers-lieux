@@ -14,40 +14,30 @@ module.exports = {
         path: '/organizations',
         acceptedTypes: ['pair:Organization'],
         dereference: [
-          'pair:hasLocation/pair:hasPostalAddress', 
-          'petr:equipmentOffers',
+          'pair:hasLocation/pair:hasPostalAddress',
           'petr:serviceOffers',
           'petr:spaceOffers',
         ],
-        disassembly: [{ 
-            path: 'petr:equipmentOffers', 
-            container:  process.env.SEMAPPS_HOME_URL + 'equipments' 
-          },{ 
-            path: 'petr:spaceOffers', 
-            container:  process.env.SEMAPPS_HOME_URL + 'spaces' 
-          },{ 
-            path: 'petr:serviceOffers', 
-            container:  process.env.SEMAPPS_HOME_URL + 'services' 
+        disassembly: [{
+            path: 'petr:spaceOffers',
+            container:  process.env.SEMAPPS_HOME_URL + 'spaces'
+          },{
+            path: 'petr:serviceOffers',
+            container:  process.env.SEMAPPS_HOME_URL + 'services'
           },
         ]
       },
       {
         path: '/equipments',
         acceptedTypes: ['petr:Equipment'],
-        dereference: ['petr:equipmentOfferedBy'],
-        disassembly: [{ path: 'petr:equipmentOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'organizations' }]
       },
       {
         path: '/services',
         acceptedTypes: ['petr:Service'],
-        dereference: ['petr:serviceOfferedBy'],
-        disassembly: [{ path: 'petr:serviceOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'services' }]
       },
       {
         path: '/spaces',
         acceptedTypes: ['petr:Space'],
-        dereference: ['petr:spaceOfferedBy'],
-        disassembly: [{ path: 'petr:spaceOfferedBy', container:  process.env.SEMAPPS_HOME_URL + 'spaces' }]
       },
       '/',
       '/audiences',
@@ -59,7 +49,7 @@ module.exports = {
       '/networks',
       '/organizations',
       '/organization-types',
-      '/persons', 
+      '/persons',
       '/rates',
       '/sectors',
       '/services',
