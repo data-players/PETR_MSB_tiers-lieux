@@ -2,6 +2,7 @@ import React from 'react';
 import {
   TextInput,
   NumberInput,
+  required,
   SelectInput,
   ReferenceInput
 } from 'react-admin';
@@ -21,16 +22,18 @@ export const EquipmentInputs = props => (
         source="petr:hasEquipmentType"
         reference="EquipmentType"
         fullWidth
+        validate={[required()]}
       >
-        <SelectInput optionText="pair:label" />
+        <SelectInput optionText="pair:label" validate={[required()]} />
       </ReferenceInput>
       <MarkdownInput source="pair:description" multiline fullWidth />
       <TextInput source="petr:model" fullWidth />
-      <NumberInput source="petr:amount" defaultValue={1} fullWidth />
+      <NumberInput source="petr:amount" defaultValue={1} fullWidth validate={[required()]} />
       <ReferenceInput
         source="petr:hasRate"
         reference="Rate"
         fullWidth
+        validate={[required()]}
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
@@ -39,6 +42,7 @@ export const EquipmentInputs = props => (
         source="petr:hasAccessModality"
         reference="AccessModality"
         fullWidth
+        validate={[required()]}
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
