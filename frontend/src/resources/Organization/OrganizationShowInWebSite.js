@@ -22,7 +22,6 @@ import MultipleImagesField from '../../components/MultipleImagesField'
 
 import OrganizationShowContactLayout from './OrganizationShowContactLayout';
 import OrganizationShowDetailLayout from './OrganizationShowDetailLayout';
-import OrganizationShowLoader from './OrganizationShowLoader';
 import useStyles from './OrganizationShowUseStyles';
 
 const EquipmentShow = () => {
@@ -52,16 +51,16 @@ const OrganizationShowInWebSite = ({...props}) => {
   
   return (
     <Show {...props}>
-    
-      <TabbedShowLayout>
-        <Tab label="Principal">
-            
-          <Grid container spacing={2}>
-            <OrganizationShowLoader />
-            <Grid item xs={12} md={3}>
-              <OrganizationShowDetailLayout />
-            </Grid>
-            <Grid item xs={12} md={6}>
+      <Grid container spacing={2}>
+      
+        <Grid item xs={12} md={3}>
+          <OrganizationShowDetailLayout />
+        </Grid>
+        
+        <Grid item xs={12} md={6}>
+          <TabbedShowLayout>
+          
+            <Tab label="Principal">
               <FullWidthBox className={classes.innerContainer}>
                 <Typography component="h2" className={classes.title}>
                   <span>InWebSite : </span>
@@ -72,34 +71,29 @@ const OrganizationShowInWebSite = ({...props}) => {
                 </Typography>
                 <MultipleImagesField source="pair:depictedBy" max={2} />
               </FullWidthBox>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <OrganizationShowContactLayout />
-            </Grid>
-          </Grid>
-        </Tab>
-      
-        {/* EQUIPMENTS */}
-        <Tab label="Equipements">
-
-          <ReferenceManyField
-            addLabel={false}
-            reference="Equipment"
-            target="petr:equipmentOfferedBy"
-          >
-            <Datagrid expand={<EquipmentShow />}>
-              <TextField source="pair:description" />
-            </Datagrid>
-          </ReferenceManyField>
-          
-        </Tab>
-    
-      </TabbedShowLayout>
-  
+            </Tab>
+            
+            <Tab label="Equipements">
+              <ReferenceManyField
+                addLabel={false}
+                reference="Equipment"
+                target="petr:equipmentOfferedBy"
+              >
+                <Datagrid expand={<EquipmentShow />}>
+                  <TextField source="pair:description" />
+                </Datagrid>
+              </ReferenceManyField>
+            </Tab>
+            
+          </TabbedShowLayout>
+        </Grid>
+        
+        <Grid item xs={12} md={3}>
+          <OrganizationShowContactLayout />
+        </Grid>
+        
+      </Grid>
     </Show>
-    
-
-
   );
 };
 
