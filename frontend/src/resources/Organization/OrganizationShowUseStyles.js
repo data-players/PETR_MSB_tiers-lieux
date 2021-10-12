@@ -62,11 +62,7 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
         maxHeight: '8rem',
       }
     },
-  },
-  equipmentContainer: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
+  }
 }));
 
 export default OrganizationShowUseStyles;

@@ -7,6 +7,7 @@ import {
   NumberField,
   ReferenceField,
   ReferenceManyField,
+  SimpleShowLayout,
   Tab,
   TabbedShowLayout,
   TextField,
@@ -28,7 +29,7 @@ const EquipmentShow = () => {
   const classes = useStyles();
   
   return (
-    <div className={classes.equipmentContainer}>
+    <SimpleShowLayout className={classes.equipmentContainer}>
       <ReferenceField source="petr:hasEquipmentType" reference="EquipmentType" link={false}>
         <TextField source="pair:label" />
       </ReferenceField>
@@ -38,7 +39,7 @@ const EquipmentShow = () => {
       <ReferenceField source="petr:hasRate" reference="Rate" link={false}>
         <TextField source="pair:label" />
       </ReferenceField>
-    </div>
+    </SimpleShowLayout>
   )
 }
 
