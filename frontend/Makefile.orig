@@ -7,8 +7,13 @@ install :
 	yarn install --force
 
 rollup :
+<<<<<<< HEAD
 	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout run dev &
 	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/semantic-data-provider run dev &
+=======
+	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/archipelago-layout run dev  &
+	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/semantic-data-provider run dev  &
+>>>>>>> 5a32cad47021f3e1c4b61f44b5300809558858b9
 	yarn --cwd $(SEMAPPS_PATH)/src/frontend/packages/auth-provider run dev 
 
 link:
