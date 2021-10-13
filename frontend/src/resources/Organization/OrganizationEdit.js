@@ -103,6 +103,7 @@ export const OrganizationEdit = props => {
               target="petr:equipmentOfferedBy"
             >
               <Datagrid isRowSelectable={()=>(true)}>
+                <TextField source="pair:label" />
                 <TextField source="pair:description" />
                 <EditContextualButton parent={record} resource="Equipment" reverseReference="petr:equipmentOfferedBy"/>
                 <DeleteButton redirect={false}/>
@@ -118,6 +119,7 @@ export const OrganizationEdit = props => {
               target="petr:spaceOfferedBy"
             >
               <Datagrid isRowSelectable={()=>(true)}>
+                <TextField source="pair:label" />
                 <TextField source="pair:description" />
                 <EditContextualButton parent={record} resource="Space" reverseReference="petr:spaceOfferedBy"/>
                 <DeleteButton redirect={false}/>
@@ -127,35 +129,19 @@ export const OrganizationEdit = props => {
           </FormTab>
           {/* SERVICES */}
           <FormTab label="Services">
-            <ReificationArrayInput
-              source="petr:serviceOffers"
-              reificationClass="petr:Service"
+            <ReferenceManyField
+              addLabel={false}
+              reference="Service"
+              target="petr:serviceOfferedBy"
             >
-              <TextInput source="pair:label" fullWidth validate={[required()]} />
-              <ReferenceInput
-                source="petr:hasRate"
-                reference="Rate"
-                validate={[required()]}
-              >
-                <SelectInput optionText="pair:label" />
-              </ReferenceInput>
-              <ArrayInput source="petr:hasLabels">
-                <SimpleFormIterator>
-                  <ReferenceInput reference="Label">
-                  <SelectInput optionText="pair:label" />
-                </ReferenceInput>
-                </SimpleFormIterator>
-              </ArrayInput>
-              <ReferenceInput
-                source="petr:hasAudience"
-                reference="Audience"
-              >
-                <SelectInput optionText="pair:label" />
-              </ReferenceInput>
-              {/* TODO */}
-              <BooleanInput source="petr:itinerant" defaultValue={false} />
-              <MarkdownInput source="petr:itinerantDetails" multiline fullWidth />
-            </ReificationArrayInput>
+              <Datagrid isRowSelectable={()=>(true)}>
+                <TextField source="pair:label" />
+                <EditContextualButton parent={record} resource="Service" reverseReference="petr:serviceOfferedBy"/>
+                <DeleteButton redirect={false}/>
+              </Datagrid>
+            </ReferenceManyField>
+            <CreateContextualButton resource="Service" parent={record}  reverseReference="petr:serviceOfferedBy"/>
+
           </FormTab>
         </TabbedForm>
       </Edit>

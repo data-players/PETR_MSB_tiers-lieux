@@ -9,7 +9,7 @@ const EditContextualButton = ({ record, parent, resource,reverseReference, child
   const location = useLocation();
   let filter = {};
   filter[reverseReference]=encodeURIComponent(parent?.id);
-  const search =  `source=${JSON.stringify(filter)}&redirectUri=${encodeURIComponent(location.pathname)}`
+  const search =  `redirectUri=${encodeURIComponent(location.pathname)}`
   const url=`../../${resource}/${encodeURIComponent(record?.id)}`
 
   return (

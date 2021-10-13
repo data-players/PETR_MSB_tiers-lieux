@@ -13,6 +13,7 @@ export default {
     types: ['petr:Space'],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'spaces',
     slugField: ['pair:label'],
+    forceArray : ['pair:locationOf']
   },
   translations: {}
 };

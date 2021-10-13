@@ -4,11 +4,15 @@ import {
   NumberInput,
   required,
   SelectInput,
-  ReferenceInput
+  ReferenceInput,
+  required,
+  useGetManyReference,
+  useEditController
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 
-export const EquipmentInputs = props => (
+export const EquipmentInputs = ({orga,...props}) => {
+  return (
     <>
       <ReferenceInput
         source="petr:equipmentOfferedBy"
@@ -18,6 +22,7 @@ export const EquipmentInputs = props => (
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
+      <TextInput source="pair:label" fullWidth validate={[required()]} />
       <ReferenceInput
         source="petr:hasEquipmentType"
         reference="EquipmentType"
@@ -46,7 +51,16 @@ export const EquipmentInputs = props => (
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
+      <ReferenceInput
+        source="pair:hasLocation"
+        reference="Space"
+        filter={{'petr:spaceOfferedBy': orga?.['petr:equipmentOfferedBy'] }}
+        fullWidth
+      >
+        <SelectInput optionText="pair:label" />
+      </ReferenceInput>
     </>
-)
+  )
+}
 
 export default EquipmentInputs;
