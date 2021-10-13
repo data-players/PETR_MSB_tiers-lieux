@@ -12,10 +12,11 @@ import MultipleImagesField from '../../components/MultipleImagesField'
 import UrlArrayField from '../../components/UrlArrayField'
 import VideoArrayField from '../../components/VideoArrayField';
 import Title from "../_Components/Title";
+import { ShowWithPermissions } from '@semapps/auth-provider';
 
 const OrganizationShowInAdmin = ({...props}) => {
   return (
-    <Show title={<Title />} {...props}>
+    <ShowWithPermissions title={<Title />} {...props}>
       <Grid item xs={12} sm={9}>
         <div>InAdmin</div>
         <MainList>
@@ -58,7 +59,7 @@ const OrganizationShowInAdmin = ({...props}) => {
           </ReferenceArrayField>
         </MainList>
       </Grid>
-    </Show>
+    </ShowWithPermissions>
   );
 };
 
