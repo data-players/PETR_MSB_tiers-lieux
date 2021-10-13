@@ -21,11 +21,18 @@ const OrganizationShowDetailLayout = ({...props}) => {
   const showIndex = currentUri.search('/show');
   const showUri = currentUri.substring(0, showIndex) + '/show';
   const showEquipmentUri = showUri + '/1';
+  const showSpaceUri = showUri + '/2';
+  const showServiceUri = showUri + '/3';
   
   const record = useRecordContext();
   
   return (
     <FullWidthBox className={classes.innerContainer}>
+      <Typography component="div" className={classes.subtitle}>
+        <Link to={showUri} label="Principal">
+        Principal
+        </Link>
+      </Typography>
       <MapField
         source="pair:hasLocation"
         address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
@@ -39,6 +46,16 @@ const OrganizationShowDetailLayout = ({...props}) => {
       <Typography component="div" className={classes.subtitle}>
         <Link to={showEquipmentUri} label="Equipement">
           Equipements
+        </Link>
+      </Typography>
+      <Typography component="div" className={classes.subtitle}>
+        <Link to={showSpaceUri} label="Espaces">
+          Espaces
+        </Link>
+      </Typography>
+      <Typography component="div" className={classes.subtitle}>
+        <Link to={showServiceUri} label="Services">
+          Services
         </Link>
       </Typography>
     </FullWidthBox>
