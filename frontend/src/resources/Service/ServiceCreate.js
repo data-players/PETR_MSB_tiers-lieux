@@ -4,27 +4,27 @@ import {
   SimpleForm,
   useCreateController
 } from 'react-admin';
-import SpaceInputs from './SpaceInputs';
-import SpaceTitle from './SpaceTitle';
+import ServiceInputs from './ServiceInputs';
+import ServiceTitle from './ServiceTitle';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import queryString from 'query-string';
 
-export const SpaceCreate = props =>{
+export const ServiceCreate = props =>{
   const location = useLocation();
   const {
       record, // record fetched via dataProvider.getOne() based on the id from the location
   } = useCreateController(props);
   const query=queryString.parse(location.search);
-  useCheckPermissions(record?.['petr:spaceOfferedBy'],'edit');
+  useCheckPermissions(record?.['petr:serviceOfferedBy'],'edit');
   return (
-    <Create title={<SpaceTitle />} {...props} >
+    <Create title={<ServiceTitle />} {...props} >
       <SimpleForm redirect={query.redirectUri}>
-        <SpaceInputs/>
+        <ServiceInputs/>
       </SimpleForm>
     </Create>
   )
 };
 
-export default SpaceCreate;
+export default ServiceCreate;

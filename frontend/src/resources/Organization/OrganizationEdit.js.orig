@@ -27,10 +27,13 @@ import PairLocationInput from '../../components/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';
+<<<<<<< HEAD
+=======
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { EditWithPermissions } from '@semapps/auth-provider';
 
+>>>>>>> main
 
 
 export const OrganizationEdit = props => {
@@ -107,6 +110,7 @@ export const OrganizationEdit = props => {
               target="petr:equipmentOfferedBy"
             >
               <Datagrid isRowSelectable={()=>(true)}>
+                <TextField source="pair:label" />
                 <TextField source="pair:description" />
                 <EditContextualButton parent={record} resource="Equipment" reverseReference="petr:equipmentOfferedBy"/>
                 <DeleteButton redirect={false}/>
@@ -122,6 +126,7 @@ export const OrganizationEdit = props => {
               target="petr:spaceOfferedBy"
             >
               <Datagrid isRowSelectable={()=>(true)}>
+                <TextField source="pair:label" />
                 <TextField source="pair:description" />
                 <EditContextualButton parent={record} resource="Space" reverseReference="petr:spaceOfferedBy"/>
                 <DeleteButton redirect={false}/>

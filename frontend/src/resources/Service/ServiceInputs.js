@@ -6,14 +6,15 @@ import {
   required,
   ReferenceInput,
   ReferenceArrayInput,
+  BooleanInput,
   SelectArrayInput
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 
-export const SpaceInputs = props => (
+export const ServiceInputs = props => (
     <>
       <ReferenceInput
-        source="petr:spaceOfferedBy"
+        source="petr:serviceOfferedBy"
         reference="Organization"
         disabled
         fullWidth
@@ -21,7 +22,6 @@ export const SpaceInputs = props => (
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
       <TextInput source="pair:label" fullWidth validate={[required()]} />
-      <MarkdownInput source="pair:description" multiline fullWidth />
       <ReferenceInput
         source="petr:hasRate"
         reference="Rate"
@@ -29,19 +29,18 @@ export const SpaceInputs = props => (
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
-      <NumberInput source="petr:capacity" defaultValue={1} fullWidth validate={[required()]} />
+      <ReferenceArrayInput source="pair:hasLabels" reference="Label" fullWidth disabled>
+        <SelectArrayInput optionText="pair:label" />
+      </ReferenceArrayInput>
       <ReferenceInput
-        source="petr:hasSpaceType"
-        reference="SpaceType"
-        validate={[required()]}
-        fullWidth
+        source="petr:hasAudience"
+        reference="Audience"
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
-      <ReferenceArrayInput source="pair:locationOf" reference="Equipment" fullWidth disabled>
-        <SelectArrayInput optionText="pair:label" />
-      </ReferenceArrayInput>
+      <BooleanInput source="petr:itinerant" defaultValue={false} />
+      <MarkdownInput source="petr:itinerantDetails" multiline fullWidth />
     </>
 )
 
-export default SpaceInputs;
+export default ServiceInputs;

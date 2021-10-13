@@ -17,7 +17,7 @@ import customReducers from './customReducers';
 const history = createBrowserHistory();
 
 const App = () => {
-    
+
   return (
     <Admin
       title="Mon titre"
