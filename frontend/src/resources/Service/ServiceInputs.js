@@ -1,13 +1,13 @@
 import React from 'react';
 import {
+  ArrayInput,
+  BooleanInput,
   TextInput,
   NumberInput,
   SelectInput,
   required,
   ReferenceInput,
-  ReferenceArrayInput,
-  BooleanInput,
-  SelectArrayInput
+  SimpleFormIterator
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 
@@ -29,9 +29,13 @@ export const ServiceInputs = props => (
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
-      <ReferenceArrayInput source="pair:hasLabels" reference="Label" fullWidth disabled>
-        <SelectArrayInput optionText="pair:label" />
-      </ReferenceArrayInput>
+      <ArrayInput source="petr:hasLabel">
+        <SimpleFormIterator>
+          <ReferenceInput reference="Label">
+            <SelectInput optionText="pair:label" />
+          </ReferenceInput>
+        </SimpleFormIterator>
+      </ArrayInput>
       <ReferenceInput
         source="petr:hasAudience"
         reference="Audience"
