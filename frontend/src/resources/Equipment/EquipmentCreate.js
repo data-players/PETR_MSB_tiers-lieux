@@ -9,6 +9,7 @@ import EquipmentTitle from './EquipmentTitle';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
+import { useCheckPermissions } from '@semapps/auth-provider';
 
 export const EquipmentCreate = props =>{
   const location = useLocation();
@@ -16,6 +17,7 @@ export const EquipmentCreate = props =>{
   const {
       record, // record fetched via dataProvider.getOne() based on the id from the location
   } = useCreateController(props);
+  useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit');
 
   return (
     <Create title={<EquipmentTitle />} {...props} >
