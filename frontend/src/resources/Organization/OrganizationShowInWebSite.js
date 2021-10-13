@@ -3,6 +3,7 @@ import React from 'react';
 import { Grid, Typography, makeStyles } from '@material-ui/core';
 import { 
   ArrayField,
+  BooleanField,
   Datagrid,
   NumberField,
   ReferenceField,
@@ -28,7 +29,8 @@ const EquipmentShow = () => {
   const classes = useStyles();
   
   return (
-    <SimpleShowLayout className={classes.equipmentContainer}>
+    <SimpleShowLayout>
+      <TextField source="pair:label" />
       <ReferenceField source="petr:hasEquipmentType" reference="EquipmentType" link={false}>
         <TextField source="pair:label" />
       </ReferenceField>
@@ -42,6 +44,51 @@ const EquipmentShow = () => {
       <ReferenceField source="petr:hasAccessModality" reference="AccessModality" link={false}>
         <TextField source="pair:label" />
       </ReferenceField>
+      <ReferenceField source="pair:hasLocation" reference="Space" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
+    </SimpleShowLayout>
+  )
+}
+
+const SpaceShow = () => {
+  const classes = useStyles();
+  
+  return (
+    <SimpleShowLayout>
+      <TextField source="pair:label" />
+      <TextField source="pair:description" />
+      <ReferenceField source="petr:hasRate" reference="Rate" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
+      <NumberField source="petr:capacity" />
+      <ReferenceField source="petr:hasSpaceType" reference="SpaceType" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
+      <ReferenceField source="pair:locationOf" reference="Equipment" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
+    </SimpleShowLayout>
+  )
+}
+
+const ServiceShow = () => {
+  const classes = useStyles();
+  
+  return (
+    <SimpleShowLayout>
+      <TextField source="pair:label" />
+      <ReferenceField source="petr:hasRate" reference="Rate" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
+      <ReferenceField source="petr:hasLabel" reference="Label" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
+      <ReferenceField source="petr:hasAudience" reference="Audience" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
+      <BooleanField source="petr:itinerant" />
+      <TextField source="petr:itinerantDetails" />
     </SimpleShowLayout>
   )
 }
@@ -49,12 +96,14 @@ const EquipmentShow = () => {
 const OrganizationShowInWebSite = ({...props}) => {
   const classes = useStyles();
   
+  console.log(0, props);
+  
   return (
     <Show {...props}>
       <Grid container spacing={2}>
       
         <Grid item xs={12} md={3}>
-          <OrganizationShowDetailLayout />
+          <OrganizationShowDetailLayout {...props} />
         </Grid>
         
         <Grid item xs={12} md={6}>
@@ -80,7 +129,31 @@ const OrganizationShowInWebSite = ({...props}) => {
                 target="petr:equipmentOfferedBy"
               >
                 <Datagrid expand={<EquipmentShow />}>
-                  <TextField source="pair:description" />
+                  <TextField source="pair:label" />
+                </Datagrid>
+              </ReferenceManyField>
+            </Tab>
+            
+            <Tab label="Spaces">
+              <ReferenceManyField
+                addLabel={false}
+                reference="Space"
+                target="petr:spaceOfferedBy"
+              >
+                <Datagrid expand={<SpaceShow />}>
+                  <TextField source="pair:label" />
+                </Datagrid>
+              </ReferenceManyField>
+            </Tab>
+            
+            <Tab label="Services">
+              <ReferenceManyField
+                addLabel={false}
+                reference="Service"
+                target="petr:serviceOfferedBy"
+              >
+                <Datagrid expand={<ServiceShow />}>
+                  <TextField source="pair:label" />
                 </Datagrid>
               </ReferenceManyField>
             </Tab>

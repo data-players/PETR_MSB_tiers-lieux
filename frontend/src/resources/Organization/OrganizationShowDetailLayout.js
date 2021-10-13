@@ -13,6 +13,8 @@ import useStyles from './OrganizationShowUseStyles';
 
 const OrganizationShowDetailLayout = ({...props}) => {
   
+  console.log(1, props);
+  
   const classes = useStyles();
   
   const currentUri = useLocation().pathname;
@@ -21,23 +23,18 @@ const OrganizationShowDetailLayout = ({...props}) => {
   const showEquipmentUri = showUri + '/1';
   
   const record = useRecordContext();
-  const state = useSelector(state => state);
-  let customRecord = record;
-  if (state.customState.organization) {
-    customRecord = state.customState.organization;
-  }
   
   return (
     <FullWidthBox className={classes.innerContainer}>
       <MapField
         source="pair:hasLocation"
-        address={customRecord => customRecord['pair:hasLocation'] && customRecord['pair:hasLocation']['pair:label']}
-        latitude={customRecord => customRecord['pair:hasLocation'] && customRecord['pair:hasLocation']['pair:latitude']}
-        longitude={customRecord => customRecord['pair:hasLocation'] && customRecord['pair:hasLocation']['pair:longitude']}
+        address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+        latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+        longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
         address={null}
         addLabel={false}
         className={classes.map}
-        record={customRecord}
+        record={record}
       />
       <Typography component="div" className={classes.subtitle}>
         <Link to={showEquipmentUri} label="Equipement">
