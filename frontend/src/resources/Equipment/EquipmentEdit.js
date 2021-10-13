@@ -10,6 +10,8 @@ import {
   useEditController
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
+import { useCheckPermissions } from '@semapps/auth-provider';
+
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
 
@@ -19,6 +21,9 @@ export const EquipmentEdit = props =>{
       record, // record fetched via dataProvider.getOne() based on the id from the location
   } = useEditController(props);
   const query=queryString.parse(location.search);
+  // const permissions = useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit',`/Organization/${encodeURIComponent(record?.['petr:equipmentOfferedBy'])}/show`);
+  useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit');
+
   return (
     <Edit title={<EquipmentTitle />} {...props} >
       <SimpleForm redirect={query.redirectUri}>

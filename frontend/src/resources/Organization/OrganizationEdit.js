@@ -27,6 +27,10 @@ import PairLocationInput from '../../components/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
+import { EditWithPermissions } from '@semapps/auth-provider';
+
 
 
 export const OrganizationEdit = props => {
@@ -35,7 +39,7 @@ export const OrganizationEdit = props => {
   } = useEditController(props);
 
   return (
-      <Edit title={<Title />} {...props} >
+      <EditWithPermissions title={<Title />} {...props} >
         <TabbedForm>
           <FormTab label="Principal">
             <TextInput source="pair:label" fullWidth validate={[required()]} />
@@ -144,7 +148,7 @@ export const OrganizationEdit = props => {
 
           </FormTab>
         </TabbedForm>
-      </Edit>
+      </EditWithPermissions>
   );
 }
 
