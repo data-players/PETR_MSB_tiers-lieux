@@ -17,32 +17,6 @@ module.exports = [
       path: '/',
     },
   {
-    path: '/persons',
-    acceptedTypes: ['pair:Person']
-  },
-  /*
-  {
-    path: '/places',
-    acceptedTypes: ['pair:Place']
-  },
-  */
-  {
-    path: '/organizations',
-    acceptedTypes: ['pair:Organization'],
-    dereference: ['pair:hasLocation/pair:hasPostalAddress'],
-    newResourcesPermissions: writePermissionsToCreator
-  },
-  /*
-  {
-    path: '/equipments',
-    acceptedTypes: ['petr:Equipment']
-  },
-  {
-    path: '/documents',
-    acceptedTypes: 'pair:Document'
-  },
-  */
-  {
     path: '/access-modalities',
     acceptedTypes: ['petr:AccessModality']
   },
@@ -51,8 +25,15 @@ module.exports = [
     acceptedTypes: ['petr:Audience']
   },
   {
+    path: '/equipments',
+    acceptedTypes: ['petr:Equipment']
+  },
+  {
     path: '/equipment-types',
     acceptedTypes: ['petr:EquipmentType']
+  },
+  {
+    path: '/files'
   },
   {
     path: '/labels',
@@ -67,8 +48,22 @@ module.exports = [
     acceptedTypes: ['pair:OrganizationType']
   },
   {
+    path: '/organizations',
+    acceptedTypes: ['pair:Organization'],
+    dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+    newResourcesPermissions: writePermissionsToCreator
+  },
+  {
     path: '/organization-types',
     acceptedTypes: ['pair:OrganizationType']
+  },
+  {
+    path: '/persons',
+    acceptedTypes: ['pair:Person']
+  },
+  {
+    path: '/rates',
+    acceptedTypes: ['petr:Rate']
   },
   {
     path: '/resources',
@@ -91,11 +86,4 @@ module.exports = [
     path: '/space-types',
     acceptedTypes: ['petr:SpaceType']
   },
-
-
-  /*
-  {
-    path: '/files'
-  }
-  */
 ];
