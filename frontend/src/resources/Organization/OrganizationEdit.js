@@ -107,6 +107,7 @@ export const OrganizationEdit = props => {
               target="petr:equipmentOfferedBy"
             >
               <Datagrid isRowSelectable={()=>(true)}>
+                <TextField source="pair:label" />
                 <TextField source="pair:description" />
                 <EditContextualButton parent={record} resource="Equipment" reverseReference="petr:equipmentOfferedBy"/>
                 <DeleteButton redirect={false}/>
@@ -122,6 +123,7 @@ export const OrganizationEdit = props => {
               target="petr:spaceOfferedBy"
             >
               <Datagrid isRowSelectable={()=>(true)}>
+                <TextField source="pair:label" />
                 <TextField source="pair:description" />
                 <EditContextualButton parent={record} resource="Space" reverseReference="petr:spaceOfferedBy"/>
                 <DeleteButton redirect={false}/>

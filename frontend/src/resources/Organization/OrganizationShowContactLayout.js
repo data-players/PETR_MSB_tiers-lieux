@@ -12,13 +12,7 @@ import useStyles from './OrganizationShowUseStyles';
 const OrganizationShowContactLayout = ({...props}) => {
   
   const classes = useStyles();
-  
   const record = useRecordContext();
-  const state = useSelector(state => state);
-  let customRecord = record;
-  if (state.customState.organization) {
-    customRecord = state.customState.organization;
-  }
   
   return (
     <FullWidthBox className={classes.innerContainer}>
@@ -26,7 +20,7 @@ const OrganizationShowContactLayout = ({...props}) => {
         <span>Informations pratiques</span>
       </Typography>
       <FullWidthBox className={classes.identityContainer}>
-        <ImageField record={customRecord} source="petr:logo" />
+        <ImageField record={record} source="petr:logo" />
         <FullWidthBox className={classes.addressContainer}>
           <Typography component="p" variant="body3">
             Todo : Adresse
@@ -37,7 +31,7 @@ const OrganizationShowContactLayout = ({...props}) => {
         <span>Contact</span>
       </Typography>
       <FullWidthBox className={classes.contactContainer}>
-        <UrlField record={customRecord} source="pair:webPage" />
+        <UrlField record={record} source="pair:webPage" />
         </FullWidthBox>
     </FullWidthBox>
   );
