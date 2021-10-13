@@ -5,7 +5,6 @@ import {
   required,
   SelectInput,
   ReferenceInput,
-  required,
   useGetManyReference,
   useEditController
 } from 'react-admin';
