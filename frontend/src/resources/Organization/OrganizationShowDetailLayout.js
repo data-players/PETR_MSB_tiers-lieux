@@ -27,10 +27,6 @@ const OrganizationShowDetailLayout = ({...props}) => {
     customRecord = state.customState.organization;
   }
   
-  console.log('currentUri', currentUri)
-  console.log('showIndex', showIndex);
-  console.log('showUri', showUri);
-  
   return (
     <FullWidthBox className={classes.innerContainer}>
       <MapField
