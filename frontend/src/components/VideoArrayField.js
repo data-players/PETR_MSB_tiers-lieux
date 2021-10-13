@@ -9,6 +9,12 @@ const VideoArrayField = ({ record, source }) => {
 
   const urls = typeof record[source] === 'string' ? [record[source]] : record[source];
   
+  const VideoLabel = () => {
+    return (
+      <><br /><div>Videos:</div></>
+    )
+  }
+  
   const Video = ({url}) => {
     switch (detectPlayer(url)) {
       case 'basic': return <ReactPlayer url={url} controls/>
@@ -30,7 +36,10 @@ const VideoArrayField = ({ record, source }) => {
   }
     
   return urls.map(url => 
-    <Video url={url}/>
+    <>
+      <VideoLabel />
+      <Video url={url}/>
+    </>
   )
 }
 

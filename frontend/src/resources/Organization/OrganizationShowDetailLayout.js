@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 
 import { Typography, makeStyles } from '@material-ui/core';
 import { Link, useRecordContext } from 'react-admin';
@@ -13,6 +14,11 @@ import useStyles from './OrganizationShowUseStyles';
 const OrganizationShowDetailLayout = ({...props}) => {
   
   const classes = useStyles();
+  
+  const currentUri = useLocation().pathname;
+  const showIndex = currentUri.search('/show');
+  const showUri = currentUri.substring(0, showIndex) + '/show';
+  const showEquipmentUri = showUri + '/1';
   
   const record = useRecordContext();
   const state = useSelector(state => state);
@@ -34,7 +40,7 @@ const OrganizationShowDetailLayout = ({...props}) => {
         record={customRecord}
       />
       <Typography component="div" className={classes.subtitle}>
-        <Link to="/Equipment" label="Equipement">
+        <Link to={showEquipmentUri} label="Equipement">
           Equipements
         </Link>
       </Typography>

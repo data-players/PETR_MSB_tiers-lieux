@@ -9,49 +9,7 @@ module.exports = {
   settings: {
     baseUrl: CONFIG.HOME_URL,
     ontologies,
-    containers: [
-      {
-        path: '/organizations',
-        acceptedTypes: ['pair:Organization'],
-        dereference: [
-          'pair:hasLocation/pair:hasPostalAddress',
-          'petr:serviceOffers',
-        ],
-        disassembly: [{
-            path: 'petr:serviceOffers',
-            container:  process.env.SEMAPPS_HOME_URL + 'services'
-          },
-        ]
-      },
-      {
-        path: '/equipments',
-        acceptedTypes: ['petr:Equipment'],
-      },
-      {
-        path: '/services',
-        acceptedTypes: ['petr:Service'],
-      },
-      {
-        path: '/spaces',
-        acceptedTypes: ['petr:Space'],
-      },
-      '/',
-      '/audiences',
-      '/access-modalities',
-      '/equipments',
-      '/equipment-types',
-      '/labels',
-      '/legal-status',
-      '/networks',
-      '/organizations',
-      '/organization-types',
-      '/persons',
-      '/rates',
-      '/sectors',
-      '/services',
-      '/spaces',
-      '/space-types',
-    ],
+    containers,
     defaultContainerOptions: {
       jsonContext: urlJoin(CONFIG.HOME_URL, 'context.json'),
       allowAnonymousEdit: true,

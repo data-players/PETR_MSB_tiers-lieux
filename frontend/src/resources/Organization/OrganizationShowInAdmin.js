@@ -21,10 +21,15 @@ const OrganizationShowInAdmin = ({...props}) => {
         <div>InAdmin</div>
         <MainList>
           <MarkdownField source="pair:label" />
-          <MarkdownField source="pair:description" />
           <ReferenceField source="pair:hasType" reference="OrganizationType">
             <TextField source="pair:label" />
           </ReferenceField>
+          <MarkdownField source="pair:description" />
+          <ImageField source="petr:logo" />
+          <MultipleImagesField source="pair:depictedBy" max={10} />
+          <VideoArrayField source="petr:videos" />
+          <UrlArrayField source="petr:socialMedias" />
+          <UrlField source="pair:webPage" />
           <MapField
             source="pair:hasLocation"
             address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
@@ -39,14 +44,6 @@ const OrganizationShowInAdmin = ({...props}) => {
           </ReferenceField>
           <MarkdownField source="pair:e-mail" />
           <MarkdownField source="pair:phone" />
-          <ImageField source="petr:logo" />
-          <MultipleImagesField source="pair:depictedBy" max={10} />
-          <VideoArrayField source="petr:videos" />
-          <UrlField source="pair:webPage" />
-          <UrlArrayField source="petr:socialMedias" />
-          <ReferenceField source="petr:hasAudience" reference="Audience">
-            <TextField source="pair:label" />
-          </ReferenceField>
           <ReferenceArrayField reference="Label" source="petr:hasLabels">
             <SeparatedListField linkType={false}>
               <TextField source="pair:label" />
@@ -57,6 +54,9 @@ const OrganizationShowInAdmin = ({...props}) => {
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>
+          <ReferenceField source="petr:hasAudience" reference="Audience">
+            <TextField source="pair:label" />
+          </ReferenceField>
         </MainList>
       </Grid>
     </ShowWithPermissions>

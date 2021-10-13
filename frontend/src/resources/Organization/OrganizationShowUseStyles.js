@@ -62,7 +62,7 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
         maxHeight: '8rem',
       }
     },
-  },
+  }
 }));
 
 export default OrganizationShowUseStyles;
