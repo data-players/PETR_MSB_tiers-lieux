@@ -1,8 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 
-import { Typography, makeStyles } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { Link, useRecordContext } from 'react-admin';
 
 import { MapField } from '@semapps/geo-components';
@@ -12,8 +11,6 @@ import FullWidthBox from '../../commons/FullWidthBox';
 import useStyles from './OrganizationShowUseStyles';
 
 const OrganizationShowDetailLayout = ({...props}) => {
-  
-  console.log(1, props);
   
   const classes = useStyles();
   

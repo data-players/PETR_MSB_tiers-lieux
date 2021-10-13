@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Grid, Typography, makeStyles } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { 
-  ArrayField,
   BooleanField,
   Datagrid,
   NumberField,
@@ -11,12 +10,10 @@ import {
   SimpleShowLayout,
   Tab,
   TabbedShowLayout,
-  TextField,
-  useRecordContext
+  TextField
 } from 'react-admin';
 
-import { SeparatedListField, Show } from "@semapps/archipelago-layout";
-import { MarkdownField } from '@semapps/markdown-components';
+import { Show } from "@semapps/archipelago-layout";
 
 import FullWidthBox from '../../commons/FullWidthBox';
 import MultipleImagesField from '../../components/MultipleImagesField'
@@ -27,7 +24,6 @@ import useStyles from './OrganizationShowUseStyles';
 
 const EquipmentShow = () => {
   const classes = useStyles();
-  
   return (
     <SimpleShowLayout>
       <TextField source="pair:label" />
@@ -53,7 +49,6 @@ const EquipmentShow = () => {
 
 const SpaceShow = () => {
   const classes = useStyles();
-  
   return (
     <SimpleShowLayout>
       <TextField source="pair:label" />
@@ -72,9 +67,8 @@ const SpaceShow = () => {
   )
 }
 
-const ServiceShow = () => {
+const ServiceShow = ({...props}) => {
   const classes = useStyles();
-  
   return (
     <SimpleShowLayout>
       <TextField source="pair:label" />
@@ -88,16 +82,15 @@ const ServiceShow = () => {
         <TextField source="pair:label" />
       </ReferenceField>
       <BooleanField source="petr:itinerant" />
-      <TextField source="petr:itinerantDetails" />
+      { props.record["petr:itinerant"] &&
+        <TextField source="petr:itinerantDetails" />
+      }
     </SimpleShowLayout>
   )
 }
 
 const OrganizationShowInWebSite = ({...props}) => {
   const classes = useStyles();
-  
-  console.log(0, props);
-  
   return (
     <Show {...props}>
       <Grid container spacing={2}>
