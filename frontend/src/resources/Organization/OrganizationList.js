@@ -28,7 +28,7 @@ const OrganizationList = props => {
                 <HomeIcon />
               </Avatar>
             )}
-            linkType="show"
+            linkType="edit"
           />
         )
       },
