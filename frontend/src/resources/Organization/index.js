@@ -1,7 +1,7 @@
 import OrganizationCreate from './OrganizationCreate';
 import OrganizationEdit from './OrganizationEdit';
 import OrganizationList from './OrganizationList';
-import OrganizationShow from './OrganizationShow';
+import OrganizationShow from './OrganizationShow/';
 import HomeIcon from '@material-ui/icons/Build';
 
 export default {

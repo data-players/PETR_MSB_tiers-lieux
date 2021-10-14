@@ -63,6 +63,15 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
         maxHeight: '8rem',
       }
     },
+  },
+  tabbedShowLayout: {
+    marginTop: -16,
+    '& > *': {
+      padding: 0,
+    },
+    '& > *:not(:last-child)': {
+      display: 'none'
+    }
   }
 }));
 

@@ -174,9 +174,9 @@ let theme = createMuiTheme({
     },
     h3: {
       fontFamily: font2,
-      fontSize: 28,
+      fontSize: 24,
       fontStyle: 'normal',
-      fontWeight: '900',
+      fontWeight: '600',
       lineHeight: '33px',
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
         fontSize: 20,

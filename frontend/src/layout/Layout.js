@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import React, { useState } from 'react';
+import { Box, Container, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Notification } from 'react-admin';
@@ -8,15 +9,26 @@ import {
   BreadcrumbsItem
 } from 'react-breadcrumbs-dynamic';
 
-import { Box, Container, Grid, ThemeProvider } from '@material-ui/core';
-
 import AppBar from './AppBar';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import SideMenu from './SideMenu';
 import TreeMenu from './DefaultLayout/TreeMenu/TreeMenu';
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    padding: theme.spacing(2),
+    maxWidth: 1400,
+    margin: 'auto'
+  },
+  adminContainer: {
+    maxWidth: 1400,
+  },
+}));
+
 const Layout = ({ logout, theme, children, title, menu }) => {
+  
+  const classes = useStyles();
 
   const token = localStorage.getItem('token');
   const payload = token && jwtDecode(token);
@@ -37,8 +49,6 @@ const Layout = ({ logout, theme, children, title, menu }) => {
     <ThemeProvider theme={theme}>
 
       {/* <ScrollToTop /> */}
-      {/* <SideMenu menuItems={menuItems} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
       
       <Container maxWidth="lg">
@@ -57,15 +67,15 @@ const Layout = ({ logout, theme, children, title, menu }) => {
         isConnected && state.customState.isAdminContext
           ?
             <Grid container>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <TreeMenu />
               </Grid>
-              <Grid item xs={9}>
+              <Grid item xs={10} className={classes.adminContainer}>
                 <Box>{children}</Box>
               </Grid>
             </Grid>
           :
-            <Grid container>
+            <Grid container className={classes.container}>
               <Grid item xs={12}>
                 <Box>{children}</Box>
               </Grid>
