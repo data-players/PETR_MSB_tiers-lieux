@@ -35,7 +35,6 @@ const OrganizationShowNavLayout = ({...props}) => {
         address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
         latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
         longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-        address={null}
         addLabel={false}
         className={classes.map}
         record={record}

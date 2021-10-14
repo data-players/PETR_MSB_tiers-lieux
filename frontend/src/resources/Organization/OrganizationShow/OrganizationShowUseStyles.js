@@ -65,6 +65,10 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     },
   },
   tabbedShowLayout: {
+    marginTop: -16,
+    '& > *': {
+      padding: 0,
+    },
     '& > *:not(:last-child)': {
       display: 'none'
     }
