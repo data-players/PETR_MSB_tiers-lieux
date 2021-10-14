@@ -20,7 +20,7 @@ const MapPage = (props) => {
   
   return (
     <>
-      <BreadcrumbsItem to='/Map'>Carte</BreadcrumbsItem>
+      <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
       <ListBase 
         basePath="/Organization" 
         resource="Organization"
