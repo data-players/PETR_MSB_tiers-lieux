@@ -32,7 +32,7 @@ const OrganizationShowNavLayout = ({...props}) => {
       </Typography>
       <MapField
         source="pair:hasLocation"
-        address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+        address={null}
         latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
         longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
         addLabel={false}
