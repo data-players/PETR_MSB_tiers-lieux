@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MultipleImagesField = ({ source, max = 2 }) => {
+const MultipleImagesField = ({ source, max = 2, label }) => {
   const classes = useStyles();
   const record = useRecordContext();
   if( !record || !record[source] ) return null;
@@ -35,7 +35,10 @@ const MultipleImagesField = ({ source, max = 2 }) => {
   }
   return(
     <>
-      <h6>{source}</h6>
+      {label
+        ? <h6>{source}</h6>
+        : null
+      }
       <Grid container spacing={2}>
         {imagesArray.slice(0,max).map((url, i) => (
           <Grid item xs={6} key={i} className={classes.images}>

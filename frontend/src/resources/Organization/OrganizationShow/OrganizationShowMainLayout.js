@@ -30,7 +30,7 @@ const OrganizationShowMainLayout = ({...props}) => {
           <Typography component="div" className={classes.description}>
             <TextField source="pair:description" />
           </Typography>
-          <MultipleImagesField source="pair:depictedBy" max={2} />
+          <MultipleImagesField source="pair:depictedBy" max={2} label={false}/>
         </FullWidthBox>
       </Tab>
       <Tab label="Equipements">
