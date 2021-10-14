@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+  ArrayInput,
+  BooleanInput,
   TextInput,
-  NumberInput,
   SelectInput,
   required,
   ReferenceInput,
-  ReferenceArrayInput,
-  BooleanInput,
-  SelectArrayInput
+  SimpleFormIterator
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 
-export const ServiceInputs = props => (
+export const ServiceInputs = props => {
+  
+  const [itinerant, setItinerant] = useState({});
+
+  return (
     <>
       <ReferenceInput
         source="petr:serviceOfferedBy"
@@ -29,18 +32,25 @@ export const ServiceInputs = props => (
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
-      <ReferenceArrayInput source="pair:hasLabels" reference="Label" fullWidth disabled>
-        <SelectArrayInput optionText="pair:label" />
-      </ReferenceArrayInput>
+      <ArrayInput source="petr:hasLabel">
+        <SimpleFormIterator>
+          <ReferenceInput reference="Label">
+            <SelectInput optionText="pair:label" />
+          </ReferenceInput>
+        </SimpleFormIterator>
+      </ArrayInput>
       <ReferenceInput
         source="petr:hasAudience"
         reference="Audience"
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
-      <BooleanInput source="petr:itinerant" defaultValue={false} />
-      <MarkdownInput source="petr:itinerantDetails" multiline fullWidth />
+      <BooleanInput source="petr:itinerant" defaultValue={false} onChange={setItinerant} />
+      { itinerant &&
+        <MarkdownInput source="petr:itinerantDetails" multiline fullWidth />
+      }
     </>
-)
+  )
+}
 
 export default ServiceInputs;

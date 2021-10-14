@@ -17,6 +17,7 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
   subtitle: {
     display: 'block',
     padding: theme.spacing(1),
+    marginBottom: theme.spacing(2),
     border: '1px solid lightgrey',
   },
   identityContainer: {
