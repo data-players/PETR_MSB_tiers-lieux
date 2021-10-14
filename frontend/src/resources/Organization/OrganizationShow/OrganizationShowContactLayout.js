@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Typography } from '@material-ui/core';
-import { ImageField, UrlField, useRecordContext } from 'react-admin';
+import { Box, Typography } from '@material-ui/core';
+import { ImageField, TextField, UrlField, useRecordContext } from 'react-admin';
 
 import FullWidthBox from '../../../commons/FullWidthBox';
 
 import useStyles from './OrganizationShowUseStyles';
-
 
 const OrganizationShowContactLayout = ({...props}) => {
   
@@ -22,7 +21,12 @@ const OrganizationShowContactLayout = ({...props}) => {
         <ImageField record={record} source="petr:logo" />
         <FullWidthBox className={classes.addressContainer}>
           <Typography component="p" variant="body3">
-            Todo : Adresse
+            <Box>
+              <TextField record={record} source="pair:label" variant="subtitle1"/>
+            </Box>
+            <Box>
+              <TextField record={record['pair:hasLocation']} source="pair:label" />
+            </Box>
           </Typography>
         </FullWidthBox>
       </FullWidthBox>
