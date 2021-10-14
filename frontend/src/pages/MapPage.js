@@ -13,11 +13,14 @@ import Filter from '../commons/Filter';
 import CardsList from '../commons/lists/CardsList';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+
 const MapPage = (props) => {
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   
   return (
     <>
+      <BreadcrumbsItem to='/Map'>Carte</BreadcrumbsItem>
       <ListBase 
         basePath="/Organization" 
         resource="Organization"

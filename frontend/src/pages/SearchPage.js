@@ -8,8 +8,12 @@ import Goals from './Goals/Goals';
 import CoursesTypes from './CoursesTypes';
 import CourseSubHeader from "../../resources/Activity/Course/CourseSubHeader";
 */
+
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+
 const SearchPage = () => (
   <>
+    <BreadcrumbsItem to='/Search'>Rechercher</BreadcrumbsItem>
     <div>test SearchPage</div>
     {/*
     <Welcome />

@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Notification } from 'react-admin';
+import {
+  Breadcrumbs,
+  BreadcrumbsItem
+} from 'react-breadcrumbs-dynamic';
 
-import { Box, Grid, ThemeProvider } from '@material-ui/core';
+import { Box, Container, Grid, ThemeProvider } from '@material-ui/core';
 
 import AppBar from './AppBar';
 import Footer from './Footer';
@@ -26,7 +30,6 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   ];
 
   const state = useSelector(state => state);
-  // console.log('customState', state.customState);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -37,6 +40,19 @@ const Layout = ({ logout, theme, children, title, menu }) => {
       {/* <SideMenu menuItems={menuItems} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
 
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
+      
+      <Container maxWidth="lg">
+        {
+          window.location.pathname!='/' &&
+            <Box id="breadcrumpContainer" style={{padding:'10px'}}>
+              <Breadcrumbs separator=" / " finalItem="span" finalProps={{
+                style: {color: 'gray'}
+              }}/>
+            </Box>
+        }
+        <BreadcrumbsItem to='/'>Accueil</BreadcrumbsItem>
+      </Container>
+
       {
         isConnected && state.customState.isAdminContext
           ?
