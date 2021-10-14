@@ -99,7 +99,12 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
               <MenuIcon />
             </IconButton>
             <Box flexGrow={1} />
-            <LogoTitle title={title} justifyContent="flex-start" classes={{ menuLink: classes.menuLink }} />
+            <LogoTitle 
+              title={title} 
+              justifyContent="flex-start" 
+              classes={{ menuLink: classes.menuLink }} 
+              onClick={() => { contextPositioning(dispatch, { link: '/', admin: false }) }}
+            />
             <Box flexGrow={1} />
             <Box justifyContent="flex-end" className={classes.loginBackground}>
               <UserMenu logout={<LogoutButton />} />
@@ -108,7 +113,12 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
         ) : (
           <LargeContainer className={classes.header}>
             <Box width={1} display="flex" alignItems="center">
-              <LogoTitle title={title} justifyContent="flex-start" classes={{ menuLink: classes.menuLink }} />
+              <LogoTitle 
+                title={title} 
+                justifyContent="flex-start" 
+                classes={{ menuLink: classes.menuLink }}
+                onClick={() => { contextPositioning(dispatch, { link: '/', admin: false }) }}
+              />
               <Box flexGrow={1} />
               <Box display="flex" justifyContent="center" width={1}>
                 {menuItems.map((menuItem) => (
