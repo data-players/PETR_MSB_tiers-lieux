@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const MultipleImagesField = ({ source, max = 2 }) => {
   const classes = useStyles();
   const record = useRecordContext();
-  if( !record ) return null;
+  if( !record || !record[source] ) return null;
   let imagesArray = [];
   if( Array.isArray(record[source]) ) {
     imagesArray = record[source];
