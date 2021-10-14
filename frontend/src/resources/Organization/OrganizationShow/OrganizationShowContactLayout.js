@@ -1,10 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { Typography, makeStyles } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { ImageField, UrlField, useRecordContext } from 'react-admin';
 
-import FullWidthBox from '../../commons/FullWidthBox';
+import FullWidthBox from '../../../commons/FullWidthBox';
 
 import useStyles from './OrganizationShowUseStyles';
 

@@ -6,11 +6,11 @@ import { Link, useRecordContext } from 'react-admin';
 
 import { MapField } from '@semapps/geo-components';
 
-import FullWidthBox from '../../commons/FullWidthBox';
+import FullWidthBox from '../../../commons/FullWidthBox';
 
 import useStyles from './OrganizationShowUseStyles';
 
-const OrganizationShowDetailLayout = ({...props}) => {
+const OrganizationShowNavLayout = ({...props}) => {
   
   const classes = useStyles();
   
@@ -59,4 +59,4 @@ const OrganizationShowDetailLayout = ({...props}) => {
   );
 };
 
-export default OrganizationShowDetailLayout;
+export default OrganizationShowNavLayout;
