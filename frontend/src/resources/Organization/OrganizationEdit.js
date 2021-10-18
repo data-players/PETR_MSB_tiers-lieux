@@ -46,7 +46,6 @@ export const OrganizationEdit = props => {
             <ReferenceInput
               source="pair:hasType"
               reference="OrganizationType"
-              validate={[required()]}
             >
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
