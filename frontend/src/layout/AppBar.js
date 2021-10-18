@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, makeStyles, Typography, AppBar as MuiAppBar, useMediaQuery, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { LogoutButton } from '@semapps/auth-provider';
@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
     },
+    borderBottom: 'transparent 2px solid'
   },
   linkBoxSelected: {
     [theme.breakpoints.down('md')]: {
@@ -82,13 +83,14 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
   
   const contextPositioning = ( (dispatch, menuItem) => {
     if (menuItem.admin) {
-      console.log('===' + ENABLE_ADMIN_CONTEXT);
       dispatch({ type: ENABLE_ADMIN_CONTEXT })
     } else {
-      console.log('===' + DISABLE_ADMIN_CONTEXT);
       dispatch({ type: DISABLE_ADMIN_CONTEXT })      
     }
   });
+  
+  const state = useSelector(state => state);
+  const isAdminContext = state.customState.isAdminContext;
 
   return (
     <MuiAppBar position="sticky" className={classes.appBar}>
@@ -127,7 +129,12 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
                     height={40}
                     alignItems="center"
                     justifyContent="center"
-                    className={location.pathname.startsWith(menuItem.link) ? classes.linkBoxSelected : classes.linkBox}
+                    className={ 
+                      ( ! isAdminContext && ! menuItem.admin && location.pathname.startsWith(menuItem.link) )
+                      || ( isAdminContext && menuItem.admin )
+                        ? classes.linkBoxSelected 
+                        : classes.linkBox
+                    }
                     m={2}
                     key={menuItem.link}
                   >

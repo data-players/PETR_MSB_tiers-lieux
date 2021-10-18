@@ -1,41 +1,31 @@
 import React from 'react';
-/*
-import NextEvents from '../../commons/lists/EventsList/NextEvents.js';
-import Welcome from './Welcome/Welcome';
-import FeaturedList from '../../commons/lists/FeaturedList/FeaturedList';
-import PlaceSubHeader from '../../resources/Place/PlaceSubHeader';
-import Goals from './Goals/Goals';
-import CoursesTypes from './CoursesTypes';
-import CourseSubHeader from "../../resources/Activity/Course/CourseSubHeader";
-*/
-const AboutPage = () => (
-  <>
-    <div>test AboutPage</div>
-    {/*
-    <Welcome />
-    <FeaturedList
-      resource="Place"
-      basePath="/Place"
-      title="Les lieux"
-      subtitle="A visiter"
-      headComment="Partez à la découvertes de lieux inspirants et allez à la rencontre de personnes qui ont choisis d’être acteurs de la transition."
-      linkText="Voir tous les lieux"
-      CardSubHeaderComponent={PlaceSubHeader}
-    />
-    <Goals />
-    <FeaturedList
-      resource="Course"
-      basePath="/Course"
-      title="Les parcours"
-      subtitle="Thématiques & géographiques"
-      headComment="Tu rêves de partir sur les routes pour découvrir des savoirs faire ou même apprendre un métier sur le terrain? Découvre nos parcours."
-      linkText="Voir tous les parcours"
-      CardSubHeaderComponent={CourseSubHeader}
-    />
-    <CoursesTypes />
-    <NextEvents />
-    */}
-  </>
-);
+import { Box, Typography } from '@material-ui/core';
+import useStyles from './PageUseStyles';
+
+const AboutPage = () => {
+  const classes = useStyles();
+  return (
+    <Box className={classes.mainContainer} variant="body1">
+      <Typography variant="h1" component="h1">
+        Qui-sommes-nous ?
+      </Typography>
+      <Typography variant="h2" component="h2">
+        Lorem ipsum
+      </Typography>
+      <Typography variant="body1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ante quam, aliquet eu ultricies ac, lobortis sed tortor. Integer et suscipit orci. Ut auctor, purus in porttitor varius, urna lorem placerat neque, eget efficitur augue magna id erat. Sed consectetur interdum velit quis laoreet. Vestibulum lectus elit, bibendum eu nisl a, mollis consequat nisi. Sed in turpis rutrum, consequat tellus mattis, dapibus risus. Aenean consequat, odio non imperdiet euismod, dui leo cursus odio, non posuere turpis purus non diam.
+      </Typography>
+      <Typography variant="h2" component="h2">
+        Vivamus a risus posuere
+      </Typography>
+      <Typography variant="body1">
+        Vivamus a risus posuere, molestie sapien pellentesque, eleifend quam. Donec eget interdum elit. Duis urna nunc, faucibus in volutpat vel, efficitur id orci. Sed vitae accumsan sapien. Nulla mattis vulputate justo, vitae dictum velit accumsan eu. Vestibulum tempus tempus tempus. Fusce nec feugiat nisi.
+      </Typography>
+      <Typography variant="body1">
+        Proin suscipit laoreet dignissim. Sed metus sem, ultricies ac auctor nec, luctus eu diam. Nullam eget convallis sem. Donec diam nunc, malesuada ac risus pharetra, fringilla tincidunt mi. Nam semper dapibus felis eu facilisis. Suspendisse viverra vulputate odio, sit amet iaculis justo suscipit ac. Donec ut enim dictum, aliquet ligula in, commodo massa. Mauris pulvinar elit pulvinar egestas lobortis. Sed a fringilla magna. Proin bibendum erat vel nibh cursus, iaculis mollis urna lacinia. Quisque tincidunt ac purus a suscipit. Pellentesque dui velit, feugiat vel posuere vitae, mollis at lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum eu sapien erat. Nunc consectetur eros vel tortor venenatis, non pulvinar nulla vulputate.
+      </Typography>
+    </Box>
+  )
+}
 
 export default AboutPage;

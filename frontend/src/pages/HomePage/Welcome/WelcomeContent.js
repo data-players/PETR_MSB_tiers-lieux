@@ -8,39 +8,20 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  /*
-  text: {
-    color: theme.palette.white.main,
-    textAlign: 'center',
-    fontSize: 48,
-  },
-  */
   subtitleText: {
     color: theme.palette.white.main,
     textAlign: 'center',
     maxWidth: 898,
     marginLeft: 40,
     marginRight: 40,
-    fontWeight: 'bold',
+    fontWeight: 600,
+    fontSize: '120%',
+    lineHeight: '150%',
     [theme.breakpoints.down('xs')]: {
       marginLeft: 0,
       marginRight: 0,
     },
   },
-  /*
-  textBar: {
-    width: '51px',
-    height: '2px',
-    backgroundColor: theme.palette.white.main,
-    marginTop: 10,
-    marginBottom: 20,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    [theme.breakpoints.down('xs')]: {
-      marginTop: 20,
-    },
-  },
-  */
   container: {
     zIndex: 0,
     backgroundImage:
@@ -68,12 +49,6 @@ const WelcomeContent = () => {
     <FullWidthBox className={classes.root}>
       <LargeContainer className={classes.container}>
         <Box display="flex" justifyContent="center" flexDirection="column" justifySelf="center">
-          {/*-
-          <Typography variant="h1" className={classes.text}>
-            Apprendre en voyageant
-          </Typography>
-          <div className={classes.textBar} />
-          */}
           <Typography variant="body1" className={classes.subtitleText} component="div">
             Le réseau des tiers lieux du territoire Mâconnais Sud Bourgogne. Mailler le territoire et le mettre en réseau pour permettre à chacune et chacun de disposer de ces espaces et services
           </Typography>
