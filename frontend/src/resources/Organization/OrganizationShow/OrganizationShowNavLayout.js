@@ -6,11 +6,11 @@ import { Link, useRecordContext } from 'react-admin';
 
 import { MapField } from '@semapps/geo-components';
 
-import FullWidthBox from '../../commons/FullWidthBox';
+import FullWidthBox from '../../../commons/FullWidthBox';
 
 import useStyles from './OrganizationShowUseStyles';
 
-const OrganizationShowDetailLayout = ({...props}) => {
+const OrganizationShowNavLayout = ({...props}) => {
   
   const classes = useStyles();
   
@@ -32,10 +32,9 @@ const OrganizationShowDetailLayout = ({...props}) => {
       </Typography>
       <MapField
         source="pair:hasLocation"
-        address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+        address={null}
         latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
         longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-        address={null}
         addLabel={false}
         className={classes.map}
         record={record}
@@ -59,4 +58,4 @@ const OrganizationShowDetailLayout = ({...props}) => {
   );
 };
 
-export default OrganizationShowDetailLayout;
+export default OrganizationShowNavLayout;
