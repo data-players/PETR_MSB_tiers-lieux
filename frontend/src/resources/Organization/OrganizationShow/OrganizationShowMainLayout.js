@@ -36,8 +36,6 @@ const OrganizationShowMainLayout = ({...props}) => {
     case '/show/3' : breadcrumbsTabLabel = 'Services'; break;
   }
   
-  console.log(currentUri.replace('showSuffix', '/show'));
-  
   return (
     <>
       { ! props.isAdminContext &&
