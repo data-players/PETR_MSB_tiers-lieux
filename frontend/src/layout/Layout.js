@@ -2,7 +2,6 @@ import jwtDecode from 'jwt-decode';
 import React, { useState } from 'react';
 import { Box, Container, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { Notification } from 'react-admin';
 import {
   Breadcrumbs,
@@ -42,7 +41,6 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   ];
 
   const state = useSelector(state => state);
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -62,11 +60,11 @@ const Layout = ({ logout, theme, children, title, menu }) => {
         }
         <BreadcrumbsItem to='/'>Accueil</BreadcrumbsItem>
       </Container>
-
       {
         isConnected && state.customState.isAdminContext
           ?
             <Grid container>
+              {<BreadcrumbsItem to='/Organization'>Admin</BreadcrumbsItem>}
               <Grid item xs={2}>
                 <TreeMenu />
               </Grid>

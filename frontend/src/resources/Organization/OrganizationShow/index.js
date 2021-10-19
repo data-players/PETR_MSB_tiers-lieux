@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 
 import { Grid } from '@material-ui/core';
 import { useShowController } from 'react-admin';
@@ -12,16 +14,24 @@ import OrganizationShowNavLayout from './OrganizationShowNavLayout';
 
 const OrganizationShow = ({...props}) => {
   const { record } = useShowController(props);
+  const state = useSelector(state => state);
+  const isAdminContext = state.customState.isAdminContext;
+  const currentUri = useLocation().pathname;
+  
   return (
     <>
-      <BreadcrumbsItem to={props.match.url}>{record ? record["pair:label"] : ''}</BreadcrumbsItem>
-      <Show {...props}>
+      { ! isAdminContext &&
+        <>
+          <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
+        </>
+      }
+      <Show {...props} >
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <OrganizationShowNavLayout {...props} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <OrganizationShowMainLayout {...props} />
+            <OrganizationShowMainLayout label={record ? record["pair:label"]: ""} isAdminContext={isAdminContext} {...props} />
           </Grid>
           <Grid item xs={12} md={3}>
             <OrganizationShowContactLayout {...props} />

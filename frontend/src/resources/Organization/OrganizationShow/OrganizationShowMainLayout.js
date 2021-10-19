@@ -36,9 +36,14 @@ const OrganizationShowMainLayout = ({...props}) => {
     case '/show/3' : breadcrumbsTabLabel = 'Services'; break;
   }
   
+  console.log(currentUri.replace('showSuffix', '/show'));
+  
   return (
     <>
-      { breadcrumbsTabLabel &&
+      { ! props.isAdminContext &&
+        <BreadcrumbsItem to={currentUri.replace(showSuffix, '/show')}>{props.label}</BreadcrumbsItem>
+      }
+      { ! props.isAdminContext && breadcrumbsTabLabel &&
         <BreadcrumbsItem to={currentUri}>{breadcrumbsTabLabel}</BreadcrumbsItem>
       }
       <TabbedShowLayout className={classes.tabbedShowLayout}>
