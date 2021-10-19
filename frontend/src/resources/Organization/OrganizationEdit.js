@@ -28,7 +28,6 @@ import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
 import { EditWithPermissions } from '@semapps/auth-provider';
 
 

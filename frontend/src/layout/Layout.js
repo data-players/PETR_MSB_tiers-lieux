@@ -1,7 +1,5 @@
-import jwtDecode from 'jwt-decode';
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { Notification } from 'react-admin';
 
 import { Box, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
@@ -23,32 +21,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const getAdminContext = ( (location, noAdminMenuItems) => {
+  
+  if (location.pathname === '/') return false;
+  
+  if (location.pathname.match('^.*/show/?[1-9]?$')) return false;
+  
+  return noAdminMenuItems.find(menuItem => 
+    menuItem.link === location.pathname
+  ) === undefined
+});
+
 const Layout = ({ logout, theme, children, title, menu }) => {
   
   const classes = useStyles();
 
-  const token = localStorage.getItem('token');
-  const payload = token && jwtDecode(token);
-  const isConnected = payload && payload.webId !== '';
-
+  const location = useLocation();
   const menuItems = [
     { link: '/About', name: 'Qui sommes-nous ?', admin: false },
     { link: '/Map', name: 'Carte des tiers lieux', admin: false },
     { link: '/Search', name: 'Rechercher un service', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
   ];
-
-  const state = useSelector(state => state);
-
+  
+  const noAdminMenuItems = menuItems.filter(menuItem => ! menuItem.admin)
+  const isAdminContext = getAdminContext(location, noAdminMenuItems);
+  
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
 
       {/* <ScrollToTop /> */}
-      <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
+      <AppBar 
+        title={title} 
+        logout={logout} 
+        menuItems={menuItems} 
+        setSidebarOpen={setSidebarOpen} 
+        location={location}
+        isAdminContext={isAdminContext} 
+      />
       {
-        isConnected && state.customState.isAdminContext
+        isAdminContext
           ?
             <Grid container>
               <Grid item xs={2}>

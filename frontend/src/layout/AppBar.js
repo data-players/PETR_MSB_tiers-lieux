@@ -1,17 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Box, makeStyles, Typography, AppBar as MuiAppBar, useMediaQuery, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { LogoutButton } from '@semapps/auth-provider';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LogoTitle from './LogoTitle';
 import FullWidthBox from '../commons/FullWidthBox';
 import LargeContainer from '../commons/LargeContainer';
 import { UserMenu } from '@semapps/auth-provider';
-import { 
-  ENABLE_ADMIN_CONTEXT,
-  DISABLE_ADMIN_CONTEXT
-} from '../customActions';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -72,26 +67,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
-
-  menuItems = menuItems.filter(e => e.admin === false || isConnected);
+const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) => {
 
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
-  const location = useLocation();
-  const dispatch = useDispatch();
   
-  const contextPositioning = ( (dispatch, menuItem) => {
-    if (menuItem.admin) {
-      dispatch({ type: ENABLE_ADMIN_CONTEXT })
-    } else {
-      dispatch({ type: DISABLE_ADMIN_CONTEXT })      
-    }
-  });
-  
-  const state = useSelector(state => state);
-  const isAdminContext = state.customState.isAdminContext;
-
   return (
     <MuiAppBar position="sticky" className={classes.appBar}>
       <FullWidthBox>
@@ -105,7 +85,6 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
               title={title} 
               justifyContent="flex-start" 
               classes={{ menuLink: classes.menuLink }} 
-              onClick={() => { contextPositioning(dispatch, { link: '/', admin: false }) }}
             />
             <Box flexGrow={1} />
             <Box justifyContent="flex-end" className={classes.loginBackground}>
@@ -119,7 +98,6 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
                 title={title} 
                 justifyContent="flex-start" 
                 classes={{ menuLink: classes.menuLink }}
-                onClick={() => { contextPositioning(dispatch, { link: '/', admin: false }) }}
               />
               <Box flexGrow={1} />
               <Box display="flex" justifyContent="center" width={1}>
@@ -130,15 +108,14 @@ const AppBar = ({ menuItems, setSidebarOpen, title, isConnected }) => {
                     alignItems="center"
                     justifyContent="center"
                     className={ 
-                      ( ! isAdminContext && ! menuItem.admin && location.pathname.startsWith(menuItem.link) )
-                      || ( isAdminContext && menuItem.admin )
+                      ( location.pathname === menuItem.link || ( isAdminContext && menuItem.admin ) )
                         ? classes.linkBoxSelected 
                         : classes.linkBox
                     }
                     m={2}
                     key={menuItem.link}
                   >
-                    <Link to={menuItem.link} className={classes.menuLink} onClick={() => { contextPositioning(dispatch, menuItem) }}>
+                    <Link to={menuItem.link} className={classes.menuLink} >
                       <Typography variant="subtitle2" className={classes.menuText}>
                         {menuItem.name}
                       </Typography>

@@ -12,7 +12,6 @@ import HomePage from './pages/HomePage/HomePage';
 import Layout from './layout/Layout';
 import theme from './config/theme';
 import customRoutes from './customRoutes';
-import customReducers from './customReducers';
 
 const history = createBrowserHistory();
 
@@ -31,7 +30,6 @@ const App = () => {
       layout={Layout}
       theme={theme}
       customRoutes={customRoutes}
-      customReducers={{customState: customReducers}}
     >
       {Object.entries(resources).map(([key, resource]) => (
         <Resource key={key} name={key} {...resource.config} />
