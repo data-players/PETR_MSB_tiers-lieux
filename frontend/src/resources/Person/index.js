@@ -1,4 +1,4 @@
-import PersonCreate from "./PersonCreate";
+// import PersonCreate from "./PersonCreate";
 import PersonEdit from './PersonEdit';
 import PersonList from './PersonList';
 import PersonShow from './PersonShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: PersonList,
     show: PersonShow,
-    create: PersonCreate,
+//    create: PersonCreate,
     edit: PersonEdit,
     icon: PersonIcon,
     options: {
