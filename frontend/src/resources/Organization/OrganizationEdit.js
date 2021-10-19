@@ -31,7 +31,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { EditWithPermissions } from '@semapps/auth-provider';
 
-
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
 export const OrganizationEdit = props => {
   const {
@@ -39,6 +39,7 @@ export const OrganizationEdit = props => {
   } = useEditController(props);
 
   return (
+    <>
       <EditWithPermissions title={<Title />} {...props} >
         <TabbedForm>
           <FormTab label="Principal">
@@ -148,6 +149,7 @@ export const OrganizationEdit = props => {
           </FormTab>
         </TabbedForm>
       </EditWithPermissions>
+    </>
   );
 }
 
