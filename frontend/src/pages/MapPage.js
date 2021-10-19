@@ -44,12 +44,6 @@ const MapPage = (props) => {
               label="Type de lieu"
             />,
             <Filter
-              reference="LegalStatus"
-              source="petr:hasLegalStatus"
-              filter={{ a: 'petr:LegalStatus' }}
-              label="Modèle juridique"
-            />,
-            <Filter
               reference="Label"
               source="petr:hasLabels"
               filter={{ a: 'petr:Label' }}
