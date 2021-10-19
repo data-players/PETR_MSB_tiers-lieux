@@ -45,7 +45,9 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   return (
     <ThemeProvider theme={theme}>
 
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
+      <SideMenu menuItems={menuItems} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
       {
         isConnected && state.customState.isAdminContext
