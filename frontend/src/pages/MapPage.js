@@ -1,23 +1,34 @@
 import React from 'react';
 
-import { Avatar, Box, useMediaQuery } from '@material-ui/core';
+import { Avatar, Box, makeStyles, Typography } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import ListIcon from '@material-ui/icons/List';
 import MapIcon from '@material-ui/icons/Map';
 
-import { List, ListBase, ShowButton, SimpleList, TextField } from 'react-admin';
+import { ImageField,  ListBase, ReferenceField, ShowButton, SimpleList, TextField } from 'react-admin';
 
 import { MapList } from '@semapps/geo-components';
 
 import Filter from '../commons/Filter';
-import CardsList from '../commons/lists/CardsList';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
+const useStyles = makeStyles(theme => ({
+  popupImageContainer: { 
+    textAlign: 'center'
+  },
+  popupTitle: {
+    fontWeight: 600,
+    textTransform: 'capitalize'
+  },
+  popupTextContainer: {
+    marginBottom: theme.spacing(1)
+  },
+}));
+
 const MapPage = (props) => {
-  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
-  
+  const classes = useStyles();
   return (
     <>
       <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
@@ -33,13 +44,13 @@ const MapPage = (props) => {
               reference="OrganizationType"
               source="pair:hasType"
               filter={{ a: 'pair:OrganizationType' }}
-              label="Type d'organisation"
+              label="Type de lieu"
             />,
             <Filter
               reference="LegalStatus"
               source="petr:hasLegalStatus"
               filter={{ a: 'petr:LegalStatus' }}
-              label="Nature juridique"
+              label="Modèle juridique"
             />,
             <Filter
               reference="Label"
@@ -78,9 +89,24 @@ const MapPage = (props) => {
                   description={record => record['pair:description']}
                   popupContent={({ record, basePath }) => (
                     <>
-                      <TextField record={record} source="pair:label" variant="body2" color="secondary" />
-                      <br />
-                      <ShowButton record={record} basePath={basePath} />
+                      <Box className={classes.popupImageContainer}>
+                        <ImageField record={record} source="petr:logo" className={classes.popupImage} />
+                      </Box>
+                      <Box className={classes.popupTextContainer}>
+                        <Typography component="h3">
+                          <TextField record={record} source="pair:label" className={classes.popupTitle} />
+                        </Typography>
+                        <TextField record={record['pair:hasLocation']} source="pair:label" />
+                      </Box>
+                      <Box className={classes.popupTextContainer}>
+                        <Typography component="h3" className={classes.popupTitle}>
+                          Type :
+                        </Typography>
+                        <ReferenceField record={record} source="pair:hasType" reference="OrganizationType" link={false}>
+                          <TextField source="pair:label" />
+                        </ReferenceField>
+                      </Box>
+                      <ShowButton record={record} basePath={basePath} label ={"+ d'infos"}/>
                     </>
                   )}
                 />
