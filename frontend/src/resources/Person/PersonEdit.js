@@ -6,7 +6,7 @@ import MarkdownInput from '../../markdown/MarkdownInput'
 
 export const PersonEdit = props => (
     <Edit title={<PersonTitle />} {...props} >
-        <SimpleForm redirect="show" >
+        <SimpleForm redirect="list" >
             <TextInput source="pair:label" fullWidth />
             <MarkdownInput multiline source="pair:description" fullWidth />
         </SimpleForm>
