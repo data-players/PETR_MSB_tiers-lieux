@@ -74,28 +74,46 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     }
   },
   modal: {
-    position: 'absolute',
+    position: 'fixed',
     boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
-    top: '10%',
-    right: '10%',
-    bottom: '10%',
-    left: '10%',
+    top: '5%',
+    right: '5%',
+    bottom: '5%',
+    left: '5%',
     zIndex: 99999,
-    padding: '64px !important',
+    padding: '32px !important',
     background: 'rgb(240, 240, 240)',
     overflowY: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      top: '10%',
+      right: '10%',
+      bottom: '10%',
+      left: '10%',
+    },
+    [theme.breakpoints.up('md')]: {
+      padding: '64px !important',
+    },
+
   },
   modalCloseIcon: {
-    position: 'absolute',   
-    top: 16,
-    right: 16,
+    position: 'fixed',   
+    top: 'calc(5% + 8px)',
+    right: 'calc(5% + 8px)',
     transform: 'scale(1.25)',
     color: 'black',
     opacity: 0.75,
     cursor: 'pointer',
     '&:hover': {
       opacity: 1,
-    }
+    },
+    [theme.breakpoints.up('sm')]: {
+      top: 'calc(10% + 8px)',
+      right: 'calc(10% + 8px)',
+    },
+    [theme.breakpoints.up('md')]: {
+      top: 'calc(10% + 16px)',
+      right: 'calc(10% + 16px)',
+    },
   }
 }));
 
