@@ -45,16 +45,18 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   return (
     <ThemeProvider theme={theme}>
 
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
+      <SideMenu menuItems={menuItems} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      
       <AppBar title={title} logout={logout} menuItems={menuItems} setSidebarOpen={setSidebarOpen} isConnected={isConnected} />
       {
         isConnected && state.customState.isAdminContext
           ?
             <Grid container>
-              <Grid item xs={2}>
+              <Grid item xs={0} sm={3} lg={2}>
                 <TreeMenu />
               </Grid>
-              <Grid item xs={10} className={classes.adminContainer}>
+              <Grid item xs={12} sm={9} lg={10} className={classes.adminContainer}>
                 <Box>{children}</Box>
               </Grid>
             </Grid>
