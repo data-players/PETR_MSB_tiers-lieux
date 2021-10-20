@@ -10,6 +10,7 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import queryString from 'query-string';
+import Title from '../_Components/Title';
 
 export const SpaceEdit = props =>{
   const location = useLocation();
@@ -19,7 +20,11 @@ export const SpaceEdit = props =>{
   const query=queryString.parse(location.search);
   useCheckPermissions(record?.['petr:spaceOfferedBy'],'edit');
   return (
-    <Edit title={<SpaceTitle />} {...props} >
+    <Edit
+      title={<SpaceTitle />}
+      actions={<Title record={record} hasBackButton={true} />}
+      {...props}
+    >
       <SimpleForm redirect={query.redirectUri}>
         <SpaceInputs/>
       </SimpleForm>

@@ -10,6 +10,7 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import queryString from 'query-string';
+import Title from '../_Components/Title';
 
 export const ServiceEdit = props =>{
   const location = useLocation();
@@ -20,7 +21,11 @@ export const ServiceEdit = props =>{
   useCheckPermissions(record?.['petr:serviceOfferedBy'],'edit');
 
   return (
-    <Edit title={<ServiceTitle />} {...props} >
+    <Edit
+      title={<ServiceTitle />}
+      actions={<Title record={record} hasBackButton={true} />}
+      {...props}
+    >
       <SimpleForm redirect={query.redirectUri}>
         <ServiceInputs/>
       </SimpleForm>

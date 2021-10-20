@@ -10,6 +10,7 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
 import { useCheckPermissions } from '@semapps/auth-provider';
+import Title from '../_Components/Title';
 
 export const EquipmentCreate = props =>{
   const location = useLocation();
@@ -20,7 +21,11 @@ export const EquipmentCreate = props =>{
   useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit');
 
   return (
-    <Create title={<EquipmentTitle />} {...props} >
+    <Create 
+      title={<EquipmentTitle />}
+      actions={<Title record={record} hasBackButton={true} />}
+      {...props}
+    >
       <SimpleForm redirect={query.redirectUri}>
         <EquipmentInputs orga={record}/>
       </SimpleForm>

@@ -14,6 +14,7 @@ import { useCheckPermissions } from '@semapps/auth-provider';
 
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
+import Title from '../_Components/Title';
 
 export const EquipmentEdit = props =>{
   const location = useLocation();
@@ -25,7 +26,11 @@ export const EquipmentEdit = props =>{
   useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit');
 
   return (
-    <Edit title={<EquipmentTitle />} {...props} >
+    <Edit 
+      title={<EquipmentTitle />} 
+      actions={<Title record={record} hasBackButton={true} />} 
+      {...props}
+    >
       <SimpleForm redirect={query.redirectUri}>
         <EquipmentInputs orga={record}/>
       </SimpleForm>
