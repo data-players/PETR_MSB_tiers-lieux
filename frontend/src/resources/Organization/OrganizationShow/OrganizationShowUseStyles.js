@@ -72,6 +72,30 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     '& > *:not(:last-child)': {
       display: 'none'
     }
+  },
+  modal: {
+    position: 'absolute',
+    boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+    top: '10%',
+    right: '10%',
+    bottom: '10%',
+    left: '10%',
+    zIndex: 99999,
+    padding: '64px !important',
+    background: 'rgb(240, 240, 240)',
+    overflowY: 'auto',
+  },
+  modalCloseIcon: {
+    position: 'absolute',   
+    top: 16,
+    right: 16,
+    transform: 'scale(1.25)',
+    color: 'black',
+    opacity: 0.75,
+    cursor: 'pointer',
+    '&:hover': {
+      opacity: 1,
+    }
   }
 }));
 

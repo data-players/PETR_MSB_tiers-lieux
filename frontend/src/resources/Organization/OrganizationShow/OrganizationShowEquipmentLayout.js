@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CloseIcon from '@material-ui/icons/Close';
 import { 
   NumberField,
   ReferenceField,
@@ -7,12 +8,14 @@ import {
   TextField
  } from 'react-admin';
 
+import closeModal from './closeModal';
 import useStyles from './OrganizationShowUseStyles';
 
 const OrganizationShowEquipmentLayout = ({...props}) => {
   const classes = useStyles();
   return (
-    <SimpleShowLayout>
+    <SimpleShowLayout className={classes.modal}>
+      <CloseIcon className={classes.modalCloseIcon} onClick={closeModal}/>
       <TextField source="pair:label" />
       <ReferenceField source="petr:hasEquipmentType" reference="EquipmentType" link={false}>
         <TextField source="pair:label" />
