@@ -7,7 +7,6 @@ const ConceptList = props => (
   <ListWithPermissions {...props}>
     <SimpleList
       primaryText={record => record['pair:label']}
-      secondaryText={record => record.type}
       leftAvatar={() => <StyleIcon />}
     />
   </ListWithPermissions>

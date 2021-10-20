@@ -1,14 +1,14 @@
-import PersonCreate from "./PersonCreate";
+// import PersonCreate from "./PersonCreate";
 import PersonEdit from './PersonEdit';
 import PersonList from './PersonList';
-import PersonShow from './PersonShow';
+// import PersonShow from './PersonShow';
 import PersonIcon from '@material-ui/icons/Person';
 
 export default {
   config: {
     list: PersonList,
-    show: PersonShow,
-    create: PersonCreate,
+//    show: PersonShow,
+//    create: PersonCreate,
     edit: PersonEdit,
     icon: PersonIcon,
     options: {
@@ -25,15 +25,8 @@ export default {
     fr: {
       name: 'Personne |||| Personnes',
       fields: {
-        'pair:firstName': 'Prénom',
-        'pair:e-mail': 'Adresse e-mail',
-        'pair:lastName': 'Nom de famille',
-        'pair:description': 'Qui êtes-vous ?',
-        'pair:image': 'Photo',
-        'pair:hasLocation': 'Localisation',
-        'pair:involvedIn': 'Impliqué dans',
-        'pair:affiliatedBy': 'Membre de',
-        'pair:hasTopic': 'Intérêts'
+        'pair:label': 'Nom complet',
+        'pair:description': 'Description',
       }
     }
   }

@@ -6,7 +6,9 @@ import { Grid } from '@material-ui/core';
 import { useShowController } from 'react-admin';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
-import { Show } from "@semapps/archipelago-layout";
+import { Show } from 'react-admin';
+import { ShowActions } from "@semapps/archipelago-layout";
+
 
 import OrganizationShowContactLayout from './OrganizationShowContactLayout';
 import OrganizationShowMainLayout from './OrganizationShowMainLayout';
@@ -25,7 +27,7 @@ const OrganizationShow = ({...props}) => {
           <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
         </>
       }
-      <Show {...props} >
+      <Show actions={<ShowActions hasList={false} />} {...props} >
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <OrganizationShowNavLayout {...props} />
