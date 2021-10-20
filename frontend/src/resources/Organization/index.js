@@ -40,12 +40,16 @@ export default {
             'pair:depictedBy': 'Photos',
             'petr:logo': 'Logo',
             'petr:videos': 'Vidéos',
+            'pair:hasLegalStatus': 'Nature juridique',
             'pair:hasLocation': 'Emplacement',
             'pair:hasSector': 'Secteur géographique',
             'pair:e-mail': 'E-mail',
             'pair:phone': 'Téléphone',
             'pair:webPage': 'Site internet',
             'petr:socialMedias': 'Réseaux sociaux',
+            'petr:hasLabels': 'Labels',
+            'petr:hasNetworks': 'Réseaux',
+            'petr:hasAudience': 'Public ciblé',
           }
         }
       }

@@ -14,5 +14,13 @@ export default {
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'services',
     slugField: ['pair:label'],
   },
-  translations: {}
+  translations: {
+    fr: {
+      name: 'Service |||| Les services',
+      fields: {
+        'pair:label': 'Libellé',
+        'pair:hasRate': 'Tarif',
+      }
+    }
+  }
 };

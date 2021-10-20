@@ -14,5 +14,15 @@ export default {
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'equipments',
     slugField: ['pair:label'],
   },
-  translations: {}
+  translations: {
+    fr: {
+      name: 'Equipement |||| Equipements',
+      fields: {
+        'pair:label': 'Libellé',
+        'pair:description': 'Description',
+        'petr:hasEquipmentType': 'Type d\'équipement',
+        'petr:model': 'Modèle',
+      }
+    }
+  }
 };
