@@ -1,5 +1,7 @@
 import { default as React } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { TextInput } from "ra-ui-materialui";
 import { makeStyles } from '@material-ui/core';
@@ -28,7 +30,6 @@ import PairLocationInput from '../../components/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';
-import { Link } from 'react-router-dom';
 import { EditWithPermissions } from '@semapps/auth-provider';
 
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
