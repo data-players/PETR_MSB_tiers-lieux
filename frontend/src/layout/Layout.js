@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
-import { Box, Container, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
+import { Box, Container, Grid, makeStyles, ThemeProvider, useMediaQuery } from '@material-ui/core';
 import { Notification } from 'react-admin';
 import {
   Breadcrumbs,
@@ -22,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
   adminContainer: {
     maxWidth: 1400,
   },
+  treeMenuContainer: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
+  }
 }));
 
 const getAdminContext = ( (location, noAdminMenuItems) => {
@@ -83,7 +88,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
           ?
             <Grid container>
               <BreadcrumbsItem to='/Organization'>Admin</BreadcrumbsItem>
-              <Grid item xs={0} sm={3} lg={2}>
+              <Grid item xs={0} sm={3} lg={2} className={classes.treeMenuContainer}>
                 <TreeMenu />
               </Grid>
               <Grid item xs={12} sm={9} lg={10} className={classes.adminContainer}>
