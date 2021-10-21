@@ -5,11 +5,11 @@ import {
   useCreateController
 } from 'react-admin';
 import SpaceInputs from './SpaceInputs';
-import SpaceTitle from './SpaceTitle';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import queryString from 'query-string';
+import TopToolbar from '../_Components/TopToolbar';
 
 export const SpaceCreate = props =>{
   const location = useLocation();
@@ -19,7 +19,10 @@ export const SpaceCreate = props =>{
   const query=queryString.parse(location.search);
   useCheckPermissions(record?.['petr:spaceOfferedBy'],'edit');
   return (
-    <Create title={<SpaceTitle />} {...props} >
+    <Create
+      actions={<TopToolbar record={record} hasBackButton={true} />} 
+      {...props}
+    >
       <SimpleForm redirect={query.redirectUri}>
         <SpaceInputs/>
       </SimpleForm>

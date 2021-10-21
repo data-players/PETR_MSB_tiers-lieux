@@ -12,6 +12,8 @@ import { MapList } from '@semapps/geo-components';
 import Filter from '../commons/Filter';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+
 const useStyles = makeStyles(theme => ({
   popupImageContainer: { 
     textAlign: 'center'
@@ -29,6 +31,7 @@ const MapPage = (props) => {
   const classes = useStyles();
   return (
     <>
+      <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
       <ListBase 
         basePath="/Organization" 
         resource="Organization"
@@ -42,12 +45,6 @@ const MapPage = (props) => {
               source="pair:hasType"
               filter={{ a: 'pair:OrganizationType' }}
               label="Type de lieu"
-            />,
-            <Filter
-              reference="LegalStatus"
-              source="petr:hasLegalStatus"
-              filter={{ a: 'petr:LegalStatus' }}
-              label="Modèle juridique"
             />,
             <Filter
               reference="Label"
@@ -67,12 +64,14 @@ const MapPage = (props) => {
               filter={{ a: 'petr:Audience' }}
               label="Public ciblé"
             />,
+            /*
             <Filter
               reference="EquipmentType"
               source="petr:hasEquipmentType"
               filter={{ a: 'petr:EquipmentType' }}
               label="Equipement"
             />,
+            */
           ]}
           views={{
             map: {
@@ -115,9 +114,9 @@ const MapPage = (props) => {
               list: (
                 <SimpleList
                   primaryText={record => record['pair:label']}
-                  secondaryText={record => record['pair:comment']}
+                  secondaryText={record => record['pair:description']}
                   leftAvatar={record => (
-                    <Avatar src={record['image']} width="100%">
+                    <Avatar src={record['petr:logo']} width="100%">
                       <HomeIcon />
                     </Avatar>
                   )}

@@ -15,5 +15,13 @@ export default {
     slugField: ['pair:label'],
     forceArray : ['pair:locationOf']
   },
-  translations: {}
+  translations: {
+    fr: {
+      name: 'Espace |||| Les espaces',
+      fields: {
+        'pair:label': 'Libellé',
+        'pair:description': 'Description',
+      }
+    }
+  }
 };

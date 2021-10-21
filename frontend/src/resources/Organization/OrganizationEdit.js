@@ -1,4 +1,5 @@
 import { default as React } from 'react';
+import { useSelector } from 'react-redux';
 
 import { TextInput } from "ra-ui-materialui";
 import { makeStyles } from '@material-ui/core';
@@ -30,14 +31,24 @@ import Title from '../_Components/Title';
 import { Link } from 'react-router-dom';
 import { EditWithPermissions } from '@semapps/auth-provider';
 
-
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+    
 
 export const OrganizationEdit = props => {
   const {
       record, // record fetched via dataProvider.getOne() based on the id from the location
   } = useEditController(props);
-
+  const state = useSelector(state => state);
+  const isAdminContext = state.customState.isAdminContext;
+  const currentUri = useLocation().pathname;
   return (
+    <>
+      { ! isAdminContext &&
+        <>
+          <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
+          <BreadcrumbsItem to={currentUri}>{record ? record["pair:label"] : ''}</BreadcrumbsItem>
+        </>
+      }
       <EditWithPermissions title={<Title />} {...props} >
         <TabbedForm>
           <FormTab label="Principal">
@@ -147,6 +158,7 @@ export const OrganizationEdit = props => {
           </FormTab>
         </TabbedForm>
       </EditWithPermissions>
+    </>
   );
 }
 
