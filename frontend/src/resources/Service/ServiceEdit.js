@@ -1,6 +1,5 @@
 import React from 'react';
 import { Edit } from "@semapps/archipelago-layout";
-import ServiceTitle from './ServiceTitle';
 import ServiceInputs from './ServiceInputs';
 import {
   SimpleForm,
@@ -10,7 +9,7 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import queryString from 'query-string';
-import Title from '../_Components/Title';
+import TopToolbar from '../_Components/TopToolbar';
 
 export const ServiceEdit = props =>{
   const location = useLocation();
@@ -22,8 +21,7 @@ export const ServiceEdit = props =>{
 
   return (
     <Edit
-      title={<ServiceTitle />}
-      actions={<Title record={record} hasBackButton={true} />}
+      actions={<TopToolbar record={record} hasBackButton={true} />} 
       {...props}
     >
       <SimpleForm redirect={query.redirectUri}>

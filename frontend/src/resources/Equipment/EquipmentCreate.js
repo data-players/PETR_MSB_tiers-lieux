@@ -5,12 +5,11 @@ import {
   useCreateController
 } from 'react-admin';
 import EquipmentInputs from './EquipmentInputs';
-import EquipmentTitle from './EquipmentTitle';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
 import { useCheckPermissions } from '@semapps/auth-provider';
-import Title from '../_Components/Title';
+import TopToolbar from '../_Components/TopToolbar';
 
 export const EquipmentCreate = props =>{
   const location = useLocation();
@@ -22,8 +21,7 @@ export const EquipmentCreate = props =>{
 
   return (
     <Create 
-      title={<EquipmentTitle />}
-      actions={<Title record={record} hasBackButton={true} />}
+      actions={<TopToolbar record={record} hasBackButton={true} />} 
       {...props}
     >
       <SimpleForm redirect={query.redirectUri}>
