@@ -1,6 +1,5 @@
 import React from 'react';
 import { Edit } from "@semapps/archipelago-layout";
-import SpaceTitle from './SpaceTitle';
 import SpaceInputs from './SpaceInputs';
 import {
   SimpleForm,
@@ -10,6 +9,7 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import queryString from 'query-string';
+import TopToolbar from '../_Components/TopToolbar';
 
 export const SpaceEdit = props =>{
   const location = useLocation();
@@ -19,7 +19,10 @@ export const SpaceEdit = props =>{
   const query=queryString.parse(location.search);
   useCheckPermissions(record?.['petr:spaceOfferedBy'],'edit');
   return (
-    <Edit title={<SpaceTitle />} {...props} >
+    <Edit
+      actions={<TopToolbar record={record} hasBackButton={true} />} 
+      {...props}
+    >
       <SimpleForm redirect={query.redirectUri}>
         <SpaceInputs/>
       </SimpleForm>
