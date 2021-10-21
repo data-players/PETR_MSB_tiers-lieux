@@ -14,29 +14,33 @@ import theme from './config/theme';
 import customRoutes from './customRoutes';
 import customReducers from './customReducers';
 
+import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic'
+
 const history = createBrowserHistory();
 
 const App = () => {
 
   return (
-    <Admin
-      title="Mon titre"
-      history={history}
-      authProvider={authProvider}
-      dataProvider={dataProvider}
-      i18nProvider={i18nProvider}
-      loginPage={LoginPage}
-      logoutButton={LogoutButton}
-      dashboard={HomePage}
-      layout={Layout}
-      theme={theme}
-      customRoutes={customRoutes}
-      customReducers={{customState: customReducers}}
-    >
-      {Object.entries(resources).map(([key, resource]) => (
-        <Resource key={key} name={key} {...resource.config} />
-      ))}
-    </Admin>
+    <BreadcrumbsProvider>
+      <Admin
+        title="Mon titre"
+        history={history}
+        authProvider={authProvider}
+        dataProvider={dataProvider}
+        i18nProvider={i18nProvider}
+        loginPage={LoginPage}
+        logoutButton={LogoutButton}
+        dashboard={HomePage}
+        layout={Layout}
+        theme={theme}
+        customRoutes={customRoutes}
+        customReducers={{customState: customReducers}}
+      >
+        {Object.entries(resources).map(([key, resource]) => (
+          <Resource key={key} name={key} {...resource.config} />
+        ))}
+      </Admin>
+    </BreadcrumbsProvider>
   )
 };
 

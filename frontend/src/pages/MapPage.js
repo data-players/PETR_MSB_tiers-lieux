@@ -12,6 +12,8 @@ import { MapList } from '@semapps/geo-components';
 import Filter from '../commons/Filter';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+
 const useStyles = makeStyles(theme => ({
   popupImageContainer: { 
     textAlign: 'center'
@@ -29,6 +31,7 @@ const MapPage = (props) => {
   const classes = useStyles();
   return (
     <>
+      <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
       <ListBase 
         basePath="/Organization" 
         resource="Organization"
