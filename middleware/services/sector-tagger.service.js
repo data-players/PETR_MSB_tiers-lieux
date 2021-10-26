@@ -3,15 +3,15 @@ const urlJoin = require('url-join');
 const { getContainerFromUri } = require('@semapps/ldp');
 const { MIME_TYPES } = require('@semapps/mime-types');
 const CONFIG = require('../config');
-const departments = require('../departments.json');
+const geographicAreas = require('../geographic-areas.json');
 
 module.exports = {
   name: 'sector-tagger',
   dependencies: ['ldp'],
   methods: {
-    async tag(resourceUri, zipCode, oldData) {
+    async tag(resourceUri, zipCode, city, country, oldData) {
 
-      const sectorUri = await this.getSectorUriFromZip(zipCode);
+      const sectorUri = await this.getSectorUri(zipCode, city, country);
 
       if ( oldData['petr:hasSector'] !== sectorUri ) {
 
@@ -27,18 +27,46 @@ module.exports = {
     },
     async tagOrganization(resourceUri, data) {
       if( data['pair:hasLocation'] ) {
-        await this.tag(resourceUri, [data['pair:hasLocation']['pair:hasPostalAddress']['pair:addressZipCode']][0], data);
+        await this.tag(
+          resourceUri, 
+          [data['pair:hasLocation']['pair:hasPostalAddress']['pair:addressZipCode']][0], 
+          [data['pair:hasLocation']['pair:hasPostalAddress']['pair:addressLocality']][0], 
+          [data['pair:hasLocation']['pair:hasPostalAddress']['pair:addressCountry']][0], 
+          data
+        );
       }
     },
-    getSectorNameFromZip(zip) {
+    getCleanCityName(city) {
+      return city.normalize("NFD").toUpperCase().replace(/-/g,' ');
+    },
+    getSectorName(zip, city, country) {
+      if (! zip && ! city && ! country) {
+        return "Indéterminé";
+      }
+      if ( country !== 'France' ) {
+        return "Hors secteur";
+      }
+      let sector = null;
       if (zip) {
-        const departmentNumber = zip.toString().slice(0, 2);
-        const department = departments.find(d => d.num_dep.toString() === departmentNumber);
-        if (department) return department.sector_name;
+        sector = geographicAreas.find(d => d.zip_code.toString() === zip);
+      }
+      if (! sector && city) {
+          sector = geographicAreas.find(
+            d => this.getCleanCityName(d.city) === this.getCleanCityName(city)
+          );
+      }
+      if (sector) {
+        return sector.sector_name
+      } else {
+        if (zip) {
+          return "Hors secteur";
+        } else {
+          return "Indéterminé";
+        }
       }
     },
-    async getSectorUriFromZip(zip) {
-      const sectorName = this.getSectorNameFromZip(zip);
+    async getSectorUri(zip, city, country) {
+      const sectorName = this.getSectorName(zip, city, country);
 
       if( sectorName ) {
         const sectorSlug = createSlug(sectorName, {lang: 'fr', custom: {'.': '.'}});
