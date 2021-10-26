@@ -2,21 +2,28 @@ import React from 'react';
 import { makeStyles, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-const logoHeight = 77;
-const logoHeightSmall = 40;
+const logoHeight = 71;
+const logoHeightSM = 50;
+const logoHeightXS = 40;
 const breakPointlimit = 720;
 const useStyles = makeStyles((theme) => ({
   logo: {
-    height: logoHeight,
+    height: logoHeightXS,
     verticalAlign: 'middle',
-    [theme.breakpoints.down(breakPointlimit)]: {
-      height: logoHeightSmall,
+    [theme.breakpoints.up('sm')]: {
+      height: logoHeightSM,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: logoHeight,
     },
   },
   logoBox: {
-    height: logoHeight,
-    [theme.breakpoints.down(breakPointlimit)]: {
-      height: logoHeightSmall,
+    height: logoHeightXS,
+    [theme.breakpoints.up('sm')]: {
+      height: logoHeightSM,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: logoHeight,
     },
   },
 }));
