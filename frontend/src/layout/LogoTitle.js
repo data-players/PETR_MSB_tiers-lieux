@@ -27,7 +27,7 @@ const LogoTitle = ({ title, classes, ...other }) => {
     <Box className={classesLogo.logoBox} flexShrink={0} {...other}>
       <Link to="/" className={classes ? classes.menuLink : ''}>
         <Box display="flex" alignItems="center">
-          <img src={process.env.PUBLIC_URL + '/logoCut512.png'} alt="logo" className={classesLogo.logo} />
+          <img src={process.env.PUBLIC_URL + '/logo-pays-sud-bourgogne-web175.png'} alt="logo" className={classesLogo.logo} />
         </Box>
       </Link>
     </Box>
