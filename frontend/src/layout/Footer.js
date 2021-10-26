@@ -88,19 +88,6 @@ const Footer = ({ title }) => {
     <FullWidthBox className={classes.background} >
       <LargeContainer disableGutters={xs}>
         <Grid container className={classes.root}>
-          {/*}
-          <Grid item sm={9}>
-            <img src={process.env.PUBLIC_URL + '/logoCut512.png'} alt="logo" className={classes.logo} />
-          </Grid>
-          <Grid item sm={3}>
-            <Typography variant="subtitle1" color="secondary" component="h6" className={classes.socialLinksText}>
-              Réseaux sociaux
-            </Typography>
-            <Typography variant="body1" color="secondary" component="div" className={classes.socialLinksText}>
-              Restez informé des dernières actualités de la Transition en nous suivant sur :
-            </Typography>
-          </Grid>
-          */}
           <Grid container>
             <Box pt={3} pb={5} className={classes.boxContainer}>
               <Typography variant="" color="secondary" className={classes.linkContainer}>
