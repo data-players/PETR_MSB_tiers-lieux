@@ -38,10 +38,8 @@ const OrganizationShowMainLayout = ({...props}) => {
   
   return (
     <>
-      { ! props.isAdminContext &&
-        <BreadcrumbsItem to={currentUri.replace(showSuffix, '/show')}>{props.label}</BreadcrumbsItem>
-      }
-      { ! props.isAdminContext && breadcrumbsTabLabel &&
+      <BreadcrumbsItem to={currentUri.replace(showSuffix, '/show')}>{props.label}</BreadcrumbsItem>
+      { breadcrumbsTabLabel &&
         <BreadcrumbsItem to={currentUri}>{breadcrumbsTabLabel}</BreadcrumbsItem>
       }
       <TabbedShowLayout className={classes.tabbedShowLayout}>

@@ -25,22 +25,17 @@ const OrganizationShow = ({...props}) => {
   const classes = useStyles();
   const { record } = useShowController(props);
   const state = useSelector(state => state);
-  const isAdminContext = state.customState.isAdminContext;
   const currentUri = useLocation().pathname;
   return (
     <>
-      { ! isAdminContext &&
-        <>
-          <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
-        </>
-      }
-      <Show className={classes.showContainer} actions={<ShowActions hasList={false} />} {...props}>
+      <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
+      <Show className={classes.showContainer} actions={<ShowActions hasList={false} />} {...props} >
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <OrganizationShowNavLayout {...props} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <OrganizationShowMainLayout label={record ? record["pair:label"]: ""} isAdminContext={isAdminContext} {...props} />
+            <OrganizationShowMainLayout label={record ? record["pair:label"]: ""} {...props} />
           </Grid>
           <Grid item xs={12} md={3}>
             <OrganizationShowContactLayout {...props} />

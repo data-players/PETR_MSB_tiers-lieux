@@ -81,6 +81,9 @@ const MapPage = (props) => {
                 <MapList
                   latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
                   longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+                  center= {[46.42816, 4.66527]}
+                  zoom= {11}
+                  boundToMarkers={false}
                   label={record => record['pair:label']}
                   description={record => record['pair:description']}
                   popupContent={({ record, basePath }) => (

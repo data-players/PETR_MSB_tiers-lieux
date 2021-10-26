@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { IconButton, useMediaQuery, makeStyles, Typography, Grid, Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import FullWidthBox from '../commons/FullWidthBox';
@@ -10,9 +9,6 @@ import {
   Twitter as TwitterIcon,
   YouTube as YoutubeIcon,
 } from '@material-ui/icons';
-import { 
-  DISABLE_ADMIN_CONTEXT
-} from '../customActions';
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
@@ -88,31 +84,10 @@ const Footer = ({ title }) => {
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'));
   
-  const dispatch = useDispatch();
-  const contextPositioning = ( (e) => {
-    if ( e.target.href !== undefined ) {
-      console.log('===' + DISABLE_ADMIN_CONTEXT, e.target.href);
-      dispatch({ type: DISABLE_ADMIN_CONTEXT })      
-    }
-  });
-  
   return (
-    <FullWidthBox className={classes.background} onClick={ contextPositioning }>
+    <FullWidthBox className={classes.background} >
       <LargeContainer disableGutters={xs}>
         <Grid container className={classes.root}>
-          {/*}
-          <Grid item sm={9}>
-            <img src={process.env.PUBLIC_URL + '/logoCut512.png'} alt="logo" className={classes.logo} />
-          </Grid>
-          <Grid item sm={3}>
-            <Typography variant="subtitle1" color="secondary" component="h6" className={classes.socialLinksText}>
-              Réseaux sociaux
-            </Typography>
-            <Typography variant="body1" color="secondary" component="div" className={classes.socialLinksText}>
-              Restez informé des dernières actualités de la Transition en nous suivant sur :
-            </Typography>
-          </Grid>
-          */}
           <Grid container>
             <Box pt={3} pb={5} className={classes.boxContainer}>
               <Typography variant="" color="secondary" className={classes.linkContainer}>
