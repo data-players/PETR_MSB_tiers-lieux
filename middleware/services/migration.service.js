@@ -67,7 +67,8 @@ module.exports = {
                     },
                     anyUser: {
                       read: true,
-                      write: true
+                      write: true,
+                      control: true
                     }
                   }
                 });
