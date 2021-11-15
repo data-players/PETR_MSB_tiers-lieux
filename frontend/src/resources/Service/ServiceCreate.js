@@ -4,7 +4,7 @@ import {
   SimpleForm,
   useCreateController
 } from 'react-admin';
-import ServiceInputs from './ServiceInputs';
+import ServiceForm from './ServiceForm';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
@@ -20,12 +20,10 @@ export const ServiceCreate = props =>{
   useCheckPermissions(record?.['petr:serviceOfferedBy'],'edit');
   return (
     <Create
-      actions={<TopToolbar record={record} hasBackButton={true} />} 
+      actions={<TopToolbar record={record} hasBackButton={true} />}
       {...props}
     >
-      <SimpleForm redirect={query.redirectUri}>
-        <ServiceInputs/>
-      </SimpleForm>
+      <ServiceForm redirect={query.redirectUri}/>
     </Create>
   )
 };

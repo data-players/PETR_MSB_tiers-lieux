@@ -4,7 +4,7 @@ import {
   SimpleForm,
   useCreateController
 } from 'react-admin';
-import EquipmentInputs from './EquipmentInputs';
+import EquipementForm from './EquipmentForm'
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
@@ -20,13 +20,11 @@ export const EquipmentCreate = props =>{
   useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit');
 
   return (
-    <Create 
-      actions={<TopToolbar record={record} hasBackButton={true} />} 
+    <Create
+      actions={<TopToolbar record={record} hasBackButton={true} />}
       {...props}
     >
-      <SimpleForm redirect={query.redirectUri}>
-        <EquipmentInputs orga={record}/>
-      </SimpleForm>
+      <EquipementForm orga={record} redirect={query.redirectUri}/>
     </Create>
   )
 };

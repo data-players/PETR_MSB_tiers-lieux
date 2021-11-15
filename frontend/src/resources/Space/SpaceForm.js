@@ -5,13 +5,15 @@ import {
   SelectInput,
   required,
   ReferenceInput,
-  ReferenceArrayInput,
-  SelectArrayInput
+  SelectArrayInput,
+  SimpleForm
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
+import { ReferenceArrayInput } from '@semapps/semantic-data-provider';
+
 
 export const SpaceInputs = props => (
-    <>
+    <SimpleForm {...props}>
       <ReferenceInput
         source="petr:spaceOfferedBy"
         reference="Organization"
@@ -41,7 +43,7 @@ export const SpaceInputs = props => (
       <ReferenceArrayInput source="pair:locationOf" reference="Equipment" fullWidth disabled>
         <SelectArrayInput optionText="pair:label" />
       </ReferenceArrayInput>
-    </>
+    </SimpleForm>
 )
 
 export default SpaceInputs;

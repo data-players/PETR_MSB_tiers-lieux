@@ -12,15 +12,19 @@ export default {
   dataModel: {
     types: ['petr:Space'],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'spaces',
-    slugField: ['pair:label'],
-    forceArray : ['pair:locationOf']
+    slugField: ['pair:label']
   },
   translations: {
     fr: {
       name: 'Espace |||| Les espaces',
       fields: {
         'pair:label': 'Libellé',
+        'petr:serviceOfferedBy': 'Organisation',
         'pair:description': 'Description',
+        'petr:hasRate': 'Tarif',
+        'petr:hasSpaceType': `Type d'espace`,
+        'petr:capacity': 'Capacité',
+        'pair:locationOf': `Lieux de`,
       }
     }
   }

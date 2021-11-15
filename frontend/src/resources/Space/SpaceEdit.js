@@ -1,6 +1,6 @@
 import React from 'react';
 import { Edit } from "@semapps/archipelago-layout";
-import SpaceInputs from './SpaceInputs';
+import SpaceForm from './SpaceForm';
 import {
   SimpleForm,
   useEditController
@@ -20,12 +20,10 @@ export const SpaceEdit = props =>{
   useCheckPermissions(record?.['petr:spaceOfferedBy'],'edit');
   return (
     <Edit
-      actions={<TopToolbar record={record} hasBackButton={true} />} 
+      actions={<TopToolbar record={record} hasBackButton={true} />}
       {...props}
     >
-      <SimpleForm redirect={query.redirectUri}>
-        <SpaceInputs/>
-      </SimpleForm>
+      <SpaceForm redirect={query.redirectUri}/>
     </Edit>
   )
 };

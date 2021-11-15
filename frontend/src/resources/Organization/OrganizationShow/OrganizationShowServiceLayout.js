@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CloseIcon from '@material-ui/icons/Close';
-import { 
+import {
   BooleanField,
   ReferenceField,
   SimpleShowLayout,
@@ -14,7 +14,7 @@ import useStyles from './OrganizationShowUseStyles';
 const OrganizationShowServiceLayout = ({...props}) => {
   const classes = useStyles();
   return (
-    <SimpleShowLayout className={classes.modal}>
+    <SimpleShowLayout className={classes.modal} resource="Service">
       <CloseIcon className={classes.modalCloseIcon} onClick={closeModal}/>
       <TextField source="pair:label" />
       <ReferenceField source="petr:hasRate" reference="Rate" link={false}>

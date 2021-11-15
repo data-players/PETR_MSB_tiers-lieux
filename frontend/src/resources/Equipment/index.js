@@ -18,10 +18,15 @@ export default {
     fr: {
       name: 'Equipement |||| Equipements',
       fields: {
+        'petr:serviceOfferedBy': 'Organisation',
         'pair:label': 'Libellé',
         'pair:description': 'Description',
-        'petr:hasEquipmentType': 'Type d\'équipement',
+        'petr:hasEquipmentType': `Type d'équipement`,
         'petr:model': 'Modèle',
+        'petr:amount': 'Quantité',
+        'petr:hasRate': 'Tarif',
+        'petr:hasAccessModality': `Modalités d'accès`,
+        'pair:hasLocation' : 'Lieux'
       }
     }
   }

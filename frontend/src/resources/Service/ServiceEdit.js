@@ -1,6 +1,6 @@
 import React from 'react';
 import { Edit } from "@semapps/archipelago-layout";
-import ServiceInputs from './ServiceInputs';
+import ServiceForm from './ServiceForm';
 import {
   SimpleForm,
   useEditController
@@ -21,12 +21,10 @@ export const ServiceEdit = props =>{
 
   return (
     <Edit
-      actions={<TopToolbar record={record} hasBackButton={true} />} 
+      actions={<TopToolbar record={record} hasBackButton={true} />}
       {...props}
     >
-      <SimpleForm redirect={query.redirectUri}>
-        <ServiceInputs/>
-      </SimpleForm>
+      <ServiceForm redirect={query.redirectUri}/>
     </Edit>
   )
 };

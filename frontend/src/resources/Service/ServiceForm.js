@@ -6,16 +6,17 @@ import {
   SelectInput,
   required,
   ReferenceInput,
-  SimpleFormIterator
+  SimpleFormIterator,
+  SimpleForm
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 
-export const ServiceInputs = props => {
-  
+export const ServiceForm = props => {
+
   const [itinerant, setItinerant] = useState({});
 
   return (
-    <>
+    <SimpleForm {...props}>
       <ReferenceInput
         source="petr:serviceOfferedBy"
         reference="Organization"
@@ -49,8 +50,8 @@ export const ServiceInputs = props => {
       { itinerant &&
         <MarkdownInput source="petr:itinerantDetails" multiline fullWidth />
       }
-    </>
+    </SimpleForm>
   )
 }
 
-export default ServiceInputs;
+export default ServiceForm;

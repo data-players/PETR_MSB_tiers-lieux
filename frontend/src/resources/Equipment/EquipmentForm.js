@@ -6,13 +6,14 @@ import {
   SelectInput,
   ReferenceInput,
   useGetManyReference,
-  useEditController
+  useEditController,
+  SimpleForm
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 
-export const EquipmentInputs = ({orga,...props}) => {
+export const EquipmentForm = ({orga,...props}) => {
   return (
-    <>
+    <SimpleForm {...props}>
       <ReferenceInput
         source="petr:equipmentOfferedBy"
         reference="Organization"
@@ -41,7 +42,7 @@ export const EquipmentInputs = ({orga,...props}) => {
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
-      <TextInput source="petr:availablity" fullWidth />
+      {/*<TextInput source="petr:availablity" fullWidth />*/}
       <ReferenceInput
         source="petr:hasAccessModality"
         reference="AccessModality"
@@ -58,8 +59,8 @@ export const EquipmentInputs = ({orga,...props}) => {
       >
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
-    </>
+    </SimpleForm>
   )
 }
 
-export default EquipmentInputs;
+export default EquipmentForm;

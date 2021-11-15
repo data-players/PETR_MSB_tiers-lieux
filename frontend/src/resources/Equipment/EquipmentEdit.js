@@ -1,6 +1,6 @@
 import React from 'react';
 import { Edit } from "@semapps/archipelago-layout";
-import EquipmentInputs from './EquipmentInputs';
+import EquipementForm from './EquipmentForm'
 import {
   SimpleForm,
   ReferenceInput,
@@ -23,17 +23,13 @@ export const EquipmentEdit = props =>{
   const query=queryString.parse(location.search);
   // const permissions = useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit',`/Organization/${encodeURIComponent(record?.['petr:equipmentOfferedBy'])}/show`);
   useCheckPermissions(record?.['petr:equipmentOfferedBy'],'edit');
-  
-  console.log('edit');
 
   return (
-    <Edit 
-      actions={<TopToolbar record={record} hasBackButton={true} />} 
+    <Edit
+      actions={<TopToolbar record={record} hasBackButton={true} />}
       {...props}
     >
-      <SimpleForm redirect={query.redirectUri}>
-        <EquipmentInputs orga={record}/>
-      </SimpleForm>
+      <EquipementForm orga={record} redirect={query.redirectUri}/>
     </Edit>
   )
 };

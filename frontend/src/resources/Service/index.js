@@ -18,8 +18,14 @@ export default {
     fr: {
       name: 'Service |||| Les services',
       fields: {
+        'petr:serviceOfferedBy': 'Organisation',
         'pair:label': 'Libellé',
-        'pair:hasRate': 'Tarif',
+        'petr:hasRate': 'Tarif',
+        'petr:hasLabel': 'Labels',
+        'petr:hasAudience': 'Audiance',
+        'petr:itinerant': 'Itinérant',
+        'petr:itinerantDetails': `Détail d'itinérance`,
+
       }
     }
   }

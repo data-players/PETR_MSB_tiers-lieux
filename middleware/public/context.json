@@ -75,7 +75,6 @@
     "pair:image": {
       "@type": "@id"
     },
-
     "pair:about": {
       "@type": "@id"
     },
@@ -209,9 +208,6 @@
       "@type": "@id"
     },
     "pair:hasPart": {
-      "@type": "@id"
-    },
-    "pair:hasSector": {
       "@type": "@id"
     },
     "pair:hasSkill": {

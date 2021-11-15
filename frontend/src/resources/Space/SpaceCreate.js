@@ -4,7 +4,7 @@ import {
   SimpleForm,
   useCreateController
 } from 'react-admin';
-import SpaceInputs from './SpaceInputs';
+import SpaceForm from './SpaceForm';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
@@ -20,12 +20,10 @@ export const SpaceCreate = props =>{
   useCheckPermissions(record?.['petr:spaceOfferedBy'],'edit');
   return (
     <Create
-      actions={<TopToolbar record={record} hasBackButton={true} />} 
+      actions={<TopToolbar record={record} hasBackButton={true} />}
       {...props}
     >
-      <SimpleForm redirect={query.redirectUri}>
-        <SpaceInputs/>
-      </SimpleForm>
+      <SpaceForm redirect={query.redirectUri}/>
     </Create>
   )
 };

@@ -36,45 +36,45 @@ module.exports = {
           }
         });
 
-        // if (container['ldp:contains'] && container['ldp:contains'].length > 0) {
-        //   for (let resource of container['ldp:contains']) {
-        //     if (resource && Object.keys(resource).length > 0) {
-        //       console.log('Adding rights for resource ' + resource.id);
-        //
-        //       if (containerConfig.path === '/users') {
-        //         await ctx.call('webacl.resource.addRights', {
-        //           webId: 'system',
-        //           resourceUri: resource.id,
-        //           additionalRights: {
-        //             anon: {
-        //               read: true
-        //             },
-        //             user: {
-        //               uri: resource.id,
-        //               read: true,
-        //               write: true,
-        //               control: true
-        //             }
-        //           }
-        //         });
-        //       } else {
-        //         await ctx.call('webacl.resource.addRights', {
-        //           webId: 'system',
-        //           resourceUri: resource.id,
-        //           additionalRights: {
-        //             anon: {
-        //               read: true
-        //             },
-        //             anyUser: {
-        //               read: true,
-        //               write: true
-        //             }
-        //           }
-        //         });
-        //       }
-        //     }
-        //   }
-        // }
+        if (container['ldp:contains'] && container['ldp:contains'].length > 0) {
+          for (let resource of container['ldp:contains']) {
+            if (resource && Object.keys(resource).length > 0) {
+              console.log('Adding rights for resource ' + resource.id);
+
+              if (containerConfig.path === '/users') {
+                await ctx.call('webacl.resource.addRights', {
+                  webId: 'system',
+                  resourceUri: resource.id,
+                  additionalRights: {
+                    anon: {
+                      read: true
+                    },
+                    user: {
+                      uri: resource.id,
+                      read: true,
+                      write: true,
+                      control: true
+                    }
+                  }
+                });
+              } else {
+                await ctx.call('webacl.resource.addRights', {
+                  webId: 'system',
+                  resourceUri: resource.id,
+                  additionalRights: {
+                    anon: {
+                      read: true
+                    },
+                    anyUser: {
+                      read: true,
+                      write: true
+                    }
+                  }
+                });
+              }
+            }
+          }
+        }
       }
     }
   }
