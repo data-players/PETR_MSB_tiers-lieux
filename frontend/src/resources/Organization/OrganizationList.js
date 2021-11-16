@@ -13,7 +13,7 @@ import MapIcon from '@material-ui/icons/Map';
 const OrganizationList = props => {
   return <MultiViewsList
     // aside={<SectorFilterSidebar />}
-    actions={<ListActions exporter={true} />}
+    actions={<ListActions exporter={false} />}
     views={{
       list: {
         label: 'Liste',
