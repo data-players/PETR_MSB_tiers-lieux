@@ -67,6 +67,12 @@ module.exports = {
                   anyUser: {
                     read: true,
                     write: true,
+                  },
+                  group: {
+                    uri : CONFIG.HOME_URL+'_groups/superadmins',
+                    read: true,
+                    write: true,
+                    control : true
                   }
                 }
                 if (ressourceFull["dc:creator"] && ressourceFull["dc:creator"].id) {

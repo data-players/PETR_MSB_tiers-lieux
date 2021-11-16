@@ -30,34 +30,41 @@ module.exports = [
     },
   {
     path: '/access-modalities',
-    acceptedTypes: ['petr:AccessModality']
+    acceptedTypes: ['petr:AccessModality'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/audiences',
-    acceptedTypes: ['petr:Audience']
+    acceptedTypes: ['petr:Audience'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/equipments',
-    acceptedTypes: ['petr:Equipment']
+    acceptedTypes: ['petr:Equipment'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/equipment-types',
-    acceptedTypes: ['petr:EquipmentType']
+    acceptedTypes: ['petr:EquipmentType'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/files'
   },
   {
     path: '/labels',
-    acceptedTypes: ['petr:Label']
+    acceptedTypes: ['petr:Label'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/legal-status',
-    acceptedTypes: ['petr:LegalStatus']
+    acceptedTypes: ['petr:LegalStatus'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/networks',
-    acceptedTypes: ['pair:OrganizationType']
+    acceptedTypes: ['pair:OrganizationType'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/organizations',
@@ -67,34 +74,42 @@ module.exports = [
   },
   {
     path: '/organization-types',
-    acceptedTypes: ['pair:OrganizationType']
+    acceptedTypes: ['pair:OrganizationType'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/persons',
-    acceptedTypes: ['pair:Person']
+    acceptedTypes: ['pair:Person'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/rates',
-    acceptedTypes: ['petr:Rate']
+    acceptedTypes: ['petr:Rate'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/resources',
     acceptedTypes: ['pair:Resource'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/sectors',
-    acceptedTypes: ['petr:Sector']
+    acceptedTypes: ['petr:Sector'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/services',
-    acceptedTypes: ['petr:Service']
+    acceptedTypes: ['petr:Service'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/spaces',
-    acceptedTypes: ['petr:Space']
+    acceptedTypes: ['petr:Space'],
+    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/space-types',
-    acceptedTypes: ['petr:SpaceType']
+    acceptedTypes: ['petr:SpaceType'],
+    newResourcesPermissions: writePermissionsToCreator
   },
 ];
