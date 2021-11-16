@@ -7,8 +7,10 @@ module.exports = {
     superAdmins: [
       'http://localhost:3000/persons/v.farcy72',
       'http://localhost:3000/persons/simon.louvet.zen',
+      'http://localhost:3000/persons/simon.louvet.zen',
       'https://data.petr-msb.data-players.com/persons/v.farcy72',
       'https://data.petr-msb.data-players.com/persons/simon.louvet.zen',
+      'https://data.petr-msb.data-players.com/persons/simon.louvet.test',
       'https://data.petr-msb.data-players.com/persons/pierre']
   }
 };
