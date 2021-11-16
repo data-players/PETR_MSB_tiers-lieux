@@ -39,7 +39,7 @@ module.exports = {
         if (container['ldp:contains'] && container['ldp:contains'].length > 0) {
           for (let resource of container['ldp:contains']) {
             if (resource && Object.keys(resource).length > 0) {
-              console.log('Adding rights for resource ' + resource.id);
+              console.log('Adding rights for resource ', resource.id);
 
               if (containerConfig.path === '/users') {
                 await ctx.call('webacl.resource.addRights', {
@@ -58,19 +58,29 @@ module.exports = {
                   }
                 });
               } else {
+                const ressourceFull = await ctx.call('ldp.resource.get',{resourceUri:resource.id,accept:'application/ld+json'})
+                // console.log('UPDATE RESOURCE ACL',ressourceFull["dc:creator"]);
+                const rights={
+                  anon: {
+                    read: true
+                  },
+                  anyUser: {
+                    read: true,
+                    write: true,
+                  }
+                }
+                if (ressourceFull["dc:creator"] && ressourceFull["dc:creator"].id) {
+                  rights.user={
+                    uri: ressourceFull["dc:creator"].id,
+                    read: true,
+                    write: true,
+                    control: true
+                  }
+                }
                 await ctx.call('webacl.resource.addRights', {
                   webId: 'system',
                   resourceUri: resource.id,
-                  additionalRights: {
-                    anon: {
-                      read: true
-                    },
-                    anyUser: {
-                      read: true,
-                      write: true,
-                      control: true
-                    }
-                  }
+                  additionalRights: rights
                 });
               }
             }
