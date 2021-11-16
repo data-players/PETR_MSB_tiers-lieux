@@ -4,7 +4,7 @@ import { Avatar } from '@material-ui/core';
 import ListIcon from '@material-ui/icons/List';
 import HomeIcon from '@material-ui/icons/Home';
 
-import { SimpleList ,MultiViewsList} from '@semapps/archipelago-layout';
+import { SimpleList ,MultiViewsList, ListActions} from '@semapps/archipelago-layout';
 import { MapList } from '@semapps/geo-components';
 import MapIcon from '@material-ui/icons/Map';
 
@@ -13,6 +13,7 @@ import MapIcon from '@material-ui/icons/Map';
 const OrganizationList = props => {
   return <MultiViewsList
     // aside={<SectorFilterSidebar />}
+    actions={<ListActions exporter={false} />}
     views={{
       list: {
         label: 'Liste',

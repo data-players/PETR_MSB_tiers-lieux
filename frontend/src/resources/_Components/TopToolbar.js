@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 const TopToolbar = ({ record, hasBackButton }) => {
   const classes = useStyles();
-  console.log(record, hasBackButton);
   return (
     <RaTopToolbar className={classes.container}>
       <Title record={record} />
