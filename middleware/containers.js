@@ -1,16 +1,29 @@
-const writePermissionsToCreator = creatorUri => ({
-  anon : {
-    read: true
-  },
-  anyUser: {
-    read: true
-  },
-  user: {
-    uri: creatorUri,
-    read: true,
-    write: true
+const CONFIG = require('./config');
+
+const writePermissionsToCreator = creatorUri => {
+  console.log('---------------------------- writePermissionsToCreator',CONFIG.HOME_URL+'_groups/superadmins');
+  return {
+    anon : {
+      read: true
+    },
+    anyUser: {
+      read: true,
+      write: true,
+    },
+    user: {
+      uri: creatorUri,
+      read: true,
+      write: true,
+      control : true
+    },
+    group: {
+      uri : CONFIG.HOME_URL+'_groups/superadmins',
+      read: true,
+      write: true,
+      control : true
+    }
   }
-});
+};
 
 module.exports = [
     {
@@ -68,7 +81,6 @@ module.exports = [
   {
     path: '/resources',
     acceptedTypes: ['pair:Resource'],
-    newResourcesPermissions: writePermissionsToCreator
   },
   {
     path: '/sectors',
