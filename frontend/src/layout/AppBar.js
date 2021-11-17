@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, makeStyles, Typography, AppBar as MuiAppBar, useMediaQuery, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useGetIdentity } from 'react-admin';
 import { LogoutButton } from '@semapps/auth-provider';
 import { Link } from 'react-router-dom';
 import LogoTitle from './LogoTitle';
@@ -69,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
 
 const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) => {
 
+  const { identity } = useGetIdentity();
+  const isConnected = identity && identity.id;
+
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   
@@ -101,7 +105,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
               />
               <Box flexGrow={1} />
               <Box display="flex" justifyContent="center" width={1}>
-                {menuItems.map((menuItem) => (
+                {menuItems.filter((menuItem) => {return isConnected || ! menuItem.admin }).map((menuItem) => (
                   <Box
                     display="flex"
                     height={40}
