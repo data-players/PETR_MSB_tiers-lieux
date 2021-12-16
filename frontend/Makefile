@@ -2,7 +2,10 @@
 .PHONY: link link-yarn unlink unlink-yarn
 SEMAPPS_PATH=./../../semapps
 
-
+clean :
+	sudo rm -rf .yalc
+	sudo rm -rf node_modules
+	
 install :
 	yarn install --force
 

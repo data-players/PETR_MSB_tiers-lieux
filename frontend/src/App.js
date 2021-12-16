@@ -21,16 +21,17 @@ const App = () => {
   return (
     <BreadcrumbsProvider>
       <Admin
-        title="Mon titre"
+        disableTelemetry
         history={history}
+        title="Mon titre"
         authProvider={authProvider}
         dataProvider={dataProvider}
         i18nProvider={i18nProvider}
+        layout={Layout}
+        theme={theme}
         loginPage={LoginPage}
         logoutButton={LogoutButton}
         dashboard={HomePage}
-        layout={Layout}
-        theme={theme}
         customRoutes={customRoutes}
       >
         {Object.entries(resources).map(([key, resource]) => (
