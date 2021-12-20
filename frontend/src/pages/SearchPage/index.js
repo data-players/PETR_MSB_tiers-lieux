@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Link,
   Loading,
@@ -81,15 +81,11 @@ const SearchPage = ({ theme }) => {
   
   async function getSelectedFieldValues(resourceType) {
     setSelectedFieldValues([]);
-    console.log('getSelectedFieldValues-1:', resourceType);
     const fieldValues = await dataProvider.getList(resourceType, {});
-    console.log('getSelectedFieldValues-2:');
     setSelectedFieldValues(fieldValues.data);
-    console.log('getSelectedFieldValues-3:', fieldValues);
   }
 
   const handleFieldClick = (field) => {
-    console.log('handleFieldClick:', field, selectedField);
     setResults(null);
     if (field !== selectedField) {
       setSelectedField(field);
@@ -100,30 +96,36 @@ const SearchPage = ({ theme }) => {
   };
 
   const changeSelectedValues = (field, value) => {
-    console.log('changeSelectedValues-0', field, value, [...selectedValues]);
-    if ( selectedValues.find(selectedValue => selectedValue.value === value) ) {
-      setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value !== value));
-      console.log('changeSelectedValues-remove');
-    } else {
+    console.log('changeSelectedValues', field, value, [...selectedValues]);
+    const currentValueForField = selectedValues.find(selectedValue => selectedValue.field === field);
+    if (! currentValueForField) {
       selectedValues.push({
         field: field,
         value: value
       })
-      console.log('changeSelectedValues-push');
       setSelectedValues([...selectedValues]);
+    } else {
+      if (currentValueForField.value === value) {
+        setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value !== value));
+      } else {
+        setSelectedValues(selectedValues.map(selectedValue => {
+          if (selectedValue.field === field) {
+            selectedValue.value = value
+          }
+          return selectedValue
+        }));
+        setSelectedValues([...selectedValues]);
+      }
     }
-    console.log('changeSelectedValues-1', field, value, [...selectedValues]);
   };
   
   const handleValueClick = (field, value) => {
-    console.log('handleValueClick:', field, value);
     setResults(null);
     if (value !== selectedValues[field]) {
       changeSelectedValues(field, value);
     } else {
       changeSelectedValues(field, undefined);
     }
-    getResults();
   };  
   
   let customSearchFields = [];
@@ -135,18 +137,10 @@ const SearchPage = ({ theme }) => {
     if (!selectedResource) {
       return;
     }
-    
-    console.log('$$$$-getResults:');
-    
     const sparqlWhere = selectedValues.map( selectedValue => { 
-      
       const predicatePrefix = selectedValue.field.name.split(':')[0];
       const predicateValue = selectedValue.field.name.split(':')[1];
       const predicateOntologie = ontologies.find( ontologie => ontologie.prefix === predicatePrefix );
-      console.log('sparqlWhere-map', selectedValue, predicatePrefix, predicateOntologie.url);
-      
-      console.log('$$$$-getResults-predicate:', predicateOntologie.url + selectedValue.field.name);
-      
       return (
         {
           "type": "bgp",
@@ -158,7 +152,6 @@ const SearchPage = ({ theme }) => {
         }
       )
     });
-    
     const results = await dataProvider.getList(
       selectedResource.label,
       {
@@ -166,24 +159,14 @@ const SearchPage = ({ theme }) => {
           "sparqlWhere": sparqlWhere
         }
     });
-    
-    /*
-    const results = await dataProvider.getList(selectedResource.label, {
-      "filter": {
-        "sparqlWhere": {
-          "type": "bgp",
-          "triples": [{
-              "subject": {"termType": "Variable","value": "s1"},
-              "predicate": {"termType": "NameNode","value": "http://virtual-assembly.org/ontologies/pair#label"},
-              "object": {"termType": "Literal","value": "un mobile"}
-          }]
-        }
-      }
-    });
-    */
     setResults(results);
-    console.log('getResults:', results, selectedValues);
   }
+  
+  useEffect( () => { 
+    if (selectedValues.length > 0) {
+      getResults();
+    }
+  }, [selectedValues])
   
   console.log('selectedResource:',selectedResource);
   console.log('selectedField:',selectedField);
@@ -225,7 +208,6 @@ const SearchPage = ({ theme }) => {
                 {field.label}
               </Button>
               <Box className={selectedField === field ? classes.test : classes.dNone} >
-                { console.log('box-fieldValues', fieldValues, selectedValues) }
                 {
                   fieldValues?.map((value, index) => (
                     <Box pl={3} pt={2} key={index}>
@@ -245,7 +227,6 @@ const SearchPage = ({ theme }) => {
         }
       </Box>
       {selectedValues.length > 0 && <><hr /><h3>Critères :</h3></>}
-      {console.log('selectedValues:', selectedValues)}
       {
         selectedValues.map((selectedValue, index) => (
           selectedValue &&
