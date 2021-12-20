@@ -7,9 +7,9 @@ const dataServers = {
     default: true,
     containers: {
       av: {
-        'foaf:Person': ['/persons'],
         'pair:Organization': ['/organizations'],
         'pair:OrganizationType': ['/organization-types'],
+        'pair:Person': ['/persons'],
         'petr:AccessModality': ['/access-modalities'],
         'petr:Audience': ['/audiences'],
         'petr:Equipment': ['/equipments'],
