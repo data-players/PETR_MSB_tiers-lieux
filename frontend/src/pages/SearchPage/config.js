@@ -6,11 +6,14 @@ const customSearchConfig = [
         "type": "EquipmentType",
         "name": "petr:hasEquipmentType",
         "label": "Type d'équipement",
-      },
-      {
-        "type": "Organization",
-        "name": "petr:equipmentOfferedBy",
-        "label": "Organisations",
+      },{
+        "type": "Sector",
+        "name": "petr:hasSector",
+        "label": "Secteurs",
+        "path": {
+          "type": "Organization",
+          "name": "petr:equipmentOfferedBy",
+        }
       }
     ]
   },{
@@ -20,16 +23,25 @@ const customSearchConfig = [
         "type": "SpaceType",
         "name": "petr:hasSpaceType",
         "label": "Type de lieu",
+      },{
+        "type": "Sector",
+        "name": "petr:hasSector",
+        "label": "Secteurs",
+        "path": {
+          "type": "Organization",
+          "name": "petr:spaceOfferedBy",
+        }
+      },{
+        "type": "EquipmentType",
+        "name": "petr:hasEquipmentType",
+        "label": "Equipement",
+        "path": {
+          "name": "pair:hasLocation",
+          "pathType": "^"
+        }
       }
     ]
-    // "petr:serviceOfferedBy",
-  }/*,{
-    "label": "Space",
-    "fields" : [
-      "petr:hasSpaceType",
-      "petr:spaceOfferedBy",
-    ]
-  }*/
+  }
 ];
 
 export default customSearchConfig;

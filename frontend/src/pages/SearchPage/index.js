@@ -4,6 +4,7 @@ import {
   Loading,
   Error,
   linkToRecord,
+  useDataProvider,
   useGetResourceLabel,
   useQuery
 } from 'react-admin';
@@ -12,7 +13,7 @@ import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import ontologies from '../../config/ontologies.json';
 import customSearchConfig from './config';
 
-import { useDataProvider } from 'react-admin';
+import DataFactory from '@rdfjs/data-model';
 
 
 
@@ -133,24 +134,46 @@ const SearchPage = ({ theme }) => {
     customSearchFields = customSearchConfig.find( resource => resource === selectedResource ).fields;
   }
   
+  const getFullPredicate = (predicate) => {
+    const predicatePrefix = predicate.split(':')[0];
+    const predicateValue = predicate.split(':')[1];
+    const predicateOntologie = ontologies.find( ontologie => ontologie.prefix === predicatePrefix );
+    return predicateOntologie.url + predicateValue;
+  }
+  
   async function getResults() {
     if (!selectedResource) {
       return;
     }
     const sparqlWhere = selectedValues.map( selectedValue => { 
-      const predicatePrefix = selectedValue.field.name.split(':')[0];
-      const predicateValue = selectedValue.field.name.split(':')[1];
-      const predicateOntologie = ontologies.find( ontologie => ontologie.prefix === predicatePrefix );
-      return (
-        {
+      
+      if (! selectedValue.field.path ) {
+        return ({
           "type": "bgp",
           "triples": [{
-              "subject": {"termType": "Variable","value": "s1"},
-              "predicate": {"termType": "NameNode","value": predicateOntologie.url + predicateValue},
-              "object": {"termType": "NameNode","value": selectedValue.value.id}
+            "subject": DataFactory.variable("s1"),
+            "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.name)),
+            "object": DataFactory.namedNode(selectedValue.value.id)
           }]
-        }
-      )
+        })
+      } else {
+        return ({
+          "type": "bgp",
+          "triples": [{
+            "subject": DataFactory.variable("s1"),
+            "predicate": {
+              "type": "path",
+              "pathType": selectedValue.field.path.pathType,
+              "items": [DataFactory.namedNode(getFullPredicate(selectedValue.field.path.name))]
+            },
+            "object": DataFactory.blankNode("blank0")
+          },{
+            "subject": DataFactory.blankNode("blank0"),
+            "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.name)),
+            "object": DataFactory.namedNode(selectedValue.value.id)
+          }]
+        })
+      }
     });
     const results = await dataProvider.getList(
       selectedResource.label,
@@ -239,8 +262,8 @@ const SearchPage = ({ theme }) => {
           <div>Nb résultats : {results.total}</div>
           <br />
           {
-            results.data?.map(item => (
-              <Box>
+            results.data?.map((item, index) => (
+              <Box key={index}>
                 <Link to={linkToRecord(selectedResource.label, item.id, 'show')} onClick={(e) => e.stopPropagation()}>
                   <strong>{item["pair:label"]}</strong>
                 </Link>
