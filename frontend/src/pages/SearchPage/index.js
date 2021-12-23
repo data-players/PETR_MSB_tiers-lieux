@@ -87,7 +87,6 @@ const SearchPage = ({ theme }) => {
   }
 
   const handleFieldClick = (field) => {
-    setResults(null);
     if (field !== selectedField) {
       setSelectedField(field);
       getSelectedFieldValues(field.type);
@@ -106,8 +105,8 @@ const SearchPage = ({ theme }) => {
       })
       setSelectedValues([...selectedValues]);
     } else {
-      if (currentValueForField.value === value) {
-        setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value !== value));
+      if (currentValueForField.value.id === value.id) {
+        setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value.id !== value.id));
       } else {
         setSelectedValues(selectedValues.map(selectedValue => {
           if (selectedValue.field === field) {
@@ -122,11 +121,7 @@ const SearchPage = ({ theme }) => {
   
   const handleValueClick = (field, value) => {
     setResults(null);
-    if (value !== selectedValues[field]) {
-      changeSelectedValues(field, value);
-    } else {
-      changeSelectedValues(field, undefined);
-    }
+    changeSelectedValues(field, value);
   };  
   
   let customSearchFields = [];
@@ -236,7 +231,7 @@ const SearchPage = ({ theme }) => {
                     <Box pl={3} pt={2} key={index}>
                       <Button 
                         variant="contained" 
-                        color={selectedValues.find(selectedValue => selectedValue.value === value) ? "primary" : "secondary"}
+                        color={selectedValues.find(selectedValue => selectedValue.value.id === value.id) ? "primary" : "secondary"}
                         onClick={()=>handleValueClick(field, value)}
                       >
                         {value["pair:label"]}
