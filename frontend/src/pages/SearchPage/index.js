@@ -140,7 +140,7 @@ const SearchPage = ({ theme }) => {
     if (!selectedResource) {
       return;
     }
-    const sparqlWhere = selectedValues.map( selectedValue => { 
+    const sparqlWhere = selectedValues.map( (selectedValue, index) => { 
       
       if (! selectedValue.field.path ) {
         return ({
@@ -161,9 +161,9 @@ const SearchPage = ({ theme }) => {
               "pathType": selectedValue.field.path.pathType,
               "items": [DataFactory.namedNode(getFullPredicate(selectedValue.field.path.name))]
             },
-            "object": DataFactory.blankNode("blank0")
+            "object": DataFactory.blankNode("blank" + index)
           },{
-            "subject": DataFactory.blankNode("blank0"),
+            "subject": DataFactory.blankNode("blank" + index),
             "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.name)),
             "object": DataFactory.namedNode(selectedValue.value.id)
           }]
