@@ -81,7 +81,7 @@ module.exports = {
                 '@vocab': 'https://data.petr-msb.data-players.com/ontology#'
               },
               '@type': 'Sector',
-              'pair:label': sectorName
+              'http://virtual-assembly.org/ontologies/pair#label': sectorName
             },
             containerUri: urlJoin(CONFIG.HOME_URL, 'sectors'),
             slug: sectorSlug,
