@@ -1,5 +1,22 @@
 const customSearchConfig = [
   {
+    "label": "Service",
+    "fields" : [
+      {
+        "type": "ServiceType",
+        "name": "petr:hasServiceType",
+        "label": "Type de service",
+      },{
+        "type": "Sector",
+        "name": "petr:hasSector",
+        "label": "Secteurs",
+        "path": {
+          "type": "Organization",
+          "name": "petr:serviceOfferedBy",
+        }
+      }
+    ]
+  },{
     "label": "Equipment",
     "fields" : [
       {
