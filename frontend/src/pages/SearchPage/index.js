@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Link,
-  Loading,
-  Error,
   linkToRecord,
   useDataProvider,
-  useGetResourceLabel,
-  useQuery
+  useGetResourceLabel
 } from 'react-admin';
 import { Box, Button, Container, makeStyles } from '@material-ui/core';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
@@ -31,26 +28,6 @@ const useStyles = makeStyles(theme => ({
     height: 'unset',
   }
 }));
-
-const ResourceLabel = ( {resource, id} ) => {
-
-  const classes = useStyles();
-
-  const { data, loading, error } = useQuery({ 
-    type: 'getOne',
-    resource: resource.label,
-    payload: { id: id }
-  });
-
-  if (loading) return <Loading className={classes.loading}/>;
-  if (error) return <Error />;
-  if (!data) return null;
-
-  return (
-    <span>{data["pair:label"]}</span>
-  )
-};
-
 
 const SearchPage = ({ theme }) => {
   
