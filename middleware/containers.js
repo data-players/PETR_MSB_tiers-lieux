@@ -103,6 +103,11 @@ module.exports = [
     newResourcesPermissions: writePermissionsToCreator
   },
   {
+    path: '/service-types',
+    acceptedTypes: ['petr:ServiceType'],
+    newResourcesPermissions: writePermissionsToCreator
+  },
+  {
     path: '/spaces',
     acceptedTypes: ['petr:Space'],
     newResourcesPermissions: writePermissionsToCreator

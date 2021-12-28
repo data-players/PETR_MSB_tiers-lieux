@@ -27,6 +27,14 @@ export const ServiceForm = props => {
       </ReferenceInput>
       <TextInput source="pair:label" fullWidth validate={[required()]} />
       <ReferenceInput
+        source="petr:hasServiceType"
+        reference="ServiceType"
+        fullWidth
+        validate={[required()]}
+      >
+        <SelectInput optionText="pair:label" validate={[required()]} />
+      </ReferenceInput>
+      <ReferenceInput
         source="petr:hasRate"
         reference="Rate"
         validate={[required()]}

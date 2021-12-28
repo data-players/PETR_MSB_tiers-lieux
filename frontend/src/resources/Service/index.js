@@ -22,7 +22,8 @@ export default {
         'pair:label': 'Libellé',
         'petr:hasRate': 'Tarif',
         'petr:hasLabel': 'Labels',
-        'petr:hasAudience': 'Audiance',
+        'petr:hasAudience': 'Public',
+        'petr:hasServiceType': `Type de service`,
         'petr:itinerant': 'Itinérant',
         'petr:itinerantDetails': `Détail d'itinérance`,
 

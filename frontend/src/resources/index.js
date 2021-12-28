@@ -16,5 +16,6 @@ export { default as Label } from './Concept/Label';
 export { default as Network } from './Concept/Network';
 export { default as Rate } from './Concept/Rate';
 export { default as EquipmentType } from './Concept/EquipmentType';
+export { default as ServiceType } from './Concept/ServiceType';
 export { default as SpaceType } from './Concept/SpaceType';
 export { default as Sector } from './Concept/Sector';

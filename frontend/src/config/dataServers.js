@@ -20,6 +20,7 @@ const dataServers = {
         'petr:Rate': ['/rates'],
         'petr:Sector': ['/sectors'],
         'petr:Service': ['/services'],
+        'petr:ServiceType': ['/service-types'],
         'petr:Space': ['/spaces'],
         'petr:SpaceType': ['/space-types']
       }
