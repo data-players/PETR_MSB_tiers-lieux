@@ -42,7 +42,6 @@ const SearchPage = ({ theme }) => {
   const [fieldValues, setFieldValues] = useState();
   const [storedFieldValues, setStoredFieldValues] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
-  // const [searchStep, setSearchStep] = useState();
   const [results, setResults] = useState();
   
   const handleResourceStepClick = (resource) => {
@@ -56,7 +55,7 @@ const SearchPage = ({ theme }) => {
       setSearchFields(customSearchConfig.find( resourceConfig => resourceConfig === resource ).fields);
       const nextField = findNextField(resource, null);
       if (nextField) {
-        handleFieldClick(nextField);
+        handleFieldClick(resource, nextField);
       } else {
         setSelectedField();
       }
@@ -68,16 +67,19 @@ const SearchPage = ({ theme }) => {
     setSelectedValues([]);
   };
   
-  async function getSelectedFieldValues(resourceType) {
+  async function getSelectedFieldValues(resource, field) {
     setFieldValues([]);
-    const storedField = storedFieldValues.find(storedField => storedField.name === resourceType)
+    const storedField = storedFieldValues.find(storedField =>
+      storedField.resource === resource.label && storedField.name === field.type
+    )
     if (storedField) {
       setFieldValues(storedField.data);  
     } else {
-      const fieldValues = await dataProvider.getList(resourceType, {});
+      const fieldValues = await dataProvider.getList(field.type, {});
       setFieldValues(fieldValues.data);
       setStoredFieldValues([...storedFieldValues, {
-        name:resourceType,
+        resource: resource.label,
+        name:field.type,
         data:fieldValues.data
       }]);
     }
@@ -97,11 +99,11 @@ const SearchPage = ({ theme }) => {
     return Object.values(resource.fields)[fieldIndex + 1];
   }
 
-  const handleFieldClick = (field) => {
+  const handleFieldClick = (resource, field) => {
     if (field !== selectedField) {
       console.log('setSelectedField', field);
       setSelectedField(field);
-      getSelectedFieldValues(field.type);
+      getSelectedFieldValues(resource, field);
     } else {
       setSelectedField(null);
     }
@@ -131,7 +133,7 @@ const SearchPage = ({ theme }) => {
     }
     const nextField = findNextField(selectedResource, field);
     if (nextField) {
-      handleFieldClick(nextField);
+      handleFieldClick(selectedResource, nextField);
     }
   };
   
@@ -230,7 +232,7 @@ const SearchPage = ({ theme }) => {
               <Button 
                 variant="contained" 
                 color={selectedField === field ? "primary" : "secondary"}
-                onClick={()=>handleFieldClick(field)}
+                onClick={()=>handleFieldClick(selectedResource, field)}
               >
                 {field.label}
               </Button>
