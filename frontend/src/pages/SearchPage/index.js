@@ -37,34 +37,69 @@ const SearchPage = ({ theme }) => {
   const getResourceLabel = useGetResourceLabel();
 
   const [selectedResource, setSelectedResource] = useState();
-  const [selectedField, setSelectedField] = useState();
-  const [fieldValues, setSelectedFieldValues] = useState();
+  const [searchFields, setSearchFields] = useState([]);
+  const [selectedField, setSelectedField] = useState(null);
+  const [fieldValues, setFieldValues] = useState();
+  const [storedFieldValues, setStoredFieldValues] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
+  // const [searchStep, setSearchStep] = useState();
   const [results, setResults] = useState();
-
-  const removeSelection = () => {
-    setSelectedValues([]);
-    setSelectedField();
-  };
+  
+  const handleResourceStepClick = (resource) => {
+    setSelectedField(null);
+  }
 
   const handleResourceClick = (resource) => {
     setResults(null);
     if (resource !== selectedResource) {
       setSelectedResource(resource);
+      setSearchFields(customSearchConfig.find( resourceConfig => resourceConfig === resource ).fields);
+      const nextField = findNextField(resource, null);
+      if (nextField) {
+        handleFieldClick(nextField);
+      } else {
+        setSelectedField();
+      }
     } else {
       setSelectedResource(null);
+      setSearchFields([]);
+      setSelectedField();
     }
-    removeSelection();
+    setSelectedValues([]);
   };
   
   async function getSelectedFieldValues(resourceType) {
-    setSelectedFieldValues([]);
-    const fieldValues = await dataProvider.getList(resourceType, {});
-    setSelectedFieldValues(fieldValues.data);
+    setFieldValues([]);
+    const storedField = storedFieldValues.find(storedField => storedField.name === resourceType)
+    if (storedField) {
+      setFieldValues(storedField.data);  
+    } else {
+      const fieldValues = await dataProvider.getList(resourceType, {});
+      setFieldValues(fieldValues.data);
+      setStoredFieldValues([...storedFieldValues, {
+        name:resourceType,
+        data:fieldValues.data
+      }]);
+    }
+  }
+  
+  const findNextField = (resource, selectedField) => {
+    if (! resource) {
+      return; 
+    }
+    if (! selectedField) {
+      return Object.values(resource.fields)[0]; 
+    }
+    const fieldIndex = resource.fields.findIndex(field => field.type === selectedField.type);
+    if ( fieldIndex === -1 || fieldIndex >= (Object.keys(resource.fields).length - 1)) {
+      return; 
+    }
+    return Object.values(resource.fields)[fieldIndex + 1];
   }
 
   const handleFieldClick = (field) => {
     if (field !== selectedField) {
+      console.log('setSelectedField', field);
       setSelectedField(field);
       getSelectedFieldValues(field.type);
     } else {
@@ -94,17 +129,16 @@ const SearchPage = ({ theme }) => {
         setSelectedValues([...selectedValues]);
       }
     }
+    const nextField = findNextField(selectedResource, field);
+    if (nextField) {
+      handleFieldClick(nextField);
+    }
   };
   
   const handleValueClick = (field, value) => {
     setResults(null);
     changeSelectedValues(field, value);
   };  
-  
-  let customSearchFields = [];
-  if (selectedResource) {
-    customSearchFields = customSearchConfig.find( resource => resource === selectedResource ).fields;
-  }
   
   const getFullPredicate = (predicate) => {
     const predicatePrefix = predicate.split(':')[0];
@@ -163,37 +197,35 @@ const SearchPage = ({ theme }) => {
     }
   }, [selectedValues])
   
-  console.log('selectedResource:',selectedResource);
-  console.log('selectedField:',selectedField);
-  console.log('fieldValues:',fieldValues);
-  console.log('selectedValues:',selectedValues);
-  console.log('results:',results);
+  
+  console.log('selectedResource:', selectedResource);
+  console.log('searchFields:', searchFields);
+  console.log('selectedField:', selectedField);
+  console.log('fieldValues:', fieldValues);
+  console.log('storedFieldValues:', storedFieldValues);
+  console.log('selectedValues:', selectedValues);
+  console.log('results:', results);
 
   return (
     <Container maxWidth="lg">
       <BreadcrumbsItem to='/Search'>Rechercher</BreadcrumbsItem>
       <h1>Custom Search</h1>
       <h2>Que recherchez-vous ?</h2>
-      <hr />
       <Box p={3} className={classes.boxFlexRow}>
         { 
-          customSearchConfig.map((resource, index) => (
-            <Box p={1} key={index}>
+          selectedResource && 
+            <Box p={1}>
               <Button 
                 variant="contained" 
-                color={selectedResource === resource ? "primary" : "secondary"}
-                onClick={()=>handleResourceClick(resource)}
+                color="secondary"
+                onClick={()=>handleResourceStepClick()}
               >
-                {getResourceLabel(resource.label)}
+                {getResourceLabel(selectedResource.label)}
               </Button>
             </Box>
-          ))
         }
-      </Box>
-      <hr />
-      <Box p={3} className={classes.boxFlexRow}>
-        { 
-          customSearchFields.map((field, index) => (
+        {
+          searchFields.map((field, index) => (
             <Box p={1} key={index}>
               <Button 
                 variant="contained" 
@@ -202,7 +234,35 @@ const SearchPage = ({ theme }) => {
               >
                 {field.label}
               </Button>
-              <Box className={selectedField === field ? classes.test : classes.dNone} >
+            </Box>
+          ))
+        }
+      </Box>
+      <hr />
+      <Box p={3}>
+        <Box p={1}>
+          { selectedField === null &&
+            <> 
+              {
+              customSearchConfig.map((resource, index) => (
+                <Box pl={3} pt={2}>
+                  <Button 
+                    variant="contained" 
+                    color={selectedResource === resource ? "primary" : "secondary"}
+                    onClick={()=>handleResourceClick(resource)}
+                  >
+                    {getResourceLabel(resource.label)}
+                  </Button>
+                </Box>
+              ))
+              }
+            </>
+          }
+        </Box>
+        { 
+          searchFields.map((field, index) => (
+            <Box p={1} key={index}>
+              <Box className={selectedField === field ? null : classes.dNone} >
                 {
                   fieldValues?.map((value, index) => (
                     <Box pl={3} pt={2} key={index}>
