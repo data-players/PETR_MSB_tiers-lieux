@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { 
   Link,
   linkToRecord,
@@ -9,6 +9,7 @@ import { Box, Button, Container, makeStyles } from '@material-ui/core';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import ontologies from '../../config/ontologies.json';
 import customSearchConfig from './config';
+import ChevronRightIcon from '../../svg/ChevronRightIcon';
 
 import DataFactory from '@rdfjs/data-model';
 
@@ -26,6 +27,11 @@ const useStyles = makeStyles(theme => ({
   },
   loading: {
     height: 'unset',
+  },
+  chevronRight: {
+    position: 'relative',
+    top: 8,
+    left: 8
   }
 }));
 
@@ -36,6 +42,8 @@ const SearchPage = ({ theme }) => {
   const dataProvider = useDataProvider();
   const getResourceLabel = useGetResourceLabel();
 
+  const searchSteps = ['resource', 'field', 'results'];
+  const [searchStep, setSearchStep] = useState();
   const [selectedResource, setSelectedResource] = useState();
   const [searchFields, setSearchFields] = useState([]);
   const [selectedField, setSelectedField] = useState(null);
@@ -44,7 +52,12 @@ const SearchPage = ({ theme }) => {
   const [selectedValues, setSelectedValues] = useState([]);
   const [results, setResults] = useState();
   
+  const getSearchStep = (step) => {
+    return searchSteps.indexOf(step)
+  }
+  
   const handleResourceStepClick = (resource) => {
+    setSearchStep(getSearchStep('resource'));
     setSelectedField(null);
   }
 
@@ -93,13 +106,18 @@ const SearchPage = ({ theme }) => {
       return Object.values(resource.fields)[0]; 
     }
     const fieldIndex = resource.fields.findIndex(field => field.type === selectedField.type);
-    if ( fieldIndex === -1 || fieldIndex >= (Object.keys(resource.fields).length - 1)) {
+    if (fieldIndex === -1) {
+      return; 
+    }
+    if (fieldIndex >= (Object.keys(resource.fields).length - 1)) {
+      handleResultsStepClick();
       return; 
     }
     return Object.values(resource.fields)[fieldIndex + 1];
   }
 
   const handleFieldClick = (resource, field) => {
+    setSearchStep(getSearchStep('field'));
     if (field !== selectedField) {
       console.log('setSelectedField', field);
       setSelectedField(field);
@@ -199,7 +217,14 @@ const SearchPage = ({ theme }) => {
     }
   }, [selectedValues])
   
+  const resultsRef = useRef(null);
+  const handleResultsStepClick = () => {
+    setSearchStep(getSearchStep('results'));
+    setSelectedField(null);
+    resultsRef.current.scrollIntoView();
+  }
   
+  console.log('searchStep:', searchStep);  
   console.log('selectedResource:', selectedResource);
   console.log('searchFields:', searchFields);
   console.log('selectedField:', selectedField);
@@ -214,17 +239,17 @@ const SearchPage = ({ theme }) => {
       <h1>Custom Search</h1>
       <h2>Que recherchez-vous ?</h2>
       <Box p={3} className={classes.boxFlexRow}>
-        { 
-          selectedResource && 
-            <Box p={1}>
-              <Button 
-                variant="contained" 
-                color="secondary"
-                onClick={()=>handleResourceStepClick()}
-              >
-                {getResourceLabel(selectedResource.label)}
-              </Button>
-            </Box>
+        { selectedResource && 
+          <Box p={1}>
+            <Button 
+              variant="contained" 
+              color={searchStep === getSearchStep('resource') ? "primary" : "secondary"}
+              onClick={()=>handleResourceStepClick()}
+            >
+              {getResourceLabel(selectedResource.label)}
+            </Button>
+            <ChevronRightIcon className={classes.chevronRight}/>
+          </Box>
         }
         {
           searchFields.map((field, index) => (
@@ -236,53 +261,74 @@ const SearchPage = ({ theme }) => {
               >
                 {field.label}
               </Button>
+              { ( Object.keys(selectedValues).length !== 0 ||
+                  index !== (searchFields.length - 1) 
+                ) &&
+                  <ChevronRightIcon className={classes.chevronRight}/>
+              }
             </Box>
           ))
         }
-      </Box>
-      <hr />
-      <Box p={3}>
-        <Box p={1}>
-          { selectedField === null &&
-            <> 
-              {
-              customSearchConfig.map((resource, index) => (
-                <Box pl={3} pt={2}>
-                  <Button 
-                    variant="contained" 
-                    color={selectedResource === resource ? "primary" : "secondary"}
-                    onClick={()=>handleResourceClick(resource)}
-                  >
-                    {getResourceLabel(resource.label)}
-                  </Button>
-                </Box>
-              ))
+        { Object.keys(selectedValues).length > 0 &&
+          <Box p={1}>
+            <Button 
+              variant="contained" 
+              color={searchStep === getSearchStep('results') ? "primary" : "secondary"}
+              onClick={()=>handleResultsStepClick()}
+            >
+              Résultats 
+              { results &&
+                <span>&nbsp;({results.total})</span>
               }
-            </>
-          }
-        </Box>
-        { 
-          searchFields.map((field, index) => (
-            <Box p={1} key={index}>
-              <Box className={selectedField === field ? null : classes.dNone} >
+            </Button>
+          </Box>
+        }
+      </Box>
+      { searchStep !== getSearchStep('results') &&
+        <>
+          <hr />
+          <Box p={3}>
+            { selectedField === null &&
+              <Box p={1}>              
                 {
-                  fieldValues?.map((value, index) => (
-                    <Box pl={3} pt={2} key={index}>
+                  customSearchConfig.map((resource, index) => (
+                    <Box pl={3} pt={2}>
                       <Button 
                         variant="contained" 
-                        color={selectedValues.find(selectedValue => selectedValue.value.id === value.id) ? "primary" : "secondary"}
-                        onClick={()=>handleValueClick(field, value)}
+                        color={selectedResource === resource ? "primary" : "secondary"}
+                        onClick={()=>handleResourceClick(resource)}
                       >
-                        {value["pair:label"]}
+                        {getResourceLabel(resource.label)}
                       </Button>
                     </Box>
                   ))
                 }
               </Box>
-            </Box>
-          ))
-        }
-      </Box>
+            }
+            { 
+              searchFields.filter(field => selectedField === field).map((field) => (
+                <Box p={1}>
+                  <Box pl={3} pt={2}>
+                    {
+                      fieldValues?.map((value, index) => (
+                        <Box pl={3} pt={2} key={index}>
+                          <Button 
+                            variant="contained" 
+                            color={selectedValues.find(selectedValue => selectedValue.value.id === value.id) ? "primary" : "secondary"}
+                            onClick={()=>handleValueClick(field, value)}
+                          >
+                            {value["pair:label"]}
+                          </Button>
+                        </Box>
+                      ))
+                    }
+                  </Box>
+                </Box>
+              ))
+            }
+          </Box>
+        </>
+      }
       {selectedValues.length > 0 && <><hr /><h3>Critères :</h3></>}
       {
         selectedValues.map((selectedValue, index) => (
@@ -290,22 +336,24 @@ const SearchPage = ({ theme }) => {
             <Box p={1} key={index}>{selectedValue.field.label} : {selectedValue.value["pair:label"]}</Box>
         ))
       }
-      {results && 
-        <>
-          <hr />
-          <div>Nb résultats : {results.total}</div>
-          <br />
-          {
-            results.data?.map((item, index) => (
-              <Box key={index}>
-                <Link to={linkToRecord(selectedResource.label, item.id, 'show')} onClick={(e) => e.stopPropagation()}>
-                  <strong>{item["pair:label"]}</strong>
-                </Link>
-              </Box>
-            ))
-          }
-        </>
-      }
+      <Box ref={resultsRef}>
+        { results && 
+          <Box>
+            <hr />
+            <div>Nb résultats : {results.total}</div>
+            <br />
+            {
+              results.data?.map((item, index) => (
+                <Box key={index}>
+                  <Link to={linkToRecord(selectedResource.label, item.id, 'show')} onClick={(e) => e.stopPropagation()}>
+                    <strong>{item["pair:label"]}</strong>
+                  </Link>
+                </Box>
+              ))
+            }
+          </Box>
+        }
+      </Box>
     </Container>
   );
 };
