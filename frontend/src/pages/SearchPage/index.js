@@ -2,14 +2,18 @@ import React, { useRef, useState, useEffect } from 'react';
 import { 
   Link,
   linkToRecord,
+  SimpleList,
   useDataProvider,
   useGetResourceLabel
 } from 'react-admin';
-import { Box, Button, Container, makeStyles } from '@material-ui/core';
+import { ListContext } from 'ra-core';
+import { Avatar, Box, Button, Container, makeStyles } from '@material-ui/core';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import HomeIcon from '@material-ui/icons/Home';
+
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import ontologies from '../../config/ontologies.json';
 import customSearchConfig from './config';
-import ChevronRightIcon from '../../svg/ChevronRightIcon';
 
 import DataFactory from '@rdfjs/data-model';
 
@@ -80,7 +84,7 @@ const SearchPage = ({ theme }) => {
     setSelectedValues([]);
   };
   
-  async function getSelectedFieldValues(resource, field) {
+  const getSelectedFieldValues = async (resource, field) => {
     setFieldValues([]);
     const storedField = storedFieldValues.find(storedField =>
       storedField.resource === resource.label && storedField.name === field.type
@@ -167,7 +171,7 @@ const SearchPage = ({ theme }) => {
     return predicateOntologie.url + predicateValue;
   }
   
-  async function getResults() {
+  const getResults = async () => {
     if (!selectedResource) {
       return;
     }
@@ -208,7 +212,25 @@ const SearchPage = ({ theme }) => {
           "sparqlWhere": sparqlWhere
         }
     });
-    setResults(results);
+      
+    const uniqueResources = [...new Set(results.data.map(item => item[selectedResource["result-path"]["name"]]))];
+    const resultsByResource = await Promise.all( uniqueResources.map(async uniqueResource => {
+      const resourceData = await dataProvider.getOne(selectedResource.label, {id: uniqueResource});
+      return ([ 
+        uniqueResource, {
+          id : uniqueResource,
+          resourceData : resourceData.data,
+          list: results.data
+            .filter(item => item[selectedResource["result-path"]["name"]] === uniqueResource)
+            .map(item => item["pair:label"])
+        }
+      ])
+    }))
+  
+    setResults({
+      ...results,
+      dataByResource: Object.fromEntries(resultsByResource)
+    });
   }
   
   useEffect( () => { 
@@ -342,14 +364,33 @@ const SearchPage = ({ theme }) => {
             <hr />
             <div>Nb résultats : {results.total}</div>
             <br />
-            {
-              results.data?.map((item, index) => (
-                <Box key={index}>
-                  <Link to={linkToRecord(selectedResource.label, item.id, 'show')} onClick={(e) => e.stopPropagation()}>
-                    <strong>{item["pair:label"]}</strong>
-                  </Link>
-                </Box>
-              ))
+            { results.data && 
+              <ListContext.Provider
+                value={{
+                    loaded: true,
+                    loading: false,
+                    ids: Object.keys(results.dataByResource),
+                    data: results.dataByResource,
+                    total: Object.keys(results.dataByResource).length,
+                    resource: selectedResource["result-path"]["type"],
+                    basePath: '/' + selectedResource["result-path"]["type"],
+                }}
+              >
+                <SimpleList
+                  primaryText={record => record.resourceData["pair:label"]}
+                  secondaryText={record =>  {console.log('record:', record); return(
+                    <ul>
+                      {record.list.map(item => <li>{item}</li>)}
+                    </ul>
+                  )}}
+                  leftAvatar={record => (
+                    <Avatar src={record.resourceData['petr:logo']} width="100%">
+                      <HomeIcon />
+                    </Avatar>
+                  )}
+                  linkType="show"
+                />
+              </ListContext.Provider>
             }
           </Box>
         }

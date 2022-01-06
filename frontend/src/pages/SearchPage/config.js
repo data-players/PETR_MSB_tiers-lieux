@@ -15,7 +15,11 @@ const customSearchConfig = [
           "name": "petr:serviceOfferedBy",
         }
       }
-    ]
+    ],
+    "result-path" : {
+      "type": "Organization",
+      "name": "petr:serviceOfferedBy",
+    }
   },{
     "label": "Equipment",
     "fields" : [
@@ -32,7 +36,11 @@ const customSearchConfig = [
           "name": "petr:equipmentOfferedBy",
         }
       }
-    ]
+    ],
+    "result-path" : {
+      "type": "Organization",
+      "name": "petr:equipmentOfferedBy",
+    }
   },{
     "label": "Space",
     "fields" : [
@@ -57,7 +65,11 @@ const customSearchConfig = [
           "pathType": "^"
         }
       }
-    ]
+    ],
+    "result-path" : {
+      "type": "Organization",
+      "name": "petr:spaceOfferedBy",
+    }
   }
 ];
 
