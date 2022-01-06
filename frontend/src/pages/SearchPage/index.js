@@ -8,6 +8,7 @@ import {
 } from 'react-admin';
 import { ListContext } from 'ra-core';
 import { Avatar, Box, Button, Container, makeStyles } from '@material-ui/core';
+import CancelIcon from '@material-ui/icons/CancelPresentation';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -36,6 +37,16 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     top: 8,
     left: 8
+  },
+  cancelIcon: {
+    position: 'relative',
+    top: 6,
+    marginRight: 6,
+    color: 'tomato',
+    cursor: 'pointer',
+  },
+  noChoiceButton: {
+    color: '#203142 !important'
   }
 }));
 
@@ -64,16 +75,22 @@ const SearchPage = ({ theme }) => {
     setSearchStep(getSearchStep('resource'));
     setSelectedField(null);
   }
+  
+  const goToNextField = (resource, field) => {
+    const nextField = findNextField(resource, field);
+    if (nextField) {
+      handleFieldClick(resource, nextField);
+      return nextField;
+    }
+  }
 
   const handleResourceClick = (resource) => {
     setResults(null);
     if (resource !== selectedResource) {
       setSelectedResource(resource);
       setSearchFields(customSearchConfig.find( resourceConfig => resourceConfig === resource ).fields);
-      const nextField = findNextField(resource, null);
-      if (nextField) {
-        handleFieldClick(resource, nextField);
-      } else {
+      const nextField = goToNextField(resource, null);
+      if (! nextField) {
         setSelectedField();
       }
     } else {
@@ -123,40 +140,38 @@ const SearchPage = ({ theme }) => {
   const handleFieldClick = (resource, field) => {
     setSearchStep(getSearchStep('field'));
     if (field !== selectedField) {
-      console.log('setSelectedField', field);
       setSelectedField(field);
       getSelectedFieldValues(resource, field);
-    } else {
-      setSelectedField(null);
     }
   };
 
   const changeSelectedValues = (field, value) => {
-    console.log('changeSelectedValues', field, value, [...selectedValues]);
-    const currentValueForField = selectedValues.find(selectedValue => selectedValue.field === field);
-    if (! currentValueForField) {
-      selectedValues.push({
-        field: field,
-        value: value
-      })
-      setSelectedValues([...selectedValues]);
-    } else {
-      if (currentValueForField.value.id === value.id) {
-        setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value.id !== value.id));
-      } else {
-        setSelectedValues(selectedValues.map(selectedValue => {
-          if (selectedValue.field === field) {
-            selectedValue.value = value
-          }
-          return selectedValue
-        }));
+    if (value) {
+      const currentValueForField = selectedValues.find(selectedValue => selectedValue.field === field);
+      if (! currentValueForField) {
+        selectedValues.push({
+          field: field,
+          value: value
+        })
         setSelectedValues([...selectedValues]);
+      } else {
+        if (currentValueForField.value.id === value.id) {
+          setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value.id !== value.id));
+          return;
+        } else {
+          setSelectedValues(selectedValues.map(selectedValue => {
+            if (selectedValue.field === field) {
+              selectedValue.value = value
+            }
+            return selectedValue
+          }));
+          setSelectedValues([...selectedValues]);
+        }
       }
+    } else {
+      setSelectedValues(selectedValues.filter(selectedValue => selectedValue.field.type !== field.type));
     }
-    const nextField = findNextField(selectedResource, field);
-    if (nextField) {
-      handleFieldClick(selectedResource, nextField);
-    }
+    goToNextField(selectedResource, field);
   };
   
   const handleValueClick = (field, value) => {
@@ -314,7 +329,7 @@ const SearchPage = ({ theme }) => {
               <Box p={1}>              
                 {
                   customSearchConfig.map((resource, index) => (
-                    <Box pl={3} pt={2}>
+                    <Box pl={3} pt={2} key={index}>
                       <Button 
                         variant="contained" 
                         color={selectedResource === resource ? "primary" : "secondary"}
@@ -328,8 +343,8 @@ const SearchPage = ({ theme }) => {
               </Box>
             }
             { 
-              searchFields.filter(field => selectedField === field).map((field) => (
-                <Box p={1}>
+              searchFields.filter(field => selectedField === field).map((field, index) => (
+                <Box p={1} key={index}>
                   <Box pl={3} pt={2}>
                     {
                       fieldValues?.map((value, index) => (
@@ -344,6 +359,16 @@ const SearchPage = ({ theme }) => {
                         </Box>
                       ))
                     }
+                    <Box pl={3} pt={2}>
+                      <Button 
+                        variant="contained" 
+                        color="default"
+                        className={classes.noChoiceButton}
+                        onClick={()=>handleValueClick(field, null)}
+                      >
+                        Ignorer ce critère
+                      </Button>
+                    </Box>
                   </Box>
                 </Box>
               ))
@@ -351,18 +376,33 @@ const SearchPage = ({ theme }) => {
           </Box>
         </>
       }
-      {selectedValues.length > 0 && <><hr /><h3>Critères :</h3></>}
+      { ( selectedValues.length > 0 || searchStep === getSearchStep('results') ) &&
+          <><hr /><h3>Critères :</h3></>
+      }
       {
         selectedValues.map((selectedValue, index) => (
           selectedValue &&
-            <Box p={1} key={index}>{selectedValue.field.label} : {selectedValue.value["pair:label"]}</Box>
+            <Box p={1} key={index}>
+              <CancelIcon
+                className={classes.cancelIcon} 
+                onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)} 
+              />
+              <span>{selectedValue.field.label} : {selectedValue.value["pair:label"]}</span>
+            </Box>
         ))
+      }
+      { !results &&
+        searchStep === getSearchStep('results') &&
+          <Box>
+            <hr />
+            <p>Veuillez sélectionner au moins un critère de recherche</p>
+          </Box>
       }
       <Box ref={resultsRef}>
         { results && 
           <Box>
             <hr />
-            <div>Nb résultats : {results.total}</div>
+            <h3>Résultats ({results.total}) :</h3>
             <br />
             { results.data && 
               <ListContext.Provider
@@ -378,9 +418,9 @@ const SearchPage = ({ theme }) => {
               >
                 <SimpleList
                   primaryText={record => record.resourceData["pair:label"]}
-                  secondaryText={record =>  {console.log('record:', record); return(
+                  secondaryText={record => { return (
                     <ul>
-                      {record.list.map(item => <li>{item}</li>)}
+                      {record.list.map((item, index) => <li key={index}>{item}</li>)}
                     </ul>
                   )}}
                   leftAvatar={record => (
