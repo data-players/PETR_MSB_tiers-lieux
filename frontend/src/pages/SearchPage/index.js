@@ -23,6 +23,11 @@ console.log('==========> CustomSearch:', customSearchConfig);
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {
+    padding: 0,
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: 16,
+      paddingRight: 16
+    },
     textAlign: 'center',
     '& button': {
       width: '90%',
@@ -32,9 +37,10 @@ const useStyles = makeStyles(theme => ({
       width: '90%'
     },
   },
-  boxFlexRow: {
+  stepsContainer: {
     padding: 10,
     display: 'flex',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
@@ -54,10 +60,18 @@ const useStyles = makeStyles(theme => ({
   },
   criteriasContainer: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: 24,
+      paddingRight: 24
+    },
   },
   criteriaContainer: {
-    minWidth: 400
+    width: '90%',
+    [theme.breakpoints.up('sm')]: {
+      width: 'unset',
+      minWidth: 400
+    },
   },
   criteria: {
     width: '90%',
@@ -69,10 +83,16 @@ const useStyles = makeStyles(theme => ({
   },
   criteriaChevronContainer: {
     margin: 'auto 0',
-    minWidth: 90
+    minWidth: 50,
+    [theme.breakpoints.up('sm')]: {
+      minWidth: 90
+    },
   },
   criteriaChevron: {
-    fontSize: 90,
+    fontSize: 50,
+    [theme.breakpoints.up('sm')]: {
+      fontSize: 90
+    },
     stroke: 'white',
     cursor: 'pointer',
     '&:hover': {
@@ -343,7 +363,7 @@ const SearchPage = ({ theme }) => {
       { selectedResource &&
         <>
           <hr/>
-          <Box p={3} className={classes.boxFlexRow}>
+          <Box p={3} className={classes.stepsContainer}>
             <Box p={1} className={classes.stepContainer}>
               <Button 
                 variant="contained" 
@@ -393,7 +413,7 @@ const SearchPage = ({ theme }) => {
       { searchStep !== getSearchStep('results') &&
         <>
           <h2>{searchStep === getSearchStep('resource') ? 'Que recherchez-vous ?' : 'Précisez votre recherche :'}</h2>
-          <Box p={3} pt={0} mt={-2} className={classes.criteriasContainer}>
+          <Box pb={4} mt={-1} className={classes.criteriasContainer}>
             { selectedResource &&
               <Box className={classes.criteriaChevronContainer}>
                 { searchStep !== getSearchStep('resource') &&
@@ -405,7 +425,7 @@ const SearchPage = ({ theme }) => {
               </Box>
             }
             { selectedField === null &&
-              <Box p={1} className={classes.criteriaContainer}>              
+              <Box className={classes.criteriaContainer}>              
                 {
                   customSearchConfig.map((resource, index) => (
                     <Box pt={2} key={index}>
@@ -423,7 +443,7 @@ const SearchPage = ({ theme }) => {
             }
             { 
               searchFields.filter(field => selectedField === field).map((field, index) => (
-                <Box p={1} key={index} className={classes.criteriaContainer}>
+                <Box key={index} className={classes.criteriaContainer}>
                   <Box>
                     {
                       fieldValues?.map((value, index) => (
@@ -438,7 +458,7 @@ const SearchPage = ({ theme }) => {
                         </Box>
                       ))
                     }
-                    <Box pt={2} className={classes.criteriaContainer}>
+                    <Box pt={2}>
                       <Button 
                         variant="contained" 
                         color="default"
