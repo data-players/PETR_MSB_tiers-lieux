@@ -7,6 +7,7 @@ import {
 import { ListContext } from 'ra-core';
 import { Avatar, Box, Button, Container, makeStyles } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/CancelPresentation';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -46,10 +47,17 @@ const useStyles = makeStyles(theme => ({
   stepContainer: {
     whiteSpace: 'nowrap'
   },
-  chevronRight: {
+  stepChevron: {
     position: 'relative',
     top: 8,
     left: 8
+  },
+  criteriasContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  criteriaContainer: {
+    minWidth: 400
   },
   criteria: {
     width: '90%',
@@ -58,6 +66,18 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     margin: 'auto',
     textAlign: 'left'
+  },
+  criteriaChevronContainer: {
+    margin: 'auto 0',
+    minWidth: 90
+  },
+  criteriaChevron: {
+    fontSize: 90,
+    stroke: 'white',
+    cursor: 'pointer',
+    '&:hover': {
+      opacity: .8
+    }
   },
   cancelIcon: {
     marginRight: 8,
@@ -73,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 600,
     margin: '-16px auto'
   },
-  resultsItem: {
+  resultItem: {
     marginTop: 2,
     listStyleType: 'disc',
   }
@@ -105,8 +125,8 @@ const SearchPage = ({ theme }) => {
     setSelectedField(null);
   }
   
-  const goToNextField = (resource, field) => {
-    const nextField = findNextField(resource, field);
+  const goToNextField = (resource, field, backward=false) => {
+    const nextField = findNextField(resource, field, backward);
     if (nextField) {
       handleFieldClick(resource, nextField);
       return nextField;
@@ -148,7 +168,7 @@ const SearchPage = ({ theme }) => {
     }
   }
   
-  const findNextField = (resource, selectedField) => {
+  const findNextField = (resource, selectedField, backward=false) => {
     if (! resource) {
       return; 
     }
@@ -159,11 +179,28 @@ const SearchPage = ({ theme }) => {
     if (fieldIndex === -1) {
       return; 
     }
-    if (fieldIndex >= (Object.keys(resource.fields).length - 1)) {
-      handleResultsStepClick();
-      return; 
+    console.log('backward:', backward);
+    if (! backward ) {
+      if (fieldIndex >= (Object.keys(resource.fields).length - 1)) {
+        handleResultsStepClick();
+        return; 
+      }
+      return Object.values(resource.fields)[fieldIndex + 1];
+    } else {
+      if (fieldIndex === 0) {
+        handleResourceStepClick();
+        return; 
+      }
+      return Object.values(resource.fields)[fieldIndex - 1];
     }
-    return Object.values(resource.fields)[fieldIndex + 1];
+  }
+  
+  const handleClickLeftCriteriaChevron = () => {
+    console.log('handleClickLeftCriteriaChevron');
+    goToNextField(selectedResource, selectedField, true);
+  }
+  const handleClickRightCriteriaChevron = () => {
+    goToNextField(selectedResource, selectedField);
   }
 
   const handleFieldClick = (resource, field) => {
@@ -315,7 +352,7 @@ const SearchPage = ({ theme }) => {
               >
                 {getResourceLabel(selectedResource.label)}
               </Button>
-              <ChevronRightIcon className={classes.chevronRight}/>
+              <ChevronRightIcon className={classes.stepChevron}/>
             </Box>
             {
               searchFields.map((field, index) => (
@@ -330,7 +367,7 @@ const SearchPage = ({ theme }) => {
                   { ( Object.keys(selectedValues).length !== 0 ||
                       index !== (searchFields.length - 1) 
                     ) &&
-                      <ChevronRightIcon className={classes.chevronRight}/>
+                      <ChevronRightIcon className={classes.stepChevron}/>
                   }
                 </Box>
               ))
@@ -356,9 +393,19 @@ const SearchPage = ({ theme }) => {
       { searchStep !== getSearchStep('results') &&
         <>
           <h2>{searchStep === getSearchStep('resource') ? 'Que recherchez-vous ?' : 'Précisez votre recherche :'}</h2>
-          <Box p={3} pt={0} mt={-2}>
+          <Box p={3} pt={0} mt={-2} className={classes.criteriasContainer}>
+            { selectedResource &&
+              <Box className={classes.criteriaChevronContainer}>
+                { searchStep !== getSearchStep('resource') &&
+                  <ChevronLeftIcon
+                    className={classes.criteriaChevron}
+                    onClick={() => handleClickLeftCriteriaChevron()}
+                  />
+                }
+              </Box>
+            }
             { selectedField === null &&
-              <Box p={1}>              
+              <Box p={1} className={classes.criteriaContainer}>              
                 {
                   customSearchConfig.map((resource, index) => (
                     <Box pt={2} key={index}>
@@ -376,7 +423,7 @@ const SearchPage = ({ theme }) => {
             }
             { 
               searchFields.filter(field => selectedField === field).map((field, index) => (
-                <Box p={1} key={index}>
+                <Box p={1} key={index} className={classes.criteriaContainer}>
                   <Box>
                     {
                       fieldValues?.map((value, index) => (
@@ -391,7 +438,7 @@ const SearchPage = ({ theme }) => {
                         </Box>
                       ))
                     }
-                    <Box pt={2}>
+                    <Box pt={2} className={classes.criteriaContainer}>
                       <Button 
                         variant="contained" 
                         color="default"
@@ -404,6 +451,14 @@ const SearchPage = ({ theme }) => {
                   </Box>
                 </Box>
               ))
+            }
+            { selectedResource &&
+              <Box className={classes.criteriaChevronContainer}>
+                <ChevronRightIcon
+                  className={classes.criteriaChevron} 
+                  onClick={() => handleClickRightCriteriaChevron()}
+                />
+              </Box>
             }
           </Box>
         </>
@@ -426,7 +481,7 @@ const SearchPage = ({ theme }) => {
               {
                 selectedValues.map((selectedValue, index) => (
                   selectedValue &&
-                    <Box p={1} className={classes.criteria} key={index}>
+                    <Box p={1} pl={2} className={classes.criteria} key={index}>
                       <CancelIcon
                         className={classes.cancelIcon} 
                         onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)} 
@@ -480,6 +535,19 @@ const SearchPage = ({ theme }) => {
                 </ListContext.Provider>
               </Box>
             }
+            <Box pt={4}>
+              <hr />
+              <Box pt={3}>
+                <Button 
+                  variant="contained" 
+                  color="default"
+                  className={classes.noChoiceButton}
+                  onClick={()=>handleResourceStepClick()}
+                >
+                  Nouvelle recherche
+                </Button>
+              </Box>
+            </Box>
           </Box>
         }
       </Box>
