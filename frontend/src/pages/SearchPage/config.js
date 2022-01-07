@@ -9,7 +9,7 @@ const customSearchConfig = [
       },{
         "type": "Sector",
         "name": "petr:hasSector",
-        "label": "Secteurs",
+        "label": "Secteur",
         "path": {
           "type": "Organization",
           "name": "petr:serviceOfferedBy",
@@ -30,7 +30,7 @@ const customSearchConfig = [
       },{
         "type": "Sector",
         "name": "petr:hasSector",
-        "label": "Secteurs",
+        "label": "Secteur",
         "path": {
           "type": "Organization",
           "name": "petr:equipmentOfferedBy",
@@ -51,7 +51,7 @@ const customSearchConfig = [
       },{
         "type": "Sector",
         "name": "petr:hasSector",
-        "label": "Secteurs",
+        "label": "Secteur",
         "path": {
           "type": "Organization",
           "name": "petr:spaceOfferedBy",

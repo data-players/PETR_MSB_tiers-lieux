@@ -1,7 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { 
-  Link,
-  linkToRecord,
   SimpleList,
   useDataProvider,
   useGetResourceLabel
@@ -23,30 +21,61 @@ import DataFactory from '@rdfjs/data-model';
 console.log('==========> CustomSearch:', customSearchConfig);
 
 const useStyles = makeStyles(theme => ({
+  mainContainer: {
+    textAlign: 'center',
+    '& button': {
+      width: '90%',
+      maxWidth: 400
+    },
+    '& hr': {
+      width: '90%'
+    },
+  },
   boxFlexRow: {
     padding: 10,
     display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   },
   dNone: {
-    display: 'none',
+    display: 'none'
   },
   loading: {
-    height: 'unset',
+    height: 'unset'
+  },
+  stepContainer: {
+    whiteSpace: 'nowrap'
   },
   chevronRight: {
     position: 'relative',
     top: 8,
     left: 8
   },
+  criteria: {
+    width: '90%',
+    maxWidth: 600,
+    display: 'flex',
+    alignItems: 'center',
+    margin: 'auto',
+    textAlign: 'left'
+  },
   cancelIcon: {
-    position: 'relative',
-    top: 6,
-    marginRight: 6,
+    marginRight: 8,
     color: 'tomato',
-    cursor: 'pointer',
+    fontSize: '2rem',
+    cursor: 'pointer'
   },
   noChoiceButton: {
     color: '#203142 !important'
+  },
+  resultsContainer: {
+    width: '90%',
+    maxWidth: 600,
+    margin: '-16px auto'
+  },
+  resultsItem: {
+    marginTop: 2,
+    listStyleType: 'disc',
   }
 }));
 
@@ -58,7 +87,7 @@ const SearchPage = ({ theme }) => {
   const getResourceLabel = useGetResourceLabel();
 
   const searchSteps = ['resource', 'field', 'results'];
-  const [searchStep, setSearchStep] = useState();
+  const [searchStep, setSearchStep] = useState(0);
   const [selectedResource, setSelectedResource] = useState();
   const [searchFields, setSearchFields] = useState([]);
   const [selectedField, setSelectedField] = useState(null);
@@ -271,65 +300,68 @@ const SearchPage = ({ theme }) => {
   console.log('results:', results);
 
   return (
-    <Container maxWidth="lg">
+    <Container className={classes.mainContainer} maxWidth="lg">
       <BreadcrumbsItem to='/Search'>Rechercher</BreadcrumbsItem>
-      <h1>Custom Search</h1>
-      <h2>Que recherchez-vous ?</h2>
-      <Box p={3} className={classes.boxFlexRow}>
-        { selectedResource && 
-          <Box p={1}>
-            <Button 
-              variant="contained" 
-              color={searchStep === getSearchStep('resource') ? "primary" : "secondary"}
-              onClick={()=>handleResourceStepClick()}
-            >
-              {getResourceLabel(selectedResource.label)}
-            </Button>
-            <ChevronRightIcon className={classes.chevronRight}/>
-          </Box>
-        }
-        {
-          searchFields.map((field, index) => (
-            <Box p={1} key={index}>
+      <h1>Rechercher un service</h1>
+      { selectedResource &&
+        <>
+          <hr/>
+          <Box p={3} className={classes.boxFlexRow}>
+            <Box p={1} className={classes.stepContainer}>
               <Button 
                 variant="contained" 
-                color={selectedField === field ? "primary" : "secondary"}
-                onClick={()=>handleFieldClick(selectedResource, field)}
+                color={searchStep === getSearchStep('resource') ? "primary" : "secondary"}
+                onClick={()=>handleResourceStepClick()}
               >
-                {field.label}
+                {getResourceLabel(selectedResource.label)}
               </Button>
-              { ( Object.keys(selectedValues).length !== 0 ||
-                  index !== (searchFields.length - 1) 
-                ) &&
-                  <ChevronRightIcon className={classes.chevronRight}/>
-              }
+              <ChevronRightIcon className={classes.chevronRight}/>
             </Box>
-          ))
-        }
-        { Object.keys(selectedValues).length > 0 &&
-          <Box p={1}>
-            <Button 
-              variant="contained" 
-              color={searchStep === getSearchStep('results') ? "primary" : "secondary"}
-              onClick={()=>handleResultsStepClick()}
-            >
-              Résultats 
-              { results &&
-                <span>&nbsp;({results.total})</span>
-              }
-            </Button>
+            {
+              searchFields.map((field, index) => (
+                <Box p={1} className={classes.stepContainer} key={index}>
+                  <Button 
+                    variant="contained" 
+                    color={selectedField === field ? "primary" : "secondary"}
+                    onClick={()=>handleFieldClick(selectedResource, field)}
+                  >
+                    {field.label}
+                  </Button>
+                  { ( Object.keys(selectedValues).length !== 0 ||
+                      index !== (searchFields.length - 1) 
+                    ) &&
+                      <ChevronRightIcon className={classes.chevronRight}/>
+                  }
+                </Box>
+              ))
+            }
+            { Object.keys(selectedValues).length > 0 &&
+              <Box p={1}>
+                <Button 
+                  variant="contained" 
+                  color={searchStep === getSearchStep('results') ? "primary" : "secondary"}
+                  onClick={()=>handleResultsStepClick()}
+                >
+                  Résultats 
+                  { results &&
+                    <span>&nbsp;({results.total})</span>
+                  }
+                </Button>
+              </Box>
+            }
           </Box>
-        }
-      </Box>
+          <hr/>
+        </>
+      }
       { searchStep !== getSearchStep('results') &&
         <>
-          <hr />
-          <Box p={3}>
+          <h2>{searchStep === getSearchStep('resource') ? 'Que recherchez-vous ?' : 'Précisez votre recherche :'}</h2>
+          <Box p={3} pt={0} mt={-2}>
             { selectedField === null &&
               <Box p={1}>              
                 {
                   customSearchConfig.map((resource, index) => (
-                    <Box pl={3} pt={2} key={index}>
+                    <Box pt={2} key={index}>
                       <Button 
                         variant="contained" 
                         color={selectedResource === resource ? "primary" : "secondary"}
@@ -345,10 +377,10 @@ const SearchPage = ({ theme }) => {
             { 
               searchFields.filter(field => selectedField === field).map((field, index) => (
                 <Box p={1} key={index}>
-                  <Box pl={3} pt={2}>
+                  <Box>
                     {
                       fieldValues?.map((value, index) => (
-                        <Box pl={3} pt={2} key={index}>
+                        <Box pt={2} key={index}>
                           <Button 
                             variant="contained" 
                             color={selectedValues.find(selectedValue => selectedValue.value.id === value.id) ? "primary" : "secondary"}
@@ -359,7 +391,7 @@ const SearchPage = ({ theme }) => {
                         </Box>
                       ))
                     }
-                    <Box pl={3} pt={2}>
+                    <Box pt={2}>
                       <Button 
                         variant="contained" 
                         color="default"
@@ -377,60 +409,76 @@ const SearchPage = ({ theme }) => {
         </>
       }
       { ( selectedValues.length > 0 || searchStep === getSearchStep('results') ) &&
-          <><hr /><h3>Critères :</h3></>
-      }
-      {
-        selectedValues.map((selectedValue, index) => (
-          selectedValue &&
-            <Box p={1} key={index}>
-              <CancelIcon
-                className={classes.cancelIcon} 
-                onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)} 
-              />
-              <span>{selectedValue.field.label} : {selectedValue.value["pair:label"]}</span>
+          <>
+            { selectedValues.length === 0 &&
+              searchStep === getSearchStep('results') &&
+                <Box p={3}>
+                  <p>Veuillez sélectionner au moins un critère de recherche.</p>
+                </Box>
+            }
+            { selectedValues.length > 0 &&
+              <>
+                { searchStep !== getSearchStep('results') && <hr/> }
+                <h2>Vos critères :</h2>
+              </>
+            }
+            <Box pb={2} mt={-1}>
+              {
+                selectedValues.map((selectedValue, index) => (
+                  selectedValue &&
+                    <Box p={1} className={classes.criteria} key={index}>
+                      <CancelIcon
+                        className={classes.cancelIcon} 
+                        onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)} 
+                      />
+                      <span>{selectedValue.field.label} : {selectedValue.value["pair:label"]}</span>
+                    </Box>
+                ))
+              }
             </Box>
-        ))
-      }
-      { !results &&
-        searchStep === getSearchStep('results') &&
-          <Box>
-            <hr />
-            <p>Veuillez sélectionner au moins un critère de recherche</p>
-          </Box>
+          </>
       }
       <Box ref={resultsRef}>
         { results && 
           <Box>
             <hr />
-            <h3>Résultats ({results.total}) :</h3>
-            <br />
+            { results.total === 0 &&
+              <Box p={3}>
+                <p>Aucun résultat : Veuillez modifier vos critères de recherche.</p>
+              </Box>
+            }
+            { results.total > 0 &&
+              <h2>Résultats ({results.total}) :</h2>
+            }
             { results.data && 
-              <ListContext.Provider
-                value={{
-                    loaded: true,
-                    loading: false,
-                    ids: Object.keys(results.dataByResource),
-                    data: results.dataByResource,
-                    total: Object.keys(results.dataByResource).length,
-                    resource: selectedResource["result-path"]["type"],
-                    basePath: '/' + selectedResource["result-path"]["type"],
-                }}
-              >
-                <SimpleList
-                  primaryText={record => record.resourceData["pair:label"]}
-                  secondaryText={record => { return (
-                    <ul>
-                      {record.list.map((item, index) => <li key={index}>{item}</li>)}
-                    </ul>
-                  )}}
-                  leftAvatar={record => (
-                    <Avatar src={record.resourceData['petr:logo']} width="100%">
-                      <HomeIcon />
-                    </Avatar>
-                  )}
-                  linkType="show"
-                />
-              </ListContext.Provider>
+              <Box className={classes.resultsContainer}>
+                <ListContext.Provider
+                  value={{
+                      loaded: true,
+                      loading: false,
+                      ids: Object.keys(results.dataByResource),
+                      data: results.dataByResource,
+                      total: Object.keys(results.dataByResource).length,
+                      resource: selectedResource["result-path"]["type"],
+                      basePath: '/' + selectedResource["result-path"]["type"],
+                  }}
+                >
+                  <SimpleList
+                    primaryText={record => record.resourceData["pair:label"]}
+                    secondaryText={record => { return (
+                      <ul>
+                        {record.list.map((item, index) => <li key={index} className={classes.resultItem}>{item}</li>)}
+                      </ul>
+                    )}}
+                    leftAvatar={record => (
+                      <Avatar src={record.resourceData['petr:logo']} width="100%">
+                        <HomeIcon />
+                      </Avatar>
+                    )}
+                    linkType="show"
+                  />
+                </ListContext.Provider>
+              </Box>
             }
           </Box>
         }

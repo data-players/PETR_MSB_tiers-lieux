@@ -16,7 +16,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Equipement |||| Equipements',
+      name: 'Equipement |||| Les équipements',
       fields: {
         'petr:serviceOfferedBy': 'Organisation',
         'pair:label': 'Libellé',
