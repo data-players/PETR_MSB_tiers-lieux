@@ -35,6 +35,8 @@ const getAdminContext = ( (location, noAdminMenuItems) => {
   
   if (location.pathname.match('^.*/show/?[1-9]?$')) return false;
   
+  if (location.pathname.match('^.*/Event.*')) return false;
+  
   return noAdminMenuItems.find(menuItem => 
     menuItem.link === location.pathname
   ) === undefined
@@ -48,7 +50,8 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   const menuItems = [
     { link: '/About', name: 'Qui sommes-nous ?', admin: false },
     { link: '/Map', name: 'Carte des tiers lieux', admin: false },
-    { link: '/Search', name: 'Rechercher un service', admin: false },
+    { link: '/Search', name: 'Recherche', admin: false },
+    { link: '/Event', name: 'Agenda', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
   ];
   

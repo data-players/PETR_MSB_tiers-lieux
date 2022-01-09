@@ -35,9 +35,7 @@ const EventList = props => (
           <SimpleList
             primaryText={record => record['pair:label']}
             secondaryText={record => record['pair:comment']}
-            leftAvatar={record => (
-              <img src={record['image'] || process.env.PUBLIC_URL + '/logo192.png'} width="100%" alt="SemApps" />
-            )}
+            leftAvatar={record => (<EventIcon />)}
             linkType="show"
           />
         )

@@ -13,7 +13,7 @@ const EventEdit = props => (
     <SimpleForm redirect="show">
       <TextInput source="pair:label" label="Nom" fullWidth />
       <TextInput source="pair:comment" label="Courte description" fullWidth />
-      <MarkdownInput multiline source="pair:description" label="Description" fullWidth />
+      {/*<MarkdownInput multiline source="pair:description" label="Description" fullWidth />*/}
       <ArrayInput source="pair:homePage" >
         <SimpleFormIterator>
           <TextInput label="" fullWidth />
@@ -24,6 +24,7 @@ const EventEdit = props => (
           <TextInput label="" fullWidth />
         </SimpleFormIterator>
       </ArrayInput>
+
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
       <TextInput source="pair:video" label="Video url" fullWidth/>
       <ImageInput source="image" label="Image" accept="image/*">

@@ -2,6 +2,7 @@ import React from 'react';
 import { ChipField, SingleFieldList, TextField, UrlField, DateField } from 'react-admin';
 import { Column, ColumnShowLayout, Hero, MarkdownField, UserIcon, GridList, AvatarField} from '@semapps/archipelago-layout';
 import { Show } from '../../layout/show/Show.js';
+import { ShowActions } from "@semapps/archipelago-layout";
 import { UriArrayField } from '@semapps/semantic-data-provider';
 import UrlArrayField from '../../components/UrlArrayField';
 import SocialNetworkArrayIcon from '../../components/SocialNetworkArrayIcon';
@@ -13,7 +14,7 @@ const ProjectTitle = ({ record }) => {
 };
 
 const EventShow = props => (
-  <Show  title={<ProjectTitle />} {...props}>
+  <Show  title={<ProjectTitle />} actions={<ShowActions />} {...props}>
     <ColumnShowLayout>
       <Column xs={12} sm={8} showLabel>
         <Hero image="image">
