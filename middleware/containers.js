@@ -49,6 +49,11 @@ module.exports = [
     newResourcesPermissions: writePermissionsToCreator
   },
   {
+    path: '/events',
+    acceptedTypes: ['pair:Event'],
+    newResourcesPermissions: writePermissionsToCreator
+  },
+  {
     path: '/files'
   },
   {

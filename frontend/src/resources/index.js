@@ -3,6 +3,7 @@ export { default as Person } from "./Person";
 
 // Resources
 export { default as Equipment } from "./Equipment";
+export { default as Event } from "./Event";
 export { default as Service } from "./Service";
 export { default as Space } from "./Space";
 
