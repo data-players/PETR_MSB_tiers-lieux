@@ -7,6 +7,7 @@ const dataServers = {
     default: true,
     containers: {
       av: {
+        'pair:Event': ['/events'],
         'pair:Organization': ['/organizations'],
         'pair:OrganizationType': ['/organization-types'],
         'pair:Person': ['/persons'],
