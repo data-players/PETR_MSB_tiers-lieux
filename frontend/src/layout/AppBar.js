@@ -112,7 +112,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
                     alignItems="center"
                     justifyContent="center"
                     className={ 
-                      ( location.pathname === menuItem.link || ( isAdminContext && menuItem.admin ) )
+                      ( location.pathname.match('^' + menuItem.link + '(\/.*)?$') || ( isAdminContext && menuItem.admin ) )
                         ? classes.linkBoxSelected 
                         : classes.linkBox
                     }
