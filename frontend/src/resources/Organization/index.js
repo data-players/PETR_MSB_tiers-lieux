@@ -17,18 +17,21 @@ export default {
     },
     dataModel: {
         types: ['pair:Organization'],
-        containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organizations',
-        dereference: ['pair:hasLocation/pair:hasPostalAddress'],
-        slugField: 'pair:label',
-        forceArray: [
-          'petr:equipmentOffers',
-          'petr:hasLabels',
-          'petr:hasNetworks',
-          'petr:serviceOffers',
-          'petr:socialMedias',
-          'petr:spaceOffers',
-          'petr:videos',
-        ]
+        list: {
+          dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+          forceArray: [
+            'petr:equipmentOffers',
+            'petr:hasLabels',
+            'petr:hasNetworks',
+            'petr:serviceOffers',
+            'petr:socialMedias',
+            'petr:spaceOffers',
+            'petr:videos',
+          ],
+        },
+        fieldsMapping: {
+          title: 'pair:label'
+        }
       },
       translations: {
         fr: {

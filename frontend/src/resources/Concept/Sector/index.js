@@ -14,8 +14,9 @@ export default {
     types: [
       'petr:Sector',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'sectors',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

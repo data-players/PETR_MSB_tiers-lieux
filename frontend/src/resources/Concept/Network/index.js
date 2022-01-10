@@ -18,8 +18,9 @@ export default {
     types: [
       'petr:Network',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'networks',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {
