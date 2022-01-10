@@ -514,45 +514,49 @@ const SearchPage = ({ theme }) => {
           </>
       }
       <Box ref={resultsRef}>
-        { results && 
-          <Box>
-            <hr />
-            { results.total === 0 &&
-              <Box p={3}>
-                <p>Aucun résultat : Veuillez modifier vos critères de recherche.</p>
-              </Box>
-            }
-            { results.total > 0 &&
-              <h2>Résultats ({results.total}) :</h2>
-            }
-            { results.data && 
-              <Box className={classes.resultsContainer}>
-                <ListContext.Provider
-                  value={{
-                      loaded: true,
-                      loading: false,
-                      ids: Object.keys(results.dataByResource),
-                      data: results.dataByResource,
-                      total: Object.keys(results.dataByResource).length,
-                      resource: selectedResource["result-path"]["type"],
-                      basePath: '/' + selectedResource["result-path"]["type"],
-                  }}
-                >
-                  <SimpleList
-                    primaryText={record => record.resourceData["pair:label"]}
-                    secondaryText={record => { return (
-                      <ul>
-                        {record.list.map((item, index) => <li key={index} className={classes.resultItem}>{item}</li>)}
-                      </ul>
-                    )}}
-                    leftAvatar={record => (
-                      <Avatar src={record.resourceData['petr:logo']} width="100%">
-                        <HomeIcon />
-                      </Avatar>
-                    )}
-                    linkType="show"
-                  />
-                </ListContext.Provider>
+        { searchStep === getSearchStep('results') &&
+          <Box> 
+            { results && 
+              <Box>
+                <hr />
+                { results.total === 0 &&
+                  <Box p={3}>
+                    <p>Aucun résultat : Veuillez modifier vos critères de recherche.</p>
+                  </Box>
+                }
+                { results.total > 0 &&
+                  <h2>Résultats ({results.total}) :</h2>
+                }
+                { results.data && 
+                  <Box className={classes.resultsContainer}>
+                    <ListContext.Provider
+                      value={{
+                          loaded: true,
+                          loading: false,
+                          ids: Object.keys(results.dataByResource),
+                          data: results.dataByResource,
+                          total: Object.keys(results.dataByResource).length,
+                          resource: selectedResource["result-path"]["type"],
+                          basePath: '/' + selectedResource["result-path"]["type"],
+                      }}
+                    >
+                      <SimpleList
+                        primaryText={record => record.resourceData["pair:label"]}
+                        secondaryText={record => { return (
+                          <ul>
+                            {record.list.map((item, index) => <li key={index} className={classes.resultItem}>{item}</li>)}
+                          </ul>
+                        )}}
+                        leftAvatar={record => (
+                          <Avatar src={record.resourceData['petr:logo']} width="100%">
+                            <HomeIcon />
+                          </Avatar>
+                        )}
+                        linkType="show"
+                      />
+                    </ListContext.Provider>
+                  </Box>
+                }
               </Box>
             }
             <Box pt={4}>

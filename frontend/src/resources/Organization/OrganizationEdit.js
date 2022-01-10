@@ -26,7 +26,7 @@ import { Edit } from "@semapps/archipelago-layout";
 import { MarkdownInput } from '@semapps/markdown-components'
 import { ImageField, ReificationArrayInput } from '@semapps/semantic-data-provider';
 
-import PairLocationInput from '../../components/PairLocationInput';
+import PairLocationInput from '../../pair/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';

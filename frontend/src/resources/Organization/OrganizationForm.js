@@ -6,7 +6,7 @@ import { ArrayInput, ImageInput, SelectInput, SimpleFormIterator, required } fro
 import { MapField } from '@semapps/geo-components';
 import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
 
-import PairLocationInput from '../../components/PairLocationInput';
+import PairLocationInput from '../../pair/PairLocationInput';
 import MarkdownInput from '../../markdown/MarkdownInput'
 
 export const OrganizationForm = props => (
