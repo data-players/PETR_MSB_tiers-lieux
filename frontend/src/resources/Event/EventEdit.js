@@ -7,7 +7,7 @@ import { ImageField } from '@semapps/semantic-data-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { UriArrayInput } from '@semapps/semantic-data-provider';
 import EventTitle from './EventTitle';
-import PairLocationInput from '../../components/PairLocationInput';
+import PairLocationInput from '../../pair/PairLocationInput';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
 const EventEdit = props => (
