@@ -19,7 +19,7 @@ const SocialNetworkArrayIcon = ({ record, source }) => {
     }
   
     return <List>
-      {  array.map(item => <ListItem classes={listIconStyle}><SocialIcon url={"http://"+item}/></ListItem>) }
+      {  array.map((item, index) => <ListItem classes={listIconStyle} key={index}><SocialIcon url={"http://"+item}/></ListItem>) }
     </List>
   }
 
