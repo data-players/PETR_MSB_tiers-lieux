@@ -1,8 +1,9 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput, CheckboxGroupInput, ArrayInput, SimpleFormIterator, ImageInput, ImageField } from 'react-admin';
+import { AutocompleteArrayInput, SimpleForm, TextInput, CheckboxGroupInput, ArrayInput, SimpleFormIterator, ImageInput } from 'react-admin';
 import frLocale from 'date-fns/locale/fr';
 import { Edit } from '@semapps/archipelago-layout';
 import { DateTimeInput } from '@semapps/date-components';
+import { ImageField } from '@semapps/semantic-data-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { UriArrayInput } from '@semapps/semantic-data-provider';
 import EventTitle from './EventTitle';
@@ -24,10 +25,8 @@ const EventEdit = props => (
           <TextInput label="" fullWidth />
         </SimpleFormIterator>
       </ArrayInput>
-
       <PairLocationInput label="Adresse" source="pair:hasLocation" fullWidth />
       <TextInput source="pair:video" label="Video url" fullWidth/>
-      {/*<ImageInput source="image" label="Image" accept="image/*">*/}
       <ImageInput source="pair:depictedBy" accept="image/*">
         <ImageField source="src"/>
       </ImageInput>
