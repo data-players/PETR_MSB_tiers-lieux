@@ -18,8 +18,9 @@ export default {
     types: [
       'pair:OrganizationType',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'organization-types',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

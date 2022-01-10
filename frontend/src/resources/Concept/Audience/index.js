@@ -18,8 +18,9 @@ export default {
     types: [
       'petr:Audience',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'audiences',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

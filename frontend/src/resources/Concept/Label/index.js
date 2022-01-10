@@ -18,8 +18,9 @@ export default {
     types: [
       'petr:Label',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'labels',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

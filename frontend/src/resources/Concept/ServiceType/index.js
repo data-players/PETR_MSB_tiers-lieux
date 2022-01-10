@@ -18,8 +18,9 @@ export default {
     types: [
       'petr:ServiceType',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'service-types',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

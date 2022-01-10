@@ -18,8 +18,9 @@ export default {
     types: [
       'petr:LegalStatus',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'legal-status',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

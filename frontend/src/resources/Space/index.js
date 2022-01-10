@@ -11,8 +11,9 @@ export default {
   },
   dataModel: {
     types: ['petr:Space'],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'spaces',
-    slugField: ['pair:label']
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {
