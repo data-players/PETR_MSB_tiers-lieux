@@ -11,6 +11,7 @@ const dataServers = {
         'pair:Organization': ['/organizations'],
         'pair:OrganizationType': ['/organization-types'],
         'pair:Person': ['/persons'],
+        'pair:Topic': ['/topics'],
         'petr:AccessModality': ['/access-modalities'],
         'petr:Audience': ['/audiences'],
         'petr:Equipment': ['/equipments'],

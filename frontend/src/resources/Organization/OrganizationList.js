@@ -8,11 +8,11 @@ import { SimpleList ,MultiViewsList, ListActions} from '@semapps/archipelago-lay
 import { MapList } from '@semapps/geo-components';
 import MapIcon from '@material-ui/icons/Map';
 
-// import SectorFilterSidebar from './../../components/SectorFilterSidebar';
+import OrganizationFilterSidebar from './OrganizationFilterSidebar';
 
 const OrganizationList = props => {
   return <MultiViewsList
-    // aside={<SectorFilterSidebar />}
+    aside={<OrganizationFilterSidebar />}
     actions={<ListActions exporter={false} />}
     views={{
       list: {

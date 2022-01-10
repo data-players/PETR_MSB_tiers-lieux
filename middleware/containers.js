@@ -122,4 +122,9 @@ module.exports = [
     acceptedTypes: ['petr:SpaceType'],
     newResourcesPermissions: writePermissionsToCreator
   },
+  {
+    path: '/topics',
+    acceptedTypes: ['pair:Topic'],
+    newResourcesPermissions: writePermissionsToCreator
+  },
 ];

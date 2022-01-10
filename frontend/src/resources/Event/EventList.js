@@ -1,7 +1,7 @@
 import React from 'react';
 import { MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
 import ListIcon from '@material-ui/icons/List';
-import SectorFilterSidebar from '../../components/SectorFilterSidebar';
+import EventFilterSidebar from './EventFilterSidebar';
 import { CalendarList } from '@semapps/date-components';
 import frLocale from '@fullcalendar/core/locales/fr';
 import EventIcon from '@material-ui/icons/Event';
@@ -9,7 +9,7 @@ import EventIcon from '@material-ui/icons/Event';
 
 const EventList = props => (
   <MultiViewsList
-    aside={<SectorFilterSidebar />}
+    aside={<EventFilterSidebar />}
     views={{
       calendar: {
         label: 'Calendrier',

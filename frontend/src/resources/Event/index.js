@@ -8,7 +8,6 @@ export default {
   config:{
     list: EventList,
     show: EventShow,
-    // create: process.env.REACT_APP_ADMIN==='true'?EventCreate:undefined,
     create: EventCreate,
     edit: EventEdit,
     icon: EventIcon,
@@ -27,7 +26,7 @@ export default {
       name: 'Événement |||| Événements',
       fields: {
         'pair:label': 'Titre',
-        'pair:hasSector' : 'Thématiques',
+        'pair:hasTopic' : 'Thématique',
         'pair:homePage':'Liens utiles',
         'pair:aboutPage':'Réseaux Sociaux',
         'pair:hasLocation':'Adresse',

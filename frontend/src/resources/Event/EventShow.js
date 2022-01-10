@@ -59,7 +59,7 @@ const EventShow = props => (
         />
         <SocialNetworkArrayIcon source="pair:aboutPage" addLabel/>
         <UrlArrayField source="pair:homePage" addLabel/>
-        <UriArrayField reference="Sector" source="pair:hasSector">
+        <UriArrayField reference="Topic" source="pair:hasTopic">
           <SingleFieldList linkType="show">
             <AvatarField label={record => `${record['pair:label']}`} image="image" classes={{
               parent: {

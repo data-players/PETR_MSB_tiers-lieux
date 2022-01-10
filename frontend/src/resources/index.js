@@ -20,3 +20,4 @@ export { default as EquipmentType } from './Concept/EquipmentType';
 export { default as ServiceType } from './Concept/ServiceType';
 export { default as SpaceType } from './Concept/SpaceType';
 export { default as Sector } from './Concept/Sector';
+export { default as Topic } from './Concept/Topic';

@@ -58,7 +58,7 @@ const EventEdit = props => (
       <UriArrayInput label="Personnes participant à l'évènement" reference="Person" source="pair:involvedIn">
         <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`} fullWidth/>
       </UriArrayInput>
-      <UriArrayInput label="Thématiques (cocher la ou les thématiques en lien avec l'événement)" source="pair:hasSector" reference="Sector" fullWidth>
+      <UriArrayInput label="Thèmes (cocher la ou les thèmes en lien avec l'événement)" source="pair:hasTopic" reference="Topic" fullWidth>
         <CheckboxGroupInput optionText="pair:label" allowEmpty />
       </UriArrayInput>
     </SimpleForm>

@@ -24,11 +24,11 @@ const EventFilterSidebar = () => {
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         <ReferenceFilter
-          reference="Theme"
+          reference="Topic"
           source="pair:hasTopic"
-          inverseSource="pair:topicOf"
-          limit={100}
+          // inverseSource="pair:TopicOf"
           sort={{ field: 'pair:label', order: 'DESC' }}
+          limit={100}
         />
       </CardContent>
     </Card>
