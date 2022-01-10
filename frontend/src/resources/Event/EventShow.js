@@ -17,7 +17,7 @@ const EventShow = props => (
   <Show  title={<ProjectTitle />} actions={<ShowActions />} {...props}>
     <ColumnShowLayout>
       <Column xs={12} sm={8} showLabel>
-        <Hero image="image">
+        <Hero image="pair:depictedBy">
           <DateField label="Date de début" source="pair:startDate" options={{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute : 'numeric' }} showTime />
           <DateField label="Date de fin" source="pair:endDate" options={{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute : 'numeric' }} showTime />
         </Hero>

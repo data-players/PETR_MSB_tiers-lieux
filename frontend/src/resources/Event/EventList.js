@@ -1,4 +1,5 @@
 import React from 'react';
+import { Avatar } from '@material-ui/core';
 import { MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
 import ListIcon from '@material-ui/icons/List';
 import EventFilterSidebar from './EventFilterSidebar';
@@ -35,7 +36,10 @@ const EventList = props => (
           <SimpleList
             primaryText={record => record['pair:label']}
             secondaryText={record => record['pair:comment']}
-            leftAvatar={record => (<EventIcon />)}
+            leftAvatar={record => (
+              <Avatar src={record['pair:depictedBy']} width="100%">
+                <EventIcon />
+              </Avatar>)}
             linkType="show"
           />
         )

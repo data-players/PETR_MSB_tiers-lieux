@@ -26,6 +26,7 @@ export default {
       name: 'Événement |||| Événements',
       fields: {
         'pair:label': 'Titre',
+        'pair:depictedBy': 'Image',
         'pair:hasTopic' : 'Thématique',
         'pair:homePage':'Liens utiles',
         'pair:aboutPage':'Réseaux Sociaux',
