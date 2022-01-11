@@ -1,6 +1,7 @@
 const customSearchConfig = [
   {
-    "label": "Service",
+    "name": "Service",
+    "label": "des services",
     "fields" : [
       {
         "type": "ServiceType",
@@ -21,7 +22,8 @@ const customSearchConfig = [
       "name": "petr:serviceOfferedBy",
     }
   },{
-    "label": "Equipment",
+    "name": "Equipment",
+    "label": "des équipements",
     "fields" : [
       {
         "type": "EquipmentType",
@@ -42,20 +44,13 @@ const customSearchConfig = [
       "name": "petr:equipmentOfferedBy",
     }
   },{
-    "label": "Space",
+    "name": "Space",
+    "label": "des espaces",
     "fields" : [
       {
         "type": "SpaceType",
         "name": "petr:hasSpaceType",
         "label": "Type de lieu",
-      },{
-        "type": "Sector",
-        "name": "petr:hasSector",
-        "label": "Secteur",
-        "path": {
-          "type": "Organization",
-          "name": "petr:spaceOfferedBy",
-        }
       },{
         "type": "EquipmentType",
         "name": "petr:hasEquipmentType",
@@ -63,6 +58,14 @@ const customSearchConfig = [
         "path": {
           "name": "pair:hasLocation",
           "pathType": "^"
+        }
+      },{
+        "type": "Sector",
+        "name": "petr:hasSector",
+        "label": "Secteur",
+        "path": {
+          "type": "Organization",
+          "name": "petr:spaceOfferedBy",
         }
       }
     ],
