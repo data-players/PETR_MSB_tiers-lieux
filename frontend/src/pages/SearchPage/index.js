@@ -8,7 +8,8 @@ import { ListContext } from 'ra-core';
 import { Avatar, Box, Button, Chip, Container, makeStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
+import OrganizationIcon from '@material-ui/icons/Home';
 
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import ontologies from '../../config/ontologies.json';
@@ -122,11 +123,17 @@ const useStyles = makeStyles(theme => ({
       opacity: .8
     }
   },
-  cancelIcon: {
-    marginRight: 8,
-    color: 'tomato',
-    fontSize: '2rem',
-    cursor: 'pointer'
+  resourceContainer: {
+    '& button': {
+      justifyContent: 'flex-start',
+      '& svg': {
+        transform: 'scale(2)',
+        margin: '0 8px',
+        [theme.breakpoints.up('sm')]: {
+          margin: '0 16px',
+        },
+      }
+    }
   },
   noChoiceButton: {
     color: '#203142 !important'
@@ -477,11 +484,12 @@ const SearchPage = ({ theme }) => {
               <Box className={classes.criteriaContainer}>              
                 {
                   customSearchConfig.map((resource, index) => (
-                    <Box pt={2} key={index}>
+                    <Box pt={2} key={index} className={classes.resourceContainer}>
                       <Button 
                         variant="contained" 
                         color={selectedResource === resource ? "primary" : "secondary"}
                         onClick={()=>handleResourceClick(resource)}
+                        startIcon={<SearchIcon />}
                       >
                         {resource.label}
                       </Button>
@@ -568,7 +576,7 @@ const SearchPage = ({ theme }) => {
                         )}}
                         leftAvatar={record => (
                           <Avatar src={record.resourceData['petr:logo']} width="100%">
-                            <HomeIcon />
+                            <OrganizationIcon />
                           </Avatar>
                         )}
                         linkType="show"
