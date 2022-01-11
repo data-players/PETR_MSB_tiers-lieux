@@ -37,11 +37,21 @@ const useStyles = makeStyles(theme => ({
     },
   },
   stepsContainer: {
-    padding: 10,
+    padding: '0 8px 16px',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& Button': {
+      padding: '8px 16px',
+      backgroundColor: 'transparent',
+      color: '#203142 !important',
+      border: '1px solid transparent',
+      '&:hover': {
+        backgroundColor: 'transparent'
+      }
+    }
   },
   dNone: {
     display: 'none'
@@ -50,12 +60,10 @@ const useStyles = makeStyles(theme => ({
     height: 'unset'
   },
   stepContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     whiteSpace: 'nowrap'
-  },
-  stepChevron: {
-    position: 'relative',
-    top: 8,
-    left: 8
   },
   selectedCriterias: {
     display: 'flex',
@@ -213,7 +221,6 @@ const SearchPage = ({ theme }) => {
     if (fieldIndex === -1) {
       return; 
     }
-    console.log('backward:', backward);
     if (! backward ) {
       if (fieldIndex >= (Object.keys(resource.fields).length - 1)) {
         handleResultsStepClick();
@@ -229,7 +236,6 @@ const SearchPage = ({ theme }) => {
   }
   
   const handleClickLeftCriteriaChevron = () => {
-    console.log('handleClickLeftCriteriaChevron');
     goToNextField(selectedResource, selectedField, true);
   }
   const handleClickRightCriteriaChevron = () => {
@@ -378,41 +384,32 @@ const SearchPage = ({ theme }) => {
       { selectedResource &&
         <>
           <h1>Rechercher {selectedResource.label}</h1>
-          <hr/>
-          <Box p={3} className={classes.stepsContainer}>
-            <Box p={1} className={classes.stepContainer}>
-              <Button 
-                variant="contained" 
-                color={searchStep === getSearchStep('resource') ? "primary" : "secondary"}
-                onClick={()=>handleNewSearchClick()}
-              >
-                {selectedResource.label}
-              </Button>
-              <ChevronRightIcon className={classes.stepChevron}/>
-            </Box>
+          <Box className={classes.stepsContainer}>
             {
               searchFields.map((field, index) => (
-                <Box p={1} className={classes.stepContainer} key={index}>
-                  <Button 
-                    variant="contained" 
-                    color={selectedField === field ? "primary" : "secondary"}
-                    onClick={()=>handleFieldClick(selectedResource, field)}
-                  >
-                    {field.label}
-                  </Button>
+                <>
+                  <Box className={classes.stepContainer} key={index}>
+                    <Button 
+                      variant="contained" 
+                      disabled={selectedField === field}
+                      onClick={()=>handleFieldClick(selectedResource, field)}
+                    >
+                      {field.label}
+                    </Button>
+                  </Box>
                   { ( Object.keys(selectedValues).length !== 0 ||
                       index !== (searchFields.length - 1) 
                     ) &&
                       <ChevronRightIcon className={classes.stepChevron}/>
                   }
-                </Box>
+                </>
               ))
             }
             { Object.keys(selectedValues).length > 0 &&
               <Box p={1}>
                 <Button 
                   variant="contained" 
-                  color={searchStep === getSearchStep('results') ? "primary" : "secondary"}
+                  disabled={searchStep === getSearchStep('results')}
                   onClick={()=>handleResultsStepClick()}
                 >
                   Résultats 
