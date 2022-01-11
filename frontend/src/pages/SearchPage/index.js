@@ -259,7 +259,7 @@ const SearchPage = ({ theme }) => {
     }
   };
 
-  const changeSelectedValues = (field, value) => {
+  const handleValueClick = (field, value) => {
     if (value) {
       const currentValueForField = selectedValues.find(selectedValue => selectedValue.field === field);
       if (! currentValueForField) {
@@ -269,28 +269,21 @@ const SearchPage = ({ theme }) => {
         })
         setSelectedValues([...selectedValues]);
       } else {
-        if (currentValueForField.value.id === value.id) {
-          setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value.id !== value.id));
-          return;
-        } else {
-          setSelectedValues(selectedValues.map(selectedValue => {
+        if (currentValueForField.value.id !== value.id) {
+          setResults(null);
+          const newSelectedValues = selectedValues.map(selectedValue => {
             if (selectedValue.field === field) {
               selectedValue.value = value
             }
             return selectedValue
-          }));
-          setSelectedValues([...selectedValues]);
+          });
+          setSelectedValues([...newSelectedValues]);
         }
       }
     } else {
       setSelectedValues(selectedValues.filter(selectedValue => selectedValue.field.type !== field.type));
     }
     goToNextField(selectedResource, field);
-  };
-  
-  const handleValueClick = (field, value) => {
-    setResults(null);
-    changeSelectedValues(field, value);
   };  
   
   const getFullPredicate = (predicate) => {
