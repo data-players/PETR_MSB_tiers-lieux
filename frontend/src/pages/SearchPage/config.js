@@ -49,20 +49,20 @@ const customSearchConfig = [
         "name": "petr:hasSpaceType",
         "label": "Type de lieu",
       },{
-        "type": "Sector",
-        "name": "petr:hasSector",
-        "label": "Secteur",
-        "path": {
-          "type": "Organization",
-          "name": "petr:spaceOfferedBy",
-        }
-      },{
         "type": "EquipmentType",
         "name": "petr:hasEquipmentType",
         "label": "Equipement",
         "path": {
           "name": "pair:hasLocation",
           "pathType": "^"
+        }
+      },{
+        "type": "Sector",
+        "name": "petr:hasSector",
+        "label": "Secteur",
+        "path": {
+          "type": "Organization",
+          "name": "petr:spaceOfferedBy",
         }
       }
     ],
