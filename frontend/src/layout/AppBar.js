@@ -3,7 +3,7 @@ import { Box, makeStyles, Typography, AppBar as MuiAppBar, useMediaQuery, IconBu
 import MenuIcon from '@material-ui/icons/Menu';
 import { useGetIdentity } from 'react-admin';
 import { LogoutButton } from '@semapps/auth-provider';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import LogoTitle from './LogoTitle';
 import FullWidthBox from '../commons/FullWidthBox';
 import LargeContainer from '../commons/LargeContainer';
@@ -76,6 +76,13 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   
+  const history = useHistory()
+  const handleClick = (link) => {
+    if (link = '/Search' && link === location.pathname) {
+      history.go(0)
+    }
+  }
+  
   return (
     <MuiAppBar position="sticky" className={classes.appBar}>
       <FullWidthBox>
@@ -119,7 +126,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
                     m={2}
                     key={menuItem.link}
                   >
-                    <Link to={menuItem.link} className={classes.menuLink} >
+                    <Link to={menuItem.link} className={classes.menuLink} onClick={()=>handleClick(menuItem.link)} >
                       <Typography variant="subtitle2" className={classes.menuText}>
                         {menuItem.name}
                       </Typography>

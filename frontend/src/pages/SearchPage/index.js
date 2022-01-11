@@ -163,7 +163,7 @@ const SearchPage = ({ theme }) => {
     return searchSteps.indexOf(step)
   }
   
-  const handleNewSearchClick = (resource) => {
+  const handleNewSearchClick = () => {
     setSearchStep(getSearchStep('resource'));
     setSelectedResource(null);
     setSearchFields([]);
@@ -172,7 +172,7 @@ const SearchPage = ({ theme }) => {
     setSelectedValues([]);
     setResults(null);
   }
-  
+
   const goToNextField = (resource, field, backward=false) => {
     const nextField = findNextField(resource, field, backward);
     if (nextField) {
@@ -365,7 +365,11 @@ const SearchPage = ({ theme }) => {
   const handleResultsStepClick = () => {
     setSearchStep(getSearchStep('results'));
     setSelectedField(null);
-    resultsRef.current.scrollIntoView();
+    resultsRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start"
+    });
   }
   
   console.log('searchStep:', searchStep);  
