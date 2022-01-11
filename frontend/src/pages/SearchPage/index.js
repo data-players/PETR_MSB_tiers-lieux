@@ -5,8 +5,7 @@ import {
   useGetResourceLabel
 } from 'react-admin';
 import { ListContext } from 'ra-core';
-import { Avatar, Box, Button, Container, makeStyles } from '@material-ui/core';
-import CancelIcon from '@material-ui/icons/CancelPresentation';
+import { Avatar, Box, Button, Chip, Container, makeStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import HomeIcon from '@material-ui/icons/Home';
@@ -57,6 +56,12 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     top: 8,
     left: 8
+  },
+  selectedCriterias: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   },
   criteriasContainer: {
     display: 'flex',
@@ -414,13 +419,41 @@ const SearchPage = ({ theme }) => {
               </Box>
             }
           </Box>
-          <hr/>
+          { searchStep === getSearchStep('field') &&
+            <hr/>
+          }
+        </>
+      }
+      { searchStep === getSearchStep('results') &&
+        <>
+          { selectedValues.length === 0 &&
+            searchStep === getSearchStep('results') &&
+              <Box p={3}>
+                <p>Veuillez sélectionner au moins un critère de recherche.</p>
+              </Box>
+          }
+          { selectedValues.length > 0 &&
+            <Box pb={1} mt={-1} className={classes.selectedCriterias}>
+              {
+                selectedValues.map((selectedValue, index) => (
+                  selectedValue &&
+                    <Box p={1} pl={2} key={index}>
+                      <Chip 
+                        label={selectedValue.value["pair:label"]}
+                        onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)}
+                        onDelete={()=>handleValueClick(selectedValue.field, selectedValue.value)}
+                      />
+                    </Box>
+                ))
+              }
+            </Box>
+          }
         </>
       }
       { searchStep !== getSearchStep('results') &&
         <>
           { searchStep !== getSearchStep('resource') &&
-            <h2>'Précisez votre recherche :</h2>
+            <h2>Précisez votre recherche :</h2>
           }
           <Box pb={4} mt={-1} className={classes.criteriasContainer}>
             { selectedResource &&
@@ -491,36 +524,6 @@ const SearchPage = ({ theme }) => {
             }
           </Box>
         </>
-      }
-      { ( selectedValues.length > 0 || searchStep === getSearchStep('results') ) &&
-          <>
-            { selectedValues.length === 0 &&
-              searchStep === getSearchStep('results') &&
-                <Box p={3}>
-                  <p>Veuillez sélectionner au moins un critère de recherche.</p>
-                </Box>
-            }
-            { selectedValues.length > 0 &&
-              <>
-                { searchStep !== getSearchStep('results') && <hr/> }
-                <h2>Vos critères :</h2>
-              </>
-            }
-            <Box pb={2} mt={-1}>
-              {
-                selectedValues.map((selectedValue, index) => (
-                  selectedValue &&
-                    <Box p={1} pl={2} className={classes.criteria} key={index}>
-                      <CancelIcon
-                        className={classes.cancelIcon} 
-                        onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)} 
-                      />
-                      <span>{selectedValue.field.label} : {selectedValue.value["pair:label"]}</span>
-                    </Box>
-                ))
-              }
-            </Box>
-          </>
       }
       <Box ref={resultsRef}>
         { searchStep === getSearchStep('results') &&
