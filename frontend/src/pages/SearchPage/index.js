@@ -81,6 +81,14 @@ const useStyles = makeStyles(theme => ({
     margin: 'auto',
     textAlign: 'left'
   },
+  manyCriterias: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    '& > *': {
+      width: '50%'
+    }
+  },
   criteriaChevronContainer: {
     margin: 'auto 0',
     minWidth: 50,
@@ -444,7 +452,7 @@ const SearchPage = ({ theme }) => {
             { 
               searchFields.filter(field => selectedField === field).map((field, index) => (
                 <Box key={index} className={classes.criteriaContainer}>
-                  <Box>
+                  <Box className={ (fieldValues.length > 4) ? classes.manyCriterias : null }>
                     {
                       fieldValues?.map((value, index) => (
                         <Box pt={2} key={index}>
@@ -458,16 +466,16 @@ const SearchPage = ({ theme }) => {
                         </Box>
                       ))
                     }
-                    <Box pt={2}>
-                      <Button 
-                        variant="contained" 
-                        color="default"
-                        className={classes.noChoiceButton}
-                        onClick={()=>handleValueClick(field, null)}
-                      >
-                        Ignorer ce critère
-                      </Button>
-                    </Box>
+                  </Box>
+                  <Box pt={3}>
+                    <Button 
+                      variant="contained" 
+                      color="default"
+                      className={classes.noChoiceButton}
+                      onClick={()=>handleValueClick(field, null)}
+                    >
+                      Ignorer ce critère
+                    </Button>
                   </Box>
                 </Box>
               ))
