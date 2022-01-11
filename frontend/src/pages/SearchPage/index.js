@@ -153,9 +153,14 @@ const SearchPage = ({ theme }) => {
     return searchSteps.indexOf(step)
   }
   
-  const handleResourceStepClick = (resource) => {
+  const handleNewSearchClick = (resource) => {
     setSearchStep(getSearchStep('resource'));
+    setSelectedResource(null);
+    setSearchFields([]);
     setSelectedField(null);
+    setFieldValues(null);
+    setSelectedValues([]);
+    setResults(null);
   }
   
   const goToNextField = (resource, field, backward=false) => {
@@ -217,7 +222,6 @@ const SearchPage = ({ theme }) => {
       return Object.values(resource.fields)[fieldIndex + 1];
     } else {
       if (fieldIndex === 0) {
-        handleResourceStepClick();
         return; 
       }
       return Object.values(resource.fields)[fieldIndex - 1];
@@ -380,7 +384,7 @@ const SearchPage = ({ theme }) => {
               <Button 
                 variant="contained" 
                 color={searchStep === getSearchStep('resource') ? "primary" : "secondary"}
-                onClick={()=>handleResourceStepClick()}
+                onClick={()=>handleNewSearchClick()}
               >
                 {selectedResource.label}
               </Button>
@@ -437,7 +441,7 @@ const SearchPage = ({ theme }) => {
               {
                 selectedValues.map((selectedValue, index) => (
                   selectedValue &&
-                    <Box p={1} pl={2} key={index}>
+                    <Box pt={1} pl={2} key={index}>
                       <Chip 
                         label={selectedValue.value["pair:label"]}
                         onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)}
@@ -578,7 +582,7 @@ const SearchPage = ({ theme }) => {
                   variant="contained" 
                   color="default"
                   className={classes.noChoiceButton}
-                  onClick={()=>handleResourceStepClick()}
+                  onClick={()=>handleNewSearchClick()}
                 >
                   Nouvelle recherche
                 </Button>
