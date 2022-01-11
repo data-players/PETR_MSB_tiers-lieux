@@ -258,7 +258,7 @@ const SearchPage = ({ theme }) => {
       getSelectedFieldValues(resource, field);
     }
   };
-
+  
   const handleValueClick = (field, value) => {
     if (value) {
       const currentValueForField = selectedValues.find(selectedValue => selectedValue.field === field);
@@ -269,22 +269,30 @@ const SearchPage = ({ theme }) => {
         })
         setSelectedValues([...selectedValues]);
       } else {
-        if (currentValueForField.value.id !== value.id) {
-          setResults(null);
-          const newSelectedValues = selectedValues.map(selectedValue => {
+        if (currentValueForField.value.id === value.id) {
+          goToNextField(selectedResource, field);
+          return;
+        } else {
+          setSelectedValues(selectedValues.map(selectedValue => {
             if (selectedValue.field === field) {
               selectedValue.value = value
             }
             return selectedValue
-          });
-          setSelectedValues([...newSelectedValues]);
+          }));
+          setSelectedValues([...selectedValues]);
         }
       }
     } else {
       setSelectedValues(selectedValues.filter(selectedValue => selectedValue.field.type !== field.type));
     }
+    setResults(null);
     goToNextField(selectedResource, field);
-  };  
+  };
+  
+  const handleDeleteSelectedValueClick = (field, value) => {
+    setResults(null);
+    setSelectedValues(selectedValues.filter(selectedValue => selectedValue.value.id !== value.id));
+  }
   
   const getFullPredicate = (predicate) => {
     const predicatePrefix = predicate.split(':')[0];
@@ -447,8 +455,8 @@ const SearchPage = ({ theme }) => {
                     <Box pt={1} pl={2} key={index}>
                       <Chip 
                         label={selectedValue.value["pair:label"]}
-                        onClick={()=>handleValueClick(selectedValue.field, selectedValue.value)}
-                        onDelete={()=>handleValueClick(selectedValue.field, selectedValue.value)}
+                        onClick={()=>handleDeleteSelectedValueClick(selectedValue.field, selectedValue.value)}
+                        onDelete={()=>handleDeleteSelectedValueClick(selectedValue.field, selectedValue.value)}
                       />
                     </Box>
                 ))
