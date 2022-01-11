@@ -1,6 +1,7 @@
 const customSearchConfig = [
   {
-    "label": "Service",
+    "name": "Service",
+    "label": "des services",
     "fields" : [
       {
         "type": "ServiceType",
@@ -21,7 +22,8 @@ const customSearchConfig = [
       "name": "petr:serviceOfferedBy",
     }
   },{
-    "label": "Equipment",
+    "name": "Equipment",
+    "label": "des équipements",
     "fields" : [
       {
         "type": "EquipmentType",
@@ -42,7 +44,8 @@ const customSearchConfig = [
       "name": "petr:equipmentOfferedBy",
     }
   },{
-    "label": "Space",
+    "name": "Space",
+    "label": "des espaces",
     "fields" : [
       {
         "type": "SpaceType",

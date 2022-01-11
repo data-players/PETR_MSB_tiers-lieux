@@ -170,10 +170,6 @@ const SearchPage = ({ theme }) => {
       if (! nextField) {
         setSelectedField();
       }
-    } else {
-      setSelectedResource(null);
-      setSearchFields([]);
-      setSelectedField();
     }
     setSelectedValues([]);
   };
@@ -181,7 +177,7 @@ const SearchPage = ({ theme }) => {
   const getSelectedFieldValues = async (resource, field) => {
     setFieldValues([]);
     const storedField = storedFieldValues.find(storedField =>
-      storedField.resource === resource.label && storedField.name === field.type
+      storedField.resource === resource.name && storedField.name === field.type
     )
     if (storedField) {
       setFieldValues(storedField.data);  
@@ -189,7 +185,7 @@ const SearchPage = ({ theme }) => {
       const fieldValues = await dataProvider.getList(field.type, {});
       setFieldValues(fieldValues.data);
       setStoredFieldValues([...storedFieldValues, {
-        resource: resource.label,
+        resource: resource.name,
         name:field.type,
         data:fieldValues.data
       }]);
@@ -315,7 +311,7 @@ const SearchPage = ({ theme }) => {
       }
     });
     const results = await dataProvider.getList(
-      selectedResource.label,
+      selectedResource.name,
       {
         "filter": {
           "sparqlWhere": sparqlWhere
@@ -324,7 +320,7 @@ const SearchPage = ({ theme }) => {
       
     const uniqueResources = [...new Set(results.data.map(item => item[selectedResource["result-path"]["name"]]))];
     const resultsByResource = await Promise.all( uniqueResources.map(async uniqueResource => {
-      const resourceData = await dataProvider.getOne(selectedResource.label, {id: uniqueResource});
+      const resourceData = await dataProvider.getOne(selectedResource.name, {id: uniqueResource});
       return ([ 
         uniqueResource, {
           id : uniqueResource,
@@ -367,9 +363,12 @@ const SearchPage = ({ theme }) => {
   return (
     <Container className={classes.mainContainer} maxWidth="lg">
       <BreadcrumbsItem to='/Search'>Rechercher</BreadcrumbsItem>
-      <h1>Rechercher un service</h1>
+      { ! selectedResource &&
+        <h1>Que recherchez-vous ?</h1>
+      }
       { selectedResource &&
         <>
+          <h1>Rechercher {selectedResource.label}</h1>
           <hr/>
           <Box p={3} className={classes.stepsContainer}>
             <Box p={1} className={classes.stepContainer}>
@@ -378,7 +377,7 @@ const SearchPage = ({ theme }) => {
                 color={searchStep === getSearchStep('resource') ? "primary" : "secondary"}
                 onClick={()=>handleResourceStepClick()}
               >
-                {getResourceLabel(selectedResource.label)}
+                {selectedResource.label}
               </Button>
               <ChevronRightIcon className={classes.stepChevron}/>
             </Box>
@@ -420,7 +419,9 @@ const SearchPage = ({ theme }) => {
       }
       { searchStep !== getSearchStep('results') &&
         <>
-          <h2>{searchStep === getSearchStep('resource') ? 'Que recherchez-vous ?' : 'Précisez votre recherche :'}</h2>
+          { searchStep !== getSearchStep('resource') &&
+            <h2>'Précisez votre recherche :</h2>
+          }
           <Box pb={4} mt={-1} className={classes.criteriasContainer}>
             { selectedResource &&
               <Box className={classes.criteriaChevronContainer}>
@@ -442,7 +443,7 @@ const SearchPage = ({ theme }) => {
                         color={selectedResource === resource ? "primary" : "secondary"}
                         onClick={()=>handleResourceClick(resource)}
                       >
-                        {getResourceLabel(resource.label)}
+                        {resource.label}
                       </Button>
                     </Box>
                   ))
