@@ -95,11 +95,13 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'left'
   },
   manyCriterias: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    '& > *': {
-      width: '50%'
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      '& > *': {
+        width: '50%'
+      }
     }
   },
   criteriaChevronContainer: {
