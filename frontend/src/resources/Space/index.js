@@ -1,8 +1,10 @@
 import SpaceEdit from './SpaceEdit';
 import SpaceCreate from './SpaceCreate';
+import SpaceIcon from '@mui/icons-material/Home';
 
 export default {
   config: {
+    icon: SpaceIcon,
     edit: SpaceEdit,
     create: SpaceCreate,
     options: {
