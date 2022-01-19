@@ -41,6 +41,12 @@ const MapPage = (props) => {
         <MultiViewsFilterList
           filters={[
             <Filter
+              reference="Sector"
+              source="petr:hasSector"
+              filter={{ a: 'petr:Sector' }}
+              label="Secteur"
+            />,
+            <Filter
               reference="OrganizationType"
               source="pair:hasType"
               filter={{ a: 'pair:OrganizationType' }}

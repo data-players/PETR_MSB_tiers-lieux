@@ -78,10 +78,11 @@ module.exports = {
           await this.broker.call('ldp.resource.post', {
             resource: {
               '@context': {
-                '@vocab': 'https://data.petr-msb.data-players.com/ontology#'
+                '@vocab': 'https://data.petr-msb.data-players.com/ontology#',
+                'pair': 'http://virtual-assembly.org/ontologies/pair#'
               },
               '@type': 'Sector',
-              'http://virtual-assembly.org/ontologies/pair#label': sectorName
+              'pair:label': sectorName
             },
             containerUri: urlJoin(CONFIG.HOME_URL, 'sectors'),
             slug: sectorSlug,

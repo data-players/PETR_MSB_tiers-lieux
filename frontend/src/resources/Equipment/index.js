@@ -1,8 +1,10 @@
 import EquipmentEdit from './EquipmentEdit';
 import EquipmentCreate from './EquipmentCreate';
+import EquipmentIcon from '@mui/icons-material/Construction';
 
 export default {
   config: {
+    icon: EquipmentIcon,
     edit: EquipmentEdit,
     create: EquipmentCreate,
     options: {

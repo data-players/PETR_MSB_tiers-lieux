@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { 
   SimpleList,
-  useDataProvider,
-  useGetResourceLabel
+  useDataProvider
 } from 'react-admin';
 import { ListContext } from 'ra-core';
 import { Avatar, Box, Button, Chip, Container, makeStyles } from '@material-ui/core';
@@ -14,6 +13,7 @@ import OrganizationIcon from '@material-ui/icons/Home';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import ontologies from '../../config/ontologies.json';
 import customSearchConfig from './config';
+import ResourceIcon from '../../components/ResourceIcon';
 
 import DataFactory from '@rdfjs/data-model';
 
@@ -154,7 +154,6 @@ const SearchPage = ({ theme }) => {
   const classes = useStyles();
   
   const dataProvider = useDataProvider();
-  const getResourceLabel = useGetResourceLabel();
 
   const searchSteps = ['resource', 'field', 'results'];
   const [searchStep, setSearchStep] = useState(0);
@@ -490,7 +489,7 @@ const SearchPage = ({ theme }) => {
                         variant="contained" 
                         color={selectedResource === resource ? "primary" : "secondary"}
                         onClick={()=>handleResourceClick(resource)}
-                        startIcon={<SearchIcon />}
+                        startIcon={<ResourceIcon resource={resource.name} />}
                       >
                         {resource.label}
                       </Button>
@@ -502,7 +501,7 @@ const SearchPage = ({ theme }) => {
             { 
               searchFields.filter(field => selectedField === field).map((field, index) => (
                 <Box key={index} className={classes.criteriaContainer}>
-                  <Box className={ (fieldValues.length > 4) ? classes.manyCriterias : null }>
+                  <Box className={ (fieldValues.length > 6) ? classes.manyCriterias : null }>
                     {
                       fieldValues?.map((value, index) => (
                         <Box pt={2} key={index}>
@@ -587,18 +586,20 @@ const SearchPage = ({ theme }) => {
                 }
               </Box>
             }
-            <Box pt={4}>
-              <hr />
-              <Box pt={3}>
-                <Button 
-                  variant="contained" 
-                  color="default"
-                  className={classes.noChoiceButton}
-                  onClick={()=>handleNewSearchClick()}
-                >
-                  Nouvelle recherche
-                </Button>
-              </Box>
+          </Box>
+        }
+        { searchStep !== getSearchStep('resource') &&
+          <Box pt={4}>
+            <hr />
+            <Box pt={3}>
+              <Button 
+                variant="contained" 
+                color="default"
+                className={classes.noChoiceButton}
+                onClick={()=>handleNewSearchClick()}
+              >
+                Nouvelle recherche
+              </Button>
             </Box>
           </Box>
         }

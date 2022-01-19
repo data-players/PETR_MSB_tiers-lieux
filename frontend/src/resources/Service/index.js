@@ -1,10 +1,12 @@
-import SpaceEdit from './ServiceEdit';
-import SpaceCreate from './ServiceCreate';
+import ServiceEdit from './ServiceEdit';
+import ServiceCreate from './ServiceCreate';
+import ServiceIcon from '@mui/icons-material/Face';
 
 export default {
   config: {
-    edit: SpaceEdit,
-    create: SpaceCreate,
+    icon: ServiceIcon,
+    edit: ServiceEdit,
+    create: ServiceCreate,
     options: {
       label: 'Services'
     },
