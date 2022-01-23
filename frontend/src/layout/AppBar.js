@@ -70,8 +70,6 @@ const useStyles = makeStyles((theme) => ({
 
 const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) => {
   
-  console.log('isAdminContext', isAdminContext);
-
   const { identity } = useGetIdentity();
   const isConnected = identity && identity.id;
 
@@ -121,7 +119,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
                     alignItems="center"
                     justifyContent="center"
                     className={ 
-                      ( ( location.pathname.match('^' + menuItem.link + '(\/.*)?$') && ! menuItem.admin )
+                      ( ( location.pathname.match('^' + menuItem.link + '(/.*)?$') && ! menuItem.admin )
                         || ( isAdminContext && menuItem.admin )
                       ) ? classes.linkBoxSelected 
                         : classes.linkBox

@@ -2,12 +2,13 @@ import React from 'react';
 import ReactPlayer from "react-player";
 
 const VideoPlayer = ({ record, source }) => {
-    var url = record[source]
+    let url = record[source]
+    let spliturl = null
   
     switch (detectPlayer(url)) {
       case 'peertube':
         if (!url.includes("embed")) {
-            var spliturl = url.split("watch/")
+            spliturl = url.split("watch/")
             url = spliturl[0]+"embed/"+spliturl[1]
         }
         return  (
@@ -23,7 +24,7 @@ const VideoPlayer = ({ record, source }) => {
         )
       case "dailymotion":
         if (!url.includes("embed")) {
-            var spliturl = url.split("video/")[1]
+            spliturl = url.split("video/")[1]
             url = "https://www.dailymotion.com/embed/video/" + spliturl.split('?play')[0]
         }
         return ( <ReactPlayer url={url} controls/> )

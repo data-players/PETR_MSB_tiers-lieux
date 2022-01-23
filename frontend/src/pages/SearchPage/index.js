@@ -7,7 +7,6 @@ import { ListContext } from 'ra-core';
 import { Avatar, Box, Button, Chip, Container, makeStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import SearchIcon from '@material-ui/icons/Search';
 import OrganizationIcon from '@material-ui/icons/Home';
 
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
@@ -17,9 +16,6 @@ import ResourceIcon from '../../components/ResourceIcon';
 
 import DataFactory from '@rdfjs/data-model';
 
-
-
-console.log('==========> CustomSearch:', customSearchConfig);
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {
@@ -378,15 +374,6 @@ const SearchPage = ({ theme }) => {
       inline: "start"
     });
   }
-  
-  console.log('searchStep:', searchStep);  
-  console.log('selectedResource:', selectedResource);
-  console.log('searchFields:', searchFields);
-  console.log('selectedField:', selectedField);
-  console.log('fieldValues:', fieldValues);
-  console.log('storedFieldValues:', storedFieldValues);
-  console.log('selectedValues:', selectedValues);
-  console.log('results:', results);
 
   return (
     <Container className={classes.mainContainer} maxWidth="lg">
@@ -400,8 +387,8 @@ const SearchPage = ({ theme }) => {
           <Box className={classes.stepsContainer}>
             {
               searchFields.map((field, index) => (
-                <>
-                  <Box className={classes.stepContainer} key={index}>
+                <Box className={classes.stepContainer} key={index}>
+                  <Box>
                     <Button 
                       variant="contained" 
                       disabled={selectedField === field}
@@ -415,7 +402,7 @@ const SearchPage = ({ theme }) => {
                     ) &&
                       <ChevronRightIcon className={classes.stepChevron}/>
                   }
-                </>
+                </Box>
               ))
             }
             { Object.keys(selectedValues).length > 0 &&

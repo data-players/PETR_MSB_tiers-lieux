@@ -8,8 +8,6 @@ const MoreListLayout = ({ limit,children,to,...otherProps }) => {
   const context = useListContext();
   const record= useRecordContext()
 
-  console.log('record',record);
-
   return <div style={{'display':'flex','alignItems':'center'}}>
     <div>
     {context && React.Children.map(children, child =>

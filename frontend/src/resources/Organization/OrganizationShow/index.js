@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router';
 
 import { Grid, makeStyles } from '@material-ui/core';
 import { useShowController } from 'react-admin';
@@ -24,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
 const OrganizationShow = ({...props}) => {
   const classes = useStyles();
   const { record } = useShowController(props);
-  const state = useSelector(state => state);
-  const currentUri = useLocation().pathname;
   return (
     <>
       <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>

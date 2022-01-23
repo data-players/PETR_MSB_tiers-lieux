@@ -1,11 +1,7 @@
 import React from 'react';
 import { Create } from "@semapps/archipelago-layout";
-import {
-  SimpleForm,
-  useCreateController
-} from 'react-admin';
+import { useCreateController } from 'react-admin';
 import ServiceForm from './ServiceForm';
-import { MarkdownInput } from '@semapps/markdown-components';
 import { useLocation } from 'react-router';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import queryString from 'query-string';

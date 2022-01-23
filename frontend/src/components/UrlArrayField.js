@@ -13,7 +13,7 @@ const UrlArrayField = ({ record, source }) => {
   return record
     ? links.map(item => (
         <div>
-          <a href={'https://' + item} target="_blank">
+          <a href={'https://' + item} target="_blank" rel="noopener noreferrer">
             {item}
           </a>
         </div>

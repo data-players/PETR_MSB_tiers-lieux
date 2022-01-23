@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
-import { Box, Container, Grid, makeStyles, ThemeProvider, useMediaQuery } from '@material-ui/core';
+import { Box, Container, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
 import { Notification } from 'react-admin';
 import {
   Breadcrumbs,
@@ -77,7 +77,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
       
       <Container maxWidth="lg">
         {
-          window.location.pathname!='/' &&
+          window.location.pathname !== '/' &&
             <Box id="breadcrumpContainer" style={{padding:'10px'}}>
               <Breadcrumbs separator=" / " finalItem="span" finalProps={{
                 style: {color: 'gray'}

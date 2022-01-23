@@ -1,14 +1,7 @@
 import React from 'react';
 import { Edit } from "@semapps/archipelago-layout";
 import EquipementForm from './EquipmentForm'
-import {
-  SimpleForm,
-  ReferenceInput,
-  SelectInput,
-  useGetManyReference,
-  useEditController
-} from 'react-admin';
-import { MarkdownInput } from '@semapps/markdown-components';
+import { useEditController } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
 
 import { useLocation } from 'react-router';
