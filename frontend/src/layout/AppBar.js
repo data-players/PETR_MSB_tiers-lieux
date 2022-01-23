@@ -80,7 +80,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
   
   const history = useHistory()
   const handleClick = (link) => {
-    if (link = '/Search' && link === location.pathname) {
+    if (link === '/Search' && location.pathname === '/Search') {
       history.go(0)
     }
   }
