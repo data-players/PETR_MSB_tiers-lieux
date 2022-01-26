@@ -49,6 +49,11 @@ module.exports = [
     newResourcesPermissions: writePermissionsToCreator
   },
   {
+    path: '/events',
+    acceptedTypes: ['pair:Event'],
+    newResourcesPermissions: writePermissionsToCreator
+  },
+  {
     path: '/files'
   },
   {
@@ -103,6 +108,11 @@ module.exports = [
     newResourcesPermissions: writePermissionsToCreator
   },
   {
+    path: '/service-types',
+    acceptedTypes: ['petr:ServiceType'],
+    newResourcesPermissions: writePermissionsToCreator
+  },
+  {
     path: '/spaces',
     acceptedTypes: ['petr:Space'],
     newResourcesPermissions: writePermissionsToCreator
@@ -110,6 +120,11 @@ module.exports = [
   {
     path: '/space-types',
     acceptedTypes: ['petr:SpaceType'],
+    newResourcesPermissions: writePermissionsToCreator
+  },
+  {
+    path: '/topics',
+    acceptedTypes: ['pair:Topic'],
     newResourcesPermissions: writePermissionsToCreator
   },
 ];

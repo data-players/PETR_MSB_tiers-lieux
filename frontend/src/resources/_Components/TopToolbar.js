@@ -1,6 +1,5 @@
 import React from 'react';
-import { makeStyles, Typography } from '@material-ui/core';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { makeStyles } from '@material-ui/core';
 import { TopToolbar as RaTopToolbar } from 'react-admin';
 import BackButton from './BackButton';
 import Title from './Title';

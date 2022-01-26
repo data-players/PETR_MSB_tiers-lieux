@@ -1,7 +1,7 @@
-import { createMuiTheme /*, responsiveFontSizes*/ } from '@material-ui/core/styles';
+import { createTheme /*, responsiveFontSizes*/ } from '@material-ui/core/styles';
 
 // Allow to use breakpoints
-const defaultTheme = createMuiTheme();
+const defaultTheme = createTheme();
 const smallScreenTreshold = 'xs';
 
 const white = '#FFFFFF';
@@ -36,7 +36,7 @@ const font1 = '"Kaushan Script","serif"'; // serif in case of error;
 const font2 = '"Roboto", "Open Sans", "sans-serif"';
 const font3 = '"Poppins", "Open Sans", "sans-serif"'; // Poppins instead of Sofia Pro
 
-let theme = createMuiTheme({
+let theme = createTheme({
   palette: {
     primary: {
       // light:  primary,// to not be calculated from palette.primary.main

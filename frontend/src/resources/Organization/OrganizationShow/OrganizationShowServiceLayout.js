@@ -17,6 +17,9 @@ const OrganizationShowServiceLayout = ({...props}) => {
     <SimpleShowLayout className={classes.modal} resource="Service">
       <CloseIcon className={classes.modalCloseIcon} onClick={closeModal}/>
       <TextField source="pair:label" />
+      <ReferenceField source="petr:hasServiceType" reference="ServiceType" link={false}>
+        <TextField source="pair:label" />
+      </ReferenceField>
       <ReferenceField source="petr:hasRate" reference="Rate" link={false}>
         <TextField source="pair:label" />
       </ReferenceField>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
-import { Box, Container, Grid, makeStyles, ThemeProvider, useMediaQuery } from '@material-ui/core';
+import { Box, Container, Grid, makeStyles, ThemeProvider } from '@material-ui/core';
 import { Notification } from 'react-admin';
 import {
   Breadcrumbs,
@@ -35,6 +35,8 @@ const getAdminContext = ( (location, noAdminMenuItems) => {
   
   if (location.pathname.match('^.*/show/?[1-9]?$')) return false;
   
+  if (location.pathname.match('^.*/Event.*')) return false;
+  
   return noAdminMenuItems.find(menuItem => 
     menuItem.link === location.pathname
   ) === undefined
@@ -48,7 +50,8 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   const menuItems = [
     { link: '/About', name: 'Qui sommes-nous ?', admin: false },
     { link: '/Map', name: 'Carte des tiers lieux', admin: false },
-    { link: '/Search', name: 'Rechercher un service', admin: false },
+    { link: '/Search', name: 'Recherche', admin: false },
+    { link: '/Event', name: 'Agenda', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
   ];
   
@@ -74,7 +77,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
       
       <Container maxWidth="lg">
         {
-          window.location.pathname!='/' &&
+          window.location.pathname !== '/' &&
             <Box id="breadcrumpContainer" style={{padding:'10px'}}>
               <Breadcrumbs separator=" / " finalItem="span" finalProps={{
                 style: {color: 'gray'}

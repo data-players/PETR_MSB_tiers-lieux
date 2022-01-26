@@ -1,8 +1,10 @@
 import SpaceEdit from './SpaceEdit';
 import SpaceCreate from './SpaceCreate';
+import SpaceIcon from '@mui/icons-material/Home';
 
 export default {
   config: {
+    icon: SpaceIcon,
     edit: SpaceEdit,
     create: SpaceCreate,
     options: {
@@ -11,8 +13,9 @@ export default {
   },
   dataModel: {
     types: ['petr:Space'],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'spaces',
-    slugField: ['pair:label']
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

@@ -1,18 +1,21 @@
-import SpaceEdit from './ServiceEdit';
-import SpaceCreate from './ServiceCreate';
+import ServiceEdit from './ServiceEdit';
+import ServiceCreate from './ServiceCreate';
+import ServiceIcon from '@mui/icons-material/Face';
 
 export default {
   config: {
-    edit: SpaceEdit,
-    create: SpaceCreate,
+    icon: ServiceIcon,
+    edit: ServiceEdit,
+    create: ServiceCreate,
     options: {
       label: 'Services'
     },
   },
   dataModel: {
     types: ['petr:Service'],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'services',
-    slugField: ['pair:label'],
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {
@@ -22,7 +25,8 @@ export default {
         'pair:label': 'Libellé',
         'petr:hasRate': 'Tarif',
         'petr:hasLabel': 'Labels',
-        'petr:hasAudience': 'Audiance',
+        'petr:hasAudience': 'Public',
+        'petr:hasServiceType': `Type de service`,
         'petr:itinerant': 'Itinérant',
         'petr:itinerantDetails': `Détail d'itinérance`,
 

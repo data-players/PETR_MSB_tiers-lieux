@@ -7,8 +7,8 @@ import PersonIcon from '@material-ui/icons/Person';
 export default {
   config: {
     list: PersonList,
-//    show: PersonShow,
-//    create: PersonCreate,
+    // show: PersonShow,
+    // create: PersonCreate,
     edit: PersonEdit,
     icon: PersonIcon,
     options: {
@@ -16,10 +16,13 @@ export default {
     }
   },
   dataModel: {
-    types: ['foaf:Person'],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'persons',
-    dereference: ['pair:hasLocation/pair:hasPostalAddress'],
-    slugField: ['pair:label']
+    types: ['pair:Person'],
+    list: {
+      dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+    },
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

@@ -1,8 +1,10 @@
 import EquipmentEdit from './EquipmentEdit';
 import EquipmentCreate from './EquipmentCreate';
+import EquipmentIcon from '@mui/icons-material/Construction';
 
 export default {
   config: {
+    icon: EquipmentIcon,
     edit: EquipmentEdit,
     create: EquipmentCreate,
     options: {
@@ -11,12 +13,13 @@ export default {
   },
   dataModel: {
     types: ['petr:Equipment'],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'equipments',
-    slugField: ['pair:label'],
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {
-      name: 'Equipement |||| Equipements',
+      name: 'Equipement |||| Les équipements',
       fields: {
         'petr:serviceOfferedBy': 'Organisation',
         'pair:label': 'Libellé',

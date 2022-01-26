@@ -34,6 +34,7 @@ const OrganizationShowMainLayout = ({...props}) => {
     case '/show/1' : breadcrumbsTabLabel = 'Equipements'; break;
     case '/show/2' : breadcrumbsTabLabel = 'Espaces'; break;
     case '/show/3' : breadcrumbsTabLabel = 'Services'; break;
+    default : breadcrumbsTabLabel = false;
   }
   
   return (

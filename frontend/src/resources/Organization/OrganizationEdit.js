@@ -1,13 +1,8 @@
 import { default as React } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
 
 import { TextInput } from "ra-ui-materialui";
-import { makeStyles } from '@material-ui/core';
 import {
   ArrayInput,
-  BooleanInput,
   FormTab,
   ImageInput,
   SelectInput,
@@ -22,25 +17,20 @@ import {
   DeleteButton
 } from 'react-admin';
 
-import { Edit } from "@semapps/archipelago-layout";
 import { MarkdownInput } from '@semapps/markdown-components'
-import { ImageField, ReificationArrayInput } from '@semapps/semantic-data-provider';
+import { ImageField } from '@semapps/semantic-data-provider';
 
-import PairLocationInput from '../../components/PairLocationInput';
+import PairLocationInput from '../../pair/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';
 import { EditWithPermissions } from '@semapps/auth-provider';
-
-import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
     
 
 export const OrganizationEdit = props => {
   const {
       record, // record fetched via dataProvider.getOne() based on the id from the location
   } = useEditController(props);
-  const state = useSelector(state => state);
-  const currentUri = useLocation().pathname;
   return (
     <EditWithPermissions title={<Title />} {...props} >
       <TabbedForm>

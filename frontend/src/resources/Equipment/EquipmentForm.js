@@ -5,8 +5,6 @@ import {
   required,
   SelectInput,
   ReferenceInput,
-  useGetManyReference,
-  useEditController,
   SimpleForm
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';

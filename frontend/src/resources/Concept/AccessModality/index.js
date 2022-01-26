@@ -18,8 +18,9 @@ export default {
     types: [
       'petr:AccessModality',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'access-modalities',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

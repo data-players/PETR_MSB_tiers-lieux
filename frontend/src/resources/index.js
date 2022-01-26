@@ -3,6 +3,7 @@ export { default as Person } from "./Person";
 
 // Resources
 export { default as Equipment } from "./Equipment";
+export { default as Event } from "./Event";
 export { default as Service } from "./Service";
 export { default as Space } from "./Space";
 
@@ -16,5 +17,7 @@ export { default as Label } from './Concept/Label';
 export { default as Network } from './Concept/Network';
 export { default as Rate } from './Concept/Rate';
 export { default as EquipmentType } from './Concept/EquipmentType';
+export { default as ServiceType } from './Concept/ServiceType';
 export { default as SpaceType } from './Concept/SpaceType';
 export { default as Sector } from './Concept/Sector';
+export { default as Topic } from './Concept/Topic';

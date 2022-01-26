@@ -46,6 +46,9 @@
     "petr:hasSector": {
       "@type": "@id"
     },
+    "petr:hasServiceType": {
+      "@type": "@id"
+    },
     "petr:hasSpaceType": {
       "@type": "@id"
     },

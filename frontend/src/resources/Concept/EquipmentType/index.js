@@ -18,8 +18,9 @@ export default {
     types: [
       'petr:EquipmentType',
     ],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'equipment-types',
-    slugField: 'pair:label'
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

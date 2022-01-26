@@ -16,7 +16,7 @@
       "src": "logo-pays-sud-bourgogne-web175.png",
       "type": "image/png",
       "sizes": "250x71"
-    },
+    }
   ],
   "start_url": ".",
   "display": "standalone",

@@ -3,7 +3,7 @@ import { Box, makeStyles, Typography, AppBar as MuiAppBar, useMediaQuery, IconBu
 import MenuIcon from '@material-ui/icons/Menu';
 import { useGetIdentity } from 'react-admin';
 import { LogoutButton } from '@semapps/auth-provider';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import LogoTitle from './LogoTitle';
 import FullWidthBox from '../commons/FullWidthBox';
 import LargeContainer from '../commons/LargeContainer';
@@ -69,12 +69,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) => {
-
+  
   const { identity } = useGetIdentity();
   const isConnected = identity && identity.id;
 
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
+  
+  const history = useHistory()
+  const handleClick = (link) => {
+    if (link === '/Search' && location.pathname === '/Search') {
+      history.go(0)
+    }
+  }
   
   return (
     <MuiAppBar position="sticky" className={classes.appBar}>
@@ -112,14 +119,15 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
                     alignItems="center"
                     justifyContent="center"
                     className={ 
-                      ( location.pathname === menuItem.link || ( isAdminContext && menuItem.admin ) )
-                        ? classes.linkBoxSelected 
+                      ( ( location.pathname.match('^' + menuItem.link + '(/.*)?$') && ! menuItem.admin )
+                        || ( isAdminContext && menuItem.admin )
+                      ) ? classes.linkBoxSelected 
                         : classes.linkBox
                     }
                     m={2}
                     key={menuItem.link}
                   >
-                    <Link to={menuItem.link} className={classes.menuLink} >
+                    <Link to={menuItem.link} className={classes.menuLink} onClick={()=>handleClick(menuItem.link)} >
                       <Typography variant="subtitle2" className={classes.menuText}>
                         {menuItem.name}
                       </Typography>
