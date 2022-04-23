@@ -20,11 +20,14 @@ const useStyles = makeStyles((theme) => ({
   },
   menuLink: {
     textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    }
   },
   menuText: {
     textAlign: 'center',
     lineHeight: 1,
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
   },
   linkBox: {
     [theme.breakpoints.down('md')]: {
@@ -41,14 +44,43 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: 'black 2px solid'
   },
   loginBackground: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
+    '& .MuiButtonBase-root': {
+      fontFamily: theme.typography.subtitle2.fontFamily,
+      fontSize: theme.typography.subtitle2.fontSize,
+      fontWeight: theme.typography.subtitle2.fontWeight,
+      borderRadius: '50%',
+      padding: 14,
+      minWidth: 'unset',
+      position:'relative',
+      [theme.breakpoints.up('md')]: {
+        borderRadius: 'unset',
+        minWidth: 'initial',
+        padding: 'initial',
+      },
+    },
     '& .MuiIconButton-colorInherit': {
-      color: theme.palette.secondary.main,
+      color: theme.palette.primary.main,
+    },
+    '& .MuiButton-label': {
+      fontSize: 0,
+      left: '4px',
+      position: 'relative',
+      [theme.breakpoints.up('sm')]: {
+        fontSize: 'initial',
+        left: '0px',
+        marginRight: 8,
+      }
+    },
+    '& .MuiButton-startIcon': {
+      marginRight: 0,
+      [theme.breakpoints.up('sm')]: {
+        marginRight: 8,
+      }
     },
     '& .MuiIconButton-label::after': {
       marginLeft: '0.5em',
       content: "'Se connecter'",
-      fontFamily: theme.typography.subtitle2.fontFamily,
       fontSize: theme.typography.subtitle2.fontSize,
       fontWeight: theme.typography.subtitle2.fontWeight,
       // textTransform: theme.typography.subtitle2.textTransform,
@@ -57,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
         content: 'none',
       },
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       '& .MuiIconButton-root': {
         padding: '8px',
       },
@@ -74,7 +106,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
   const isConnected = identity && identity.id;
 
   const classes = useStyles();
-  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
+  const sm = useMediaQuery((theme) => theme.breakpoints.down('sm'), { noSsr: true });
   
   const history = useHistory()
   const handleClick = (link) => {
@@ -86,9 +118,9 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
   return (
     <MuiAppBar position="sticky" className={classes.appBar}>
       <FullWidthBox>
-        {xs ? (
+        {sm ? (
           <Box width={1} display="flex" alignItems="center">
-            <IconButton color="secondary" onClick={() => setSidebarOpen(true)} className={classes.openButton}>
+            <IconButton color="primary" onClick={() => setSidebarOpen(true)} className={classes.openButton}>
               <MenuIcon />
             </IconButton>
             <Box flexGrow={1} />

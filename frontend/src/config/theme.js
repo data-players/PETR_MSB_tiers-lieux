@@ -4,37 +4,28 @@ import { createTheme /*, responsiveFontSizes*/ } from '@material-ui/core/styles'
 const defaultTheme = createTheme();
 const smallScreenTreshold = 'xs';
 
+const blue = 'rgb(50,64,147)';
+const pink = 'rgb(221,48,124)';
+const green = 'rgb(148,193,34)';
+const purple = 'rgb(140,78,137)';
+const yellow = 'rgb(247,197,30)';
+const orange = 'rgb(243,144,62)';
+const lightBlue = 'rgb(100,92,237)';
+const blue2 = 'rgb(148,193,34)';
+const blue3 = 'rgb(0,125,142)';
+
 const white = '#FFFFFF';
-const primary = '#D4A24C';
-const secondary = '#203142';
-const tertiary = '#F6F6F6';
+const primary = blue;
+const secondary = pink;
+const tertiary = yellow;
 const neutral_web_grey190 = '#201F1E';
-const theme_1 = '#8D3431';
-const theme_2 = '#9B471F';
-const theme_3 = '#88534D';
-const theme_4 = '#897171';
-const theme_5 = '#4C7788';
-const theme_6 = '#1E5544';
-const theme_7 = '#069782';
-const theme_8 = '#AEBDA5';
 const grey10 = '#FAF9F8';
 const grey20 = '#F3F2F1';
 const grey30 = '#E1DFDD';
 const grey40 = '#828282';
 const overlay_light = white + '66'; //40% in HEX
 const overlay_dark = '#00000066'; /// black 40%
-// const depth4_1 = white +'14'; //7,8% ~ 8% in HEX
-// const depth4_2 = white +'1A'; //10,2% ~ 10% in HEX
-// const depth8_1 = white +'21'; //12.9% ~ 13% in HEX
-// const depth8_2 = depth4_2;
-// const depth8_3 = white +'40'; //25% in HEX
-// const depth16_1 = depth8_1;
-// const depth16_2 = depth4_2;
-// const depth64_1 = white +'38'; //21.9% ~ 22% in HEX
-// const depth64_2 = white +'2E'; //18% in HEX
-const font1 = '"Kaushan Script","serif"'; // serif in case of error;
-const font2 = '"Roboto", "Open Sans", "sans-serif"';
-const font3 = '"Poppins", "Open Sans", "sans-serif"'; // Poppins instead of Sofia Pro
+const font1 = "'eurofurence', 'Segoe UI', 'Roboto', 'Oxygen', sans-serif";
 
 let theme = createTheme({
   palette: {
@@ -61,54 +52,6 @@ let theme = createTheme({
       main: white,
       // dark: white ,// to not be calculated from palette.white.main
       contrastText: neutral_web_grey190, // to not be calculated from palette.white.main
-    },
-    theme_1: {
-      // light: theme_1,// to not be calculated from palette.theme_1.main
-      main: theme_1,
-      // dark: theme_1 ,// to not be calculated from palette.theme_1.main
-      contrastText: tertiary, // to not be calculated from palette.theme_1.main
-    },
-    theme_2: {
-      // light: theme_2,// to not be calculated from palette.theme_2.main
-      main: theme_2,
-      // dark: theme_2 ,// to not be calculated from palette.theme_2.main
-      contrastText: tertiary, // to not be calculated from palette.theme_2.main
-    },
-    theme_3: {
-      // light: theme_3,// to not be calculated from palette.theme_3.main
-      main: theme_3,
-      // dark: theme_3 ,// to not be calculated from palette.theme_3.main
-      contrastText: tertiary, // to not be calculated from palette.theme_3.main
-    },
-    theme_4: {
-      // light: theme_4,// to not be calculated from palette.theme_4.main
-      main: theme_4,
-      // dark: theme_4 ,// to not be calculated from palette.theme_4.main
-      contrastText: tertiary, // to not be calculated from palette.theme_4.main
-    },
-    theme_5: {
-      // light: theme_5,
-      main: theme_5,
-      // dark: theme_5 ,
-      contrastText: tertiary
-    },
-    theme_6: {
-      // light: theme_6,
-      main: theme_6,
-      // dark: theme_6,
-      contrastText: tertiary
-    },
-    theme_7: {
-      // light: theme_7,
-      main: theme_7,
-      // dark: theme_7 
-      contrastText: tertiary
-    },
-    theme_8: {
-      // light: theme_8,
-      main: theme_8,
-      // dark: theme__ 
-      contrastText: tertiary
     },
     grey10: {
       // light: grey10,// to not be calculated from palette.grey10.main
@@ -148,10 +91,8 @@ let theme = createTheme({
     },
   },
   typography: {
-    fontFamily: font3,
     fontSize: 14,
     h1: {
-      fontFamily: font1,
       fontSize: 48,
       fontStyle: 'normal',
       fontWeight: 'normal',
@@ -162,7 +103,6 @@ let theme = createTheme({
       },
     },
     h2: {
-      fontFamily: font1,
       fontSize: 40,
       fontStyle: 'normal',
       fontWeight: 'normal',
@@ -173,7 +113,6 @@ let theme = createTheme({
       },
     },
     h3: {
-      fontFamily: font2,
       fontSize: 24,
       fontStyle: 'normal',
       fontWeight: '600',
@@ -185,14 +124,12 @@ let theme = createTheme({
       textTransform: 'uppercase',
     },
     h4: {
-      fontFamily: font1,
       fontSize: 16,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '23px',
     },
     h5: {
-      fontFamily: font2,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: '900',
@@ -200,7 +137,6 @@ let theme = createTheme({
       textTransform: 'uppercase',
     },
     h6: {
-      fontFamily: font1,
       fontSize: 30,
       fontStyle: 'normal',
       fontWeight: 'normal',
@@ -211,7 +147,6 @@ let theme = createTheme({
       },
     },
     subtitle1: {
-      fontFamily: font3,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: 'bold',
@@ -219,36 +154,32 @@ let theme = createTheme({
       textTransform: 'uppercase',
     },
     subtitle2: {
-      fontFamily: font3,
-      fontSize: 12,
+      fontFamily: font1,
+      fontSize: 16,
       fontStyle: 'normal',
-      fontWeight: '500',
-      lineHeight: '14px',
+      fontWeight: '600',
+      lineHeight: '16px',
       textTransform: 'uppercase',
     },
     body1: {
-      fontFamily: font2,
       fontSize: 16,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '19px',
     },
     body2: {
-      fontFamily: font2,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '16px',
     },
     body3: {
-      fontFamily: font3,
       fontSize: 12,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '14px',
     },
     button: {
-      fontFamily: font3,
       fontSize: 12,
       fontStyle: 'normal',
       fontWeight: '500',

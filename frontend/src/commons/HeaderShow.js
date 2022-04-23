@@ -48,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1.15,
   },
   basePath: {
-    color: theme.palette.theme_3.contrastText,
+    color: theme.palette.primary.contrastText,
   },
   placeLink: {
-    color: theme.palette.theme_3.contrastText,
+    color: theme.palette.primary.contrastText,
     fontWeight: 'bold',
   },
   chevronIcon: {

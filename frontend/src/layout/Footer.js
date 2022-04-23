@@ -13,7 +13,8 @@ import {
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
     width: '100%',
-    margin: '0 4vw'
+    margin: '0 4vw',
+    padding: 0
   },
   linkContainer: {
     width: '100%',
@@ -24,22 +25,32 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'row',
     },
   },
+  linkContainerCentered: {
+    maxWidth: 600,
+    margin: 'auto',
+  },
   footerLink: {
-    marginRight: theme.spacing(2),
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     fontWeight: 'bold',
     textDecoration: 'none',
     lineHeight: '28px',
+    textAlign: 'center',
     '&:hover': {
       textDecoration: 'underline',
     },
-    '&:lastChild': {
-      marginRight: '0',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: theme.spacing(2),
+      '&:lastChild': {
+        marginRight: '0',
+      },
     },
   },
   footerBottom: {
-    '&>*': {
-      marginBottom: theme.spacing(3),
+    display: 'flex',
+    maxWidth: 900,
+    [theme.breakpoints.up('md')]: {
+      flexWrap: 'nowrap',
+      margin: 'auto'
     }
   },
   footerTitle: {
@@ -50,11 +61,11 @@ const useStyles = makeStyles((theme) => ({
   background: {
     borderTop: '1px solid lightgrey',
     marginTop: theme.spacing(8), 
-    backgroundColor: theme.palette.secondary.contrastText,
-    color: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.contrastText,
+    color: theme.palette.primary.main,
   },
   root: {
-    paddingTop: '40px',
+    padding: 40,
     textAlign: 'center',
     [theme.breakpoints.up('sm')]: {
       textAlign: 'left',
@@ -77,6 +88,41 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     paddingLeft: 0
   },
+  contactContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '32px 0',
+    '& img': {
+      width: 60,
+      marginRight: 8
+    },
+    [theme.breakpoints.up('md')]: {
+      marginRight: 24
+    }
+  },
+  innerContactContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+  },
+  shortcutsContainer: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    [theme.breakpoints.up('md')]: {
+      alignItems: 'flex-start',
+    },
+    '& > *:first-child': {
+      marginBottom: 16,
+      textDecoration: 'underline'
+    }
+  }
 }));
 
 const Footer = ({ title }) => {
@@ -90,7 +136,7 @@ const Footer = ({ title }) => {
         <Grid container className={classes.root}>
           <Grid container>
             <Box pt={3} pb={5} className={classes.boxContainer}>
-              <Typography variant="" color="secondary" className={classes.linkContainer}>
+              <Typography variant="" color="primary" className={`${classes.linkContainerCentered} ${classes.linkContainer}`}>
                 <Link to="/" className={classes.footerLink}>
                   PETR
                 </Link>
@@ -107,15 +153,20 @@ const Footer = ({ title }) => {
             </Box>
           </Grid>
           <Grid container className={classes.footerBottom}>
-            <Grid item xs={12} md={4} className={classes.contact}>
-              <Typography variant="" className={classes.footerTitle}>
-                Nous contacter :
-              </Typography>
-              <Typography variant="">
-                contact@reseau-tiers-lieux-msb.fr
-              </Typography>
+            <Grid item xs={12} md={4} className={classes.contactContainer}>
+              <Box>
+                <img src={process.env.PUBLIC_URL + '/logo192.png'} alt="logo etablir"></img>
+              </Box>
+              <Box className={classes.innerContactContainer}>
+                <Typography variant="" className={classes.footerTitle}>
+                  Nous contacter :
+                </Typography>
+                <Typography variant="">
+                  contact@reseau-tiers-lieux-msb.fr
+                </Typography>
+              </Box>
             </Grid>
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} md={8} className={classes.shortcutsContainer}>
               <Typography variant="" className={classes.footerTitle}>
                 Accès direct :
               </Typography>
@@ -140,19 +191,19 @@ const Footer = ({ title }) => {
           <Grid item sm={3}>
             <IconButton
               aria-label="facebook"
-              color="secondary"
+              color="primary"
               href="https://www.facebook.com/Les-Chemins-de-la-Transition-103307098592299"
               className={classes.icon}
             >
               <FacebookIcon fontSize="large" />
             </IconButton>
-            <IconButton aria-label="instagram" color="secondary" disabled>
+            <IconButton aria-label="instagram" color="primary" disabled>
               <InstagramIcon fontSize="large" />
             </IconButton>
-            <IconButton aria-label="twitter" color="secondary" href="https://twitter.com/CdlT_Occitanie">
+            <IconButton aria-label="twitter" color="primary" href="https://twitter.com/CdlT_Occitanie">
               <TwitterIcon fontSize="large" />
             </IconButton>
-            <IconButton aria-label="youtube" color="secondary" disabled>
+            <IconButton aria-label="youtube" color="primary" disabled>
               <YoutubeIcon fontSize="large" />
             </IconButton>
           </Grid>

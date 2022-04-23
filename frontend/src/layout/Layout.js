@@ -15,7 +15,7 @@ import TreeMenu from './DefaultLayout/TreeMenu/TreeMenu';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: theme.spacing(2),
+    padding: '0 16px',
     maxWidth: 1400,
     margin: 'auto'
   },

@@ -3,7 +3,6 @@ import { makeStyles, Button as MuiButton, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   button1: {
-    fontFamily: theme.typography.body2.fontFamily,
     fontSize: 12,
     fontStyle: 'normal',
     fontWeight: '500',
@@ -12,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   button2: {
-    fontFamily: theme.typography.body2.fontFamily,
     fontSize: '16px',
     fontStyle: 'normal',
     fontWeight: 'bold',
