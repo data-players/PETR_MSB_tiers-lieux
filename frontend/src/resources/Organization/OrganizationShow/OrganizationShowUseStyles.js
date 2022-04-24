@@ -9,16 +9,17 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
       textAlign: 'center'
     },
   },
-  title: {
-    display: 'block',
-    padding: theme.spacing(2),
-    border: '1px solid lightgrey',
-  },
   subtitle: {
     display: 'block',
+    fontSize: 20,
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
     padding: theme.spacing(1),
     marginBottom: theme.spacing(2),
     border: '1px solid lightgrey',
+    '& a': {
+      color: theme.palette.primary.contrastText,
+    }
   },
   identityContainer: {
     marginTop: theme.spacing(2),

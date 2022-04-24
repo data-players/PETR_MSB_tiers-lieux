@@ -7,7 +7,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     display: 'block',
     padding: theme.spacing(2),
-    border: '1px solid lightgrey'
+    border: '1px solid lightgrey',
+    backgroundColor: theme.palette.secondary.main,
+    color: theme.palette.secondary.contrastText,
+    fontWeight: 500
   },
 }));
 

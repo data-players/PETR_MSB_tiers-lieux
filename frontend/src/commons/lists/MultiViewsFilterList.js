@@ -40,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
   },
   results: {
     minHeight: 'calc(100vh - 145px)',
+    '& p': {
+      fontSize: 20,
+      color: 'white'
+    }
   },
   icons: {
     paddingTop: 8,
@@ -76,10 +80,6 @@ const useStyles = makeStyles((theme) => ({
   removeFiltersButton: {
     padding: '8px 20px',
   },
-  results: {
-    fontSize: 20,
-    color: 'white'
-  }
 }));
 
 const MultiViewsFilterList = ({ views, filters }) => {
@@ -131,7 +131,7 @@ const MultiViewsFilterList = ({ views, filters }) => {
           <Grid container>
             <Grid item xs={6}>
               <Box p={2}>
-                <Typography className={classes.results} variant="body2">{ids.length} résultat(s)</Typography>
+                <Typography variant="body2">{ids.length} résultat(s)</Typography>
               </Box>
             </Grid>
             <Grid item xs={6}>

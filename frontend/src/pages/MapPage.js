@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
   mainContainer: {
     '& > .MuiGrid-root': {
       marginTop: theme.spacing(2)
+    },
+    '& .leaflet-popup .MuiButton-label': {
+      color: theme.palette.primary.main
     }
   },
   popupImageContainer: { 
