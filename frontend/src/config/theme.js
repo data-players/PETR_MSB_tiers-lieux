@@ -90,7 +90,7 @@ let theme = createTheme({
     },
   },
   typography: {
-    fontSize: 14,
+    fontSize: 16,
     h1: {
       fontFamily: font1,
       fontSize: 48,
@@ -134,7 +134,7 @@ let theme = createTheme({
     },
     h5: {
       fontFamily: font1,
-      fontSize: 14,
+      fontSize: 16,
       fontStyle: 'normal',
       fontWeight: '900',
       lineHeight: '16px',
@@ -152,7 +152,7 @@ let theme = createTheme({
     },
     subtitle1: {
       fontFamily: font1,
-      fontSize: 14,
+      fontSize: 16,
       fontStyle: 'normal',
       fontWeight: 'bold',
       lineHeight: '16px',
@@ -175,14 +175,14 @@ let theme = createTheme({
     },
     body2: {
       fontFamily: font1,
-      fontSize: 14,
+      fontSize: 16,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '16px',
     },
     body3: {
       fontFamily: font1,
-      fontSize: 12,
+      fontSize: 14,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '14px',

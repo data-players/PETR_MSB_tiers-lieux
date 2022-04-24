@@ -15,6 +15,11 @@ import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
 const useStyles = makeStyles(theme => ({
+  mainContainer: {
+    '& > .MuiGrid-root': {
+      marginTop: theme.spacing(2)
+    }
+  },
   popupImageContainer: { 
     textAlign: 'center'
   },
@@ -30,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 const MapPage = (props) => {
   const classes = useStyles();
   return (
-    <>
+    <Box className={classes.mainContainer}>
       <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
       <ListBase 
         basePath="/Organization" 
@@ -136,7 +141,7 @@ const MapPage = (props) => {
           }}
         />
       </ListBase>
-    </>
+    </Box>
   );
 };
 

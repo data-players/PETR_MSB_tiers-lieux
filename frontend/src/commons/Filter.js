@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useGetList, getResources, useListFilterContext } from 'react-admin';
 import { shallowEqual, useSelector } from 'react-redux';
 import { FormControl, InputLabel, makeStyles, MenuItem, Select } from '@material-ui/core';
+import createPalette from '@material-ui/core/styles/createPalette';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -10,12 +11,17 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     '& label': {
       color: 'white',
+      fontSize: 20,
     },
     '& .MuiInput-underline:before': {
-      borderBottomColor: 'white',
+      borderBottomColor: 'white !important',
+    },
+    '& .MuiInputLabel-animated.MuiInputLabel-shrink': {
+      color: theme.palette.primary.main
     },
     '& .MuiInput-input': {
       color: 'white',
+      fontSize: 20,
     },
     '& svg': {
       color: 'white',

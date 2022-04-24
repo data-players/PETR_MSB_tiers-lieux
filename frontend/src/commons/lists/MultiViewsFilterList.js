@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 'calc(100vh - 145px)',
   },
   filtersTitle: {
-    backgroundColor: '#23252E',
+    backgroundColor: theme.palette.grey20.main,
+    color: theme.palette.primary.main,
   },
   filtersBar: {
     backgroundColor: 'white',
@@ -49,13 +50,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   icon: {
+    fontSize: 14,
     marginLeft: 8,
+    color: 'white',
   },
   iconSelected: {
     marginLeft: 8,
-    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
     '& svg': {
-      color: 'white',
+      color: theme.palette.secondary.main,
     },
   },
   addButton: {
@@ -70,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
   },
   removeFiltersButton: {
     padding: '8px 20px',
+  },
+  results: {
+    fontSize: 20,
+    color: 'white'
   }
 }));
 
@@ -122,7 +131,7 @@ const MultiViewsFilterList = ({ views, filters }) => {
           <Grid container>
             <Grid item xs={6}>
               <Box p={2}>
-                <Typography variant="body2">{ids.length} résultat(s)</Typography>
+                <Typography className={classes.results} variant="body2">{ids.length} résultat(s)</Typography>
               </Box>
             </Grid>
             <Grid item xs={6}>
