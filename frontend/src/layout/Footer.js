@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
   },
   footerLink: {
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
     fontWeight: 'bold',
     textDecoration: 'none',
     lineHeight: '28px',
@@ -61,8 +61,8 @@ const useStyles = makeStyles((theme) => ({
   background: {
     borderTop: '1px solid lightgrey',
     marginTop: theme.spacing(8), 
-    backgroundColor: theme.palette.primary.contrastText,
-    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
   },
   root: {
     padding: 40,

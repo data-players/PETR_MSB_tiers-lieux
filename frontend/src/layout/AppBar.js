@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
     },
-    borderBottom: 'black 2px solid'
+    borderBottom: `${theme.palette.primary.main} 2px solid`
   },
   loginBackground: {
     color: theme.palette.primary.main,

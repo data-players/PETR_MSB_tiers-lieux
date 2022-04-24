@@ -6,14 +6,13 @@ const smallScreenTreshold = 'xs';
 
 const blue = 'rgb(50,64,147)';
 const pink = 'rgb(221,48,124)';
-const green = 'rgb(148,193,34)';
-const purple = 'rgb(140,78,137)';
+// const green = 'rgb(148,193,34)';
+// const purple = 'rgb(140,78,137)';
 const yellow = 'rgb(247,197,30)';
-const orange = 'rgb(243,144,62)';
-const lightBlue = 'rgb(100,92,237)';
-const blue2 = 'rgb(148,193,34)';
-const blue3 = 'rgb(0,125,142)';
-
+// const orange = 'rgb(243,144,62)';
+// const lightBlue = 'rgb(100,92,237)';
+// const blue2 = 'rgb(148,193,34)';
+// const blue3 = 'rgb(0,125,142)';
 const white = '#FFFFFF';
 const primary = blue;
 const secondary = pink;
@@ -93,6 +92,7 @@ let theme = createTheme({
   typography: {
     fontSize: 14,
     h1: {
+      fontFamily: font1,
       fontSize: 48,
       fontStyle: 'normal',
       fontWeight: 'normal',
@@ -103,6 +103,7 @@ let theme = createTheme({
       },
     },
     h2: {
+      fontFamily: font1,
       fontSize: 40,
       fontStyle: 'normal',
       fontWeight: 'normal',
@@ -113,6 +114,7 @@ let theme = createTheme({
       },
     },
     h3: {
+      fontFamily: font1,
       fontSize: 24,
       fontStyle: 'normal',
       fontWeight: '600',
@@ -124,12 +126,14 @@ let theme = createTheme({
       textTransform: 'uppercase',
     },
     h4: {
+      fontFamily: font1,
       fontSize: 16,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '23px',
     },
     h5: {
+      fontFamily: font1,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: '900',
@@ -147,6 +151,7 @@ let theme = createTheme({
       },
     },
     subtitle1: {
+      fontFamily: font1,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: 'bold',
@@ -162,24 +167,28 @@ let theme = createTheme({
       textTransform: 'uppercase',
     },
     body1: {
+      fontFamily: font1,
       fontSize: 16,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '19px',
     },
     body2: {
+      fontFamily: font1,
       fontSize: 14,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '16px',
     },
     body3: {
+      fontFamily: font1,
       fontSize: 12,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '14px',
     },
     button: {
+      fontFamily: font1,
       fontSize: 12,
       fontStyle: 'normal',
       fontWeight: '500',

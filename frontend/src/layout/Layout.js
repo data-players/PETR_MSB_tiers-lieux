@@ -26,7 +26,19 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       display: 'none'
     }
+  },
+  breadcrumbContainer: {
+    fontWeight: 'bold',
+    color: theme.palette.primary.main,
+    '& a': {
+      color: theme.palette.primary.main,
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      }
+    }
   }
+  
 }));
 
 const getAdminContext = ( (location, noAdminMenuItems) => {
@@ -78,7 +90,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
       <Container maxWidth="lg">
         {
           window.location.pathname !== '/' &&
-            <Box id="breadcrumpContainer" style={{padding:'10px'}}>
+            <Box id="breadcrumbContainer" className={classes.breadcrumbContainer} style={{padding:'10px'}}>
               <Breadcrumbs separator=" / " finalItem="span" finalProps={{
                 style: {color: 'gray'}
               }}/>
