@@ -11,8 +11,8 @@
     "dev": "moleculer-runner --repl --hot services",
     "devwithlink": "make link & sleep 5 && npm run dev",
     "start": "moleculer-runner --instances=max services",
-    "prestart" : "npm run jwt",
-    "predev" : "npm run jwt",
+    "prestart": "npm run jwt",
+    "predev": "npm run jwt",
     "jwt": "./initialize.sh"
   },
   "dependencies": {
@@ -35,6 +35,7 @@
     "moleculer-repl": "^0.6.3",
     "moleculer-web": "0.10.0-beta1",
     "speakingurl": "^14.0.1",
+    "ssh2-sftp-client": "^9.0.1",
     "url-join": "^4.0.1"
   }
 }
