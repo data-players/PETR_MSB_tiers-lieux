@@ -11,7 +11,7 @@ module.exports = {
   mixins: [BackupService],
   settings: {
     localServer: {
-      fusekiBackupsPath: CONFIG.BACKUP_SERVER_PATH
+      fusekiBackupsPath: CONFIG.BACKUP_FUSEKI_DATASETS_PATH
       // otherDirsPaths: {
       //   uploads: path.resolve(__dirname, '../uploads')
       // }
@@ -48,7 +48,7 @@ module.exports = {
             }).filter(f=>f.diff<60)
 
             for (var file of files) {
-              await sftp.put(ctx.params.path + '/' +file.name, process.env.SEMAPPS_FTP_PATH +file.name);
+              await sftp.put(ctx.params.path + '/' +file.name, CONFIG.BACKUP_SERVER_PATH +file.name);
             }
 
             resolve()
