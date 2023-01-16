@@ -55,6 +55,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   
   const noAdminMenuItems = menuItems.filter(menuItem => ! menuItem.admin)
   const isAdminContext = getAdminContext(location, noAdminMenuItems);
+  const isIframe = window !== window.top;
   
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -102,8 +103,8 @@ const Layout = ({ logout, theme, children, title, menu }) => {
                 <Box>{children}</Box>
               </Grid>
             </Grid>
-      }
-      <Footer title={title} />
+      } 
+      { !isIframe  ?  <Footer title={title} /> : null }
       {/* Required for react-admin optimistic update */}
       <Notification />
     </ThemeProvider>
