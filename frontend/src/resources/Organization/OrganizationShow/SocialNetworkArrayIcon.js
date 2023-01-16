@@ -10,8 +10,9 @@ const listIcon = makeStyles({
   });
 
 const SocialNetworkArrayIcon = ({ record, source }) => {
+  console.log(record[source] !== undefined)
+  if (record[source] !== undefined) {
     const listIconStyle = listIcon();
-    console.log(record[source])
 
     var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
     for (var i=0; i < array.length ;i++) {
@@ -23,6 +24,10 @@ const SocialNetworkArrayIcon = ({ record, source }) => {
     return <List>
       {  array.map(item => <ListItem classes={listIconStyle}><SocialIcon style={{ height: 30, width: 30 }} url={"http://"+item}/></ListItem>) }
     </List>
+  } else {
+    return <></>
   }
+      
+}
 
-  export default SocialNetworkArrayIcon;
+export default SocialNetworkArrayIcon;
