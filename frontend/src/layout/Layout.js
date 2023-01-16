@@ -48,8 +48,6 @@ const Layout = ({ logout, theme, children, title, menu }) => {
 
   const location = useLocation();
   const menuItems = [
-    { link: '/About', name: 'Qui sommes-nous ?', admin: false },
-    { link: '/Map', name: 'Carte des tiers lieux', admin: false },
     { link: '/Search', name: 'Recherche', admin: false },
     { link: '/Event', name: 'Agenda', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },

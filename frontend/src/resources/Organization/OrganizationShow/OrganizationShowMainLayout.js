@@ -55,7 +55,7 @@ const OrganizationShowMainLayout = ({...props}) => {
         </Tab>
         <Tab label="Equipements">
           <FullWidthBox className={classes.innerContainer}>
-            <OrganizationShowMainTitle label={"Les équipements de "}/> 
+            <OrganizationShowMainTitle label={"Les équipements de "} /> 
             <ReferenceManyField
               addLabel={false}
               reference="Equipment"

@@ -70,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
   },
   removeFiltersButton: {
     padding: '8px 20px',
+  },
+  filterTitle: {
+    color: 'white'
   }
 }));
 
@@ -110,7 +113,7 @@ const MultiViewsFilterList = ({ views, filters }) => {
       ) : (
         <Grid item sm={4} className={classes.filters}>
           <Box p={2} className={classes.filtersTitle}>
-            <Typography variant="subtitle1">Filtres:</Typography>
+            <Typography variant="subtitle1" className={classes.filterTitle}>Filtres:</Typography>
           </Box>
           <StickyBox offsetTop={100}>
             <Box p={2}>{filters.map((filter, i) => React.cloneElement(filter, { key: i }))}</Box>

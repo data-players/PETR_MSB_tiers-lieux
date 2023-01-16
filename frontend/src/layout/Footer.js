@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footerLink: {
     marginRight: theme.spacing(2),
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     fontWeight: 'bold',
     textDecoration: 'none',
     lineHeight: '28px',
@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     fontWeight: 'bold',
     marginBottom: theme.spacing(1),
+    color: theme.palette.primary.main,
   },
   background: {
     borderTop: '1px solid lightgrey',
@@ -77,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     paddingLeft: 0
   },
+  mail:{
+    color: theme.palette.primary.main,
+  }
 }));
 
 const Footer = ({ title }) => {
@@ -111,7 +115,7 @@ const Footer = ({ title }) => {
               <Typography variant="" className={classes.footerTitle}>
                 Nous contacter :
               </Typography>
-              <Typography variant="">
+              <Typography variant="" className={classes.mail}>
                 contact@reseau-tiers-lieux-msb.fr
               </Typography>
             </Grid>

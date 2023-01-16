@@ -1,16 +1,19 @@
 import React from 'react';
 
 import { Box, Typography } from '@material-ui/core';
-import { ImageField, TextField, UrlField, useRecordContext } from 'react-admin';
+import { ArrayField, ChipField, ImageField, TextField, UrlField, useRecordContext } from 'react-admin';
 
 import FullWidthBox from '../../../commons/FullWidthBox';
 
 import useStyles from './OrganizationShowUseStyles';
+import SocialNetworkArrayIcon from './SocialNetworkArrayIcon';
 
 const OrganizationShowContactLayout = ({...props}) => {
   
   const classes = useStyles();
   const record = useRecordContext();
+
+  console.log(record)
   
   return (
     <FullWidthBox className={classes.innerContainer}>
@@ -33,9 +36,20 @@ const OrganizationShowContactLayout = ({...props}) => {
       <Typography component="h3" className={classes.subtitle}>
         <span>Contact</span>
       </Typography>
-      <FullWidthBox className={classes.contactContainer}>
-        <UrlField record={record} source="pair:webPage" />
-        </FullWidthBox>
+        <Typography className={classes.contactFields}>
+          <Box>
+            <TextField source="pair:e-mail"/>
+          </Box>
+          <Box>
+            <TextField source="pair:phone"/>
+          </Box>
+          <Box>
+            <UrlField record={record} source="pair:webPage" />
+          </Box>
+          <Box>
+              <SocialNetworkArrayIcon record={record} source="petr:socialMedias" addLabel/>
+          </Box>
+        </Typography>
     </FullWidthBox>
   );
 };

@@ -25,8 +25,8 @@ const OrganizationShowNavLayout = ({...props}) => {
   
   return (
     <FullWidthBox className={classes.innerContainer}>
-      <Typography component="div" className={classes.subtitle}>
-        <Link to={showUri} label="Principal">
+      <Typography component="div" >
+        <Link to={showUri} label="Principal" className={classes.subtitle}>
         Principal
         </Link>
       </Typography>
@@ -39,21 +39,6 @@ const OrganizationShowNavLayout = ({...props}) => {
         className={classes.map}
         record={record}
       />
-      <Typography component="div" className={classes.subtitle}>
-        <Link to={showEquipmentUri} label="Equipement">
-          Equipements
-        </Link>
-      </Typography>
-      <Typography component="div" className={classes.subtitle}>
-        <Link to={showSpaceUri} label="Espaces">
-          Espaces
-        </Link>
-      </Typography>
-      <Typography component="div" className={classes.subtitle}>
-        <Link to={showServiceUri} label="Services">
-          Services
-        </Link>
-      </Typography>
     </FullWidthBox>
   );
 };

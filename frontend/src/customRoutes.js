@@ -7,8 +7,7 @@ import MapPage from './pages/MapPage';
 import SearchPage from './pages/SearchPage/';
 
 export default [
-  <Route exact path="/" component={HomePage} />,
+  <Route exact path="/" component={MapPage} />,
   <Route exact path="/About" component={AboutPage} />,
-  <Route exact path="/Map" component={MapPage} />,
   <Route exact path="/Search" component={SearchPage} />,
 ];

@@ -31,7 +31,6 @@ const MapPage = (props) => {
   const classes = useStyles();
   return (
     <>
-      <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
       <ListBase 
         basePath="/Organization" 
         resource="Organization"

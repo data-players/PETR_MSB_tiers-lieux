@@ -13,12 +13,14 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     display: 'block',
     padding: theme.spacing(2),
     border: '1px solid lightgrey',
+    color: '#e13384'
   },
   subtitle: {
     display: 'block',
     padding: theme.spacing(1),
     marginBottom: theme.spacing(2),
     border: '1px solid lightgrey',
+    color: '#e13384'
   },
   identityContainer: {
     marginTop: theme.spacing(2),
@@ -32,6 +34,9 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
   contactContainer: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
+  },
+  contactFields: {
+    textAlign:"left"
   },
   addressContainer: {
     '& > *': {
@@ -82,6 +87,9 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     left: '5%',
     zIndex: 99999,
     padding: '32px !important',
+    marginLeft: '435px',
+    marginTop: '250px',
+    marginRight: '95px',
     background: 'rgb(240, 240, 240)',
     overflowY: 'auto',
     [theme.breakpoints.up('sm')]: {
