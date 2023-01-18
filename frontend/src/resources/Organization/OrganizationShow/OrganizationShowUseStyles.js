@@ -87,9 +87,6 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     left: '5%',
     zIndex: 99999,
     padding: '32px !important',
-    marginLeft: '435px',
-    marginTop: '250px',
-    marginRight: '95px',
     background: 'rgb(240, 240, 240)',
     overflowY: 'auto',
     [theme.breakpoints.up('sm')]: {
@@ -100,6 +97,9 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       padding: '64px !important',
+      marginLeft: '405px',
+    marginTop: '250px',
+    marginRight: '65px',
     },
 
   },
@@ -121,6 +121,8 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       top: 'calc(10% + 16px)',
       right: 'calc(10% + 16px)',
+      marginTop: '100px',
+      marginRight:'25px',
     },
   }
 }));
