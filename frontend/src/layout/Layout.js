@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const isIframe = window !== window.top;
 
 const getAdminContext = ( (location, noAdminMenuItems) => {
   
@@ -47,6 +46,7 @@ const getAdminContext = ( (location, noAdminMenuItems) => {
 const Layout = ({ logout, theme, children, title, menu }) => {
   
   const classes = useStyles();
+  const isIframe = window !== window.top;
 
   const location = useLocation();
   const menuItems = [
@@ -59,7 +59,6 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   
   const noAdminMenuItems = menuItems.filter(menuItem => ! menuItem.admin)
   const isAdminContext = getAdminContext(location, noAdminMenuItems);
-  const isIframe = window !== window.top;
   
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
