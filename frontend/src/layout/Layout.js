@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const isIframe = window !== window.top;
+
 const getAdminContext = ( (location, noAdminMenuItems) => {
   
   if (location.pathname === '/') return false;
@@ -51,6 +53,8 @@ const Layout = ({ logout, theme, children, title, menu }) => {
     { link: '/Search', name: 'Recherche', admin: false },
     { link: '/Event', name: 'Agenda', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
+    isIframe ? { link: '/', name: 'Cartographie', admin: false } : {},
+
   ];
   
   const noAdminMenuItems = menuItems.filter(menuItem => ! menuItem.admin)
