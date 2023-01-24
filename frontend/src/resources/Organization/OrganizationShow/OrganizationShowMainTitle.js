@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
 const OrganizationShowMainTitle = ({label}) => {
   const classes = useStyles();
   return (
-    <Typography component="h2" variant="h3" className={classes.title}>
-      <span style={{color: "#e13384"}} >{label}</span><TextField source="pair:label" variant="h3" style={{color: "#e13384"}}/>
+    <Typography component="h2" variant="h3" className={classes.title} style={{background:"#e13384", textAlign:"center" }}>
+      <span style={{color: "white",}} >{label}</span><TextField source="pair:label" variant="h3" style={{color: "white",}}/>
     </Typography>
   );
 };

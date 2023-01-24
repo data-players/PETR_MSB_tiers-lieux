@@ -13,14 +13,18 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     display: 'block',
     padding: theme.spacing(2),
     border: '1px solid lightgrey',
-    color: '#e13384'
+    background: '#e13384',
+    color: 'white',
+    fontWeight: "bold"
   },
   subtitle: {
     display: 'block',
     padding: theme.spacing(1),
     marginBottom: theme.spacing(2),
     border: '1px solid lightgrey',
-    color: '#e13384'
+    background: '#e13384',
+    color: 'white',
+    fontWeight: "bold"
   },
   identityContainer: {
     marginTop: theme.spacing(2),
@@ -97,9 +101,10 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('md')]: {
       padding: '64px !important',
-      marginLeft: '405px',
-    marginTop: '250px',
-    marginRight: '65px',
+      marginLeft: '450px',
+    marginTop: '275px',
+    marginRight: '175px',
+    borderRadius: '10px'
     },
 
   },
@@ -121,9 +126,21 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       top: 'calc(10% + 16px)',
       right: 'calc(10% + 16px)',
-      marginTop: '100px',
-      marginRight:'25px',
+      marginTop: '115px',
+      marginRight:'75px',
     },
+  },
+  contactBox: {
+    marginBottom: "10px",
+    display: "flex",
+    alignItems: "center",
+    paddingLeft: "5px"
+  },
+  contactItem: {
+    paddingLeft:"10px",
+  },
+  label: {
+    fontWeight: 'bold'
   }
 }));
 

@@ -124,7 +124,7 @@ const Footer = ({ title }) => {
                 Accès direct :
               </Typography>
               <Typography variant="" color="secondary" className={classes.linkContainer}>
-                <Link to="/Map" className={classes.footerLink}>
+                <Link to="/" className={classes.footerLink}>
                   Carte des lieux
                 </Link>
                 <Link to="/Search" className={classes.footerLink}>

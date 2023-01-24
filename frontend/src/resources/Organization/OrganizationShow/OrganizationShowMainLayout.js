@@ -29,6 +29,8 @@ const OrganizationShowMainLayout = ({...props}) => {
   const currentUri = useLocation().pathname;
   const showIndex = currentUri.search('/show');
   const showSuffix = currentUri.substring(showIndex, currentUri.length);
+  const isIframe = window !== window.top;
+
   let breadcrumbsTabLabel = false;
   switch (showSuffix) {
     case '/show/1' : breadcrumbsTabLabel = 'Equipements'; break;
@@ -39,8 +41,8 @@ const OrganizationShowMainLayout = ({...props}) => {
   
   return (
     <>
-      <BreadcrumbsItem to={currentUri.replace(showSuffix, '/show')}>{props.label}</BreadcrumbsItem>
-      { breadcrumbsTabLabel &&
+      {isIframe ? null : <BreadcrumbsItem to={currentUri.replace(showSuffix, '/show')}>{props.label}</BreadcrumbsItem>}
+      { isIframe ? null : breadcrumbsTabLabel &&
         <BreadcrumbsItem to={currentUri}>{breadcrumbsTabLabel}</BreadcrumbsItem>
       }
       <TabbedShowLayout className={classes.tabbedShowLayout}>

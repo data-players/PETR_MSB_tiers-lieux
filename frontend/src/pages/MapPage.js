@@ -12,8 +12,6 @@ import { MapList } from '@semapps/geo-components';
 import Filter from '../commons/Filter';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 
-import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
-
 const useStyles = makeStyles(theme => ({
   popupImageContainer: { 
     textAlign: 'center'
@@ -88,6 +86,7 @@ const MapPage = (props) => {
                   longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
                   center= {[46.42816, 4.66527]}
                   zoom= {11}
+                  height="calc(100% - 48px)"
                   boundToMarkers={false}
                   label={record => record['pair:label']}
                   description={record => record['pair:description']}

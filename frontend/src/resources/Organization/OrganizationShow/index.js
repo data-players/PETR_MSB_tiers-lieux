@@ -27,10 +27,12 @@ const useStyles = makeStyles((theme) => ({
 const OrganizationShow = ({...props}) => {
   const classes = useStyles();
   const { record } = useShowController(props);
+  const isIframe = window !== window.top;
+
   return (
     <>
-      <BreadcrumbsItem to='/Map'>Cartographie</BreadcrumbsItem>
-      <Show className={classes.showContainer} actions={<ShowActions hasList={false} />} {...props} >
+      {isIframe ? null : <BreadcrumbsItem to='/'>Cartographie</BreadcrumbsItem> } 
+      <Show className={classes.showContainer} actions={<ShowActions hasEdit={isIframe ? false : true} hasList={false} />} {...props} >
         <TabbedShowLayout value={4} >
           <Tab label="Principal">
             <Grid container spacing={2}>

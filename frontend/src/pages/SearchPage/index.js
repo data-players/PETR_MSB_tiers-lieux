@@ -160,6 +160,7 @@ const SearchPage = ({ theme }) => {
   const [storedFieldValues, setStoredFieldValues] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
   const [results, setResults] = useState();
+  const isIframe = window !== window.top;
   
   const getSearchStep = (step) => {
     return searchSteps.indexOf(step)
@@ -377,7 +378,7 @@ const SearchPage = ({ theme }) => {
 
   return (
     <Container className={classes.mainContainer} maxWidth="lg">
-      <BreadcrumbsItem to='/Search'>Rechercher</BreadcrumbsItem>
+      {isIframe ? null : <BreadcrumbsItem to='/Search'>Rechercher</BreadcrumbsItem> } 
       { ! selectedResource &&
         <h1>Que recherchez-vous ?</h1>
       }

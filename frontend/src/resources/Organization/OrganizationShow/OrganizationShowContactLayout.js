@@ -1,20 +1,21 @@
 import React from 'react';
 
 import { Box, Typography } from '@material-ui/core';
-import { ArrayField, ChipField, ImageField, TextField, UrlField, useRecordContext } from 'react-admin';
+import { ImageField, TextField, UrlField, useRecordContext } from 'react-admin';
 
 import FullWidthBox from '../../../commons/FullWidthBox';
 
 import useStyles from './OrganizationShowUseStyles';
-import SocialNetworkArrayIcon from './SocialNetworkArrayIcon';
+import SocialNetworkArrayIcon from '../../../addons/SocialNetworkArrayIcon';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import EmailIcon from '@mui/icons-material/Email';
+import LanguageIcon from '@mui/icons-material/Language';
 
 const OrganizationShowContactLayout = ({...props}) => {
   
   const classes = useStyles();
   const record = useRecordContext();
 
-  console.log(record)
-  
   return (
     <FullWidthBox className={classes.innerContainer}>
       <Typography component="h3" className={classes.subtitle}>
@@ -37,15 +38,18 @@ const OrganizationShowContactLayout = ({...props}) => {
         <span>Contact</span>
       </Typography>
         <Typography className={classes.contactFields}>
-          <Box>
-            <TextField source="pair:e-mail"/>
-          </Box>
-          <Box>
-            <TextField source="pair:phone"/>
-          </Box>
-          <Box>
-            <UrlField record={record} source="pair:webPage" />
-          </Box>
+        { record["pair:e-mail"] ? <Box className={classes.contactBox}>
+            <EmailIcon/>
+            <TextField source="pair:e-mail" className={classes.contactItem}/>
+          </Box> : null }
+          { record["pair:phone"] ? <Box className={classes.contactBox}>
+            <PhoneAndroidIcon />
+            <TextField source="pair:phone" className={classes.contactItem}/>
+          </Box> : null }
+          { record["pair:webPage"] ? <Box className={classes.contactBox}>
+            <LanguageIcon/>
+            <UrlField record={record} source="pair:webPage" className={classes.contactItem}/>
+          </Box> : null }
           <Box>
               <SocialNetworkArrayIcon record={record} source="petr:socialMedias" addLabel/>
           </Box>

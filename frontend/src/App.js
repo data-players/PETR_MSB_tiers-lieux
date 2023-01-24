@@ -8,7 +8,7 @@ import i18nProvider from './config/i18nProvider';
 import dataProvider from './config/dataProvider';
 import * as resources from './resources';
 
-import HomePage from './pages/HomePage/HomePage';
+import MapPage from './pages/MapPage';
 import Layout from './layout/Layout';
 import theme from './config/theme';
 import customRoutes from './customRoutes';
@@ -23,7 +23,7 @@ const App = () => {
       <Admin
         disableTelemetry
         history={history}
-        title="Mon titre"
+        title="Etablir"
         authProvider={authProvider}
         dataProvider={dataProvider}
         i18nProvider={i18nProvider}
@@ -31,7 +31,7 @@ const App = () => {
         theme={theme}
         loginPage={LoginPage}
         logoutButton={LogoutButton}
-        dashboard={HomePage}
+        dashboard={MapPage}
         customRoutes={customRoutes}
       >
         {Object.entries(resources).map(([key, resource]) => (

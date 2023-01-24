@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     lineHeight: 1,
     color: theme.palette.secondary.main,
+    fontSize: "20px",
   },
   linkBox: {
     [theme.breakpoints.down('md')]: {

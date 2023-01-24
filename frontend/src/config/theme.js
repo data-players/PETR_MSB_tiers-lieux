@@ -147,47 +147,47 @@ let theme = createTheme({
   },
   typography: {
     fontFamily: font,
-    fontSize: 14,
+    fontSize: 14+5,
     h1: {
       fontFamily: font,
-      fontSize: 48,
+      fontSize: 48+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '70px',
       color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 32,
+        fontSize: 32+5,
         lineHeight: '46px',theme_1
       },
     },
     h2: {
       fontFamily: font,
-      fontSize: 40,
+      fontSize: 40+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '58px',
       color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 28,
+        fontSize: 28+5,
         lineHeight: '41px',
       },
     },
     h3: {
       fontFamily: font,
-      fontSize: 24,
+      fontSize: 24+5,
       fontStyle: 'normal',
       fontWeight: '600',
       lineHeight: '33px',
       color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 20,
+        fontSize: 20+5,
         lineHeight: '23px',
       },
       textTransform: 'uppercase',
     },
     h4: {
       fontFamily: font,
-      fontSize: 16,
+      fontSize: 16+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '23px',
@@ -195,7 +195,7 @@ let theme = createTheme({
     },
     h5: {
       fontFamily: font,
-      fontSize: 14,
+      fontSize: 14+5,
       fontStyle: 'normal',
       fontWeight: '900',
       lineHeight: '16px',
@@ -204,19 +204,19 @@ let theme = createTheme({
     },
     h6: {
       fontFamily: font,
-      fontSize: 30,
+      fontSize: 30+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '44px',
       color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 18,
+        fontSize: 18+5,
         lineHeight: '26px',
       },
     },
     subtitle1: {
       fontFamily: font,
-      fontSize: 14,
+      fontSize: 14+5,
       fontStyle: 'normal',
       fontWeight: 'bold',
       lineHeight: '16px',
@@ -225,7 +225,7 @@ let theme = createTheme({
     },
     subtitle2: {
       fontFamily: font,
-      fontSize: 12,
+      fontSize: 12+5,
       fontStyle: 'normal',
       fontWeight: '500',
       lineHeight: '14px',
@@ -234,7 +234,7 @@ let theme = createTheme({
     },
     body1: {
       fontFamily: font,
-      fontSize: 16,
+      fontSize: 16+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '19px',
@@ -242,7 +242,7 @@ let theme = createTheme({
     },
     body2: {
       fontFamily: font,
-      fontSize: 14,
+      fontSize: 14+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '16px',
@@ -250,7 +250,7 @@ let theme = createTheme({
     },
     body3: {
       fontFamily: font,
-      fontSize: 12,
+      fontSize: 12+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '14px',
@@ -258,7 +258,7 @@ let theme = createTheme({
     },
     button: {
       fontFamily: font,
-      fontSize: 12,
+      fontSize: 12+5,
       fontStyle: 'normal',
       fontWeight: '500',
       lineHeight: '14px',
