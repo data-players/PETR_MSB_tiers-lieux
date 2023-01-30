@@ -10,7 +10,6 @@ const listIcon = makeStyles({
   });
 
 const SocialNetworkArrayIcon = ({ record, source }) => {
-  console.log(record[source] !== undefined)
   if (record[source] !== undefined) {
     const listIconStyle = listIcon();
 
