@@ -11,6 +11,7 @@ module.exports = {
       'https://data.petr-msb.data-players.com/persons/v.farcy72',
       'https://data.petr-msb.data-players.com/persons/simon.louvet.zen',
       'https://data.petr-msb.data-players.com/persons/simon.louvet.test',
+      'https://data.petr-msb.data-players.com/persons/acordier',
       'https://data.petr-msb.data-players.com/persons/pierre']
   }
 };
