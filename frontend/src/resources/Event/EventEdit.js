@@ -10,9 +10,11 @@ import EventTitle from './EventTitle';
 import PairLocationInput from '../../pair/PairLocationInput';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
+const isIframe = window !== window.top;
+
 const EventEdit = props => (
   <>
-    <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem>
+    {isIframe ? null : <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem> } 
     <Edit title={<EventTitle/>} {...props}>
       <SimpleForm redirect="show">
         <TextInput source="pair:label" label="Nom" fullWidth />

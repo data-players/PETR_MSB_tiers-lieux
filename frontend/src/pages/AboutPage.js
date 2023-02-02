@@ -5,9 +5,11 @@ import useStyles from './PageUseStyles';
 
 const AboutPage = () => {
   const classes = useStyles();
+  const isIframe = window !== window.top;
+
   return (
     <>
-      <BreadcrumbsItem to='/About'>Qui-sommes-nous?</BreadcrumbsItem>
+      {isIframe ? null : <BreadcrumbsItem to='/About'>Qui-sommes-nous?</BreadcrumbsItem> } 
       <Box className={classes.mainContainer} variant="body1">
         <Typography variant="h1" component="h1">
           Qui-sommes-nous ?

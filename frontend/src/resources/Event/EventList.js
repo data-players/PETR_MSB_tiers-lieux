@@ -8,9 +8,11 @@ import frLocale from '@fullcalendar/core/locales/fr';
 import EventIcon from '@material-ui/icons/Event';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
+const isIframe = window !== window.top;
+
 const EventList = props => (
   <>
-    <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem>
+    {isIframe ? null : <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem>}
     <MultiViewsList
       aside={<EventFilterSidebar />}
       views={{

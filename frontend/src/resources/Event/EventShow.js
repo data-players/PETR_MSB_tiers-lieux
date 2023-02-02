@@ -14,10 +14,12 @@ const ProjectTitle = ({ record }) => {
   return <span>{record ? record['pair:label'] : ''}</span>;
 };
 
+const isIframe = window !== window.top;
+
 const EventShow = props => (
   <>
-    <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem>
-    <Show  title={<ProjectTitle />} actions={<ShowActions />} {...props}>
+    {isIframe ? null : <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem> } 
+    <Show  title={<ProjectTitle />} actions={<ShowActions hasEdit={isIframe ? false : true} />} {...props}>
       <ColumnShowLayout>
         <Column xs={12} sm={8} showLabel>
           <Hero image="pair:depictedBy">

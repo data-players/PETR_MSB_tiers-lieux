@@ -5,8 +5,8 @@ const defaultTheme = createTheme();
 const smallScreenTreshold = 'xs';
 
 const white = '#FFFFFF';
-const primary = '#D4A24C';
-const secondary = '#203142';
+const primary = '#2d4b9e';
+const secondary = '#e13384';
 const tertiary = '#F6F6F6';
 const neutral_web_grey190 = '#201F1E';
 const theme_1 = '#8D3431';
@@ -32,9 +32,7 @@ const overlay_dark = '#00000066'; /// black 40%
 // const depth16_2 = depth4_2;
 // const depth64_1 = white +'38'; //21.9% ~ 22% in HEX
 // const depth64_2 = white +'2E'; //18% in HEX
-const font1 = '"Kaushan Script","serif"'; // serif in case of error;
-const font2 = '"Roboto", "Open Sans", "sans-serif"';
-const font3 = '"Poppins", "Open Sans", "sans-serif"'; // Poppins instead of Sofia Pro
+const font = 'Calibri, sans-serif'; // serif in case of error;
 
 let theme = createTheme({
   palette: {
@@ -148,112 +146,124 @@ let theme = createTheme({
     },
   },
   typography: {
-    fontFamily: font3,
-    fontSize: 14,
+    fontFamily: font,
+    fontSize: 14+5,
     h1: {
-      fontFamily: font1,
-      fontSize: 48,
+      fontFamily: font,
+      fontSize: 48+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '70px',
+      color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 32,
-        lineHeight: '46px',
+        fontSize: 32+5,
+        lineHeight: '46px',theme_1
       },
     },
     h2: {
-      fontFamily: font1,
-      fontSize: 40,
+      fontFamily: font,
+      fontSize: 40+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '58px',
+      color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 28,
+        fontSize: 28+5,
         lineHeight: '41px',
       },
     },
     h3: {
-      fontFamily: font2,
-      fontSize: 24,
+      fontFamily: font,
+      fontSize: 24+5,
       fontStyle: 'normal',
       fontWeight: '600',
       lineHeight: '33px',
+      color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 20,
+        fontSize: 20+5,
         lineHeight: '23px',
       },
       textTransform: 'uppercase',
     },
     h4: {
-      fontFamily: font1,
-      fontSize: 16,
+      fontFamily: font,
+      fontSize: 16+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '23px',
+      color: primary,
     },
     h5: {
-      fontFamily: font2,
-      fontSize: 14,
+      fontFamily: font,
+      fontSize: 14+5,
       fontStyle: 'normal',
       fontWeight: '900',
       lineHeight: '16px',
       textTransform: 'uppercase',
+      color: primary,
     },
     h6: {
-      fontFamily: font1,
-      fontSize: 30,
+      fontFamily: font,
+      fontSize: 30+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '44px',
+      color: primary,
       [defaultTheme.breakpoints.down(smallScreenTreshold)]: {
-        fontSize: 18,
+        fontSize: 18+5,
         lineHeight: '26px',
       },
     },
     subtitle1: {
-      fontFamily: font3,
-      fontSize: 14,
+      fontFamily: font,
+      fontSize: 14+5,
       fontStyle: 'normal',
       fontWeight: 'bold',
       lineHeight: '16px',
       textTransform: 'uppercase',
+      color: primary,
     },
     subtitle2: {
-      fontFamily: font3,
-      fontSize: 12,
+      fontFamily: font,
+      fontSize: 12+5,
       fontStyle: 'normal',
       fontWeight: '500',
       lineHeight: '14px',
       textTransform: 'uppercase',
+      color: primary,
     },
     body1: {
-      fontFamily: font2,
-      fontSize: 16,
+      fontFamily: font,
+      fontSize: 16+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '19px',
+      color: primary,
     },
     body2: {
-      fontFamily: font2,
-      fontSize: 14,
+      fontFamily: font,
+      fontSize: 14+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '16px',
+      color: primary,
     },
     body3: {
-      fontFamily: font3,
-      fontSize: 12,
+      fontFamily: font,
+      fontSize: 12+5,
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '14px',
+      color: primary,
     },
     button: {
-      fontFamily: font3,
-      fontSize: 12,
+      fontFamily: font,
+      fontSize: 12+5,
       fontStyle: 'normal',
       fontWeight: '500',
       lineHeight: '14px',
       textTransform: 'uppercase',
+      color: primary,
     },
   },
   props: {

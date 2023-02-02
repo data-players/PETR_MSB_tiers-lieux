@@ -10,6 +10,7 @@ import {
 
 import closeModal from './closeModal';
 import useStyles from './OrganizationShowUseStyles';
+import CustomLabel from '../../../addons/CustomLabel';
 
 const OrganizationShowEquipmentLayout = ({...props}) => {
   const classes = useStyles();
@@ -17,25 +18,24 @@ const OrganizationShowEquipmentLayout = ({...props}) => {
 
       <SimpleShowLayout className={classes.modal} resource="Equipment">
         <CloseIcon className={classes.modalCloseIcon} onClick={closeModal}/>
-        <TextField source="pair:label" />
-        <ReferenceField source="petr:hasEquipmentType" reference="EquipmentType" link={false}>
+        <TextField source="pair:label" label={<CustomLabel label="Libellé :" />}/>
+        <ReferenceField source="petr:hasEquipmentType" reference="EquipmentType" link={false} label={<CustomLabel label="Type d'équipement :" />}>
           <TextField source="pair:label" />
         </ReferenceField>
-        <TextField source="pair:description" />
-        <TextField source="petr:model" />
-        <NumberField source="petr:amount" />
-        <ReferenceField source="petr:hasRate" reference="Rate" link={false}>
+        <TextField source="pair:description" label={<CustomLabel label="Description :" />}/>
+        <TextField source="petr:model" label={<CustomLabel label="Modèle :" />}/>
+        <NumberField source="petr:amount" label={<CustomLabel label="Quantité :" />}/>
+        <ReferenceField source="petr:hasRate" reference="Rate" link={false} label={<CustomLabel label="Tarif :" />}>
           <TextField source="pair:label" />
         </ReferenceField>
-        <TextField source="petr:availablity" />
-        <ReferenceField source="petr:hasAccessModality" reference="AccessModality" link={false}>
+        <TextField source="petr:availablity" label={<CustomLabel label="Disponibilité :" />}/>
+        <ReferenceField source="petr:hasAccessModality" reference="AccessModality" link={false} label={<CustomLabel label="Modalités d'accès :" />}>
           <TextField source="pair:label" />
         </ReferenceField>
-        <ReferenceField source="pair:hasLocation" reference="Space" link={false}>
+        <ReferenceField source="pair:hasLocation" reference="Space" link={false} label={<CustomLabel label="Lieux :" />}>
           <TextField source="pair:label" />
         </ReferenceField>
-
-        </SimpleShowLayout>
+      </SimpleShowLayout>
 
   )
 }

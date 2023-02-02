@@ -7,15 +7,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     display: 'block',
     padding: theme.spacing(2),
-    border: '1px solid lightgrey'
+    border: '1px solid lightgrey',
   },
 }));
 
 const OrganizationShowMainTitle = ({label}) => {
   const classes = useStyles();
   return (
-    <Typography component="h2" variant="h3" className={classes.title}>
-      <span>{label}</span><TextField source="pair:label" variant="h3" />
+    <Typography component="h2" variant="h3" className={classes.title} style={{background:"#e13384", textAlign:"center" }}>
+      <span style={{color: "white",}} >{label}</span><TextField source="pair:label" variant="h3" style={{color: "white",}}/>
     </Typography>
   );
 };

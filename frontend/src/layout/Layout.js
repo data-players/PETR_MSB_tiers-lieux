@@ -13,10 +13,12 @@ import ScrollToTop from './ScrollToTop';
 import SideMenu from './SideMenu';
 import TreeMenu from './DefaultLayout/TreeMenu/TreeMenu';
 
+const isIframe = window !== window.top;
+
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: theme.spacing(2),
-    maxWidth: 1400,
+    maxWidth: isIframe ? null : 1400,
     margin: 'auto'
   },
   adminContainer: {
@@ -28,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 }));
+
 
 const getAdminContext = ( (location, noAdminMenuItems) => {
   
@@ -47,14 +50,16 @@ const Layout = ({ logout, theme, children, title, menu }) => {
   const classes = useStyles();
 
   const location = useLocation();
-  const menuItems = [
-    { link: '/About', name: 'Qui sommes-nous ?', admin: false },
-    { link: '/Map', name: 'Carte des tiers lieux', admin: false },
+  const menuItems = isIframe ? [
+    { link: '/', name: 'Cartographie', admin: false },
+    { link: '/Search', name: 'Recherche', admin: false },
+    { link: '/Event', name: 'Agenda', admin: false },
+  ] :  [
     { link: '/Search', name: 'Recherche', admin: false },
     { link: '/Event', name: 'Agenda', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
   ];
-  
+
   const noAdminMenuItems = menuItems.filter(menuItem => ! menuItem.admin)
   const isAdminContext = getAdminContext(location, noAdminMenuItems);
   
@@ -84,13 +89,13 @@ const Layout = ({ logout, theme, children, title, menu }) => {
               }}/>
             </Box>
         }
-        <BreadcrumbsItem to='/'>Accueil</BreadcrumbsItem>
+        {isIframe ? null : <BreadcrumbsItem to='/'>Accueil</BreadcrumbsItem>}
       </Container>
       {
         isAdminContext
           ?
             <Grid container>
-              <BreadcrumbsItem to='/Organization'>Admin</BreadcrumbsItem>
+              {isIframe ? null : <BreadcrumbsItem to='/Organization'>Admin</BreadcrumbsItem> } 
               <Grid item xs={0} sm={3} lg={2} className={classes.treeMenuContainer}>
                 <TreeMenu />
               </Grid>
@@ -104,8 +109,8 @@ const Layout = ({ logout, theme, children, title, menu }) => {
                 <Box>{children}</Box>
               </Grid>
             </Grid>
-      }
-      <Footer title={title} />
+      } 
+      { !isIframe  ?  <Footer title={title} /> : null }
       {/* Required for react-admin optimistic update */}
       <Notification />
     </ThemeProvider>

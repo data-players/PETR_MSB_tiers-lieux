@@ -3,9 +3,12 @@ import { SimpleForm, TextInput } from 'react-admin';
 import { Create } from '@semapps/archipelago-layout';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
+
+const isIframe = window !== window.top;
+
 const EventCreate = props => (
   <>
-    <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem>
+    {isIframe ? null : <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem> } 
     <Create {...props}>
       <SimpleForm>
         <TextInput source="pair:label" label="Nom" fullWidth />

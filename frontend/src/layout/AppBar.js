@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     lineHeight: 1,
     color: theme.palette.secondary.main,
+    fontSize: "20px",
   },
   linkBox: {
     [theme.breakpoints.down('md')]: {
@@ -72,6 +73,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
   
   const { identity } = useGetIdentity();
   const isConnected = identity && identity.id;
+  const isIframe = window !== window.top;
 
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
@@ -92,10 +94,10 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
               <MenuIcon />
             </IconButton>
             <Box flexGrow={1} />
-            <LogoTitle 
-              title={title} 
-              justifyContent="flex-start" 
-              classes={{ menuLink: classes.menuLink }} 
+            <LogoTitle
+              title={title}
+              justifyContent="flex-start"
+              classes={{ menuLink: classes.menuLink }}
             />
             <Box flexGrow={1} />
             <Box justifyContent="flex-end" className={classes.loginBackground}>
@@ -105,11 +107,11 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
         ) : (
           <LargeContainer className={classes.header}>
             <Box width={1} display="flex" alignItems="center">
-              <LogoTitle 
+              { !isIframe  ? <LogoTitle 
                 title={title} 
                 justifyContent="flex-start" 
                 classes={{ menuLink: classes.menuLink }}
-              />
+              /> : null }
               <Box flexGrow={1} />
               <Box display="flex" justifyContent="center" width={1}>
                 {menuItems.filter((menuItem) => {return isConnected || ! menuItem.admin }).map((menuItem) => (
@@ -137,7 +139,7 @@ const AppBar = ({ menuItems, setSidebarOpen, title, location, isAdminContext }) 
               </Box>
               <Box flexGrow={1} />
               <Box justifyContent="flex-end" className={classes.loginBackground}>
-                <UserMenu logout={<LogoutButton />} />
+                { !isIframe  ?<UserMenu logout={<LogoutButton />} /> : null }
               </Box>
             </Box>
           </LargeContainer>
