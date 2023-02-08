@@ -13,7 +13,7 @@ import Filter from '../commons/Filter';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
 
 const useStyles = makeStyles(theme => ({
-  popupImageContainer: { 
+  popupImageContainer: {
     textAlign: 'center'
   },
   popupTitle: {
@@ -29,10 +29,10 @@ const MapPage = (props) => {
   const classes = useStyles();
   return (
     <>
-      <ListBase 
-        basePath="/Organization" 
+      <ListBase
+        basePath="/Organization"
         resource="Organization"
-        perPage={1000} 
+        perPage={1000}
         {...props}
       >
         <MultiViewsFilterList
@@ -54,12 +54,6 @@ const MapPage = (props) => {
               source="petr:hasLabels"
               filter={{ a: 'petr:Label' }}
               label="Label"
-            />,
-            <Filter
-              reference="Network"
-              source="petr:hasNetworks"
-              filter={{ a: 'petr:Network' }}
-              label="Réseau"
             />,
             <Filter
               reference="Audience"
