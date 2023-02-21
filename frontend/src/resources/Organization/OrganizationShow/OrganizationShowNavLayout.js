@@ -25,10 +25,8 @@ const OrganizationShowNavLayout = ({...props}) => {
   
   return (
     <FullWidthBox className={classes.innerContainer}>
-      <Typography component="div" >
-        <Link to={showUri} label="Principal" className={classes.subtitle}>
-        Principal
-        </Link>
+      <Typography component="div" className={classes.subtitle} >
+        Map
       </Typography>
       <MapField
         source="pair:hasLocation"

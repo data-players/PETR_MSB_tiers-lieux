@@ -57,6 +57,7 @@ export const OrganizationEdit = props => {
           </ArrayInput>
           <ReferenceInput
             source="petr:hasLegalStatus"
+            label='Status Juridique'
             reference="LegalStatus"
             validate={[required()]}
           >

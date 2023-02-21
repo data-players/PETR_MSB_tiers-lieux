@@ -2,27 +2,40 @@ version: '3.5'
 services:
   fuseki:
     image: semapps/jena-fuseki-webacl
-    container_name: fuseki
+    container_name: fuseki_petr_enr
+    networks:
+      - semapps
     volumes:
       - ./data/fuseki:/fuseki
       - ./data/staging:/staging
     ports:
       - "3030:3030"
-    expose:
-      - "3030"
     environment:
       ADMIN_PASSWORD: "admin"
 
+  fuseki_compact:
+    image: semapps/jena-fuseki-webacl:latest
+    entrypoint: /docker-compact-entrypoint.sh
+    profiles: 
+      - compact
+    volumes:
+      - ./data/fuseki:/fuseki
+
   middleware:
-    build: middleware
-    container_name: middleware
+    build:
+      context: ./../PETR_MSB_tiers-lieux/middleware
+      dockerfile: Dockerfile
+    container_name: middleware_petr_enr
+    networks:
+      - semapps
     depends_on:
       - fuseki
     volumes:
-      - ./middleware/:/app
+      - ./../PETR_MSB_tiers-lieux/middleware/:/app
       - ./data/fuseki/backups:/app/fuseki-backups # Needed to backup fuseki datasets
+      - ./data/fuseki/databases/localData:/localData
     environment:
-      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki:3030/
+      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki_petr_enr:3030/
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
@@ -32,23 +45,28 @@ services:
       - SEMAPPS_OIDC_CLIENT_ID=semapps
     ports:
       - "3000:3000"
-    expose:
-      - "3000"
     command: bash -c "yarn install && pm2-runtime 'yarn run dev'"
 
   frontend:
-    build: frontend
-    container_name: frontend
+    build:
+      context: ./../PETR_MSB_tiers-lieux/frontend
+      dockerfile: Dockerfile
+    container_name: frontend_petr_enr
+    networks:
+      - semapps
     volumes:
-      - ./frontend:/app
+      - ./../PETR_MSB_tiers-lieux/frontend:/app
     environment:
       - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=pk.eyJ1Ijoic3Jvc3NldDgxIiwiYSI6ImNrbDd0b2VkMzA1dDMycG9iemU4NnpuemsifQ.HvpZ3tnweVHEUYLb0tDvTg
-      - PORT=5000
+      - PORT=4000
+    restart: always
     depends_on:
       - middleware
     ports:
-      - "5000:5000"
-    expose:
-      - "5000"
-    command: bash -c "yarn install && yarn start"
+      - "4000:4000"
+    command: bash -c "npm rebuild --silent && npm install --silent && npm install && npm start"
+      
+networks:
+  semapps:
+    name: semapps_network

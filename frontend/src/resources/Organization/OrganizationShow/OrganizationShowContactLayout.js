@@ -19,7 +19,7 @@ const OrganizationShowContactLayout = ({...props}) => {
   return (
     <FullWidthBox className={classes.innerContainer}>
       <Typography component="h3" className={classes.subtitle}>
-        <span>Informations pratiques</span>
+        Informations pratiques
       </Typography>
       <FullWidthBox className={classes.identityContainer}>
         <ImageField record={record} source="petr:logo" />

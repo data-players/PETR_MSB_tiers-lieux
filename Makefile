@@ -1,79 +1,22 @@
-.DEFAULT_GOAL := help
-.PHONY: docker-build docker-up build start log stop restart
+path-cron = $(shell pwd)/compact-cron.sh
 
-DOCKER_COMPOSE=docker-compose -f docker-compose.yaml
-DOCKER_COMPOSE_PROD=docker-compose -f docker-compose-prod.yaml
-DOCKER_COMPOSE_TEST=docker-compose -f docker-compose-test.yaml
+build:
+	docker-compose build --no-cache
 
-# Docker
-docker-build:
-	$(DOCKER_COMPOSE) build
+start: 
+	docker-compose up -d --force-recreate
 
+stop: 
+	docker-compose down
 
-docker-build-prod:
-	$(DOCKER_COMPOSE_PROD) build
+logs:
+	docker-compose logs -f
 
-docker-up:
-	$(DOCKER_COMPOSE) up -d
+compact: 
+	docker-compose down && docker-compose up fuseki_compact && docker-compose up -d
 
-docker-stop:
-	$(DOCKER_COMPOSE) kill
-	$(DOCKER_COMPOSE) rm -fv
+set-compact-cron: 
+	(crontab -l 2>/local/null; echo "0 4 * * * $(path-cron) >> /tmp/cronlog.txt") | crontab -
 
-docker-stop-prod:
-		$(DOCKER_COMPOSE_PROD) kill
-		$(DOCKER_COMPOSE_PROD) rm -fv
-
-docker-clean:
-	$(DOCKER_COMPOSE) kill
-	$(DOCKER_COMPOSE) rm -fv
-
-docker-start:
-	$(DOCKER_COMPOSE) up -d --force-recreate
-
-docker-start-prod:
-	$(DOCKER_COMPOSE_PROD) up -d --force-recreate
-
-docker-restart:
-	$(DOCKER_COMPOSE) up -d --force-recreate
-
-log:
-	$(DOCKER_COMPOSE) logs -f middleware fuseki frontend
-
-log-prod:
-	$(DOCKER_COMPOSE_PROD) logs -f middleware
-
-start: docker-start
-
-start-prod: docker-start-prod
-
-stop: docker-stop
-
-stop-prod: docker-stop-prod
-
-restart: docker-restart
-
-init :
-	make install
-	make bootstrap
-
-install :
-	npm install --prefix ./server
-
-build:docker-build
-
-build-prod: docker-build-prod
-
-prettier:
-
-	npm run prettier --prefix ./server
-
-bootstrap:
-	npm run bootstrap --prefix ./src/server
-
-# For tests we currently only need fuseki
-test:
-	$(DOCKER_COMPOSE_TEST) build
-	$(DOCKER_COMPOSE_TEST) up -d
-	npm run test --prefix ./src/server/tests/
-	$(DOCKER_COMPOSE_TEST) down
+prune-data:
+	sudo rm -rf ./data

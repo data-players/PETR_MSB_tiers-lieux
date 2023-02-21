@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { SimpleForm, TextInput } from "ra-ui-materialui";
+import { TextInput } from "ra-ui-materialui";
 import { ArrayInput, ImageInput, SelectInput, SimpleFormIterator, required } from 'react-admin';
 
-import { MapField } from '@semapps/geo-components';
 import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
 
 import PairLocationInput from '../../pair/PairLocationInput';

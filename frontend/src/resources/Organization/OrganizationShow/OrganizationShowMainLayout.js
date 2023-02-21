@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router';
 
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { 
   Datagrid,
   ReferenceManyField,
@@ -9,7 +9,7 @@ import {
   TabbedShowLayout,
   TextField
  } from 'react-admin';
-
+ import { MarkdownField } from '@semapps/markdown-components';
 import FullWidthBox from '../../../commons/FullWidthBox';
 import MultipleImagesField from '../../../components/MultipleImagesField'
 
@@ -20,6 +20,7 @@ import OrganizationShowSpaceLayout from './OrganizationShowSpaceLayout';
 
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import useStyles from './OrganizationShowUseStyles';
+import { MainList } from '@semapps/archipelago-layout';
 
 
 const OrganizationShowMainLayout = ({...props}) => {
@@ -49,10 +50,12 @@ const OrganizationShowMainLayout = ({...props}) => {
         <Tab label="Principal">
           <FullWidthBox className={classes.innerContainer}>
             <OrganizationShowMainTitle label={""}/> 
-            <Typography component="div" className={classes.description}>
-              <TextField source="pair:description" />
-            </Typography>
-            <MultipleImagesField source="pair:depictedBy" max={2} label={false}/>
+            <Box className={classes.description} >
+              <MainList >
+                <MarkdownField addLabel={false} source="pair:description" />
+              </MainList>
+            </Box>
+            <MultipleImagesField source="pair:depictedBy" label={false}/>
           </FullWidthBox>
         </Tab>
         <Tab label="Equipements">

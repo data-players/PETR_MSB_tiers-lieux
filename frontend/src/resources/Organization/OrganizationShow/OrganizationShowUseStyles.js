@@ -52,8 +52,7 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2)
   },
   description: {
-    display: 'block',
-    padding: theme.spacing(2),
+    color: theme.palette.primary.main
   },
   images: {
     marginBottom: 15,
@@ -138,6 +137,9 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
   },
   contactItem: {
     paddingLeft:"10px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   label: {
     fontWeight: 'bold'
