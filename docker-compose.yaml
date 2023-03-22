@@ -24,7 +24,7 @@ services:
   middleware:
     image: dataplayers/archipelago-middleware:0.8
     depends_on:
-      - fuseki
+      - fuseki_petr_enr
     volumes:
       - './middleware/logs:/archipelago/middleware/logs'
       - './middleware/jwt:/archipelago/middleware/jwt'
