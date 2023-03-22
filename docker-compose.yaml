@@ -29,7 +29,7 @@ services:
       - './middleware/logs:/archipelago/middleware/logs'
       - './middleware/jwt:/archipelago/middleware/jwt'
       - './middleware/uploads:/archipelago/middleware/uploads'
-      - '../PETR_MSB_tiers-lieux/addOn:/archipelago/middleware/addOn'
+      - './addOn:/archipelago/middleware/addOn'
       - './data/fuseki/databases/localData:/localData'
     environment:
       - 'SEMAPPS_SPARQL_ENDPOINT=http://fuseki:3030/'
