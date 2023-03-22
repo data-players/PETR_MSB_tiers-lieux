@@ -2,7 +2,7 @@ version: '3.5'
 services:
   fuseki:
     image: semapps/jena-fuseki-webacl
-    container_name: fuseki_petr_enr
+    container_name: fuseki
     networks:
       - semapps
     volumes:

@@ -54,9 +54,9 @@ module.exports = {
       superAdmins: [
       'http://localhost:3000/users/simon.louvet.zen',
       'http://localhost:3000/users/bastien.siguier',
-      'https://data.petr-peps.data-players.com/users/simon.louvet.zen',
-      'https://data.petr-peps.data-players.com/users/bastien.siguier1',
-      'https://data.petr-peps.data-players.com/users/acordier',
+      'https://data.petr-msb.data-players.com/users/simon.louvet.zen',
+      'https://data.petr-msb.data-players.com/users/bastien.siguier1',
+      'https://data.petr-msb.data-players.com/users/acordier',
     ]
     }
   }
