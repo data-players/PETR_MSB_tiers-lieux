@@ -57,41 +57,6 @@ module.exports = [
   //   preferredView: '/Idea',
   //   acceptedTypes: ['pair:Idea']
   // },
-  {
-    path: '/themes',
-    preferredView: '/Theme',
-    acceptedTypes: ['pair:Theme']
-  },
-  {
-    path: '/sectors',
-    preferredView: '/Sector',
-    acceptedTypes: ['peps:Sector']
-  },
-  {
-    path: '/profiles',
-    preferredView: '/Profile',
-    acceptedTypes: ['peps:Profile']
-  },
-  {
-    path: '/mobilities',
-    preferredView: '/Mobility',
-    acceptedTypes: ['peps:Mobility']
-  },
-  {
-    path: '/lifestages',
-    preferredView: '/Lifestage',
-    acceptedTypes: ['peps:Lifestage']
-  },
-  {
-    path: '/needs',
-    preferredView: '/Need',
-    acceptedTypes: ['peps:Need']
-  },
-  {
-    path: '/accessibility',
-    preferredView: '/Accessibility',
-    acceptedTypes: ['peps:Accessibility']
-  },
   // {
   //   path: '/skills',
   //   preferredView: '/Skill',
