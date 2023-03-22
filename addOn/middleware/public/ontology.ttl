@@ -1,12 +1,12 @@
-@prefix : <https://data.petr-msb.data-players.com/ontology#> .
+@prefix : <https://data.etablir.data-players.com/ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://data.petr-msb.data-players.com/ontology> .
+@base <https://data.etablir.data-players.com/ontology> .
 
-<https://data.petr-msb.data-players.com/ontology> rdf:type owl:Ontology ;
+<https://data.etablir.data-players.com/ontology> rdf:type owl:Ontology ;
                                                    owl:imports <http://virtual-assembly.org/ontologies/pair> ;
                                                    <http://purl.org/vocab/vann/preferredNamespacePrefix> "petr" .
 
@@ -14,7 +14,7 @@
 #    Object Properties
 #################################################################
 
-###  https://data.petr-msb.data-players.com/ontology#audianceOf
+###  https://data.etablir.data-players.com/ontology#audianceOf
 :audianceOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
             owl:inverseOf :hasAudience ;
@@ -22,7 +22,7 @@
             rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#equipmentOfferedBy
+###  https://data.etablir.data-players.com/ontology#equipmentOfferedBy
 :equipmentOfferedBy rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offeredBy> ;
                     owl:inverseOf :equipmentOffers ;
@@ -30,21 +30,21 @@
                     rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#equipmentOffers
+###  https://data.etablir.data-players.com/ontology#equipmentOffers
 :equipmentOffers rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offers> ;
                  rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
                  rdfs:range :Equipment .
 
 
-###  https://data.petr-msb.data-players.com/ontology#hasAudience
+###  https://data.etablir.data-players.com/ontology#hasAudience
 :hasAudience rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
              rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
              rdfs:range :Audience .
 
 
-###  https://data.petr-msb.data-players.com/ontology#hasLabel
+###  https://data.etablir.data-players.com/ontology#hasLabel
 :hasLabel rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
           owl:inverseOf :labelOf ;
@@ -52,7 +52,7 @@
           rdfs:range :Label .
 
 
-###  https://data.petr-msb.data-players.com/ontology#hasLegalStatus
+###  https://data.etablir.data-players.com/ontology#hasLegalStatus
 :hasLegalStatus rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#hasStatus> ;
                 owl:inverseOf :statusOf ;
@@ -60,7 +60,7 @@
                 rdfs:range :LegalStatus .
 
 
-###  https://data.petr-msb.data-players.com/ontology#hasNetwork
+###  https://data.etablir.data-players.com/ontology#hasNetwork
 :hasNetwork rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
             owl:inverseOf :networkOf ;
@@ -68,21 +68,21 @@
             rdfs:range :Network .
 
 
-###  https://data.petr-msb.data-players.com/ontology#labelOf
+###  https://data.etablir.data-players.com/ontology#labelOf
 :labelOf rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
          rdfs:domain :Label ;
          rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#networkOf
+###  https://data.etablir.data-players.com/ontology#networkOf
 :networkOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#interSubjectProperty> ;
            rdfs:domain :Network ;
            rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#serviceOfferedBy
+###  https://data.etablir.data-players.com/ontology#serviceOfferedBy
 :serviceOfferedBy rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offeredBy> ;
                   owl:inverseOf :serviceOffers ;
@@ -90,14 +90,14 @@
                   rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#serviceOffers
+###  https://data.etablir.data-players.com/ontology#serviceOffers
 :serviceOffers rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offers> ;
                rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
                rdfs:range :Service .
 
 
-###  https://data.petr-msb.data-players.com/ontology#spaceOfferedBy
+###  https://data.etablir.data-players.com/ontology#spaceOfferedBy
 :spaceOfferedBy rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offeredBy> ;
                 owl:inverseOf :spaceOffers ;
@@ -105,14 +105,14 @@
                 rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#spaceOffers
+###  https://data.etablir.data-players.com/ontology#spaceOffers
 :spaceOffers rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#offers> ;
              rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
              rdfs:range :Space .
 
 
-###  https://data.petr-msb.data-players.com/ontology#statusOf
+###  https://data.etablir.data-players.com/ontology#statusOf
 :statusOf rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#entityConceptProperty> ;
           rdfs:domain :LegalStatus ;
@@ -123,28 +123,28 @@
 #    Data properties
 #################################################################
 
-###  https://data.petr-msb.data-players.com/ontology#images
+###  https://data.etablir.data-players.com/ontology#images
 :images rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain <http://virtual-assembly.org/ontologies/pair#Subject> ;
         rdfs:range xsd:string .
 
 
-###  https://data.petr-msb.data-players.com/ontology#logo
+###  https://data.etablir.data-players.com/ontology#logo
 :logo rdf:type owl:DatatypeProperty ;
       rdfs:subPropertyOf owl:topDataProperty ;
       rdfs:domain <http://virtual-assembly.org/ontologies/pair#Subject> ;
       rdfs:range xsd:string .
 
 
-###  https://data.petr-msb.data-players.com/ontology#socialMedias
+###  https://data.etablir.data-players.com/ontology#socialMedias
 :socialMedias rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
               rdfs:range xsd:string .
 
 
-###  https://data.petr-msb.data-players.com/ontology#videos
+###  https://data.etablir.data-players.com/ontology#videos
 :videos rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain <http://virtual-assembly.org/ontologies/pair#Subject> ;
@@ -155,37 +155,37 @@
 #    Classes
 #################################################################
 
-###  https://data.petr-msb.data-players.com/ontology#Audience
+###  https://data.etablir.data-players.com/ontology#Audience
 :Audience rdf:type owl:Class ;
           rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Concept> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#Equipment
+###  https://data.etablir.data-players.com/ontology#Equipment
 :Equipment rdf:type owl:Class ;
            rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Resource> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#Label
+###  https://data.etablir.data-players.com/ontology#Label
 :Label rdf:type owl:Class ;
        rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Concept> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#LegalStatus
+###  https://data.etablir.data-players.com/ontology#LegalStatus
 :LegalStatus rdf:type owl:Class ;
              rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair/OrganizationStatus> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#Network
+###  https://data.etablir.data-players.com/ontology#Network
 :Network rdf:type owl:Class ;
          rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Ecosystem> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#Service
+###  https://data.etablir.data-players.com/ontology#Service
 :Service rdf:type owl:Class ;
          rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Resource> .
 
 
-###  https://data.petr-msb.data-players.com/ontology#Space
+###  https://data.etablir.data-players.com/ontology#Space
 :Space rdf:type owl:Class ;
        rdfs:subClassOf <http://virtual-assembly.org/ontologies/pair#Place> ;
        rdfs:comment "a place into a building" .
