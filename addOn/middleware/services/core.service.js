@@ -10,7 +10,7 @@ module.exports = {
   settings: {
     baseUrl: CONFIG.HOME_URL,
     baseDir: path.resolve(__dirname, '..'),
-    jsonContext: urlJoin('https://data.etablir.data-players.com/context.json'),
+    jsonContext: urlJoin('https://app.petr-msb.data-players.com/context.json'),
     triplestore: {
       url: CONFIG.SPARQL_ENDPOINT,
       user: CONFIG.JENA_USER,
@@ -54,9 +54,9 @@ module.exports = {
       superAdmins: [
       'http://localhost:3000/users/simon.louvet.zen',
       'http://localhost:3000/users/bastien.siguier',
-      'https://data.etablir.data-players.com/users/simon.louvet.zen',
-      'https://data.etablir.data-players.com/users/bastien.siguier1',
-      'https://data.etablir.data-players.com/users/acordier',
+      'https://app.petr-msb.data-players.com/users/simon.louvet.zen',
+      'https://app.petr-msb.data-players.com/users/bastien.siguier1',
+      'https://app.petr-msb.data-players.com/users/acordier',
     ]
     }
   }

@@ -51,7 +51,7 @@
   },
   {
     "prefix": "petr",
-    "owl": "https://data.etablir.data-players.com/ontology",
-    "url": "https://data.etablir.data-players.com/ontology#"
+    "owl": "https://app.petr-msb.data-players.com/ontology",
+    "url": "https://app.petr-msb.data-players.com/ontology#"
   }
 ]
