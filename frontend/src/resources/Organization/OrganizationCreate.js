@@ -1,6 +1,6 @@
 import React from 'react';
 import { SimpleForm, TextInput } from "ra-ui-materialui";
-import { Create } from "@semapps/archipelago-layout";
+import Create from "../../layout/create/Create";
 
 const OrganizationCreate = props => (
   <Create {...props}>

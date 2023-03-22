@@ -1,5 +1,5 @@
 import React from 'react';
-import { LargeLabel } from '@semapps/archipelago-layout';
+import { LargeLabel } from '@semapps/field-components';
 import Markdown from 'markdown-to-jsx';
 
 const MarkdownField = ({ source, record }) =>

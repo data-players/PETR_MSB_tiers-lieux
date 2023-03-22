@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleList } from '@semapps/archipelago-layout';
+import { SimpleList } from 'react-admin';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import StyleIcon from '@material-ui/icons/Style';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Edit } from "@semapps/archipelago-layout";
-import EquipementForm from './EquipmentForm'
+import Edit from "../../layout/edit/Edit";
+import EquipementForm from './EquipmentForm';
 import { useEditController } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
 

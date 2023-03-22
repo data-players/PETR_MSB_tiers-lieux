@@ -1,7 +1,7 @@
 import React from 'react';
 import { SaveButton, SimpleForm, TextInput } from "ra-ui-materialui";
 import { Toolbar } from 'react-admin';
-import { Edit } from "@semapps/archipelago-layout";
+import Edit from "../../layout/edit/Edit";
 import PersonTitle from './PersonTitle';
 import MarkdownInput from '../../markdown/MarkdownInput'
 

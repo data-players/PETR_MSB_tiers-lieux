@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReferenceArrayInput } from '@semapps/semantic-data-provider';
+import { ReferenceArrayInput } from '@semapps/input-components';
 import { AutocompleteArrayInput } from 'react-admin';
 
 export const OrganizationsInput = ({ label, source }) => (

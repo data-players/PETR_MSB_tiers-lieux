@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router';
 
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { 
   Datagrid,
   ReferenceManyField,
@@ -20,8 +20,7 @@ import OrganizationShowSpaceLayout from './OrganizationShowSpaceLayout';
 
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import useStyles from './OrganizationShowUseStyles';
-import { MainList } from '@semapps/archipelago-layout';
-
+import MainList from '../../../commons/lists/MainList/MainList';
 
 const OrganizationShowMainLayout = ({...props}) => {
   

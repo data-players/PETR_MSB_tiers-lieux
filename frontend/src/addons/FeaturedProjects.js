@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListBase } from 'react-admin';
-import { MasonryList } from '@semapps/archipelago-layout';
+import { MasonryList } from '@semapps/list-components';
 import ProjectPreview from '../resources/projects/ProjectPreview';
 
 const FeaturedProjects = () => (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core';
-import { MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
+import { SimpleList } from 'react-admin';
+import { MultiViewsList } from '@semapps/list-components';
 import ListIcon from '@material-ui/icons/List';
 import EventFilterSidebar from './EventFilterSidebar';
 import { CalendarList } from '@semapps/date-components';

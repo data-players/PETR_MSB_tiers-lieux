@@ -18,7 +18,7 @@ export default {
     dataModel: {
         types: ['pair:Organization'],
         list: {
-          dereference: ['pair:hasLocation/pair:hasPostalAddress'],
+          blankNodes: ['pair:hasLocation/pair:hasPostalAddress'],
           forceArray: [
             'petr:equipmentOffers',
             'petr:hasLabels',

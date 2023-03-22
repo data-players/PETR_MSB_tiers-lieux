@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OrganizationShowMainTitle = ({label}) => {
+const OrganizationShowMainTitle = ({label, isConceptShow=false}) => {
   const classes = useStyles();
   return (
     <Typography component="h2" variant="h3" className={classes.title} style={{background:"#e13384", textAlign:"center" }}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Edit } from "@semapps/archipelago-layout";
+import Edit from "../../layout/edit/Edit";
 import SpaceForm from './SpaceForm';
 import { useEditController } from 'react-admin';
 import { useLocation } from 'react-router';

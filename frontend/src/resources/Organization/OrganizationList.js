@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { SimpleList } from 'react-admin';
+
 import { Avatar } from '@material-ui/core';
 import ListIcon from '@material-ui/icons/List';
 import HomeIcon from '@material-ui/icons/Home';
+import { ListActionsWithPermissions } from '@semapps/auth-provider'
 
-import { SimpleList ,MultiViewsList, ListActions} from '@semapps/archipelago-layout';
+import { MultiViewsList} from '@semapps/list-components';
 import { MapList } from '@semapps/geo-components';
 import MapIcon from '@material-ui/icons/Map';
 
@@ -13,7 +16,7 @@ import OrganizationFilterSidebar from './OrganizationFilterSidebar';
 const OrganizationList = props => {
   return <MultiViewsList
     aside={<OrganizationFilterSidebar />}
-    actions={<ListActions exporter={false} />}
+    actions={<ListActionsWithPermissions exporter={false} />}
     views={{
       list: {
         label: 'Liste',

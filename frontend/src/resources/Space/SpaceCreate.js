@@ -1,5 +1,5 @@
 import React from 'react';
-import { Create } from "@semapps/archipelago-layout";
+import Create from "../../layout/create/Create";
 import { useCreateController } from 'react-admin';
 import SpaceForm from './SpaceForm';
 import { useLocation } from 'react-router';

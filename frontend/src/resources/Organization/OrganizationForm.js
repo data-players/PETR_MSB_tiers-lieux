@@ -3,7 +3,7 @@ import React from 'react';
 import { TextInput } from "ra-ui-materialui";
 import { ArrayInput, ImageInput, SelectInput, SimpleFormIterator, required } from 'react-admin';
 
-import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
+import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/field-components';
 
 import PairLocationInput from '../../pair/PairLocationInput';
 import MarkdownInput from '../../markdown/MarkdownInput';

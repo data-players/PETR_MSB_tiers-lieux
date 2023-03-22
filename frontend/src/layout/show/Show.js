@@ -1,7 +1,20 @@
 import React from 'react';
-import { Show as RaShow } from 'react-admin';
-import ShowActions from './ShowActions';
+import { ShowBase } from 'react-admin';
+import { ShowActionsWithPermissions } from "@semapps/auth-provider";
+import ShowView from "./ShowView";
 
-export const Show = props => <RaShow actions={<ShowActions />} {...props} />;
+const isIframe = window !== window.top;
+
+const Show = ({ title, actions, children, ...rest }) => (
+  <ShowBase {...rest}>
+    <ShowView title={title} actions={isIframe ? null : actions}>
+      {children}
+    </ShowView>
+  </ShowBase>
+);
+
+Show.defaultProps = {
+  actions: <ShowActionsWithPermissions />
+};
 
 export default Show;

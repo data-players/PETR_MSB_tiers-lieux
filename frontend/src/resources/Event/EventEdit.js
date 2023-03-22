@@ -1,14 +1,15 @@
 import React from 'react';
-import { AutocompleteArrayInput, SimpleForm, TextInput, CheckboxGroupInput, ArrayInput, SimpleFormIterator, ImageInput } from 'react-admin';
+import {  SimpleForm, TextInput, ArrayInput, SimpleFormIterator, ImageInput } from 'react-admin';
 import frLocale from 'date-fns/locale/fr';
-import { Edit } from '@semapps/archipelago-layout';
+import Edit from "../../layout/edit/Edit";
 import { DateTimeInput } from '@semapps/date-components';
-import { ImageField } from '@semapps/semantic-data-provider';
+import { ImageField } from '@semapps/field-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { UriArrayInput } from '@semapps/semantic-data-provider';
+// import { UriArrayInput } from '@semapps/semantic-data-provider';
 import EventTitle from './EventTitle';
 import PairLocationInput from '../../pair/PairLocationInput';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+import { OrganizationsInput, ThemesCheckBoxInput } from '../../commons/input';
 
 const isIframe = window !== window.top;
 
@@ -57,17 +58,14 @@ const EventEdit = props => (
             }}
             fullWidth
           />
-        <UriArrayInput label="Organisation en charge de l'évènement" reference="Organization" source="pair:deliveredBy">
-          <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText="pair:label" fullWidth />
-        </UriArrayInput>
-        {/*
-        <UriArrayInput label="Personnes participant à l'évènement" reference="Person" source="pair:involvedIn">
-          <AutocompleteArrayInput shouldRenderSuggestions={value => value.length > 1} optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`} fullWidth/>
-        </UriArrayInput>
-        */}
+          <OrganizationsInput source="pair:deliveredBy" label="Organisation en charge de l'évènement" />
+          {/* <ActorsInput source="pair:involvedIn" labe="Personnes participant à l'évènement" /> */}
+          <ThemesCheckBoxInput source="pair:hasTopic" label="Thèmes (cocher la ou les thèmes en lien avec l'événement)" />
+        {/* 
+       
         <UriArrayInput label="Thèmes (cocher la ou les thèmes en lien avec l'événement)" source="pair:hasTopic" reference="Topic" fullWidth>
           <CheckboxGroupInput optionText="pair:label" allowEmpty />
-        </UriArrayInput>
+        </UriArrayInput> */}
       </SimpleForm>
     </Edit>
   </>

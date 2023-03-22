@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, ListItem, makeStyles } from '@material-ui/core';
 import { SocialIcon } from 'react-social-icons';
+import { useRecordContext } from 'react-admin';
 
 const listIcon = makeStyles({
     root: {
@@ -9,7 +10,9 @@ const listIcon = makeStyles({
     }
   });
 
-const SocialNetworkArrayIcon = ({ record, source }) => {
+const SocialNetworkArrayIcon = ({ source }) => {
+    const record = useRecordContext();
+    if (!record) return null
     const listIconStyle = listIcon();
     var array = typeof(record[source]) === "string" ? [record[source]] : record[source]
     for (var i=0; i < array.length ;i++) {

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useRecordContext } from 'react-admin';
 import ReactPlayer from "react-player";
 
-const VideoPlayer = ({ record, source }) => {
+const VideoPlayer = ({ source }) => {
+  const record = useRecordContext();
+  if (!record) return null
     let url = record[source]
     let spliturl = null
   

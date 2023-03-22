@@ -1,6 +1,9 @@
 import React from 'react';
+import { useRecordContext } from 'react-admin';
 
-const UrlArrayField = ({ record, source }) => {
+const UrlArrayField = ({ source }) => {
+  const record = useRecordContext();
+  if (!record) return null
   let links = typeof record[source] === 'string' ? [record[source]] : record[source];
   let index = 0;
   for (let link of links) {

@@ -107,3 +107,4 @@ data/
 temp/
 *-temp.yaml
 .vscode
+.index.html

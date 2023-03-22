@@ -17,9 +17,13 @@ export default {
   },
   dataModel: {
     types: ['pair:Event'],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'events',
-    slugField: 'pair:label',
-    forceArray: ['pair:aboutPage', 'pair:homePage']
+    list: {
+      servers: '@default',
+      forceArray: ['pair:aboutPage', 'pair:homePage', 'pair:deliveredBy', 'pair:hasTopic']
+    },
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {

@@ -21,31 +21,56 @@ services:
     volumes:
       - ./data/fuseki:/fuseki
 
+  # middleware:
+  #   build:
+  #     context: ./../PETR_MSB_tiers-lieux/middleware
+  #     dockerfile: Dockerfile
+  #   container_name: middleware_petr_enr
+  #   networks:
+  #     - semapps
+  #   depends_on:
+  #     - fuseki
+  #   volumes:
+  #     - ./../PETR_MSB_tiers-lieux/middleware/:/app
+  #     - ./data/fuseki/backups:/app/fuseki-backups # Needed to backup fuseki datasets
+  #     - ./data/fuseki/databases/localData:/localData
+  #   environment:
+  #     - SEMAPPS_SPARQL_ENDPOINT=http://fuseki_petr_enr:3030/
+  #     - SEMAPPS_MAIN_DATASET=localData
+  #     - SEMAPPS_JENA_USER=admin
+  #     - SEMAPPS_JENA_PASSWORD=admin
+  #     - SEMAPPS_HOME_URL=http://localhost:3000/
+  #     - SEMAPPS_BACKUP_FUSEKI_DATASETS_PATH=/app/fuseki-backups
+  #     - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
+  #     - SEMAPPS_OIDC_CLIENT_ID=semapps
+  #   ports:
+  #     - "3000:3000"
+  #   command: bash -c "yarn install && pm2-runtime 'yarn run dev'"
+
   middleware:
-    build:
-      context: ./../PETR_MSB_tiers-lieux/middleware
-      dockerfile: Dockerfile
-    container_name: middleware_petr_enr
-    networks:
-      - semapps
+    image: dataplayers/archipelago-middleware:0.8
     depends_on:
       - fuseki
     volumes:
-      - ./../PETR_MSB_tiers-lieux/middleware/:/app
-      - ./data/fuseki/backups:/app/fuseki-backups # Needed to backup fuseki datasets
-      - ./data/fuseki/databases/localData:/localData
+      - './middleware/logs:/archipelago/middleware/logs'
+      - './middleware/jwt:/archipelago/middleware/jwt'
+      - './middleware/uploads:/archipelago/middleware/uploads'
+      - './addOn:/archipelago/middleware/addOn'
+      - './data/fuseki/databases/localData:/localData'
     environment:
-      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki_petr_enr:3030/
+      - 'SEMAPPS_SPARQL_ENDPOINT=http://fuseki:3030/'
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=admin
-      - SEMAPPS_HOME_URL=http://localhost:3000/
-      - SEMAPPS_BACKUP_FUSEKI_DATASETS_PATH=/app/fuseki-backups
-      - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
+      - 'SEMAPPS_HOME_URL=http://localhost:3000/'
+      - 'SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/'
       - SEMAPPS_OIDC_CLIENT_ID=semapps
+      - 'SEMAPPS_REDIS_URL=redis://redis:6379/0'
+    command: bash -c "cp -r ./addOn/middleware/* . && pm2-runtime 'yarn run dev'"
+    networks:
+      - semapps
     ports:
-      - "3000:3000"
-    command: bash -c "yarn install && pm2-runtime 'yarn run dev'"
+      - '3000:3000'
 
   frontend:
     build:

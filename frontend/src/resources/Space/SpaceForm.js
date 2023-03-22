@@ -9,7 +9,7 @@ import {
   SimpleForm
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ReferenceArrayInput } from '@semapps/semantic-data-provider';
+import { ReferenceArrayInput } from '@semapps/input-components';
 
 
 export const SpaceInputs = props => (

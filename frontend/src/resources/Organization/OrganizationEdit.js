@@ -18,13 +18,13 @@ import {
 } from 'react-admin';
 
 import { MarkdownInput } from '@semapps/markdown-components'
-import { ImageField } from '@semapps/semantic-data-provider';
+import { ImageField } from '@semapps/field-components';
 
 import PairLocationInput from '../../pair/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
 import CreateContextualButton from '../../components/CreateContextualButton';
 import Title from '../_Components/Title';
-import { EditWithPermissions } from '@semapps/auth-provider';
+import Edit from '../../layout/edit/Edit';
     
 
 export const OrganizationEdit = props => {
@@ -32,7 +32,7 @@ export const OrganizationEdit = props => {
       record, // record fetched via dataProvider.getOne() based on the id from the location
   } = useEditController(props);
   return (
-    <EditWithPermissions title={<Title />} {...props} >
+    <Edit title={<Title />} {...props} >
       <TabbedForm>
         <FormTab label="Principal">
           <TextInput source="pair:label" fullWidth validate={[required()]} />
@@ -66,28 +66,34 @@ export const OrganizationEdit = props => {
           <TextInput source="pair:e-mail" type="email" fullWidth/>
           <TextInput source="pair:phone" fullWidth />
           <TextInput source="pair:webPage" fullWidth />
-          <ArrayInput source="petr:socialMedias">
+          <ArrayInput source="petr:socialMedias" >
             <SimpleFormIterator>
-              <TextInput />
+              <TextInput label="lien" fullWidth />
             </SimpleFormIterator>
           </ArrayInput>
           <ArrayInput source="petr:hasLabels">
             <SimpleFormIterator>
-              <ReferenceInput reference="Label">
+              <ReferenceInput reference="Label" label='label' >
               <SelectInput optionText="pair:label" />
             </ReferenceInput>
             </SimpleFormIterator>
           </ArrayInput>
           <ArrayInput source="petr:hasNetworks">
             <SimpleFormIterator>
-              <ReferenceInput reference="Network">
-              <SelectInput optionText="pair:label" />
+              <ReferenceInput reference="Network" label='réseau' >
+              <SelectInput optionText="pair:label"/>
             </ReferenceInput>
             </SimpleFormIterator>
           </ArrayInput>
           <ReferenceInput
             source="petr:hasAudience"
             reference="Audience"
+          >
+            <SelectInput optionText="pair:label" />
+          </ReferenceInput>
+          <ReferenceInput label='Secteur Géographique'
+            source="pair:hasSector"
+            reference="Sector"
           >
             <SelectInput optionText="pair:label" />
           </ReferenceInput>
@@ -141,7 +147,7 @@ export const OrganizationEdit = props => {
 
         </FormTab>
       </TabbedForm>
-    </EditWithPermissions>
+    </Edit>
   );
 }
 

@@ -140,6 +140,7 @@ const OrganizationShowUseStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
+    height: "18px"
   },
   label: {
     fontWeight: 'bold'
