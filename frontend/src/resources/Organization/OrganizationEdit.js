@@ -63,9 +63,9 @@ export const OrganizationEdit = props => {
           >
             <SelectInput optionText="pair:label" />
           </ReferenceInput>
-          <TextInput source="pair:e-mail" type="email" fullWidth/>
-          <TextInput source="pair:phone" fullWidth />
-          <TextInput source="pair:webPage" fullWidth />
+          <TextInput label="E-mail" source="pair:e-mail" type="email" fullWidth/>
+          <TextInput label="Téléphone" source="pair:phone" fullWidth />
+          <TextInput label="Site internet" source="pair:webPage" fullWidth />
           <ArrayInput source="petr:socialMedias" >
             <SimpleFormIterator>
               <TextInput label="lien" fullWidth />
