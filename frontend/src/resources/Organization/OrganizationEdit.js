@@ -35,7 +35,7 @@ export const OrganizationEdit = props => {
     <Edit title={<Title />} {...props} >
       <TabbedForm>
         <FormTab label="Principal">
-          <TextInput source="pair:label" fullWidth validate={[required()]} />
+          <TextInput source="pair:label" label="Titre" fullWidth validate={[required()]} />
           <ReferenceInput
             source="pair:hasType"
             reference="OrganizationType"
