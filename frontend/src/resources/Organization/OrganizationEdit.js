@@ -91,12 +91,12 @@ export const OrganizationEdit = props => {
           >
             <SelectInput optionText="pair:label" />
           </ReferenceInput>
-          <ReferenceInput label='Secteur Géographique'
+          {/* <ReferenceInput label='Secteur Géographique'
             source="pair:hasSector"
             reference="Sector"
           >
             <SelectInput optionText="pair:label" />
-          </ReferenceInput>
+          </ReferenceInput> */}
         </FormTab>
         {/* EQUIPMENTS */}
         <FormTab label="Equipements">
