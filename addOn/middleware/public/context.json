@@ -70,7 +70,6 @@
     "petr:spaceOfferedBy": {
       "@type": "@id"
     },
-
     "image": {
       "@id": "as:image",
       "@type": "@id"

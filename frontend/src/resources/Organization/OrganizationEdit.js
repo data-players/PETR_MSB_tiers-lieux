@@ -14,11 +14,13 @@ import {
   useEditController,
   ReferenceInput,
   ReferenceManyField,
-  DeleteButton
+  DeleteButton,
+  AutocompleteArrayInput
 } from 'react-admin';
 
 import { MarkdownInput } from '@semapps/markdown-components'
 import { ImageField } from '@semapps/field-components';
+import { ReferenceArrayInput } from '@semapps/input-components';
 
 import PairLocationInput from '../../pair/PairLocationInput';
 import EditContextualButton from '../../components/EditContextualButton';
@@ -85,12 +87,16 @@ export const OrganizationEdit = props => {
             </ReferenceInput>
             </SimpleFormIterator>
           </ArrayInput>
-          <ReferenceInput
+          <ReferenceArrayInput
             source="petr:hasAudience"
             reference="Audience"
           >
             <SelectInput optionText="pair:label" />
-          </ReferenceInput>
+          </ReferenceArrayInput>
+          <ReferenceArrayInput label="Thèmes" source="pair:hasTopic" reference="Topic" fullWidth >
+            <AutocompleteArrayInput optionText="pair:label" />
+          </ReferenceArrayInput>
+          <TextInput label="Uid du Picto Access" source='petr:pictoAccessId' fullWidth />
           {/* <ReferenceInput label='Secteur Géographique'
             source="pair:hasSector"
             reference="Sector"

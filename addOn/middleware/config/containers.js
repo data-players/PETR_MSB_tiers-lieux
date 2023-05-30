@@ -111,7 +111,12 @@ module.exports = [
   {
     path: '/pages',
     preferredView: '/Page',
-    acceptedTypes: ['semapps:Page']
+    acceptedTypes: ['pair:Page']
+  },
+  {
+    path: '/Ads',
+    preferredView: '/Ads',
+    acceptedTypes: ['petr:Ads']
   },
   {
     path: '/access-modalities',

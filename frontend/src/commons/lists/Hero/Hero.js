@@ -19,15 +19,14 @@ const Hero = ({ children, image, defaultImage }) => {
     record, // record fetched via dataProvider.getOne() based on the id from the location
     resource // the resource name, deduced from the location. e.g. 'posts'
   } = useShowContext();
+
   if (!loaded) return null;
 
   return (
     <div className={classes.root}>
       <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
       <Grid container spacing={5}>
-        <Grid item xs={12} sm={4}>
-          <MainImage record={record} source={image} defaultImage={defaultImage} />
-        </Grid>
+ 
         <Grid item xs={12} sm={8}>
           <DetailsList record={record} resource={resource} basePath={basePath}>
             {children}
@@ -39,7 +38,6 @@ const Hero = ({ children, image, defaultImage }) => {
 };
 
 Hero.defaultProps = {
-  defaultImage: process.env.PUBLIC_URL + '/logo512.png'
 };
 
 export default Hero;

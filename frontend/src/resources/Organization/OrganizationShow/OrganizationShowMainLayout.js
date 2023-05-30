@@ -21,6 +21,7 @@ import OrganizationShowSpaceLayout from './OrganizationShowSpaceLayout';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import useStyles from './OrganizationShowUseStyles';
 import MainList from '../../../commons/lists/MainList/MainList';
+import PictoAccessComponent from '../../../addons/PictoAccessComponent';
 
 const OrganizationShowMainLayout = ({...props}) => {
   
@@ -55,6 +56,7 @@ const OrganizationShowMainLayout = ({...props}) => {
               </MainList>
             </Box>
             <MultipleImagesField source="pair:depictedBy" label={false}/>
+            <PictoAccessComponent source="petr:pictoAccessId" />
           </FullWidthBox>
         </Tab>
         <Tab label="Equipements">

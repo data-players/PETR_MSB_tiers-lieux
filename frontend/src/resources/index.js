@@ -6,6 +6,10 @@ export { default as Equipment } from "./Equipment";
 export { default as Event } from "./Event";
 export { default as Service } from "./Service";
 export { default as Space } from "./Space";
+export { default as Ads } from "./Ad";
+
+// For Tutoriel
+export { default as Page } from "./Page";
 
 // Concepts
 export { default as Concept } from './Concept';
