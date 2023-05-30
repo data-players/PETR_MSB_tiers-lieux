@@ -93,12 +93,10 @@ export const OrganizationEdit = props => {
           >
             <SelectInput optionText="pair:label" />
           </ReferenceArrayInput>
-          {/* <ReferenceInput label='Secteur Géographique'
-            source="pair:hasSector"
-            reference="Sector"
-          >
-            <SelectInput optionText="pair:label" />
-          </ReferenceInput> */}
+          <ReferenceArrayInput label="Thèmes" source="pair:hasTopic" reference="Topic" fullWidth >
+            <AutocompleteArrayInput optionText="pair:label" />
+          </ReferenceArrayInput>
+          <TextInput label="Uid du Picto Access" source='petr:pictoAccessId' fullWidth />
         </FormTab>
         {/* EQUIPMENTS */}
         <FormTab label="Equipements">
