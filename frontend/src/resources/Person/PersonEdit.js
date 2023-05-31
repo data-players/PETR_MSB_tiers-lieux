@@ -14,9 +14,9 @@ const NoDeleteToolBar = props => (
 export const PersonEdit = props => (
   <Edit title={<PersonTitle />} {...props} >
     <SimpleForm toolbar={<NoDeleteToolBar />}  redirect="list" >
-      <TextInput source="pair:label" fullWidth />
+      <TextInput label="Nom complet" source="pair:label" fullWidth />
       <MarkdownInput label="Description" multiline source="pair:description" fullWidth />
-      <TextInput source="petr:openbadgeId" helperText="" fullWidth />
+      <TextInput label="Id Openbadge" source="petr:openbadgeId" helperText="" fullWidth />
       <Link to="/Page/http%3A%2F%2Flocalhost%3A3000%2Fpages%2F6477503ccb5ef78fc07f2833/show" style={{color: "grey", fontSize: "12px" }} >Besoin d'aide pour trouver votre ID openbadge?</Link>
     </SimpleForm>
   </Edit>
