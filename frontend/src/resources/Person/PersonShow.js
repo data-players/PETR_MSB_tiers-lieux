@@ -2,7 +2,7 @@ import React from 'react';
 import Show from "../../layout/show/Show";
 import PersonTitle from "./PersonTitle";
 import MarkdownField from '../../commons/fields/MarkdownField';
-import { useRecordContext } from 'react-admin';
+import {  useRecordContext } from 'react-admin';
   
 const OpenbadgePassportComponent = ({source}) => {
     const record = useRecordContext();
