@@ -11,7 +11,7 @@ const OpenbadgePassportComponent = ({source}) => {
     const link = "https://openbadgepassport.com/app/profile/" + record[source] + "/embed";
 
     return (
-        <iframe width="90%" height="560" src={link} frameborder="0" />
+        <iframe width="90%" height="850" src={link} frameborder="0" />
     )
 }
 

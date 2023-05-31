@@ -5,7 +5,7 @@ import { Avatar } from "@material-ui/core";
 
 const PersonList = props => (
     <List  {...props}>
-        <SimpleList primaryText={record => record['pair:label']} leftAvatar={() => <Avatar width="100%"><HomeIcon /></Avatar>} linkType="edit" />
+        <SimpleList primaryText={record => record['pair:label']} leftAvatar={() => <Avatar width="100%"><HomeIcon /></Avatar>} linkType="show" />
     </List>
 )
 
