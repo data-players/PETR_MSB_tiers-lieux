@@ -16,6 +16,7 @@ export const PersonEdit = props => (
     <SimpleForm toolbar={<NoDeleteToolBar />}  redirect="list" >
       <TextInput source="pair:label" fullWidth />
       <MarkdownInput label="Description" multiline source="pair:description" fullWidth />
+      <TextInput source="petr:openbadgeId" fullWidth />
     </SimpleForm>
   </Edit>
 )
