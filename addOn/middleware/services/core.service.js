@@ -45,7 +45,12 @@ module.exports = {
        }
       ]
     },
-    ldp: false,
+    ldp: {
+      preferredViewForResource: async (resourceUri, containerPreferredView) => {
+        if (!containerPreferredView) return resourceUri;
+        return urlJoin(CONFIG.FRONT_URL, containerPreferredView, encodeURIComponent(resourceUri), 'show')
+      }
+    },
     void: {
       title: CONFIG.INSTANCE_NAME,
       description: CONFIG.INSTANCE_DESCRIPTION
