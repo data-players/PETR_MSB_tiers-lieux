@@ -54,7 +54,8 @@ services:
     volumes:
       - ./../PETR_MSB_tiers-lieux/frontend:/app
     environment:
-      - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
+      # - REACT_APP_MIDDLEWARE_URL=http://localhost:3000/
+      - REACT_APP_MIDDLEWARE_URL=https://data.petr-msb.data-players.com/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=pk.eyJ1Ijoic3Jvc3NldDgxIiwiYSI6ImNrbDd0b2VkMzA1dDMycG9iemU4NnpuemsifQ.HvpZ3tnweVHEUYLb0tDvTg
       - PORT=4000
     restart: always

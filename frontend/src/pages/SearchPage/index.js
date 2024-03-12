@@ -352,6 +352,8 @@ const SearchPage = ({ theme }) => {
         }
       ])
     }))
+    console.log('results',results);
+    console.log('dataByResource',Object.fromEntries(resultsByResource));
   
     setResults({
       ...results,

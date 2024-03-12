@@ -55,6 +55,12 @@ const MapPage = (props) => {
               filter={{ a: 'petr:Label' }}
               label="Label"
             />,
+            // <Filter
+            //   reference="Network"
+            //   source="petr:hasNetworks"
+            //   filter={{ a: 'petr:Network' }}
+            //   label="Réseau"
+            // />,
             <Filter
               reference="Audience"
               source="petr:hasAudience"
