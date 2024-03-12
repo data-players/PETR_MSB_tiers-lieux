@@ -546,6 +546,7 @@ const SearchPage = ({ theme }) => {
                 }
                 { results.data && 
                   <Box className={classes.resultsContainer}>
+                    <div>data EXISTS</div>
                     <ListContext.Provider
                       value={{
                           loaded: true,
