@@ -1,9 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { 
+  useList,
+  ListContextProvider,
   SimpleList,
   useDataProvider
 } from 'react-admin';
-import { ListContext } from 'ra-core';
+// import { ListContext } from 'ra-core';
 import { Avatar, Box, Button, Chip, Container, makeStyles } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -15,6 +17,7 @@ import customSearchConfig from './config';
 import ResourceIcon from '../../components/ResourceIcon';
 
 import DataFactory from '@rdfjs/data-model';
+import List from './list.js'
 
 
 const useStyles = makeStyles(theme => ({
@@ -352,8 +355,8 @@ const SearchPage = ({ theme }) => {
         }
       ])
     }))
-    console.log('results',results);
-    console.log('dataByResource',Object.fromEntries(resultsByResource));
+    // console.log('results',results);
+    // console.log('dataByResource',Object.fromEntries(resultsByResource));
   
     setResults({
       ...results,
@@ -377,6 +380,42 @@ const SearchPage = ({ theme }) => {
       inline: "start"
     });
   }
+
+  // const listContext = useMemo(() => useList({
+  //   // data: results?results.data:[],
+  //   // ids: results?Object.keys(results.dataByResource):[],
+  //   // basePath: '/search', // Adjust this as needed
+  //   // resource: 'searchResults',
+  //   // loaded: true,
+  //   // loading: false,
+  //   // total: results?Object.keys(results.dataByResource).length:0,
+  //   // resource: selectedResource?selectedResource["result-path"]["type"]:undefined,
+  //   // basePath: selectedResource?'/' + selectedResource["result-path"]["type"]:undefined,
+  // }), []);
+
+  // const listContext = useList({
+  //   data: results?results.data:[],
+  //   ids: results?Object.keys(results.dataByResource):[],
+  //   basePath: '/search', // Adjust this as needed
+  //   resource: 'searchResults',
+  //   loaded: true,
+  //   loading: false,
+  //   total: results?Object.keys(results.dataByResource).length:0,
+  //   resource: selectedResource?selectedResource["result-path"]["type"]:undefined,
+  //   basePath: selectedResource?'/' + selectedResource["result-path"]["type"]:undefined,
+  // });
+
+  // const listContext = useList({
+  //   data: [],
+  //   ids: [],
+  //   basePath: '/search', // Adjust this as needed
+  //   resource: 'searchResults',
+  //   loaded: true,
+  //   loading: false,
+  //   total: 0,
+  //   resource: undefined,
+  //   basePath: undefined,
+  // });
 
   return (
     <Container className={classes.mainContainer} maxWidth="lg">
@@ -547,17 +586,8 @@ const SearchPage = ({ theme }) => {
                 { results.data && 
                   <Box className={classes.resultsContainer}>
                     <div>data EXISTS</div>
-                    <ListContext.Provider
-                      value={{
-                          loaded: true,
-                          loading: false,
-                          ids: Object.keys(results.dataByResource),
-                          data: results.dataByResource,
-                          total: Object.keys(results.dataByResource).length,
-                          resource: selectedResource["result-path"]["type"],
-                          basePath: '/' + selectedResource["result-path"]["type"],
-                      }}
-                    >
+                    <List results={results} selectedResource={selectedResource}></List>
+                    {/* <ListContextProvider value={listContext}>
                       <SimpleList
                         primaryText={record => record.resourceData["pair:label"]}
                         secondaryText={record => { return (
@@ -572,7 +602,7 @@ const SearchPage = ({ theme }) => {
                         )}
                         linkType="show"
                       />
-                    </ListContext.Provider>
+                    </ListContextProvider> */}
                   </Box>
                 }
               </Box>
