@@ -62,9 +62,15 @@ const MapPage = (props) => {
             //   label="Réseau"
             // />,
             <Filter
+              reference="Topic"
+              source="pair:hasTopic"
+              filter={{ a: 'pair:Topic' }}
+              label="Thème"
+            />,
+            <Filter
               reference="Audience"
               source="petr:hasAudience"
-              filter={{ a: 'petr:Audience' }}
+              filter={{ a: 'pair:Audience' }}
               label="Public ciblé"
             />,
             /*

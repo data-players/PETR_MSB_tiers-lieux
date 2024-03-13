@@ -61,11 +61,7 @@ const EventEdit = props => (
           <OrganizationsInput source="pair:deliveredBy" label="Organisation en charge de l'évènement" />
           {/* <ActorsInput source="pair:involvedIn" labe="Personnes participant à l'évènement" /> */}
           <ThemesCheckBoxInput source="pair:hasTopic" label="Thèmes (cocher la ou les thèmes en lien avec l'événement)" />
-        {/* 
-       
-        <UriArrayInput label="Thèmes (cocher la ou les thèmes en lien avec l'événement)" source="pair:hasTopic" reference="Topic" fullWidth>
-          <CheckboxGroupInput optionText="pair:label" allowEmpty />
-        </UriArrayInput> */}
+
       </SimpleForm>
     </Edit>
   </>

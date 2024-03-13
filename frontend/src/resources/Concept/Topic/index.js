@@ -25,7 +25,7 @@ export default {
     fr: {
       name: 'Thème |||| Thèmes',
       fields: {
-        '@type': 'Classe',
+        '@type': 'Thème',
         'pair:label': 'Nom',
       }
     }

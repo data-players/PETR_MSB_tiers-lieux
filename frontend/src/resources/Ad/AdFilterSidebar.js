@@ -24,13 +24,6 @@ const OrganizationFilterSidebar = () => {
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         <ReferenceFilter
-          reference="Sector"
-          source="petr:hasSector"
-          // inverseSource="petr:sectorOf"
-          sort={{ field: 'pair:label', order: 'DESC' }}
-          limit={100}
-        />
-        <ReferenceFilter
           reference="Topic"
           source="pair:hasTopic"
           // inverseSource="pair:TopicOf"
