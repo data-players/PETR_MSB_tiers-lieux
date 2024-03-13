@@ -1,44 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import { useList, ListContextProvider, Datagrid, TextField } from 'react-admin';
-import { Container } from '@material-ui/core';
+import { useList, ListContextProvider, SimpleList,} from 'react-admin';
+import { Container, Avatar,Link, Box, makeStyles } from '@material-ui/core';
+import OrganizationIcon from '@material-ui/icons/Home';
 
-// Assuming the rest of your component remains the same and focusing on the results display part:
+const useStyles = makeStyles(theme => ({
+    resultsContainer: {
+      display : 'flex',
+      flexDirection : 'column',
+      alignItems : 'stretch',
+      textAlign : 'initial',
+      gap :'20px'
+    },
+    resultItem: {
+      color: 'white !important',
+      display : 'flex',
+      flexDirection : 'row',
+      gap :'20px',
+      textDecoration: 'none',
+      '&:visited': {
+        color: '!important',
+      },
+      '&:hover': {
+        textDecoration: 'none',
+      },
+      padding : '10px',
+      backgroundColor: theme.palette.secondary.main,
+      border: 'transparent',
+      borderRadius : '8px'
+
+    },
+    resultItemSubList: {
+      listStyleType: 'square',
+    }
+  }));
 
 const List = ({ theme, results,selectedResource }) => {
-  // Existing state and functions
 
-  // Simulate search results for demonstration purposes
-  const [searchResults, setSearchResults] = useState([]);
-  
-  const data = [
-    { id: 1, name: 'Arnold' },
-    { id: 2, name: 'Sylvester' },
-    { id: 3, name: 'Jean-Claude' },
-]
-    const ids = [1, 2, 3];
-  // UseList hook to prepare the data for ListContextProvider
-  const listContext = useList({
-    data: results?results.data:[],
-    ids: results?Object.keys(results.dataByResource):[],
-    basePath: '/search', // Adjust this as needed
-    resource: 'searchResults',
-    loaded: true,
-    loading: false,
-    total: results?Object.keys(results.dataByResource).length:0,
-    resource: selectedResource?selectedResource["result-path"]["type"]:undefined,
-    basePath: selectedResource?'/' + selectedResource["result-path"]["type"]:undefined,
-  });
-  console.log(listContext)
+  const classes = useStyles(theme);
 
   return (
-    <Container>
-      <ListContextProvider value={listContext}>
-        <Datagrid>
-          <TextField source="id" />
-          <TextField source="name" />
-        </Datagrid>
-      </ListContextProvider>
-    </Container>
+    <Box className={classes.resultsContainer}>
+        { results?.dataByResource?.map((record, index) => (
+            <Link className={classes.resultItem} color="secondary" key={record.id} href={'/Organization/'+encodeURIComponent(record.id)+'/show'}>
+                <Box>
+                    <OrganizationIcon></OrganizationIcon>
+                </Box>
+                <Box>
+                    <Box >{record?.resourceData?.['pair:label']}</Box>
+                    <ul className={classes.resultItemSubList}>
+                    { record?.list?.map((item) => (
+                        <li key={record.id+item}>{item}</li>
+                    ))}
+                    </ul>
+                </Box>
+            </Link>
+        ))}
+    </Box>
   );
 };
 

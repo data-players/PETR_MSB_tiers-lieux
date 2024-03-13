@@ -1,15 +1,9 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react';
-import { 
-  useList,
-  ListContextProvider,
-  SimpleList,
-  useDataProvider
-} from 'react-admin';
-// import { ListContext } from 'ra-core';
-import { Avatar, Box, Button, Chip, Container, makeStyles } from '@material-ui/core';
+import React, {useRef, useState, useEffect } from 'react';
+import {useDataProvider} from 'react-admin';
+import {Box, Button, Chip, Container, makeStyles} from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import OrganizationIcon from '@material-ui/icons/Home';
+
 
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import ontologies from '../../config/ontologies.json';
@@ -136,21 +130,12 @@ const useStyles = makeStyles(theme => ({
   },
   noChoiceButton: {
     color: '#203142 !important'
-  },
-  resultsContainer: {
-    width: '90%',
-    maxWidth: 600,
-    margin: '-16px auto'
-  },
-  resultItem: {
-    marginTop: 2,
-    listStyleType: 'disc',
   }
 }));
 
 const SearchPage = ({ theme }) => {
   
-  const classes = useStyles();
+  const classes = useStyles(theme);
   
   const dataProvider = useDataProvider();
 
@@ -325,9 +310,9 @@ const SearchPage = ({ theme }) => {
               "pathType": selectedValue.field.path.pathType,
               "items": [DataFactory.namedNode(getFullPredicate(selectedValue.field.path.name))]
             },
-            "object": DataFactory.blankNode("blank" + index)
+            "object": DataFactory.variable("s2")//DataFactory.blankNode("blank" + index)
           },{
-            "subject": DataFactory.blankNode("blank" + index),
+            "subject": DataFactory.variable("s2"),//DataFactory.blankNode("blank" + index),
             "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.name)),
             "object": DataFactory.namedNode(selectedValue.value.id)
           }]
@@ -345,22 +330,21 @@ const SearchPage = ({ theme }) => {
     const uniqueResources = [...new Set(results.data.map(item => item[selectedResource["result-path"]["name"]]))];
     const resultsByResource = await Promise.all( uniqueResources.map(async uniqueResource => {
       const resourceData = await dataProvider.getOne(selectedResource.name, {id: uniqueResource});
-      return ([ 
-        uniqueResource, {
+      return ( {
           id : uniqueResource,
           resourceData : resourceData.data,
           list: results.data
             .filter(item => item[selectedResource["result-path"]["name"]] === uniqueResource)
             .map(item => item["pair:label"])
         }
-      ])
+      )
     }))
     // console.log('results',results);
-    // console.log('dataByResource',Object.fromEntries(resultsByResource));
+    console.log('resultsByResource',resultsByResource);
   
     setResults({
       ...results,
-      dataByResource: Object.fromEntries(resultsByResource)
+      dataByResource: resultsByResource
     });
   }
   
@@ -380,42 +364,6 @@ const SearchPage = ({ theme }) => {
       inline: "start"
     });
   }
-
-  // const listContext = useMemo(() => useList({
-  //   // data: results?results.data:[],
-  //   // ids: results?Object.keys(results.dataByResource):[],
-  //   // basePath: '/search', // Adjust this as needed
-  //   // resource: 'searchResults',
-  //   // loaded: true,
-  //   // loading: false,
-  //   // total: results?Object.keys(results.dataByResource).length:0,
-  //   // resource: selectedResource?selectedResource["result-path"]["type"]:undefined,
-  //   // basePath: selectedResource?'/' + selectedResource["result-path"]["type"]:undefined,
-  // }), []);
-
-  // const listContext = useList({
-  //   data: results?results.data:[],
-  //   ids: results?Object.keys(results.dataByResource):[],
-  //   basePath: '/search', // Adjust this as needed
-  //   resource: 'searchResults',
-  //   loaded: true,
-  //   loading: false,
-  //   total: results?Object.keys(results.dataByResource).length:0,
-  //   resource: selectedResource?selectedResource["result-path"]["type"]:undefined,
-  //   basePath: selectedResource?'/' + selectedResource["result-path"]["type"]:undefined,
-  // });
-
-  // const listContext = useList({
-  //   data: [],
-  //   ids: [],
-  //   basePath: '/search', // Adjust this as needed
-  //   resource: 'searchResults',
-  //   loaded: true,
-  //   loading: false,
-  //   total: 0,
-  //   resource: undefined,
-  //   basePath: undefined,
-  // });
 
   return (
     <Container className={classes.mainContainer} maxWidth="lg">
@@ -584,26 +532,9 @@ const SearchPage = ({ theme }) => {
                   <h2>Résultats ({results.total}) :</h2>
                 }
                 { results.data && 
-                  <Box className={classes.resultsContainer}>
-                    <div>data EXISTS</div>
-                    <List results={results} selectedResource={selectedResource}></List>
-                    {/* <ListContextProvider value={listContext}>
-                      <SimpleList
-                        primaryText={record => record.resourceData["pair:label"]}
-                        secondaryText={record => { return (
-                          <ul>
-                            {record.list.map((item, index) => <li key={index} className={classes.resultItem}>{item}</li>)}
-                          </ul>
-                        )}}
-                        leftAvatar={record => (
-                          <Avatar src={record.resourceData['petr:logo']} width="100%">
-                            <OrganizationIcon />
-                          </Avatar>
-                        )}
-                        linkType="show"
-                      />
-                    </ListContextProvider> */}
-                  </Box>
+                  // <Box className={classes.resultsContainer}>
+                    <List results={results} selectedResource={selectedResource} classes={classes}></List>
+                  // </Box>
                 }
               </Box>
             }

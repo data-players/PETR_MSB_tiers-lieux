@@ -38,12 +38,9 @@ export const OrganizationEdit = props => {
       <TabbedForm>
         <FormTab label="Principal">
           <TextInput source="pair:label" label="Titre" fullWidth validate={[required()]} />
-          <ReferenceInput
-            source="pair:hasType"
-            reference="OrganizationType"
-          >
-            <SelectInput optionText="pair:label" />
-          </ReferenceInput>
+          <ReferenceArrayInput source="pair:hasType" reference="OrganizationType" fullWidth >
+            <AutocompleteArrayInput optionText="pair:label" />
+          </ReferenceArrayInput>
           <MarkdownInput source="pair:description" multiline fullWidth />
           <PairLocationInput source="pair:hasLocation" fullWidth />
           <ImageInput source="petr:logo" accept="image/*">

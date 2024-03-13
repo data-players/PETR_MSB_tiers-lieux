@@ -11,7 +11,7 @@ const PageShow = props => (
   <>
      {isIframe ? null : <BreadcrumbsItem to='/Page'>Page</BreadcrumbsItem> }
      <Show title={<PageTitle />} {...props}>
-        <MarkdownField source="pair:description"/>
+        <MarkdownField source="pair:content"/>
     </Show>
   </>
 );

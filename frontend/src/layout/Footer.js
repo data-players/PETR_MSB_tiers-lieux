@@ -92,7 +92,7 @@ const Footer = ({ title }) => {
     <FullWidthBox className={classes.background} >
       <LargeContainer disableGutters={xs}>
         <Grid container className={classes.root}>
-          <Grid container>
+          {/* <Grid container>
             <Box pt={3} pb={5} className={classes.boxContainer}>
               <Typography variant="" color="secondary" className={classes.linkContainer}>
                 <Link to="/" className={classes.footerLink}>
@@ -109,15 +109,12 @@ const Footer = ({ title }) => {
                 </Link>
               </Typography>
             </Box>
-          </Grid>
+          </Grid> */}
           <Grid container className={classes.footerBottom}>
             <Grid item xs={12} md={4} className={classes.contact}>
-              <Typography variant="" className={classes.footerTitle}>
-                Nous contacter :
-              </Typography>
-              <Typography variant="" className={classes.mail}>
-                contact@reseau-tiers-lieux-msb.fr
-              </Typography>
+              <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f1c3d3131f6f1608b1837b/show" className={classes.footerLink}>
+                  Nous contacter
+                </Link>
             </Grid>
             <Grid item xs={12} md={8}>
               <Typography variant="" className={classes.footerTitle}>
@@ -130,16 +127,16 @@ const Footer = ({ title }) => {
                 <Link to="/Search" className={classes.footerLink}>
                   Recherche
                 </Link>
-                <Link to="/About" className={classes.footerLink}>
+                <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f05980d716091d235de473/show" className={classes.footerLink}>
                   Qui sommes-nous ?
                 </Link>
-                <Link to="/" className={classes.footerLink}>
+                <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f06b5ed716091d235de474/show" className={classes.footerLink}>
                   Mentions&nbsp;légales
                 </Link>
               </Typography>
             </Grid>
           </Grid>
-
+          
           {/*
           <Grid item sm={3}>
             <IconButton

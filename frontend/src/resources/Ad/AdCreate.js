@@ -11,7 +11,7 @@ const AdCreate = (props) => (
       <Create {...props}>
         <SimpleForm>
           <TextInput source="pair:label" label="Nom" fullWidth />
-          <DateInput source="petr:date" defaultValue={new Date()} />
+          <DateInput source="petr:date" defaultValue={new Date().toISOString().slice(0, 10)}/>
         </SimpleForm>
       </Create>
     </>
