@@ -1,6 +1,7 @@
 import React from 'react';
-import { IconButton, useMediaQuery, makeStyles, Typography, Grid, Box } from '@material-ui/core';
+import { useMediaQuery, makeStyles} from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { Stack, Grid } from '@mui/material';
 import FullWidthBox from '../commons/FullWidthBox';
 import LargeContainer from '../commons/LargeContainer';
 import {
@@ -91,36 +92,15 @@ const Footer = ({ title }) => {
   return (
     <FullWidthBox className={classes.background} >
       <LargeContainer disableGutters={xs}>
-        <Grid container className={classes.root}>
-          {/* <Grid container>
-            <Box pt={3} pb={5} className={classes.boxContainer}>
-              <Typography variant="" color="secondary" className={classes.linkContainer}>
-                <Link to="/" className={classes.footerLink}>
-                  PETR
-                </Link>
-                <Link to="/" className={classes.footerLink}>
-                  LAB71
-                </Link>
-                <Link to="/" className={classes.footerLink}>
-                  La pépi't
-                </Link>
-                <Link to="/" className={classes.footerLink}>
-                  Coworking Dompierre
-                </Link>
-              </Typography>
-            </Box>
-          </Grid> */}
-          <Grid container className={classes.footerBottom}>
-            <Grid item xs={12} md={4} className={classes.contact}>
-              <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f1c3d3131f6f1608b1837b/show" className={classes.footerLink}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="flex-start"
+            spacing={2}
+          >
+                <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f1c3d3131f6f1608b1837b/show" className={classes.footerLink}>
                   Nous contacter
                 </Link>
-            </Grid>
-            <Grid item xs={12} md={8}>
-              <Typography variant="" className={classes.footerTitle}>
-                Accès direct :
-              </Typography>
-              <Typography variant="" color="secondary" className={classes.linkContainer}>
                 <Link to="/" className={classes.footerLink}>
                   Carte des lieux
                 </Link>
@@ -133,32 +113,10 @@ const Footer = ({ title }) => {
                 <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f06b5ed716091d235de474/show" className={classes.footerLink}>
                   Mentions&nbsp;légales
                 </Link>
-              </Typography>
-            </Grid>
-          </Grid>
-          
-          {/*
-          <Grid item sm={3}>
-            <IconButton
-              aria-label="facebook"
-              color="secondary"
-              href="https://www.facebook.com/Les-Chemins-de-la-Transition-103307098592299"
-              className={classes.icon}
-            >
-              <FacebookIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="instagram" color="secondary" disabled>
-              <InstagramIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="twitter" color="secondary" href="https://twitter.com/CdlT_Occitanie">
-              <TwitterIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="youtube" color="secondary" disabled>
-              <YoutubeIcon fontSize="large" />
-            </IconButton>
-          </Grid>
-          */}
-        </Grid>
+                <a href="https://www.etablir-tiers-lieux.fr" className={classes.footerLink} target="_blank">
+                  Site vitrine
+                </a>
+          </Stack>
       </LargeContainer>
     </FullWidthBox>
   );
