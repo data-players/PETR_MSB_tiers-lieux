@@ -62,6 +62,7 @@ module.exports = {
       'https://data.petr-msb.data-players.com/users/simon.louvet.zen',
       'https://data.petr-msb.data-players.com/users/bastien.siguier1',
       'https://data.petr-msb.data-players.com/users/acordier',
+      'https://data.petr-msb.data-players.com/users/frantz.met'
     ]
     }
   }
