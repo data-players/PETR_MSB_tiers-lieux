@@ -12,6 +12,9 @@ import OrganizationShowMainTitle from './OrganizationShowMainTitle';
 import OrganizationShowSpaceLayout from './OrganizationShowSpaceLayout';
 import OrganizationShowServiceLayout from './OrganizationShowServiceLayout';
 
+import { GridList, ChipList } from '@semapps/list-components';
+import { ReferenceArrayField } from '@semapps/field-components';
+
 const isIframe = window !== window.top;
 
 const useStyles = makeStyles((theme) => ({
@@ -199,6 +202,13 @@ const OrganizationShow = ({...props}) => {
                 <Grid item xs={12} md={3}>
                 </Grid>
               </Grid>
+            </Tab>
+            <Tab label="Personnes">
+              <ReferenceArrayField reference="Person" source="pair:affiliates" label={false}>
+                <GridList xs={6} sm={4} md={4} linkType="show">
+                  <TextField source="pair:label" />
+                </GridList>
+              </ReferenceArrayField>
             </Tab>
           </TabbedShowLayout>
         </Show>

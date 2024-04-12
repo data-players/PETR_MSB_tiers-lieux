@@ -62,6 +62,12 @@ export const PersonInput = props => (
   </ReferenceInput>
 );
 
+export const SkillsInput = ({ label, source }) => (
+  <ReferenceArrayInput label={label} reference="Skill" source={source}>
+    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+  </ReferenceArrayInput>
+);
+
 export const AgentsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Agent" source={source}>
     <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />

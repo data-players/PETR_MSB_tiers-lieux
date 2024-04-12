@@ -1,4 +1,5 @@
 import SkillEdit from './SkillEdit';
+import SkillShow from './SkillShow';
 import SkillCreate from './SkillCreate';
 import SkillList from './SkillList';
 import SchoolIcon from '@mui/icons-material/School';
@@ -8,10 +9,11 @@ export default {
   config: {
     icon: SchoolIcon,
     edit: SkillEdit,
+    show : SkillShow,
     create: SkillCreate,
     list : SkillList,
     options: {
-      label: 'Skills'
+      label: 'Compétences'
     },
   },
   dataModel: {

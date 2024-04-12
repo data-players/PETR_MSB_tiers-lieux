@@ -29,8 +29,8 @@ export const SkillCreate = props =>{
     >
       {/* <SkillForm redirect={query.redirectUri}/> */}
       <SimpleForm>
-      <TextInput source="pair:label" label="Nom" fullWidth />
-    </SimpleForm>
+        <TextInput source="pair:label" label="Nom" fullWidth />
+      </SimpleForm>
     </Create>
   )
 };

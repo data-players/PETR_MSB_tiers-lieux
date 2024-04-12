@@ -30,6 +30,7 @@ export default {
       fields: {
         'pair:label': 'Nom complet',
         'pair:description': 'Description',
+        'pair:offers': 'Compétences',
         'petr:openbadgeId': 'Id Openbadge'
       }
     }

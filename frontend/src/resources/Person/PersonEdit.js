@@ -3,6 +3,7 @@ import { SaveButton, SimpleForm, TextInput } from "ra-ui-materialui";
 import { Toolbar, Link } from 'react-admin';
 import Edit from "../../layout/edit/Edit";
 import PersonTitle from './PersonTitle';
+import {SkillsInput} from '../../inputs'
 import MarkdownInput from '../../markdown/MarkdownInput'
 
 const NoDeleteToolBar = props => (
@@ -17,7 +18,8 @@ export const PersonEdit = props => (
       <TextInput label="Nom complet" source="pair:label" fullWidth />
       <MarkdownInput label="Description" multiline source="pair:description" fullWidth />
       <TextInput label="Id Openbadge" source="petr:openbadgeId" helperText="" fullWidth />
-      <Link to="/Page/http%3A%2F%2Flocalhost%3A3000%2Fpages%2F6477503ccb5ef78fc07f2833/show" style={{color: "grey", fontSize: "12px" }} >Besoin d'aide pour trouver votre ID openbadge?</Link>
+      <SkillsInput  source="pair:offers"/>
+      {/* <Link to="/Page/http%3A%2F%2Flocalhost%3A3000%2Fpages%2F6477503ccb5ef78fc07f2833/show" style={{color: "grey", fontSize: "12px" }} >Besoin d'aide pour trouver votre ID openbadge?</Link> */}
     </SimpleForm>
   </Edit>
 )

@@ -54,6 +54,7 @@ const Layout = ({ logout, theme, children, title, menu }) => {
     { link: '/', name: 'Cartographie', admin: false },
     { link: '/Search', name: 'Recherche', admin: false },
     { link: '/Event', name: 'Agenda', admin: false },
+    { link: '/Ads', name:'Annonces', admin: false },
   ] :  [
     { link: '/Search', name: 'Recherche', admin: false },
     { link: '/Event', name: 'Agenda', admin: false },

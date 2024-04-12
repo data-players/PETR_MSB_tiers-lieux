@@ -141,7 +141,11 @@ export const OrganizationEdit = props => {
             </Datagrid>
           </ReferenceManyField>
           <CreateContextualButton resource="Service" parent={record}  reverseReference="petr:serviceOfferedBy"/>
-
+        </FormTab>
+        <FormTab label="Personnes">
+          <ReferenceArrayInput source="pair:affiliates" reference="Person" fullWidth >
+            <AutocompleteArrayInput optionText="pair:label" />
+          </ReferenceArrayInput>
         </FormTab>
       </TabbedForm>
     </Edit>

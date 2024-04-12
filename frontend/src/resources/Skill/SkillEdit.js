@@ -23,8 +23,10 @@ export const SkillEdit = props =>{
       actions={<TopToolbar record={record} hasBackButton={true} />}
         {...props}
       >
-        <TextInput source="pair:label" fullWidth />
+      <SimpleForm>
+        <TextInput source="pair:label" label="Nom" fullWidth />
         <PersonsInput source="pair:offeredBy" />
+      </SimpleForm>
         {/* <SkillForm redirect={query.redirectUri}/> */}
     </Edit>
   )

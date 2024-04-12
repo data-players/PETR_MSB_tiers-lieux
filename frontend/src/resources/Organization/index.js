@@ -53,6 +53,7 @@ export default {
             'petr:hasLabels': 'Labels',
             'petr:hasNetworks': 'Réseaux',
             'petr:hasAudience': 'Public ciblé',
+            'pair:affiliates' : 'Personnes'
           }
         }
       }

@@ -3,7 +3,7 @@ import {
   TextInput,
   SimpleForm
 } from 'react-admin';
-// import {PersonsInput} from '../../inputs'
+import {PersonsInput} from '../../inputs'
 // import { SimpleForm, TextInput } from "ra-ui-materialui";
 
 export const SkillForm = props => {
@@ -11,10 +11,10 @@ export const SkillForm = props => {
   const filterOnlyLabel = { _predicates: ['pair:label'] };
 
   return (
-    <SimpleForm>
-      <TextInput source="pair:label" fullWidth />
-      {/* <PersonsInput source="pair:offeredBy" /> */}
-    </SimpleForm>
+  <SimpleForm>
+    <TextInput source="pair:label" label="Nom" fullWidth />
+    <PersonsInput source="pair:offeredBy" />
+  </SimpleForm>
   )
 }
 

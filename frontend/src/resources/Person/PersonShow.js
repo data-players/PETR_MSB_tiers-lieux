@@ -2,7 +2,9 @@ import React from 'react';
 import Show from "../../layout/show/Show";
 import PersonTitle from "./PersonTitle";
 import MarkdownField from '../../commons/fields/MarkdownField';
-import {  useRecordContext } from 'react-admin';
+import {  useRecordContext, TextField } from 'react-admin';
+import { GridList, ChipList } from '@semapps/list-components';
+import ReferenceArrayField from './ReferenceArrayField';
   
 const OpenbadgePassportComponent = ({source}) => {
     const record = useRecordContext();
@@ -19,6 +21,9 @@ const PersonShow = props => (
     <Show title={<PersonTitle />} {...props}>
         <>
             <MarkdownField source="pair:description"/>
+            <ReferenceArrayField reference="Skill" source="pair:offers">
+                <ChipList primaryText="pair:label" linkType="show" externalLinks />
+            </ReferenceArrayField>
             <OpenbadgePassportComponent source="petr:openbadgeId" />
         </>
     </Show>

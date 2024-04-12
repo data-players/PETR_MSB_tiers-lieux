@@ -8,7 +8,7 @@ const isIframe = window !== window.top;
 
 const AdList = props => (
   <>
-      {isIframe ? null : <BreadcrumbsItem to='/Ads'>Compétence</BreadcrumbsItem> } 
+      {isIframe ? null : <BreadcrumbsItem to='/Skill'>Compétence</BreadcrumbsItem> } 
       <List {...props}>
         <SimpleList primaryText={record => record['pair:label']} leftAvatar={() => <Avatar width="100%"><HomeIcon /></Avatar>} linkType="show" />
       </List>
