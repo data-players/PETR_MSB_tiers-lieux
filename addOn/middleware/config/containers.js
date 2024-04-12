@@ -114,6 +114,11 @@ module.exports = [
     acceptedTypes: ['pair:Page']
   },
   {
+    path: '/skills',
+    preferredView: '/Skill',
+    acceptedTypes: ['pair:skill']
+  },
+  {
     path: '/Ads',
     preferredView: '/Ads',
     acceptedTypes: ['petr:Ads']

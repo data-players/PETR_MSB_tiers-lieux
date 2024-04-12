@@ -7,6 +7,7 @@ export { default as Event } from "./Event";
 export { default as Service } from "./Service";
 export { default as Space } from "./Space";
 export { default as Ads } from "./Ad";
+export { default as Skill } from './Skill';
 
 // For Tutoriel
 export { default as Page } from "./Page";

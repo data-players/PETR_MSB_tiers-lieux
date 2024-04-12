@@ -17,7 +17,6 @@ export default {
   },
   dataModel: {
     types: ['petr:Ads'],
-    containerUri: process.env.REACT_APP_MIDDLEWARE_URL + 'Ads',
     slugField: 'pair:label'
   },
   translations: {

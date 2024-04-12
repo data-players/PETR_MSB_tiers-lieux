@@ -16,6 +16,12 @@ const useStyles = makeStyles(theme => ({
   popupImageContainer: {
     textAlign: 'center'
   },
+  popupImage: {
+    '& img':{
+      width : '100%',
+      objectFit: 'contain'
+    }
+  },
   popupTitle: {
     fontWeight: 600,
     textTransform: 'capitalize'
