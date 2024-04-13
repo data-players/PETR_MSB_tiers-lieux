@@ -15,7 +15,9 @@ import {
   ReferenceInput,
   ReferenceManyField,
   DeleteButton,
-  AutocompleteArrayInput
+  AutocompleteArrayInput,
+  BooleanInput,
+  FormDataConsumer
 } from 'react-admin';
 
 import { MarkdownInput } from '@semapps/markdown-components'
@@ -43,6 +45,14 @@ export const OrganizationEdit = props => {
           </ReferenceArrayInput>
           <MarkdownInput source="pair:description" multiline fullWidth />
           <PairLocationInput source="pair:hasLocation" fullWidth />
+          <BooleanInput label="Secteur manuel" source="petr:manualSector" />
+          <FormDataConsumer>
+                {({ formData, ...rest }) => formData['petr:manualSector'] &&
+                    <ReferenceInput label="Secteur" source="petr:hasSector" reference="Sector" {...rest}>
+                        <SelectInput optionText="pair:label" />
+                    </ReferenceInput>
+                }
+            </FormDataConsumer>
           <ImageInput source="petr:logo" accept="image/*">
             <ImageField source="src" />
           </ImageInput>

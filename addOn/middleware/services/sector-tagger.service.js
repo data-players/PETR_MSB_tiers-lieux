@@ -26,7 +26,9 @@ module.exports = {
       }
     },
     async tagOrganization(resourceUri, data) {
-      if( data['pair:hasLocation'] ) {
+      console.log('______manualSector',data['petr:manualSector'])
+      if( data['pair:hasLocation'] && data['petr:manualSector']!=true) {
+        console.log('______Tag Sector')
         await this.tag(
           resourceUri, 
           [data['pair:hasLocation']['pair:hasPostalAddress']['pair:addressZipCode']][0], 
@@ -74,8 +76,11 @@ module.exports = {
 
         // Create sector if it doesn't exist yet
         const sectorExists = await this.broker.call('ldp.resource.exist', {resourceUri: sectorUri});
+        console.log('_____________sectorSlug',sectorSlug)
+        console.log('_____________containerUri',urlJoin(CONFIG.HOME_URL, 'sectors'))
+        console.log('_____________sectorName',sectorName)
         if (!sectorExists) {
-          await this.broker.call('ldp.resource.post', {
+          await this.broker.call('ldp.container.post', {
             resource: {
               '@context': {
                 '@vocab': 'https://data.petr-msb.data-players.com/ontology#',
@@ -96,7 +101,6 @@ module.exports = {
   },
   events: {
     async 'ldp.resource.created'(ctx) {
-
       const { resourceUri, newData } = ctx.params;
 
       switch(getContainerFromUri(resourceUri)){
@@ -106,7 +110,6 @@ module.exports = {
       }
     },
     async 'ldp.resource.updated'(ctx) {
-
       const { resourceUri, newData } = ctx.params;
 
       switch(getContainerFromUri(resourceUri)){
