@@ -206,4 +206,9 @@ module.exports = [
     preferredView: '/Topic',
     acceptedTypes: ['pair:Topic'],
   },
+  {
+    path: '/ad-status',
+    preferredView: '/AdStatus',
+    acceptedTypes: ['petr:AdStatus'],
+  },
 ];

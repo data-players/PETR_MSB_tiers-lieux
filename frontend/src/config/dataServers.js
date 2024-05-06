@@ -19,6 +19,7 @@ const dataServers = {
         'petr:EquipmentType': ['/equipment-types'],
         'petr:Label': ['/labels'],
         'petr:LegalStatus': ['/legal-status'],
+        'petr:AdStatus': ['/ad-status'],
         'petr:Network': ['/networks'],
         'petr:Rate': ['/rates'],
         'petr:Sector': ['/sectors'],

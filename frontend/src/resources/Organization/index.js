@@ -2,7 +2,7 @@ import OrganizationCreate from './OrganizationCreate';
 import OrganizationEdit from './OrganizationEdit';
 import OrganizationList from './OrganizationList';
 import OrganizationShow from './OrganizationShow/';
-import HomeIcon from '@material-ui/icons/Build';
+import HomeIcon from '@mui/icons-material/Home';
 
 export default {
     config: {

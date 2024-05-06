@@ -3,6 +3,7 @@ import AdEdit from './AdEdit';
 import AdList from './AdList';
 import AdShow from './AdShow';
 import DescriptionIcon from '@material-ui/icons/Description';
+import FeedIcon from '@mui/icons-material/Feed';
 
 export default {
   config: {
@@ -10,7 +11,7 @@ export default {
     show: AdShow,
     create: AdCreate,
     edit: AdEdit,
-    icon: DescriptionIcon,
+    icon: FeedIcon,
     options: {
       label: 'Annonces'
     }

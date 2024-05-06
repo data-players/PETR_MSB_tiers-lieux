@@ -5,6 +5,8 @@ import { ReferenceFilter } from '@semapps/list-components';
 const useStyles = makeStyles(theme => ({
   card: {
     paddingTop: 0,
+        order:-1,
+    marginRight:10,
     [theme.breakpoints.up('sm')]: {
       minWidth: '15em',
       marginLeft: '1em'

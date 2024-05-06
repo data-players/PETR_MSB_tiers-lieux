@@ -59,6 +59,13 @@
                 rdfs:domain <http://virtual-assembly.org/ontologies/pair#Organization> ;
                 rdfs:range :LegalStatus .
 
+###  https://data.petr-msb.data-players.com/ontology#hasµAdStatus
+:hasAdStatus rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#hasStatus> ;
+                owl:inverseOf :statusOf ;
+                rdfs:domain <http://virtual-assembly.org/ontologies/pair#Ad> ;
+                rdfs:range :AdStatus .
+
 
 ###  https://data.petr-msb.data-players.com/ontology#hasNetwork
 :hasNetwork rdf:type owl:ObjectProperty ;
@@ -116,6 +123,7 @@
 :statusOf rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf <http://virtual-assembly.org/ontologies/pair#entityConceptProperty> ;
           rdfs:domain :LegalStatus ;
+          rdfs:domain :AdStatus ;
           rdfs:range <http://virtual-assembly.org/ontologies/pair#Organization> .
 
 
