@@ -37,6 +37,9 @@
     "petr:hasLegalStatus": {
       "@type": "@id"
     },
+    "petr:hasAdStatus": {
+      "@type": "@id"
+    },
     "petr:hasNetworks": {
       "@type": "@id"
     },

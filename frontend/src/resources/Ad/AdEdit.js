@@ -1,5 +1,5 @@
 import React from 'react';
-import {  SimpleForm, TextInput, SelectInput, AutocompleteArrayInput, DateInput } from 'react-admin';
+import { SimpleForm, TextInput, SelectInput, AutocompleteArrayInput, DateInput, ReferenceInput,required } from 'react-admin';
 import Edit from "../../layout/edit/Edit";
 import { MarkdownInput } from '@semapps/markdown-components';
 import AdTitle from './AdTitle';
@@ -11,7 +11,7 @@ const isIframe = window !== window.top;
 
 const AdEdit = props => (
   <>
-    {isIframe ? null : <BreadcrumbsItem to='/Ads'>Annonce</BreadcrumbsItem> } 
+    {isIframe ? null : <BreadcrumbsItem to='/Ads'>Annonce</BreadcrumbsItem>}
     <Edit title={<AdTitle />} {...props}>
       <SimpleForm redirect="show">
         <TextInput source="pair:label" fullWidth />
@@ -21,8 +21,17 @@ const AdEdit = props => (
           <SelectInput optionText="pair:label" />
         </ReferenceArrayInput>
         <ReferenceArrayInput source="pair:hasTopic" reference="Topic" >
-          <AutocompleteArrayInput optionText="pair:label" fullWidth/>
+          <AutocompleteArrayInput optionText="pair:label" fullWidth />
         </ReferenceArrayInput>
+        <ReferenceInput
+          source="petr:hasAdStatus"
+          reference="AdStatus"
+          validate={[required()]}
+        >
+          <SelectInput optionText="pair:label" />
+        </ReferenceInput>
+
+
       </SimpleForm>
     </Edit>
   </>

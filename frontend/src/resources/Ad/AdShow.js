@@ -3,11 +3,11 @@ import Show from '../../layout/show/Show.js';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import MarkdownField from '../../commons/fields/MarkdownField.js';
 import AdTitle from './AdTitle.js';
-import { DateField } from 'react-admin';
+import { DateField, TextField } from 'react-admin';
 import { Hero, MainList, SideList } from '../../commons/lists/index.js';
 import { Grid } from '@material-ui/core';
 import { GridList, ChipList } from '@semapps/list-components';
-import { ReferenceArrayField, AvatarWithLabelField } from '@semapps/field-components';
+import { ReferenceArrayField, AvatarWithLabelField, ReferenceField } from '@semapps/field-components';
 
 const isIframe = window !== window.top;
 
@@ -32,6 +32,9 @@ const AdShow = props => (
             <ReferenceArrayField reference="Topic" source="pair:hasTopic">
               <ChipList primaryText="pair:label" linkType="show" externalLinks />
             </ReferenceArrayField>
+            <ReferenceField source="petr:hasAdStatus" reference="AdStatus" link={false}>
+              <TextField source="pair:label" />
+            </ReferenceField>
           </SideList>
         </Grid>
       </Grid>

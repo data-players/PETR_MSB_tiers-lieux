@@ -36,6 +36,15 @@ const OrganizationFilterSidebar = () => {
           limit={100}
         />
       </CardContent>
+      <CardContent className={classes.cardContent}>
+        <ReferenceFilter
+          reference="AdStatus"
+          source="petr:hasAdStatus"
+          // inverseSource="pair:statusOf"
+          sort={{ field: 'pair:label', order: 'ASC' }}
+          limit={100}
+        />
+      </CardContent>
     </Card>
   );
 };

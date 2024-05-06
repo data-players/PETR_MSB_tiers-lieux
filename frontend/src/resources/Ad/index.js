@@ -28,6 +28,7 @@ export default {
         'pair:description': 'Contenu',
         'pair:involvedIn': 'Lieu',
         'pair:hasTopic': 'Thématiques',
+        'petr:hasAdStatus': 'Statut',
         'petr:date': 'Date'
       }
     }
