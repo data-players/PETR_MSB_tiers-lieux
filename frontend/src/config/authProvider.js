@@ -7,6 +7,7 @@ const authProvider = semappsAuthProvider({
   // middlewareUri: process.env.REACT_APP_MIDDLEWARE_URL,
   dataProvider,
   checkPermissions: true,
+  authType: 'sso'
   // resources: Object.fromEntries(Object.entries(resources).map(([k, v]) => [k, v.dataModel]))
 });
 

@@ -5,9 +5,9 @@ import HomeIcon from '@material-ui/icons/Home';
 import ListIcon from '@material-ui/icons/List';
 import MapIcon from '@material-ui/icons/Map';
 
-import { ImageField,  ListBase, ReferenceField, ShowButton, SimpleList, TextField } from 'react-admin';
+import { ImageField, ListBase, ReferenceField, ShowButton, SimpleList, TextField } from 'react-admin';
 
-import { MapList } from '@semapps/geo-components';
+import MapList from '../addons/MapList/MapList';
 
 import Filter from '../commons/Filter';
 import MultiViewsFilterList from '../commons/lists/MultiViewsFilterList';
@@ -17,8 +17,8 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center'
   },
   popupImage: {
-    '& img':{
-      width : '100%',
+    '& img': {
+      width: '100%',
       objectFit: 'contain'
     }
   },
@@ -34,9 +34,9 @@ const useStyles = makeStyles(theme => ({
     "& .MuiListItemAvatar-root .MuiAvatar-root": {
       width: theme.spacing(32),   // ou utilisez '100px' si vous préférez une mesure fixe
       height: theme.spacing(16),
-      paddingRight : 10,
-      borderRadius : 0,
-      backgroundColor : 'transparent',
+      paddingRight: 10,
+      borderRadius: 0,
+      backgroundColor: 'transparent',
     },
   },
   avatarImg: {
@@ -52,6 +52,7 @@ const useStyles = makeStyles(theme => ({
 
 const MapPage = (props) => {
   const classes = useStyles();
+
   return (
     <>
       <ListBase
@@ -115,10 +116,11 @@ const MapPage = (props) => {
                 <MapList
                   latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
                   longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-                  center= {[46.42816, 4.66527]}
-                  zoom= {11}
+                  center={[46.42816, 4.66527]}
+                  zoom={11}
                   height="calc(100% - 48px)"
-                  boundToMarkers={false}
+                  boundToMarkers={true}
+                  scrollWheelZoom={true}
                   label={record => record['pair:label']}
                   description={record => record['pair:description']}
                   popupContent={({ record, basePath }) => (
@@ -140,7 +142,7 @@ const MapPage = (props) => {
                           <TextField source="pair:label" />
                         </ReferenceField>
                       </Box>
-                      <ShowButton record={record} basePath={basePath} label ={"+ d'infos"}/>
+                      <ShowButton record={record} basePath={basePath} label={"+ d'infos"} />
                     </>
                   )}
                 />

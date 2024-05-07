@@ -8,6 +8,7 @@ import { CalendarList } from '@semapps/date-components';
 import frLocale from '@fullcalendar/core/locales/fr';
 import EventIcon from '@material-ui/icons/Event';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+import { ListActionsWithPermissions } from '@semapps/auth-provider'
 
 const isIframe = window !== window.top;
 
@@ -16,6 +17,7 @@ const EventList = props => (
     {isIframe ? null : <BreadcrumbsItem to='/Event'>Agenda</BreadcrumbsItem>}
     <MultiViewsList
       aside={<EventFilterSidebar />}
+      actions={<ListActionsWithPermissions exporter={false} />}
       views={{
         calendar: {
           label: 'Calendrier',

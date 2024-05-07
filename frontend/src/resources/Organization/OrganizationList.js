@@ -8,7 +8,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import { ListActionsWithPermissions } from '@semapps/auth-provider'
 
 import { MultiViewsList} from '@semapps/list-components';
-import { MapList } from '@semapps/geo-components';
+import MapList from '../../addons/MapList/MapList';
 import MapIcon from '@material-ui/icons/Map';
 
 import OrganizationFilterSidebar from './OrganizationFilterSidebar';
@@ -39,7 +39,6 @@ const OrganizationList = props => {
   const classes = useStyles();
   return <MultiViewsList
     aside={<OrganizationFilterSidebar />}
-
     actions={<ListActionsWithPermissions exporter={false} />}
     views={{
       list: {
