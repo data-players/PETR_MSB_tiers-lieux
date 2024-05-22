@@ -204,11 +204,21 @@ const OrganizationShow = ({...props}) => {
               </Grid>
             </Tab>
             <Tab label="Personnes">
-              <ReferenceArrayField reference="Person" source="pair:affiliates" label={false}>
-                <GridList xs={6} sm={4} md={4} linkType="show">
-                  <TextField source="pair:label" />
-                </GridList>
-              </ReferenceArrayField>
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={3}>
+                  <OrganizationShowContactLayout {...props} />
+                  <OrganizationShowNavLayout {...props} />
+                </Grid>
+                <Grid item xs={12} md={9} style={{paddingTop: "25px"}} >
+                  <ReferenceManyField reference="Person" target="pair:affiliatedBy" label={false}>
+                    <GridList xs={6} sm={4} md={4} linkType="show">
+                      <TextField source="pair:label" />
+                    </GridList>
+                  </ReferenceManyField>
+                </Grid>
+              </Grid>
+              <Grid item xs={12} md={3}>
+              </Grid>
             </Tab>
           </TabbedShowLayout>
         </Show>
