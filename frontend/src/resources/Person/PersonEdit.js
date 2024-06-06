@@ -5,7 +5,6 @@ import Edit from "../../layout/edit/Edit";
 import PersonTitle from './PersonTitle';
 import {SkillsInput} from '../../inputs'
 import MarkdownInput from '../../markdown/MarkdownInput'
-import { Link } from 'react-router-dom';
 
 const NoDeleteToolBar = props => (
   <Toolbar {...props} >
