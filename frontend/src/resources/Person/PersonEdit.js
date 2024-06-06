@@ -1,6 +1,6 @@
 import React from 'react';
 import { SaveButton, SimpleForm, TextInput } from "ra-ui-materialui";
-import { Toolbar, Link } from 'react-admin';
+import { Toolbar } from 'react-admin';
 import Edit from "../../layout/edit/Edit";
 import PersonTitle from './PersonTitle';
 import {SkillsInput} from '../../inputs'
@@ -19,7 +19,7 @@ export const PersonEdit = props => (
       <MarkdownInput label="Description" multiline source="pair:description" fullWidth />
       <TextInput label="Id Openbadge" source="petr:openbadgeId" helperText="" fullWidth />
 
-      <Link to="https://app.petr-msb.data-players.com/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F6661e9285e375306ed6ba40b/show" style={{color: "grey", fontSize: "12px" }} >Besoin d'aide pour trouver votre ID openbadge?</Link>
+      <a href="https://app.petr-msb.data-players.com/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F6661e9285e375306ed6ba40b/show" target='_blank' >Besoin d'aide pour trouver votre ID openbadge?</a>
       <SkillsInput  source="pair:offers"/>
     </SimpleForm>
   </Edit>
