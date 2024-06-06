@@ -19,7 +19,7 @@ export const PersonEdit = props => (
       <MarkdownInput label="Description" multiline source="pair:description" fullWidth />
       <TextInput label="Id Openbadge" source="petr:openbadgeId" helperText="" fullWidth />
       <SkillsInput  source="pair:offers"/>
-      {/* <Link to="/Page/http%3A%2F%2Flocalhost%3A3000%2Fpages%2F6477503ccb5ef78fc07f2833/show" style={{color: "grey", fontSize: "12px" }} >Besoin d'aide pour trouver votre ID openbadge?</Link> */}
+      <Link to="https://app.petr-msb.data-players.com/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F6661e9285e375306ed6ba40b/show" style={{color: "grey", fontSize: "12px" }} >Besoin d'aide pour trouver votre ID openbadge?</Link>
     </SimpleForm>
   </Edit>
 )

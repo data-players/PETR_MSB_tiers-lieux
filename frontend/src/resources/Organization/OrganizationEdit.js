@@ -104,6 +104,8 @@ export const OrganizationEdit = props => {
             <AutocompleteArrayInput optionText="pair:label" />
           </ReferenceArrayInput>
           <TextInput label="Uid du Picto Access" source='petr:pictoAccessId' fullWidth />
+          <Link to="https://app.petr-msb.data-players.com/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F6661efb85e375306ed6ba40c/show" style={{color: "grey", fontSize: "12px" }} >Besoin d'aide pour trouver votre UID pictoAccess?</Link>
+
         </FormTab>
         {/* EQUIPMENTS */}
         <FormTab label="Equipements">
