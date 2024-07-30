@@ -55,10 +55,12 @@ const Layout = ({ logout, theme, children, title, menu }) => {
     { link: '/Search', name: 'Recherche', admin: false },
     { link: '/Event', name: 'Agenda', admin: false },
     { link: '/Ads', name:'Annonces', admin: false },
+    { link: '/Person', name:'Personnes', admin: false },
   ] :  [
     { link: '/Search', name: 'Recherche', admin: false },
     { link: '/Event', name: 'Agenda', admin: false },
     { link: '/Ads', name:'Annonces', admin: false },
+    { link: '/Person', name:'Personnes', admin: false },
     { link: '/Organization', name: 'Admin', admin: true },
   ];
 

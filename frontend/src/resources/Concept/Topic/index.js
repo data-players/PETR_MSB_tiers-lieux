@@ -1,6 +1,7 @@
 import ConceptCreate from '../ConceptCreate';
 import ConceptEdit from '../ConceptEdit';
 import ConceptList from '../ConceptList';
+import ConceptShow from './TopicShow';
 import StyleIcon from '@material-ui/icons/Style';
 
 export default {
@@ -8,6 +9,7 @@ export default {
     list: ConceptList,
     create: ConceptCreate,
     edit: ConceptEdit,
+    show: ConceptShow,
     icon: StyleIcon,
     options: {
       label: 'Thème',

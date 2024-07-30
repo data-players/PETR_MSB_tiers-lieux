@@ -10,7 +10,7 @@ const dataServers = {
         'pair:Event': ['/events'],
         'pair:Organization': ['/organizations'],
         'pair:OrganizationType': ['/organization-types'],
-        'pair:Person': ['/persons'],
+        // 'pair:Person': ['/persons'],
         'pair:Topic': ['/topics'],
         'pair:Skill': ['/skills'],
         'petr:AccessModality': ['/access-modalities'],
