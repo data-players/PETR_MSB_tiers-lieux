@@ -110,10 +110,10 @@ const Footer = ({ title }) => {
                 <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f05980d716091d235de473/show" className={classes.footerLink}>
                   Qui sommes-nous ?
                 </Link>
-                <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f06b5ed716091d235de474/show" className={classes.footerLink}>
-                  Mentions&nbsp;légales
-                </Link>
                 <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F66e30e01f1b847a4119d16f7/show" className={classes.footerLink}>
+                  Les tutoriels
+                </Link>
+                <Link to="/Page/https%3A%2F%2Fdata.petr-msb.data-players.com%2Fpages%2F65f06b5ed716091d235de474/show" className={classes.footerLink}>
                   Mentions&nbsp;légales
                 </Link>
                 <a href="https://www.etablir-tiers-lieux.fr" className={classes.footerLink} target="_blank">
