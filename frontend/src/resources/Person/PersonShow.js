@@ -1,11 +1,13 @@
 import React from 'react';
 import Show from "../../layout/show/Show";
 import PersonTitle from "./PersonTitle";
-import MarkdownField from '../../commons/fields/MarkdownField';
+// import MarkdownField from '../../commons/fields/MarkdownField';
+import {MarkdownField} from '@semapps/markdown-components';
 import { useRecordContext } from 'react-admin';
 import { ChipList } from '@semapps/list-components';
 import ReferenceArrayField from '../../commons/fields/ReferenceArrayField';
-import { Labeled } from 'react-admin';
+import { Labeled} from 'react-admin';
+import MainList from '../../commons/lists/MainList/MainList';
 
 const OpenbadgePassportComponent = ({ source }) => {
     const record = useRecordContext();
@@ -21,9 +23,10 @@ const OpenbadgePassportComponent = ({ source }) => {
 const PersonShow = props => (
     <Show title={<PersonTitle />} {...props}>
         <>
-
             <Labeled label="Description" fullWidth={true}>
-                <MarkdownField source="pair:description" />
+                <MainList >
+                    <MarkdownField addLabel={false} source="pair:description" />
+                </MainList>
             </Labeled>
 
             <Labeled label="Themes" fullWidth={true}>
