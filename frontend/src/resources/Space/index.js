@@ -27,7 +27,7 @@ export default {
         'petr:hasRate': 'Tarif',
         'petr:hasSpaceType': `Type d'espace`,
         'petr:capacity': 'Capacité',
-        'pair:locationOf': `Lieux de`,
+        'pair:locationOf': `Equipement`,
       }
     }
   }

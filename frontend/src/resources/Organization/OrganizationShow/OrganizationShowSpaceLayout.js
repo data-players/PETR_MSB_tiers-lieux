@@ -26,7 +26,7 @@ const OrganizationShowSpaceLayout = ({...props}) => {
       <ReferenceField source="petr:hasSpaceType" reference="SpaceType" link={false} label={<CustomLabel label="Type d'Espace :" />}>
         <TextField source="pair:label" />
       </ReferenceField>
-      <ReferenceField source="pair:locationOf" reference="Equipment" link={false} label={<CustomLabel label="Localisation :" />}>
+      <ReferenceField source="pair:locationOf" reference="Equipment" link={false} label={<CustomLabel label="Equipement :" />}>
         <TextField source="pair:label" />
       </ReferenceField>
     </SimpleShowLayout>
