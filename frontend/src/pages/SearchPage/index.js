@@ -289,14 +289,18 @@ const SearchPage = ({ theme }) => {
     if (!selectedResource) {
       return;
     }
+    // console.log('selectedValues',selectedValues);
+    let subjectCounter = 1;
+
     const sparqlWhere = selectedValues.map( (selectedValue, index) => { 
+      subjectCounter++;
       
       if (! selectedValue.field.path ) {
         return ({
           "type": "bgp",
           "triples": [{
             "subject": DataFactory.variable("s1"),
-            "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.name)),
+            "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.predicate)),
             "object": DataFactory.namedNode(selectedValue.value.id)
           }]
         })
@@ -308,17 +312,18 @@ const SearchPage = ({ theme }) => {
             "predicate": {
               "type": "path",
               "pathType": selectedValue.field.path.pathType,
-              "items": [DataFactory.namedNode(getFullPredicate(selectedValue.field.path.name))]
+              "items": [DataFactory.namedNode(getFullPredicate(selectedValue.field.path.predicate))]
             },
-            "object": DataFactory.variable("s2")//DataFactory.blankNode("blank" + index)
+            "object": DataFactory.variable("s" + subjectCounter)//DataFactory.blankNode("blank" + index)
           },{
-            "subject": DataFactory.variable("s2"),//DataFactory.blankNode("blank" + index),
-            "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.name)),
+            "subject": DataFactory.variable("s" + subjectCounter),//DataFactory.blankNode("blank" + index),
+            "predicate": DataFactory.namedNode(getFullPredicate(selectedValue.field.predicate)),
             "object": DataFactory.namedNode(selectedValue.value.id)
           }]
         })
       }
     });
+    // console.log('sparqlWhere',sparqlWhere);
     const results = await dataProvider.getList(
       selectedResource.name,
       {
@@ -327,20 +332,20 @@ const SearchPage = ({ theme }) => {
         }
     });
       
-    const uniqueResources = [...new Set(results.data.map(item => item[selectedResource["result-path"]["name"]]))];
+    const uniqueResources = [...new Set(results.data.map(item => item[selectedResource["result-path"]["predicate"]]))];
     const resultsByResource = await Promise.all( uniqueResources.map(async uniqueResource => {
       const resourceData = await dataProvider.getOne(selectedResource.name, {id: uniqueResource});
       return ( {
           id : uniqueResource,
           resourceData : resourceData.data,
           list: results.data
-            .filter(item => item[selectedResource["result-path"]["name"]] === uniqueResource)
+            .filter(item => item[selectedResource["result-path"]["predicate"]] === uniqueResource)
             .map(item => item["pair:label"])
         }
       )
     }))
     // console.log('results',results);
-    console.log('resultsByResource',resultsByResource);
+    // console.log('resultsByResource',resultsByResource);
   
     setResults({
       ...results,

@@ -5,21 +5,20 @@ const customSearchConfig = [
     "fields" : [
       {
         "type": "ServiceType",
-        "name": "petr:hasServiceType",
+        "predicate": "petr:hasServiceType",
         "label": "Type de service",
       },{
         "type": "Sector",
-        "name": "petr:hasSector",
+        "predicate": "petr:hasSector",
         "label": "Secteur",
         "path": {
-          "type": "Organization",
-          "name": "petr:serviceOfferedBy",
+          "predicate": "petr:serviceOfferedBy",
         }
       }
     ],
     "result-path" : {
       "type": "Organization",
-      "name": "petr:serviceOfferedBy",
+      "predicate": "petr:serviceOfferedBy",
     }
   },{
     "name": "Equipment",
@@ -27,21 +26,20 @@ const customSearchConfig = [
     "fields" : [
       {
         "type": "EquipmentType",
-        "name": "petr:hasEquipmentType",
+        "predicate": "petr:hasEquipmentType",
         "label": "Type d'équipement",
       },{
         "type": "Sector",
-        "name": "petr:hasSector",
+        "predicate": "petr:hasSector",
         "label": "Secteur",
         "path": {
-          "type": "Organization",
-          "name": "petr:equipmentOfferedBy",
+          "predicate": "petr:equipmentOfferedBy",
         }
       }
     ],
     "result-path" : {
       "type": "Organization",
-      "name": "petr:equipmentOfferedBy",
+      "predicate": "petr:equipmentOfferedBy",
     }
   },{
     "name": "Space",
@@ -49,29 +47,27 @@ const customSearchConfig = [
     "fields" : [
       {
         "type": "SpaceType",
-        "name": "petr:hasSpaceType",
+        "predicate": "petr:hasSpaceType",
         "label": "Type de lieu",
       },{
         "type": "EquipmentType",
-        "name": "petr:hasEquipmentType",
+        "predicate": "petr:hasEquipmentType",
         "label": "Equipement",
         "path": {
-          "name": "pair:hasLocation",
+          "predicate": "pair:hasLocation",
           "pathType": "^"
         }
       },{
         "type": "Sector",
-        "name": "petr:hasSector",
+        "predicate": "petr:hasSector",
         "label": "Secteur",
         "path": {
-          "type": "Organization",
-          "name": "petr:spaceOfferedBy",
+          "predicate": "petr:spaceOfferedBy",
         }
       }
     ],
     "result-path" : {
-      "type": "Organization",
-      "name": "petr:spaceOfferedBy",
+      "predicate": "petr:spaceOfferedBy",
     }
   }
 ];
